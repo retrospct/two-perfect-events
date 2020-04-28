@@ -9,7 +9,7 @@
 
 Two Perfect Events & Weddings website code made with GatsbyJs, Netlify, and DatoCMS.
 
-## 🔮 [View Latest Preview >>](https://twoperfectevents.netlify.app)
+## 🔮 [!View Latest Preview >>](https://twoperfectevents.netlify.app)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5bfd9d5d-f369-4ad7-9844-0bad775c0748/deploy-status)](https://app.netlify.com/sites/twoperfectevents/deploys)
 
