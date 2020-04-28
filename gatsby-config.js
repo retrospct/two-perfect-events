@@ -3,7 +3,7 @@ const siteTitle = 'Two Perfect Events & Weddings'
 const siteDescription =
   'Creative wedding & event design, planning, and more. Gracefully executed.'
 const siteAuthor = '@retrospct'
-const siteUrl = 'https://twoperfectevents.netlify.com'
+const siteUrl = 'https://twoperfectevents.com'
 const siteImage = `${siteUrl}/icons/icon_512x512.png`
 const siteKeywords = ['gatsby', 'typescript', 'starter', 'javascript', 'react']
 
