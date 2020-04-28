@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react'
 // import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
+// import { Link } from 'gatsby'
+import { Link } from '../components/link'
 import { StaticQuery, graphql } from 'gatsby'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 
@@ -61,12 +62,38 @@ const TemplateWrapper = ({ children }) => {
                     data.datoCmsHome.introTextNode.childMarkdownRemark.html,
                 }}
               />
-              <ul className="sidebar__menu">
+              <ul style={{ display: 'flex', listStyle: 'none' }}>
                 <li>
-                  <Link to="/">Home</Link>
+                  <Link
+                    to="/"
+                    style={{ color: 'MediumOrchid', marginRight: 20 }}
+                  >
+                    Home
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/about">About</Link>
+                  <Link
+                    to="/about"
+                    style={{ color: 'MediumOrchid', marginRight: 20 }}
+                  >
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/about-cms"
+                    style={{ color: 'MediumOrchid', marginRight: 20 }}
+                  >
+                    About CMS
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/demo-cms"
+                    style={{ color: 'MediumOrchid', marginRight: 20 }}
+                  >
+                    Demo CMS
+                  </Link>
                 </li>
               </ul>
               <p className="sidebar__social">

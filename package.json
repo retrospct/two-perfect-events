@@ -1,6 +1,6 @@
 {
   "name": "two-perfect-events",
-  "description": "Two Perfect Events & Weddings website code made with GatsbyJs, Netlify, and Strapi CMS.",
+  "description": "Two Perfect Events & Weddings website code made with GatsbyJs, Netlify, and DatoCMS.",
   "version": "0.0.3",
   "private": true,
   "author": "Justin Lee <me@jlee.cool>",
