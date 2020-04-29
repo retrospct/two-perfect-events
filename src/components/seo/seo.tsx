@@ -1,23 +1,23 @@
-import React from "react";
-import { Helmet } from "react-helmet";
-import { useStaticQuery, graphql } from "gatsby";
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import { useStaticQuery, graphql } from 'gatsby'
 
 type MetaItem = {
-  name: string;
-  content: string;
-};
+  name: string
+  content: string
+}
 
 type SEOProps = {
-  title?: string;
-  description?: string;
-  url?: string;
-  author?: string;
-  keywords?: string[];
-  meta?: MetaItem[];
-  image?: string;
-};
+  title?: string
+  description?: string
+  url?: string
+  author?: string
+  keywords?: string[]
+  meta?: MetaItem[]
+  image?: string
+}
 
-const SEO: React.FC<SEOProps> = props => {
+const SEO: React.FC<SEOProps> = (props) => {
   const data = useStaticQuery(graphql`
     {
       site {
@@ -31,9 +31,9 @@ const SEO: React.FC<SEOProps> = props => {
         }
       }
     }
-  `);
+  `)
 
-  const { siteMetadata } = data.site;
+  const { siteMetadata } = data.site
 
   const {
     title,
@@ -43,91 +43,91 @@ const SEO: React.FC<SEOProps> = props => {
     meta = [],
     keywords = [],
     image,
-  } = siteMetadata;
-  const siteTitle = props.title || title;
-  const siteDescription = props.description || description;
-  const siteUrl = props.url || url;
-  const siteAuthor = props.author || author;
-  const siteImage = props.image || image;
-  const siteKeywords = [...keywords, props.keywords].join(",");
+  } = siteMetadata
+  const siteTitle = props.title || title
+  const siteDescription = props.description || description
+  const siteUrl = props.url || url
+  const siteAuthor = props.author || author
+  const siteImage = props.image || image
+  const siteKeywords = [...keywords, props.keywords].join(',')
   const metaData = [
     {
-      name: "canonical",
+      name: 'canonical',
       content: siteUrl,
     },
     {
-      name: "description",
+      name: 'description',
       content: siteDescription,
     },
     {
-      name: "image",
+      name: 'image',
       content: siteImage,
     },
     {
-      name: "og:url",
+      name: 'og:url',
       content: siteUrl,
     },
     {
-      name: "og:type",
-      content: "article",
+      name: 'og:type',
+      content: 'article',
     },
     {
-      name: "og:title",
+      name: 'og:title',
       content: siteTitle,
     },
     {
-      name: "og:description",
+      name: 'og:description',
       content: siteDescription,
     },
     {
-      name: "og:image",
+      name: 'og:image',
       content: siteImage,
     },
     {
-      name: "twitter:card",
-      content: "summary_large_image",
+      name: 'twitter:card',
+      content: 'summary_large_image',
     },
     {
-      name: "twitter:creator",
+      name: 'twitter:creator',
       content: siteAuthor,
     },
     {
-      name: "twitter:title",
+      name: 'twitter:title',
       content: siteTitle,
     },
     {
-      name: "twitter:description",
+      name: 'twitter:description',
       content: siteDescription,
     },
     {
-      name: "twitter:image",
+      name: 'twitter:image',
       content: siteImage,
     },
     {
-      name: "keywords",
+      name: 'keywords',
       content: siteKeywords,
     },
-  ].concat(meta);
+  ].concat(meta)
 
   const linkData = [
     {
-      rel: "shortcut icon",
-      href: "favicon.ico",
+      rel: 'shortcut icon',
+      href: 'favicon.ico',
     },
     {
-      rel: "apple-touch-icon",
-      href: "icons/apple-touch-icon.png",
+      rel: 'apple-touch-icon',
+      href: 'icons/apple-touch-icon.png',
     },
-  ];
+  ]
   return (
     <Helmet
-      htmlAttributes={{ lang: "en" }}
+      htmlAttributes={{ lang: 'en' }}
       title={siteTitle}
       // titleTemplate={`%s | ${siteTitle}`}
       meta={metaData}
       link={linkData}
     />
-  );
-};
+  )
+}
 
-export { SEO };
+export { SEO }

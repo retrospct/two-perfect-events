@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 // import Slider from 'react-slick'
-import { HelmetDatoCms } from "gatsby-source-datocms";
-import Img from "gatsby-image";
-import { graphql } from "gatsby";
-import Layout from "../components/layout-cms";
+import { HelmetDatoCms } from 'gatsby-source-datocms'
+import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
+import Layout from '../components/layout-cms'
 
-export default ({ data }) => (
+export const Work = ({ data }) => (
   <Layout>
     <article className="sheet">
       <HelmetDatoCms seo={data.datoCmsWork.seoMetaTags} />
@@ -29,7 +29,7 @@ export default ({ data }) => (
       </div>
     </article>
   </Layout>
-);
+)
 
 export const query = graphql`
   query WorkQuery($slug: String!) {
@@ -57,4 +57,4 @@ export const query = graphql`
       }
     }
   }
-`;
+`
