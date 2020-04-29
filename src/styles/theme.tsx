@@ -7,9 +7,9 @@ export default {
     xl: 1280,
   },
   colors: {
-    blue: "#0099ff",
-    darkblue: "#00072e",
-    orange: "#FF9429",
+    blue: '#0099ff',
+    darkblue: '#00072e',
+    orange: '#FF9429',
   },
   opacity: {
     0: 0,
@@ -21,4 +21,4 @@ export default {
   py: (value: number | string) =>
     `padding-top: ${value}; padding-bottom: ${value};`,
   // Add anything else you'd like.
-};
+}
