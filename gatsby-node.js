@@ -4,11 +4,11 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-const path = require(`path`);
-const { createFilePath } = require(`gatsby-source-filesystem`);
+const path = require(`path`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
+  const { createPage } = actions
 
   return new Promise((resolve, reject) => {
     graphql(`
@@ -29,9 +29,9 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             slug: work.slug,
           },
-        });
-      });
-      resolve();
-    });
-  });
-};
+        })
+      })
+      resolve()
+    })
+  })
+}

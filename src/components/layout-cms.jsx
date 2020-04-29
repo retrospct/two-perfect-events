@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 // import PropTypes from 'prop-types'
 // import { Link } from 'gatsby'
-import { Link } from '../components/link'
+import { Link } from './link'
 import { StaticQuery, graphql } from 'gatsby'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 
