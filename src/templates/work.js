@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout-cms'
 
-export const Work = ({ data }) => (
+const Work = ({ data }) => (
   <Layout>
     <article className="sheet">
       <HelmetDatoCms seo={data.datoCmsWork.seoMetaTags} />
@@ -30,6 +30,8 @@ export const Work = ({ data }) => (
     </article>
   </Layout>
 )
+
+export default Work
 
 export const query = graphql`
   query WorkQuery($slug: String!) {
