@@ -24,6 +24,7 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
+    'react-app', // added by JL
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
@@ -142,7 +143,7 @@ module.exports = {
     'dot-notation': 2,
     'eol-last': 0,
     'guard-for-in': 2,
-    'immutable/no-let': 2,
+    'immutable/no-let': 0, // modified, was 2
     'immutable/no-mutation': 2,
     'immutable/no-this': 2,
     'linebreak-style': 0,
@@ -186,7 +187,7 @@ module.exports = {
     radix: 2,
     'react-hooks/exhaustive-deps': 1,
     'react-hooks/rules-of-hooks': 2,
-    'react/jsx-props-no-spreading': 2,
+    'react/jsx-props-no-spreading': 1, // modified, was 2
     'react/prop-types': 0, // Unnecessary as we use TypeScript for type definitions
     'sort-keys': 0,
     'space-before-function-paren': 0,
