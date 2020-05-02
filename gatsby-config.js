@@ -81,7 +81,7 @@ plugins: [
     resolve: 'gatsby-source-prismic-graphql',
       options: {
         repositoryName: 'two-perfect-events', // (REQUIRED, replace with your own)
-        accessToken: '##########', // (optional API access token)
+        accessToken: 'MC5YcTNBOHhBQUFDUUFmdlFv.NkhGCWobRe-_vSAO77-977-977-977-977-9aVUiGwFc77-977-977-9Ug5-77-9B--_vR_vv70', // (optional API access token)
         path: '/preview', // (optional preview path. Default: /preview)
         previews: true, // (optional, activated Previews. Default: false)
         pages: [{ // (optional, builds pages dynamically)
