@@ -26,7 +26,6 @@ const GithubIcon: React.FC = () => {
         href="https://github.com/retrospct/two-perfect-events"
         rel="noopener noreferrer"
         target="_blank"
-        // eslint-disable-next-line @typescript-eslint/tslint/config
         css={`
           cursor: pointer;
         `}

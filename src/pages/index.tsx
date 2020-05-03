@@ -35,11 +35,6 @@ const App = () => (
           Demo CMS
         </Link>
       </li>
-      <li>
-        <Link to="/home" style={{ color: 'MediumOrchid', marginRight: 20 }}>
-          Home
-        </Link>
-      </li>
     </ul>
   </Layout>
 )

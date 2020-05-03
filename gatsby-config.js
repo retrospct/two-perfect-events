@@ -36,27 +36,9 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-prismic-graphql',
+      resolve: `gatsby-source-datocms`,
       options: {
-        repositoryName: 'two-perfect-events', // (REQUIRED, replace with your own)
-        accessToken: process.env.PRISMIC_API_TOKEN, // (optional API access token)
-        path: '/preview', // (optional preview path. Default: /preview)
-        previews: true, // (optional, activated Previews. Default: false)
-        pages: [
-          {
-            // (optional, builds pages dynamically)
-            type: 'Article', // TypeName from prismic
-            match: '/article/:uid', // Pages will be generated under this pattern
-            path: '/article', // Placeholder page for unpublished documents
-            component: require.resolve('./src/templates/article.js'),
-          },
-          {
-            type: 'Home',
-            match: '/home',
-            path: '/home',
-            component: require.resolve('./src/templates/home.js'),
-          },
-        ],
+        apiToken: process.env.DATO_API_TOKEN,
       },
     },
     `gatsby-transformer-remark`,
