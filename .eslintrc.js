@@ -2,8 +2,12 @@
 // * 0 = off | 1 = warn | 2 = error
 //***********************************************************
 module.exports = {
+  globals: {
+    // Gatsby Config
+    __PATH_PREFIX__: true,
+  },
   env: {
-    browser: true,
+    browser: true, // Allow `window` global
     es6: true,
     node: true,
     commonjs: true,
@@ -17,23 +21,39 @@ module.exports = {
       jsx: true,
     },
   },
+  // Global ESLint Settings
+  // =================================
   settings: {
     react: {
       version: 'detect',
     },
+    'import/resolver': {
+      node: {
+        paths: ['./', 'src'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', 'json'],
+      },
+      // Resolve Aliases
+      // =================================
+      alias: {
+        map: [
+          ['~', './src'],
+          // ['@theme/styled', './src/styled'],
+        ],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', 'json', '.d.ts'],
+      },
+    },
   },
   extends: [
     'eslint:recommended',
-    'react-app', // added by JL
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
-    'plugin:prettier/recommended',
     'plugin:jsx-a11y/recommended',
-    'prettier',
-    'prettier/@typescript-eslint',
     'plugin:import/typescript',
     'plugin:jest/recommended',
+    // 'prettier',
+    'prettier/react',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
   ],
   plugins: [
     '@typescript-eslint',
@@ -43,6 +63,8 @@ module.exports = {
     'jsx-a11y',
     'react-hooks',
   ],
+  // https://eslint.org/docs/user-guide/configuring#report-unused-eslint-disable-comments
+  reportUnusedDisableDirectives: true,
   rules: {
     '@typescript-eslint/adjacent-overload-signatures': 2,
     '@typescript-eslint/array-type': 2,
@@ -195,4 +217,85 @@ module.exports = {
     'use-isnan': 2,
     'valid-typeof': 0,
   },
+
+  // =================================
+  // Overrides for Specific Files
+  // =================================
+  overrides: [
+    // =================================
+    // TypeScript Files
+    // =================================
+    {
+      files: ['**/*.{ts,tsx}'],
+      rules: {
+        // This project uses TS. Disable prop-types check
+        'react/prop-types': 0,
+        // Allow snake_case due to inconsistent APIs
+        '@typescript-eslint/camelcase': 0,
+        // Makes no sense to allow type inferrence for expression parameters, but require typing the response
+        '@typescript-eslint/explicit-function-return-type': 0,
+        // Reduce props spreading rule to a warning, not an error
+        'react/jsx-props-no-spreading': 1,
+      },
+    },
+    // =================================
+    // index.ts Files (Re-exporting a directory's files)
+    // =================================
+    {
+      files: ['**/index.{js,ts,tsx}'],
+      rules: {
+        // Allow named exports in a directory's index files
+        'import/prefer-default-export': 0,
+      },
+    },
+    // =================================
+    // Gatsby Files
+    // =================================
+    {
+      files: ['**/**/gatsby-*.js'],
+      rules: {
+        'no-console': 0,
+        // Allow import devDependencies in Gatsby files.
+        'import/no-extraneous-dependencies': [
+          2,
+          {
+            devDependencies: true,
+            // Tells ESLint where the path to the folder containing package.json is for nested files like /plugin/**/gatsby-*.js
+            packageDir: './',
+          },
+        ],
+        'react/no-danger': 0,
+        'react/jsx-props-no-spreading': 0,
+        // Allow 'jsx' in .js files
+        'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+        'import/prefer-default-export': 0,
+      },
+    },
+    // =================================
+    // Test Files
+    // =================================
+    {
+      files: ['**/test-utils/*.{js,ts,tsx}', '**/**/*.test.{js,ts,tsx}'],
+      // Allow `jest` global
+      extends: ['plugin:jest/recommended'],
+      rules: {
+        // Allow import devDependencies in tests
+        'import/no-extraneous-dependencies': 0,
+        'react/jsx-props-no-spreading': 0,
+        'jsx-a11y/alt-text': 0,
+      },
+    },
+    // =================================
+    // Storybook Files
+    // =================================
+    {
+      files: ['**/*.stories.{js,ts,tsx}'],
+      rules: {
+        // Allow import devDependencies in stories
+        'import/no-extraneous-dependencies': 0,
+        'react/jsx-props-no-spreading': 0,
+        'jsx-a11y/alt-text': 0,
+      },
+    },
+  ],
 }
