@@ -1,11 +1,11 @@
-const linkResolver = (doc) => {
-    // Pretty URLs for known types
-    if (doc.type === 'article') return `/article/${doc.uid}`
-    if (doc.type === 'page') return `/${doc.uid}`
-    // Fallback for other types, in case new custom types get created
-    return `/doc/${doc.id}`
+export const linkResolver = (doc) => {
+  // Pretty URLs for known types
+  if (doc.type === 'Article') {
+    return `/article/${doc.uid}`
   }
-   
-  return (
-    <RichText render={document.data.text_field} linkResolver={linkResolver} />
-  )
+  if (doc.type === 'Home') {
+    return `/home`
+  }
+  // Fallback for other types, in case new custom types get created
+  return `/doc/${doc.id}`
+}

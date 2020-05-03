@@ -36,9 +36,27 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-datocms`,
+      resolve: 'gatsby-source-prismic-graphql',
       options: {
-        apiToken: process.env.DATO_API_TOKEN,
+        repositoryName: 'two-perfect-events', // (REQUIRED, replace with your own)
+        accessToken: process.env.PRISMIC_API_TOKEN, // (optional API access token)
+        path: '/preview', // (optional preview path. Default: /preview)
+        previews: true, // (optional, activated Previews. Default: false)
+        pages: [
+          {
+            // (optional, builds pages dynamically)
+            type: 'Article', // TypeName from prismic
+            match: '/article/:uid', // Pages will be generated under this pattern
+            path: '/article', // Placeholder page for unpublished documents
+            component: require.resolve('./src/templates/article.js'),
+          },
+          {
+            type: 'Home',
+            match: '/home',
+            path: '/home',
+            component: require.resolve('./src/templates/home.js'),
+          },
+        ],
       },
     },
     `gatsby-transformer-remark`,
@@ -75,21 +93,3 @@ module.exports = {
     `gatsby-plugin-offline`,
   ],
 }
-
-plugins: [
-  {
-    resolve: 'gatsby-source-prismic-graphql',
-      options: {
-        repositoryName: 'two-perfect-events', // (REQUIRED, replace with your own)
-        accessToken: 'MC5YcTNBOHhBQUFDUUFmdlFv.NkhGCWobRe-_vSAO77-977-977-977-977-9aVUiGwFc77-977-977-9Ug5-77-9B--_vR_vv70', // (optional API access token)
-        path: '/preview', // (optional preview path. Default: /preview)
-        previews: true, // (optional, activated Previews. Default: false)
-        pages: [{ // (optional, builds pages dynamically)
-        type: 'Article',         // TypeName from prismic
-        match: '/article/:uid',  // Pages will be generated under this pattern
-        path: '/article',        // Placeholder page for unpublished documents
-        component: require.resolve('./src/templates/article.js'),
-      }],
-    }
-  }
-]
