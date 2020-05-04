@@ -38,7 +38,7 @@ background-size: 10px 10px !important;
 background-image: linear-gradient(to right, lightgray 1px, transparent 1px), linear-gradient(to bottom, lightgray 1px, transparent 1px) !important;
 `
 
-interface CSSDebuggerProps {
+interface CssDebuggerProps {
   debug?: boolean
   showToggle?: boolean
   color?: string
@@ -46,7 +46,7 @@ interface CSSDebuggerProps {
   buttonStyle?: React.CSSProperties
 }
 
-const CSSDebugger: React.FC<CSSDebuggerProps> = ({
+const CssDebugger: React.FC<CssDebuggerProps> = ({
   debug = false,
   showToggle = true,
   showGrid = true,
@@ -90,4 +90,4 @@ const CSSDebugger: React.FC<CSSDebuggerProps> = ({
   )
 }
 
-export { CSSDebugger }
+export { CssDebugger }
