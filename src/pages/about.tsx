@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 import { motion } from 'framer-motion'
 import { RouteComponentProps } from '@reach/router'
-import { Layout } from '../components/layout'
-import { SEO } from '../components/seo'
+import { Layout } from '../components/Layout'
+import { SEO } from '../components/Seo'
 
 /***************************************************************
   Below are some examples of using styled-components with the

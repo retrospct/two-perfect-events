@@ -1,8 +1,8 @@
 import React from 'react'
-import { Layout } from '../components/layout'
-import { SEO } from '../components/seo'
-import { Code } from '../components/code'
-import { Link } from '../components/link'
+import { Layout } from '../components/Layout'
+import { SEO } from '../components/Seo'
+import { Code } from '../components/Code'
+import { Link } from '../components/Link'
 // import { linkResolver } from '../utils/linkResolver'
 
 const command = 'git clone git@github.com:retrospct/two-perfect-events.git'

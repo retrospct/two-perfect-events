@@ -25,27 +25,21 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-react-axe',
-      options: {
-        showInProduction: false,
-        // Options to pass to axe-core.
-        // See: https://github.com/dequelabs/axe-core/blob/master/doc/API.md#api-name-axeconfigure
-        axeOptions: {
-          // Your axe-core options.
-        },
-      },
-    },
-    {
       resolve: `gatsby-source-datocms`,
       options: {
         apiToken: process.env.DATO_API_TOKEN,
+        // If you are working on development/staging environment, you might want to
+        // preview the latest version of records instead of the published one:
+        previewMode: true,
       },
     },
     `gatsby-transformer-remark`,
-    `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-svgr`,
+    `gatsby-plugin-svg-sprite`,
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
-    'gatsby-plugin-react-helmet',
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -70,6 +64,25 @@ module.exports = {
             types: 'image/png',
           },
         ],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-react-axe',
+      options: {
+        showInProduction: false,
+        // Options to pass to axe-core.
+        // See: https://github.com/dequelabs/axe-core/blob/master/doc/API.md#api-name-axeconfigure
+        axeOptions: {
+          branding: {
+            brand: 'Two Perfect Events',
+            application: 'tpeWebsite',
+          },
+          reporter: 'v2',
+          // checks: {id: '#root', evaluate: },
+          // rules: [Object],
+          // locale: Object,
+          axeVersion: String,
+        },
       },
     },
     `gatsby-plugin-offline`,

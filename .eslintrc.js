@@ -226,7 +226,7 @@ module.exports = {
     // TypeScript Files
     // =================================
     {
-      files: ['**/*.{ts,tsx}'],
+      files: ['**/*.{js,ts,tsx}'],
       rules: {
         // This project uses TS. Disable prop-types check
         'react/prop-types': 0,

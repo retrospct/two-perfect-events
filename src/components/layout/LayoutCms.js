@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from '../link'
+import { Link } from '../Link'
 import { StaticQuery, graphql } from 'gatsby'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 

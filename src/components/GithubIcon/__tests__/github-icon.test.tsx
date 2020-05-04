@@ -1,7 +1,7 @@
 // TODO: Figure out why this test is failing.
 
 import React from 'react'
-import { GithubIcon } from '../github-icon'
+import { GithubIcon } from '../GithubIcon'
 import { render, cleanup } from '@testing-library/react'
 import * as Gatsby from 'gatsby'
 const useStaticQuery = jest.spyOn(Gatsby, 'useStaticQuery')

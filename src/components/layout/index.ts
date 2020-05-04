@@ -1,2 +1,2 @@
-export { Layout } from './layout'
+export { Layout } from './Layout'
 export { LayoutCms } from './LayoutCms'

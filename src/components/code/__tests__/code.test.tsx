@@ -1,5 +1,5 @@
 import React from 'react'
-import { Code } from '../code'
+import { Code } from '../Code'
 import { render } from '@testing-library/react'
 
 it('matches snapshot', () => {
