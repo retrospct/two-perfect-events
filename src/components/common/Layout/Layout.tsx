@@ -1,31 +1,34 @@
+/** @jsx jsx */
+import { jsx, Box, Heading } from 'theme-ui'
+// import tpeTheme from '../gatsby-plugin-theme-ui'
 import React from 'react'
-import styled, { ThemeProvider } from 'styled-components'
+// import styled, { ThemeProvider } from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
-import { theme, GlobalStyles } from '../../styles'
+// import { theme, GlobalStyles } from '../../styles'
 // Components
-import { CssDebugger } from '../CssDebugger'
+// import { CssDebugger } from '../CssDebugger'
 import { Link } from '../Link'
 import { Footer } from '../Footer'
 
-const Container = styled.div`
-  margin: 0 auto;
-  max-width: 1080px;
-  padding: 2rem;
-`
+// const Container = styled.div`
+//   margin: 0 auto;
+//   max-width: 1080px;
+//   padding: 2rem;
+// `
 
-const Title = styled.h1`
-  font-size: ${(props) => (props.theme.screens.sm ? '1.8rem' : '2.2rem')};
-  margin: 20px 0px;
-  color: white;
-`
+// const Title = styled.h1`
+//   font-size: ${(props) => (props.theme.screens.sm ? '1.8rem' : '2.2rem')};
+//   margin: 20px 0px;
+//   color: white;
+// `
 
-const Tagline = styled.h2`
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: ${(props) => props.theme.colors.blue};
-`
+// const Tagline = styled.h2`
+//   font-size: 1.1rem;
+//   font-weight: 400;
+//   color: ${(props) => props.theme.colors.blue};
+// `
 
-const Layout: React.FC = ({ children }) => {
+const Layout: React.FC = (props) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -40,19 +43,27 @@ const Layout: React.FC = ({ children }) => {
   const { title, description } = data.site.siteMetadata
 
   return (
-    <ThemeProvider theme={theme()}>
-      <Container>
-        <GlobalStyles />
-        <CssDebugger />
-        <Link to="/">
-          <Title>{title.toUpperCase()}</Title>
-        </Link>
-        <Tagline>{description}</Tagline>
-        <br />
-        <main>{children}</main>
-        <Footer />
-      </Container>
-    </ThemeProvider>
+    <Box
+      {...props}
+      sx={{
+        color: 'text',
+        bg: 'background',
+        fontFamily: 'body',
+        maxWidth: '1200px',
+        mx: 'auto',
+        px: 3,
+        // boxShadow: '0 0 1px 3px rgba(0, 0, 0, .125)',
+      }}
+    >
+      {/* <CssDebugger /> */}
+      <Link to="/">
+        <Heading as="h1">{title.toUpperCase()}</Heading>
+      </Link>
+      <Heading>{description}</Heading>
+      <br />
+      <main>{props.children}</main>
+      <Footer />
+    </Box>
   )
 }
 

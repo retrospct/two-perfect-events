@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Img from 'gatsby-image'
-import { LayoutCms } from '../components/Layout'
+import { LayoutCms } from '../components/common/Layout'
 
 const About = ({ data: { about } }) => (
   <LayoutCms>

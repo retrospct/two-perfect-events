@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Masonry from 'react-masonry-component'
 import Img from 'gatsby-image'
-import { LayoutCms } from '../components/Layout'
+import { LayoutCms } from '../components/common/Layout'
 
 const IndexPage = ({ data }) => (
   <LayoutCms>

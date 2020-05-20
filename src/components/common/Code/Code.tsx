@@ -1,8 +1,8 @@
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 const Code = styled.code`
   display: inline-block;
-  color: ${(props) => props.theme.colors.darkblue};
+  /* color: ${(props) => props.theme.colors.darkblue}; */
   font-size: 1.2rem;
   background: #f5f5f5;
   margin-top: 1rem;
