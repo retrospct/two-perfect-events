@@ -1,15 +1,16 @@
 import React from 'react'
-import { Layout } from '../components/layout'
-import { SEO } from '../components/seo'
-import { Code } from '../components/code'
-import { Link } from '../components/link'
-// import { linkResolver } from '../utils/linkResolver'
+import { Layout } from '../components/common/Layout'
+import { SEO } from '../components/common/Seo'
+import { Hero } from '../components/Home'
+import { Code } from '../components/common/Code'
+import { Link } from '../components/common/Link'
 
 const command = 'git clone git@github.com:retrospct/two-perfect-events.git'
 
 const App = () => (
   <Layout>
     <SEO />
+    <Hero />
     <Code>{command}</Code>
     <ul style={{ paddingLeft: 0, display: 'flex', listStyle: 'none' }}>
       <li>

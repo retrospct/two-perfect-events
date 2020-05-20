@@ -2,6 +2,7 @@
 /// <reference types="styled-components/cssprop" />
 
 import 'styled-components'
+// import 'gatsby-source-datocms'
 
 // Add support for css prop
 declare namespace React {
@@ -30,3 +31,24 @@ declare global {
     }
   }
 }
+
+// declare module 'gatsby-source-datocms' {
+//   export interface HelmetDatoCms {
+//     [key: string]: any | HelmetDatoCms
+//   }
+// }
+// Add support for DatoCMS
+
+// Reference from this repo
+// https://github.com/datocms/react-datocms/tree/master/examples/with-next-typescript
+// type GQLIntType = number;
+// type GQLItemId = string;
+// type GQLFloatType = number;
+// type GQLMetaTagAttributes = Record<string, string>;
+
+// export interface seoMetaTagsFragment {
+//   __typename: "Tag";
+//   attributes: GQLMetaTagAttributes | null;
+//   content: string | null;
+//   tag: string;
+// }
