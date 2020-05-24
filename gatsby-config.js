@@ -1,29 +1,24 @@
-require('dotenv').config()
-const siteTitle = 'Two Perfect Events & Weddings'
-const siteDescription =
-  'Creative wedding & event design, planning, and more. Gracefully executed.'
-const siteAuthor = '@retrospct'
-const siteUrl = 'https://twoperfectevents.com'
-const siteImage = `${siteUrl}/icons/icon_512x512.png`
-const siteKeywords = ['gatsby', 'typescript', 'starter', 'javascript', 'react']
+const config = require('./src/data/config')
+
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 module.exports = {
   siteMetadata: {
-    title: siteTitle,
-    description: siteDescription,
-    author: siteAuthor,
-    url: siteUrl,
-    keywords: siteKeywords,
-    image: siteImage,
+    title: config.defaultTitle,
+    description: config.defaultDescription,
+    author: config.author,
+    url: config.url,
+    keywords: config.keywords,
+    image: `${config.url}/icons/icon_512x512.png`,
   },
   plugins: [
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/images`,
-        name: 'images',
-      },
-    },
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-styled-components',
+    `gatsby-transformer-remark`,
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
       resolve: `gatsby-source-datocms`,
       options: {
@@ -33,58 +28,63 @@ module.exports = {
         previewMode: true,
       },
     },
-    `gatsby-transformer-remark`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-svgr`,
-    `gatsby-plugin-svg-sprite`,
-    'gatsby-plugin-theme-ui',
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-typescript`,
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-source-graphql',
       options: {
-        name: siteTitle,
-        short_name: siteTitle,
-        description: siteDescription,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: 'src/images/favicon.png',
-        icons: [
-          {
-            src: 'icons/icon_512x512.png',
-            sizes: '512x512',
-            types: 'image/png',
-          },
-          {
-            src: 'icons/icon_192x192.png',
-            sizes: '192x192',
-            types: 'image/png',
-          },
-        ],
+        typeName: 'GitHub',
+        fieldName: 'github',
+        url: 'https://api.github.com/graphql',
+        headers: {
+          Authorization: `bearer ${process.env.GATSBY_PORTFOLIO_GITHUB_TOKEN}`,
+        },
+        fetchOptions: {},
       },
     },
     {
-      resolve: 'gatsby-plugin-react-axe',
+      resolve: 'gatsby-plugin-nprogress',
       options: {
-        showInProduction: false,
-        // Options to pass to axe-core.
-        // See: https://github.com/dequelabs/axe-core/blob/master/doc/API.md#api-name-axeconfigure
-        axeOptions: {
-          branding: {
-            brand: 'Two Perfect Events',
-            application: 'tpeWebsite',
-          },
-          reporter: 'v2',
-          // checks: {id: '#root', evaluate: },
-          // rules: [Object],
-          // locale: Object,
-          axeVersion: String,
+        color: config.themeColor,
+        showSpinner: false,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: config.googleAnalyticsID,
+        head: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-favicon',
+      options: {
+        logo: './static/favicon/favicon-11.png',
+        injectHTML: true,
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+          coast: false,
+          favicons: true,
+          firefox: true,
+          twitter: false,
+          yandex: false,
+          windows: false,
         },
       },
     },
-    `gatsby-plugin-offline`,
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: config.defaultTitle,
+        short_name: config.defaultTitle,
+        description: config.defaultDescription,
+        start_url: '/',
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
+        display: 'minimal-ui',
+        icon: './static/favicon/favicon-11.png',
+      },
+    },
+    'gatsby-plugin-offline',
   ],
 }
