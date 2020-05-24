@@ -37,7 +37,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-svgr`,
     `gatsby-plugin-svg-sprite`,
-    'gatsby-plugin-theme-ui',
+    'gatsby-plugin-styled-components',
     `gatsby-plugin-sharp`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,

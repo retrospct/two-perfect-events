@@ -1,6 +1,6 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import Img from 'gatsby-image'
 import { motion } from 'framer-motion'
 
