@@ -3,9 +3,7 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
-
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const path = require('path')
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
@@ -21,7 +19,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
       }
-    `).then((result) => {
+    `).then(result => {
       result.data.allDatoCmsWork.edges.map(({ node: work }) => {
         createPage({
           path: `works/${work.slug}`,
@@ -33,5 +31,13 @@ exports.createPages = ({ graphql, actions }) => {
       })
       resolve()
     })
+  })
+}
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    },
   })
 }

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from '../Link'
+import { Link } from 'components/common/Link'
 import { StaticQuery, graphql } from 'gatsby'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 
-const LayoutCms = ({ children }) => {
+export const LayoutCms = ({ children }) => {
   const [showMenu, setShowMenu] = useState(false)
   return (
     <StaticQuery
@@ -38,7 +38,7 @@ const LayoutCms = ({ children }) => {
           }
         }
       `}
-      render={(data) => (
+      render={data => (
         <div className={`container ${showMenu ? 'is-open' : ''}`}>
           <HelmetDatoCms
             favicon={data.datoCmsSite.faviconMetaTags}
@@ -68,14 +68,6 @@ const LayoutCms = ({ children }) => {
                 <li>
                   <Link
                     to="/about"
-                    style={{ color: 'MediumOrchid', marginRight: 20 }}
-                  >
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/about-cms"
                     style={{ color: 'MediumOrchid', marginRight: 20 }}
                   >
                     About CMS
@@ -112,7 +104,7 @@ const LayoutCms = ({ children }) => {
               <div className="mobile-header">
                 <div className="mobile-header__menu">
                   <button
-                    onClick={(e) => {
+                    onClick={e => {
                       e.preventDefault()
                       setShowMenu(!showMenu)
                     }}
@@ -130,6 +122,3 @@ const LayoutCms = ({ children }) => {
     />
   )
 }
-
-export { LayoutCms }
-/* eslint-enable jsx-a11y/anchor-has-content, jsx-a11y/anchor-is-valid*/

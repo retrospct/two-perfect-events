@@ -19,6 +19,10 @@ Two Perfect Events & Weddings website code made with GatsbyJs, Netlify, and Dato
 - [x] Setup with [Gatsby Cloud Dashboard](https://www.gatsbyjs.com/dashboard/dd5c1421-6cb6-4c8c-9301-d7c8041b380f/sites/c807d07f-2635-4af7-9dde-116e635cf403/production)
 - [x] Setup with DatoCMS - [TPE DatoCMS Admin](https://tpe.admin.datocms.com/editor)
 - [x] Setup with Netlify Hosting - [TPE Netlify Admin](https://app.netlify.com/sites/twoperfectevents/overview)
+- [ ] Setup pre-commit hooks again via husky, prettier, & eslint
+- [ ] gatsby-plugin-react-axe ??
+- [ ] gatsby-plugin-svg-sprite ??
+- [ ] gatsby-plugin-svgr ??
 - [ ] Remove and clean up all unneeded code, packages, and tooling
 - [ ] [gatsby-plugin-google-tagmanager](https://www.gatsbyjs.org/packages/gatsby-plugin-google-tagmanager/)
 - [ ] [gatsby-plugin-facebook-pixel](https://www.gatsbyjs.org/packages/gatsby-plugin-facebook-pixel)
@@ -32,23 +36,49 @@ Two Perfect Events & Weddings website code made with GatsbyJs, Netlify, and Dato
 - [ ] Add a **Contributing** section to README
 - [ ] ???
 
+## Theme
+
+[Gatsby-theme-portfolio](https://github.com/smakosh/gatsby-theme-portfolio)
+
+## Features
+
+- Eslint/Prettier configured
+- Scores 100% on a11y / Performance / PWA / SEO
+- PWA (desktop & mobile)
+- Easy to customize
+- Nice project structure
+- Amazing illustrations by [Undraw.co](https://undraw.co)
+- Tablet & mobile friendly
+- Continuous deployment with [Vercel](https://vercel.co/?utm_source=smakosh)
+- Or with Netlify, check [Netlify branch](https://github.com/smakosh/gatsby-portfolio-dev/tree/netlify)
+- A contact form protected by Google Recaptcha
+- Can be deployed with one click
+- Functional components with ~~Recompose~~ React Hooks! ~~ready to migrate to React hooks!~~
+- Fetches your Github pinned projects with most stars (You could customize this if you wish)
+
 ## 🚀 DatoCMS Integration [>>](https://tpe.admin.datocms.com/editor)
 
 - [gatsby-source-datocms](https://www.gatsbyjs.org/packages/gatsby-source-datocms/) and dependency for [gatsby-transformer-remark](https://www.gatsbyjs.org/packages/gatsby-transformer-remark/) were added along with some of the gatsby-starter-datocms code which is suffixed with \*-cms.js.
 - None of the sass styling and packages were installed for this code so it will be unstyled. The content is being pulled from our DatoCMS project though.
 
-## 🗒️ Starter Features - [gatsby-starter-typescript-deluxe](https://github.com/gojutin/gatsby-starter-typescript-deluxe)
+## Project Structure
 
-- [x] TypeScript for type-safe code.
-- [x] Styled-Components for all your styles.
-- [x] modern-css-reset for a reset of sensible default styles.
-- [x] Framer Motion for awesome animations.
-- [x] gatsby-image and gatsby-transformer-sharp for optimized images.
-- [x] gatsby-plugin-manifest / SEO component for an SEO-friendly PWA.
-- [x] Storybook with add-ons for showing off your awesome components.
-- [x] Jest and React Testing library for snapshots and unit tests.
-- [x] ESLint (with TSLint and Prettier) to make your code look its best.
-- [x] React Axe and React A11y for accessibility so that your site is awesome for everyone.
+```bash
+.
+├── data
+│   └── config              # SEO related tags
+├── src
+│   └── assets              # Assets
+│   │   │── icons             # icons
+│   │   │── illustrations     # illustrations from (undraw.co)
+│   │   └── thumbnail         # cover of your website when it's shared to social media
+│   ├── components          # Components
+│   │   │── common            # Common components
+│   │   │── landing           # Components used on the landing page
+│   │   └── theme             # Header & Footer
+│   └── pages               # Pages
+└── static                  # favicon & Netlify redirects
+```
 
 ## 👾 Install
 
@@ -293,3 +323,16 @@ This websites uses:
 - [Yarn](https://yarnpkg.com/) as package manager;
 - [GatsbyJS](https://github.com/gatsbyjs/gatsby) as website generator;
 - [gatsby-source-datocms](https://github.com/datocms/gatsby-source-datocms) to integrate the website with DatoCMS.
+
+## 🗒️ Starter Features - [gatsby-starter-typescript-deluxe](https://github.com/gojutin/gatsby-starter-typescript-deluxe)
+
+- [x] TypeScript for type-safe code.
+- [x] Styled-Components for all your styles.
+- [x] modern-css-reset for a reset of sensible default styles.
+- [x] Framer Motion for awesome animations.
+- [x] gatsby-image and gatsby-transformer-sharp for optimized images.
+- [x] gatsby-plugin-manifest / SEO component for an SEO-friendly PWA.
+- [x] Storybook with add-ons for showing off your awesome components.
+- [x] Jest and React Testing library for snapshots and unit tests.
+- [x] ESLint (with TSLint and Prettier) to make your code look its best.
+- [x] React Axe and React A11y for accessibility so that your site is awesome for everyone.
