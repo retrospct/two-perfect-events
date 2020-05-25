@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 // import { useStaticQuery, graphql } from 'gatsby'
-import Thumbnail from 'assets/thumbnail/thumbnail.png'
+import Thumbnail from '../../../assets/thumbnail/thumbnail.png'
 import {
   url,
   defaultDescription,
@@ -13,7 +13,7 @@ import {
   legalName,
   foundingDate,
   logo,
-} from 'data/config'
+} from '../../../data/config'
 
 export const Seo = ({ title = defaultTitle, description = defaultDescription, location = '' }) => {
   const structuredDataOrganization = `{ 
@@ -75,8 +75,6 @@ export const Seo = ({ title = defaultTitle, description = defaultDescription, lo
     </Helmet>
   )
 }
-
-export default SEO
 
 // From TS previous project
 // TODO: Delete this at a later commit when no longer needed for active reference

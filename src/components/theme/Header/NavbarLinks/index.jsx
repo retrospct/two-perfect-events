@@ -1,6 +1,6 @@
 import React from 'react'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-import { Link } from 'components/common'
+import { Link } from '../../../common'
 import { Wrapper } from './styles'
 
 export const NavbarLinks = ({ desktop }) => (

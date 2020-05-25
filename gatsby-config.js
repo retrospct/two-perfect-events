@@ -16,7 +16,6 @@ module.exports = {
     image: `${config.url}/icons/icon_512x512.png`,
   },
   plugins: [
-    'gatsby-alias-imports',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     `gatsby-transformer-remark`,
