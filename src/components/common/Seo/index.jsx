@@ -76,6 +76,8 @@ export const Seo = ({ title = defaultTitle, description = defaultDescription, lo
   )
 }
 
+export default SEO
+
 // From TS previous project
 // TODO: Delete this at a later commit when no longer needed for active reference
 // import React from 'react'
