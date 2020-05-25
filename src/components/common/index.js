@@ -1,5 +1,6 @@
 export * from './SEO'
 export * from './Layout'
+export * from './LayoutCms'
 export * from './Container'
 export * from './Button'
 export * from './Card'

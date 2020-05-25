@@ -1,0 +1,3 @@
+# Redirect default Netlify subdomain to primary domain
+# originally the file was called _redirects
+# https://gatsby-portfolio-dev.netlify.com/* https://portfolio.smakosh.com/:splat 301!
