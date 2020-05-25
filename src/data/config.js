@@ -5,8 +5,7 @@ module.exports = {
   url: 'https://twoperfectevents.com',
   keywords: ['gatsby', 'typescript', 'starter', 'javascript', 'react'],
   legalName: 'Justin Lee',
-  defaultDescription:
-    'Creative wedding & event design, planning, and more. Gracefully executed.',
+  defaultDescription: 'Creative wedding & event design, planning, and more. Gracefully executed.',
   socialLinks: {
     twitter: 'http://www.twitter.com/twoperfectevents',
     github: 'https://github.com/retrospct',

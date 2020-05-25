@@ -75,7 +75,7 @@ export const LayoutCms = ({ children }) => {
                 </li>
                 <li>
                   <Link
-                    to="/demo-cms"
+                    to="/demo"
                     style={{ color: 'MediumOrchid', marginRight: 20 }}
                   >
                     Demo CMS

@@ -1,8 +1,10 @@
 const config = require('./src/data/config')
 
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
+require('dotenv').config()
+// removed for now, may be causing build issues with variables not being passed
+// require('dotenv').config({
+//   path: `.env.${process.env.NODE_ENV}`,
+// })
 
 module.exports = {
   siteMetadata: {

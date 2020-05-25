@@ -3,6 +3,7 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
+// import path from 'path'
 const path = require('path')
 
 exports.createPages = ({ graphql, actions }) => {
@@ -19,18 +20,23 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
       }
-    `).then(result => {
-      result.data.allDatoCmsWork.edges.map(({ node: work }) => {
-        createPage({
-          path: `works/${work.slug}`,
-          component: path.resolve(`./src/templates/work.js`),
-          context: {
-            slug: work.slug,
-          },
+    `)
+      .then(result => {
+        result.data.allDatoCmsWork.edges.map(({ node: work }) => {
+          createPage({
+            path: `works/${work.slug}`,
+            component: path.resolve(`./src/templates/work.js`),
+            context: {
+              slug: work.slug,
+            },
+          })
+          return console.log('createPage complete') // TODO: this should return something stating that the pages were created
         })
+        resolve()
       })
-      resolve()
-    })
+      .catch(error => {
+        reject(error)
+      })
   })
 }
 
