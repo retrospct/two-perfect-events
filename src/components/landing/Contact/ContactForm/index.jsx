@@ -3,10 +3,10 @@ import axios from 'axios'
 import { Formik, Form, FastField, ErrorMessage } from 'formik'
 import Recaptcha from 'react-google-recaptcha'
 import * as Yup from 'yup'
-import { Button, Input } from 'components/common'
+import { Button, Input } from '../../../common'
 import { Error, Center, InputField } from './styles'
 
-export default () => (
+export const ContactForm = () => (
   <Formik
     initialValues={{
       name: '',
@@ -23,10 +23,7 @@ export default () => (
       message: Yup.string().required('Message field is required'),
       recaptcha: Yup.string().required('Robots are not welcome yet!'),
     })}
-    onSubmit={async (
-      { name, email, message },
-      { setSubmitting, resetForm, setFieldValue }
-    ) => {
+    onSubmit={async ({ name, email, message }, { setSubmitting, resetForm, setFieldValue }) => {
       try {
         await axios({
           method: 'POST',
@@ -105,10 +102,7 @@ export default () => (
         {values.success && (
           <InputField>
             <Center>
-              <h4>
-                Your message has been successfully sent, I will get back to you
-                ASAP!
-              </h4>
+              <h4>Your message has been successfully sent, I will get back to you ASAP!</h4>
             </Center>
           </InputField>
         )}

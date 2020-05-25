@@ -1,10 +1,9 @@
 import { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import media from 'use-media'
-import themeObject from './theme'
+// import { GlobalStyles } from './globalStyles'
+import themeTpe from './themeTpe'
 import 'modern-css-reset/dist/reset.min.css'
-
-export { GlobalStyles } from './globalStyles'
 
 // type DefaultThemeObject = Omit<typeof themeObject, 'screens'> & {
 //   screens: {
@@ -12,8 +11,8 @@ export { GlobalStyles } from './globalStyles'
 //   },
 // }
 
-const theme = () => {
-  const { screens, ...themeValues } = themeObject
+export const theme = () => {
+  const { screens, ...themeValues } = themeTpe
   const breakpointSizes = Object.keys(screens).reduce((accum, key) => {
     const value = media({ maxWidth: screens[key] })
     return {
@@ -27,6 +26,6 @@ const theme = () => {
   }
 }
 
-const useTheme = () => useContext(ThemeContext)
+export const useTheme = () => useContext(ThemeContext)
 
-export { theme, useTheme }
+// export { theme, useTheme }

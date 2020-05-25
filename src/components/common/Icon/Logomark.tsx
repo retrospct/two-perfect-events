@@ -1,15 +1,10 @@
 import React from 'react'
 
-export const Logomark = (props: React.SVGProps<SVGSVGElement>) => (
+export const Logomark = props => (
   <svg data-name="Group 5" width={86.808} height={86.805} {...props}>
     <defs>
       <clipPath id="logomarkTpe_svg__a">
-        <path
-          data-name="Path 4"
-          d="M0-37.761h86.808v86.805H0z"
-          transform="translate(0 37.761)"
-          fill="none"
-        />
+        <path data-name="Path 4" d="M0-37.761h86.808v86.805H0z" transform="translate(0 37.761)" fill="none" />
       </clipPath>
     </defs>
     <g data-name="Group 4" clipPath="url(#logomarkTpe_svg__a)">

@@ -1,9 +1,9 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { Footer } from 'components/theme'
+import { Footer } from '../../theme/Footer'
+import { theme } from '../../theme/Core'
 import { Global } from './styles'
 import './fonts.css'
-import { theme } from 'components/theme'
 // DatoCMS Layout Component
 // export { LayoutCms } from './LayoutCms'
 
@@ -15,7 +15,7 @@ import { theme } from 'components/theme'
 
 export const Layout = ({ children }) => (
   <>
-    <ThemeProvider theme={theme()}>
+    <ThemeProvider theme={theme}>
       <Global />
       {children}
       <Footer />

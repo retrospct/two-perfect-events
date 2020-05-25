@@ -1,23 +1,13 @@
 import React from 'react'
 
-export const Logo = (props: React.SVGProps<SVGSVGElement>) => (
+export const Logo = props => (
   <svg width={583.5} height={86.805} {...props}>
     <defs>
       <clipPath id="logoTpe_svg__a">
-        <path
-          data-name="Path 4"
-          d="M0-37.761h86.808v86.805H0z"
-          transform="translate(0 37.761)"
-          fill="none"
-        />
+        <path data-name="Path 4" d="M0-37.761h86.808v86.805H0z" transform="translate(0 37.761)" fill="none" />
       </clipPath>
       <clipPath id="logoTpe_svg__b">
-        <path
-          data-name="Path 21"
-          d="M0-6.943h465.148v41.02H0z"
-          transform="translate(0 6.943)"
-          fill="none"
-        />
+        <path data-name="Path 21" d="M0-6.943h465.148v41.02H0z" transform="translate(0 6.943)" fill="none" />
       </clipPath>
     </defs>
     <g data-name="TPE Logo">
@@ -47,11 +37,7 @@ export const Logo = (props: React.SVGProps<SVGSVGElement>) => (
         </g>
       </g>
       <g data-name="Group 23">
-        <g
-          data-name="Group 22"
-          transform="translate(118.352 22.974)"
-          clipPath="url(#logoTpe_svg__b)"
-        >
+        <g data-name="Group 22" transform="translate(118.352 22.974)" clipPath="url(#logoTpe_svg__b)">
           <g data-name="Group 6">
             <path
               data-name="Path 5"
@@ -95,11 +81,7 @@ export const Logo = (props: React.SVGProps<SVGSVGElement>) => (
             />
           </g>
           <g data-name="Group 12">
-            <path
-              data-name="Path 11"
-              d="M0 10.389V7.73h26.209v2.659H14.6V40.28h-2.99V10.389z"
-              fill="#5d4788"
-            />
+            <path data-name="Path 11" d="M0 10.389V7.73h26.209v2.659H14.6V40.28h-2.99V10.389z" fill="#5d4788" />
           </g>
           <g data-name="Group 13">
             <path

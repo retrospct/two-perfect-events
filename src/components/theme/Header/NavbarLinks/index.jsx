@@ -1,9 +1,9 @@
 import React from 'react'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-import { Link } from 'components/common'
+import { Link } from '../../../common'
 import { Wrapper } from './styles'
 
-const NavbarLinks = ({ desktop }) => (
+export const NavbarLinks = ({ desktop }) => (
   <Wrapper desktop={desktop}>
     <Link to="/about">AboutCMS</Link>
     <Link to="/demo">DemoCMS</Link>
@@ -13,4 +13,4 @@ const NavbarLinks = ({ desktop }) => (
   </Wrapper>
 )
 
-export default NavbarLinks
+// export default NavbarLinks

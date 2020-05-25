@@ -1,8 +1,11 @@
 import React from 'react'
-import { Layout } from 'components/common'
-import SEO from 'components/common/SEO'
-import { Intro, Skills, Contact, Projects } from 'components/landing'
+// import { ThemeProvider } from 'styled-components'
+import { Layout, SEO } from '../components/common'
+// import SEO from './components/common/SEO'
+// import { theme } from '../components/theme'
+import { Intro, Skills, Contact, Projects } from '../components/landing'
 
+// <ThemeProvider theme={theme}>
 const Home = () => (
   <Layout>
     <SEO />

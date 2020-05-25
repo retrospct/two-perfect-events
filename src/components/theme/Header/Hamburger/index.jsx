@@ -1,7 +1,7 @@
 import React from 'react'
 import { Wrapper, Bar } from './styles'
 
-const Hamburger = ({ sidebar, toggle }) => (
+export const Hamburger = ({ sidebar, toggle }) => (
   <Wrapper sidebar={sidebar} onClick={() => toggle(!sidebar)}>
     <Bar top sidebar={sidebar} />
     <Bar mid sidebar={sidebar} />
@@ -9,4 +9,4 @@ const Hamburger = ({ sidebar, toggle }) => (
   </Wrapper>
 )
 
-export default Hamburger
+// export default Hamburger
