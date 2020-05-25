@@ -1,11 +1,11 @@
 import React from 'react'
-// import styled, { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
 import { Footer } from 'components/theme'
 import { Global } from './styles'
 import './fonts.css'
-
+import { theme } from 'components/theme'
 // DatoCMS Layout Component
-export { LayoutCms } from './LayoutCms'
+// export { LayoutCms } from './LayoutCms'
 
 // const Container = styled.div`
 //   margin: 0 auto;
@@ -15,10 +15,10 @@ export { LayoutCms } from './LayoutCms'
 
 export const Layout = ({ children }) => (
   <>
-    {/* <ThemeProvider theme={theme()}> */}
-    <Global />
-    {children}
-    <Footer />
-    {/* </ThemeProvider> */}
+    <ThemeProvider theme={theme()}>
+      <Global />
+      {children}
+      <Footer />
+    </ThemeProvider>
   </>
 )
