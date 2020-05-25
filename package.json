@@ -9,8 +9,7 @@
     "gatsby",
     "portfolio",
     "events",
-    "weddings",
-    "seo"
+    "weddings"
   ],
   "scripts": {
     "build": "gatsby build",
