@@ -1,4 +1,5 @@
 import React from 'react'
+import { SEO } from 'components/common/SEO'
 import { Link } from 'gatsby'
 import { Layout, Seo } from 'components/common'
 // import { SEO } from '../components/common/SEO'
