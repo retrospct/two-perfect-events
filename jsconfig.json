@@ -7,6 +7,5 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "react"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "public", ".cache"]
+  "include": ["src/**/*"]
 }
