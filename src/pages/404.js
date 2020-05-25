@@ -1,7 +1,6 @@
 import React from 'react'
-import { SEO } from 'components/common/SEO'
 import { Link } from 'gatsby'
-import { Layout } from 'components/common'
+import { Layout, SEO } from 'components/common'
 
 export default () => (
   <Layout>
