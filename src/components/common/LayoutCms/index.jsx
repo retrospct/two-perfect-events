@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Link } from 'components/common/Link'
 import { StaticQuery, graphql } from 'gatsby'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
+import { Link } from '../Link'
 
 export const LayoutCms = ({ children }) => {
   const [showMenu, setShowMenu] = useState(false)
