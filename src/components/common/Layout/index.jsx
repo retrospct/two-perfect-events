@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { Footer } from '../../theme/Footer'
-import { theme } from '../../theme/Core'
+import { theme, Footer } from 'components/theme'
+// import { theme } from 'theme/Core'
 import { Global } from './styles'
 import './fonts.css'
 // DatoCMS Layout Component
