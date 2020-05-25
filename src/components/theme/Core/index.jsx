@@ -3,6 +3,7 @@ import { ThemeContext } from 'styled-components'
 import media from 'use-media'
 import themeObject from './theme'
 import 'modern-css-reset/dist/reset.min.css'
+
 export { GlobalStyles } from './globalStyles'
 
 // type DefaultThemeObject = Omit<typeof themeObject, 'screens'> & {

@@ -1,8 +1,9 @@
 import React from 'react'
-import { Layout, SEO } from 'components/common'
+import { Layout } from 'components/common'
+import SEO from 'components/common/SEO'
 import { Intro, Skills, Contact, Projects } from 'components/landing'
 
-export default () => (
+const Home = () => (
   <Layout>
     <SEO />
     <Intro />
@@ -11,3 +12,5 @@ export default () => (
     <Contact />
   </Layout>
 )
+
+export default Home
