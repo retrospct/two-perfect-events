@@ -1,5 +1,5 @@
 import React from 'react'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 // import { useStaticQuery, graphql } from 'gatsby'
 import Thumbnail from 'assets/thumbnail/thumbnail.png'
 import {
@@ -15,7 +15,7 @@ import {
   logo,
 } from 'data/config'
 
-const SEO = ({ title = defaultTitle, description = defaultDescription, location = '' }) => {
+export const SEO = ({ title = defaultTitle, description = defaultDescription, location = '' }) => {
   const structuredDataOrganization = `{ 
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -75,7 +75,6 @@ const SEO = ({ title = defaultTitle, description = defaultDescription, location 
     </Helmet>
   )
 }
-export { SEO }
 
 // From TS previous project
 // TODO: Delete this at a later commit when no longer needed for active reference
