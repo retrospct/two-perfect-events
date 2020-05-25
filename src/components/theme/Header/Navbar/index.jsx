@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Link } from '../../../common'
+import { Container, Link } from 'components/common'
 import { NavbarLinks } from '../NavbarLinks'
 import { Wrapper } from './styles'
 
