@@ -15,11 +15,7 @@ import {
   logo,
 } from 'data/config'
 
-export const SEO = ({
-  title = defaultTitle,
-  description = defaultDescription,
-  location = '',
-}) => {
+const SEO = ({ title = defaultTitle, description = defaultDescription, location = '' }) => {
   const structuredDataOrganization = `{ 
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -79,6 +75,7 @@ export const SEO = ({
     </Helmet>
   )
 }
+export { SEO }
 
 // From TS previous project
 // TODO: Delete this at a later commit when no longer needed for active reference
