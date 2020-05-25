@@ -3,7 +3,7 @@ import { Link } from 'components/common/Link'
 import { StaticQuery, graphql } from 'gatsby'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 
-export const LayoutCms = ({ children }) => {
+const LayoutCms = ({ children }) => {
   const [showMenu, setShowMenu] = useState(false)
   return (
     <StaticQuery
@@ -40,10 +40,7 @@ export const LayoutCms = ({ children }) => {
       `}
       render={data => (
         <div className={`container ${showMenu ? 'is-open' : ''}`}>
-          <HelmetDatoCms
-            favicon={data.datoCmsSite.faviconMetaTags}
-            seo={data.datoCmsHome.seoMetaTags}
-          />
+          <HelmetDatoCms favicon={data.datoCmsSite.faviconMetaTags} seo={data.datoCmsHome.seoMetaTags} />
           <div className="container__sidebar">
             <div className="sidebar">
               <h6 className="sidebar__title">
@@ -52,32 +49,22 @@ export const LayoutCms = ({ children }) => {
               <div
                 className="sidebar__intro"
                 dangerouslySetInnerHTML={{
-                  __html:
-                    data.datoCmsHome.introTextNode.childMarkdownRemark.html,
+                  __html: data.datoCmsHome.introTextNode.childMarkdownRemark.html,
                 }}
               />
               <ul style={{ display: 'flex', listStyle: 'none' }}>
                 <li>
-                  <Link
-                    to="/"
-                    style={{ color: 'MediumOrchid', marginRight: 20 }}
-                  >
+                  <Link to="/" style={{ color: 'MediumOrchid', marginRight: 20 }}>
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/about"
-                    style={{ color: 'MediumOrchid', marginRight: 20 }}
-                  >
+                  <Link to="/about" style={{ color: 'MediumOrchid', marginRight: 20 }}>
                     About CMS
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/demo"
-                    style={{ color: 'MediumOrchid', marginRight: 20 }}
-                  >
+                  <Link to="/demo" style={{ color: 'MediumOrchid', marginRight: 20 }}>
                     Demo CMS
                   </Link>
                 </li>
@@ -94,9 +81,7 @@ export const LayoutCms = ({ children }) => {
                   </a>
                 ))}
               </p>
-              <div className="sidebar__copyright">
-                {data.datoCmsHome.copyright}
-              </div>
+              <div className="sidebar__copyright">{data.datoCmsHome.copyright}</div>
             </div>
           </div>
           <div className="container__body">
@@ -104,6 +89,7 @@ export const LayoutCms = ({ children }) => {
               <div className="mobile-header">
                 <div className="mobile-header__menu">
                   <button
+                    type="button"
                     onClick={e => {
                       e.preventDefault()
                       setShowMenu(!showMenu)
@@ -122,3 +108,5 @@ export const LayoutCms = ({ children }) => {
     />
   )
 }
+export default LayoutCms
+/* eslint-enable jsx-a11y/anchor-has-content, jsx-a11y/anchor-is-valid */
