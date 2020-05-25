@@ -2,13 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import { BgHero } from './BgHero'
 
-export const Hero = () => {
-  return (
-    <HeroContainer>
-      <BgHero />
-    </HeroContainer>
-  )
-}
+export const Hero = () => (
+  <HeroContainer>
+    <BgHero />
+  </HeroContainer>
+)
 
 const HeroContainer = styled.div`
   position: absolute;

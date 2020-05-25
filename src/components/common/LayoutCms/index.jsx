@@ -3,7 +3,7 @@ import { Link } from 'components/common/Link'
 import { StaticQuery, graphql } from 'gatsby'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 
-const LayoutCms = ({ children }) => {
+export const LayoutCms = ({ children }) => {
   const [showMenu, setShowMenu] = useState(false)
   return (
     <StaticQuery
@@ -108,5 +108,4 @@ const LayoutCms = ({ children }) => {
     />
   )
 }
-export default LayoutCms
 /* eslint-enable jsx-a11y/anchor-has-content, jsx-a11y/anchor-is-valid */

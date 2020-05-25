@@ -6,6 +6,14 @@
 // import path from 'path'
 const path = require('path')
 
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    },
+  })
+}
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -37,13 +45,5 @@ exports.createPages = ({ graphql, actions }) => {
       .catch(error => {
         reject(error)
       })
-  })
-}
-
-exports.onCreateWebpackConfig = ({ actions }) => {
-  actions.setWebpackConfig({
-    resolve: {
-      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-    },
   })
 }
