@@ -1,5 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
+// import { Footer } from 'components/theme'
 import { theme, Footer } from 'components/theme'
 // import { theme } from 'theme/Core'
 import { Global } from './styles'

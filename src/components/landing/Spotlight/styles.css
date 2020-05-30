@@ -1,0 +1,622 @@
+
+import postcssStyledJsxUrlLoader_0 from '../../images/edge-texture.svg';
+import css from 'styled-jsx/css';
+
+export default css.global`/* @styled-jsx=global */
+
+$local-theme-default: map-merge(
+  $theme-default,
+  (
+    dot-color: $black,
+    dot-color-active: $teal,
+    highlight-color: $teal,
+    highlight-hover-color: $white,
+    highlight-text-color: $black,
+  )
+);
+$local-theme-coral: map-merge(
+  map-merge($local-theme-default, $theme-coral),
+  (
+    dot-color-active: $white,
+    highlight-color: $white,
+    highlight-hover-color: $tan,
+  )
+);
+$local-theme-tan: map-merge($local-theme-default, $theme-tan);
+$local-theme-teal: map-merge(
+  map-merge($local-theme-default, $theme-teal),
+  (
+    dot-color-active: $white,
+    highlight-color: $white,
+    highlight-hover-color: $tan,
+  )
+);
+$local-theme-white: map-merge(
+  map-merge($local-theme-default, $theme-white),
+  (
+    highlight-hover-color: $tan,
+  )
+);
+$local-theme-yellow: map-merge(
+  map-merge($local-theme-default, $theme-yellow),
+  (
+    dot-color-active: $white,
+    highlight-color: $white,
+    highlight-hover-color: $tan,
+  )
+);
+
+/* global override: vertical alignment of images */
+.slick-initialized .slick-track {
+  display: flex;
+  align-items: center;
+}
+
+.multifeature-spotlight {
+  display: block; // for react-slick compatibility
+  position: relative; // for icon
+  background-color: unset;
+
+  &--theme-coral {
+    background-color: map-get($local-theme-coral, background-color);
+  }
+
+  &--theme-tan {
+    background-color: map-get($local-theme-tan, background-color);
+  }
+
+  &--theme-teal {
+    background-color: map-get($local-theme-teal, background-color);
+  }
+
+  &--theme-white {
+    background-color: map-get($local-theme-white, background-color);
+  }
+
+  &--theme-yellow {
+    background-color: map-get($local-theme-yellow, background-color);
+  }
+}
+
+.multifeature-spotlight-background {
+  display: block; // for react-slick compatibility
+  position: relative; // for edge texture
+  padding: 60px 10%;
+  max-width: $container-max-width;
+
+  &--theme-coral {
+    background-color: map-get($local-theme-coral, background-color);
+    color: map-get($local-theme-coral, color);
+  }
+
+  &--theme-tan {
+    background-color: map-get($local-theme-tan, background-color);
+    color: map-get($local-theme-tan, color);
+  }
+
+  &--theme-teal {
+    background-color: map-get($local-theme-teal, background-color);
+    color: map-get($local-theme-teal, color);
+  }
+
+  &--theme-white {
+    background-color: map-get($local-theme-white, background-color);
+    color: map-get($local-theme-white, color);
+  }
+
+  &--theme-yellow {
+    background-color: map-get($local-theme-yellow, background-color);
+    color: map-get($local-theme-yellow, color);
+  }
+}
+
+.multifeature-spotlight__main-content-area {
+  display: grid;
+  grid-column: 2 / 14;
+}
+
+.multifeature-spotlight__image-area {
+  display: block; // for react-slick compatibility
+  max-width: 600px;
+
+  video {
+    max-height: 650px;
+  }
+}
+
+.multifeature-spotlight__desktop-slider {
+  display: none;
+}
+
+.multifeature-spotlight__icon {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: $icon-width;
+}
+
+.multifeature-spotlight__lead {
+  text-align: center;
+}
+
+.multifeature-spotlight__eyebrow {
+  margin-bottom: 16px;
+}
+
+.multifeature-spotlight__heading {
+  margin: 16px 0;
+}
+
+.multifeature-spotlight__body-copy {
+  margin-bottom: 36px;
+}
+
+.multifeature-spotlight__slide-dots {
+  position: relative;
+  margin: 0 auto;
+  padding-top: 28px;
+  display: flex;
+
+  li {
+    display: inline-block;
+    flex: 1;
+  }
+}
+
+.--active {
+  visibility: visible !important;
+  opacity: 1 !important;
+  backface-visibility: hidden;
+}
+
+.multifeature-spotlight__slide-dot {
+  margin: 0 6px 12px;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  transition: background-color 0.25s;
+
+  &:focus {
+    outline: 1px dotted $black;
+    outline-offset: 3px;
+  }
+
+  &--theme-coral {
+    background-color: map-get($local-theme-coral, dot-color);
+
+    &.--active {
+      background-color: map-get($local-theme-coral, dot-color-active);
+    }
+  }
+
+  &--theme-tan {
+    background-color: map-get($local-theme-tan, dot-color);
+
+    &.--active {
+      background-color: map-get($local-theme-tan, dot-color-active);
+    }
+  }
+
+  &--theme-teal {
+    background-color: map-get($local-theme-teal, dot-color);
+
+    &.--active {
+      background-color: map-get($local-theme-teal, dot-color-active);
+    }
+  }
+
+  &--theme-white {
+    background-color: map-get($local-theme-white, dot-color);
+
+    &.--active {
+      background-color: map-get($local-theme-white, dot-color-active);
+    }
+  }
+
+  &--theme-yellow {
+    background-color: map-get($local-theme-yellow, dot-color);
+
+    &.--active {
+      background-color: map-get($local-theme-yellow, dot-color-active);
+    }
+  }
+}
+
+.multifeature-spotlight__slides {
+  display: grid;
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+
+  li {
+    /* using grid here as an alternative to absolute */
+    grid-row: 1;
+    grid-column: 1;
+  }
+}
+
+.multifeature-spotlight__slide {
+  @include focusable($inlineOffset: -24px, $blockOffset: 0);
+
+  padding: 0 0 8px;
+  margin: 8px 0;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transition: color, background-color, opacity 0.5s;
+  visibility: hidden;
+  opacity: 0;
+  user-select: text;
+
+  &:focus {
+    outline: 1px dotted $black;
+    outline-offset: 3px;
+  }
+}
+
+.multifeature-spotlight
+  .multifeature-spotlight-background
+  .multifeature-spotlight__slides
+  .multifeature-spotlight__slide
+  ul {
+  text-align: left;
+}
+
+.multifeature-spotlight__cta {
+  margin-top: 40px;
+  display: grid;
+  justify-content: center;
+}
+
+@include media-query(tablet) {
+  .multifeature-spotlight {
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+  }
+
+  .multifeature-spotlight-background {
+    grid-column: 1 / span 14;
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+    padding: 60px 0;
+    margin: 0 auto;
+    border-radius: 0;
+  }
+
+  .multifeature-spotlight__edge-texture {
+    &:after {
+      position: absolute;
+      content: '';
+      height: 18px;
+      left: 50%;
+      mask-image: url("${postcssStyledJsxUrlLoader_0}");
+      mask-repeat: repeat no-repeat;
+      width: 100%;
+      z-index: -1;
+      bottom: -12px;
+      transform: translateX(-50%);
+    }
+
+    &--theme-coral:after {
+      background-color: map-get($local-theme-coral, background-color);
+    }
+
+    &--theme-tan:after {
+      background-color: map-get($local-theme-tan, background-color);
+    }
+
+    &--theme-teal:after {
+      background-color: map-get($local-theme-teal, background-color);
+    }
+
+    &--theme-white:after {
+      background-color: map-get($local-theme-white, background-color);
+    }
+
+    &--theme-yellow:after {
+      background-color: map-get($local-theme-yellow, background-color);
+    }
+  }
+
+  .multifeature-spotlight__main-content-area {
+    grid-row: 1;
+    grid-column: 1 / span 7;
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .multifeature-spotlight__image-area {
+    grid-row: '1';
+    grid-column: 8 / span 7;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-items: center;
+    height: unset;
+  }
+
+  .multifeature-spotlight__image-area--cta {
+    grid-row: '1 / span 2';
+  }
+
+  .multifeature-spotlight__desktop-slider {
+    display: block;
+  }
+
+  .multifeature-spotlight__mobile-slider {
+    display: none;
+  }
+
+  .multifeature-spotlight__icon {
+    grid-row: 1;
+    grid-column: 2 / 3;
+    position: relative;
+    top: -100px;
+    left: 0;
+    transform: none;
+  }
+
+  .multifeature-spotlight__lead {
+    grid-column: 2 / span 6;
+    text-align: left;
+    align-self: end;
+    margin-top: 12px;
+  }
+
+  .multifeature-spotlight__heading {
+    margin: 16px 0 20px;
+  }
+
+  .multifeature-spotlight__eyebrow {
+    margin-bottom: 20px;
+  }
+
+  .multifeature-spotlight__product-screenshot {
+    grid-row: 1;
+    grid-column: -1 / -8;
+    max-width: 100%;
+    left: 0;
+    margin-top: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+
+    /* Safari polyfill for align-self: center */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    max-height: 100%;
+  }
+
+  .multifeature-spotlight__slide-dots {
+    display: block;
+    width: 20px;
+    height: 100px;
+    text-align: right;
+    grid-column: 1;
+    justify-self: right;
+    margin: 32px 50px 0 0;
+    padding: 0 0 28px;
+
+    li {
+      display: block;
+      flex: none;
+    }
+  }
+
+  .multifeature-spotlight__slide-dot {
+    margin: 0 auto 12px;
+  }
+
+  .multifeature-spotlight__slides {
+    grid-column: 2 / span 5;
+    text-align: left;
+    width: 100%;
+    height: 100%;
+
+    li {
+      grid-row: auto;
+      grid-column: auto;
+      position: relative;
+    }
+  }
+
+  .multifeature-spotlight__slide {
+    transition: color, background-color 0.5s;
+    visibility: visible;
+    opacity: 1;
+    min-width: 100%;
+    padding: 24px 0;
+
+    &::before {
+      content: '';
+      border-radius: 8px;
+      position: absolute;
+      top: 0;
+      left: -24px;
+      width: calc(100% + 48px);
+      height: 100%;
+      background-color: transparent;
+      z-index: -1;
+      transition: all 0.5s;
+    }
+
+    &:hover,
+    &:focus {
+      outline: none;
+
+      &::before {
+        outline: none;
+      }
+    }
+
+    &.--active {
+      &::before,
+      &:hover::before,
+      &:focus::before {
+        position: absolute;
+        top: 0;
+        left: -24px;
+        width: calc(100% + 48px);
+        height: 100%;
+        content: '';
+        border-radius: 8px;
+        z-index: -1;
+      }
+    }
+
+    &--theme-coral {
+      &:hover,
+      &:focus {
+        color: map-get($local-theme-coral, highlight-text-color);
+
+        &::before {
+          background-color: map-get($local-theme-coral, highlight-hover-color);
+        }
+      }
+
+      &.--active {
+        color: map-get($local-theme-coral, highlight-text-color);
+
+        &::before,
+        &:hover::before,
+        &:focus::before {
+          background-color: map-get($local-theme-coral, highlight-color);
+        }
+      }
+    }
+
+    &--theme-tan {
+      &:hover,
+      &:focus {
+        color: map-get($local-theme-tan, highlight-text-color);
+
+        &::before {
+          background-color: map-get($local-theme-tan, highlight-hover-color);
+        }
+      }
+
+      &.--active {
+        color: map-get($local-theme-tan, highlight-text-color);
+
+        &::before,
+        &:hover::before,
+        &:focus::before {
+          background-color: map-get($local-theme-tan, highlight-color);
+        }
+      }
+    }
+
+    &--theme-teal {
+      &:hover,
+      &:focus {
+        color: map-get($local-theme-teal, highlight-text-color);
+
+        &::before {
+          background-color: map-get($local-theme-teal, highlight-hover-color);
+        }
+      }
+
+      &.--active {
+        color: map-get($local-theme-teal, highlight-text-color);
+
+        &::before,
+        &:hover::before,
+        &:focus::before {
+          background-color: map-get($local-theme-teal, highlight-color);
+        }
+      }
+    }
+
+    &--theme-white {
+      &:hover,
+      &:focus {
+        color: map-get($local-theme-white, highlight-text-color);
+
+        &::before {
+          background-color: map-get($local-theme-white, highlight-hover-color);
+        }
+      }
+
+      &.--active {
+        color: map-get($local-theme-white, highlight-text-color);
+
+        &::before,
+        &:hover::before,
+        &:focus::before {
+          background-color: map-get($local-theme-white, highlight-color);
+        }
+      }
+    }
+
+    &--theme-yellow {
+      &:hover,
+      &:focus {
+        color: map-get($local-theme-yellow, highlight-text-color);
+
+        &::before {
+          background-color: map-get($local-theme-yellow, highlight-hover-color);
+        }
+      }
+
+      &.--active {
+        color: map-get($local-theme-yellow, highlight-text-color);
+
+        &::before,
+        &:hover::before,
+        &:focus::before {
+          background-color: map-get($local-theme-yellow, highlight-color);
+        }
+      }
+    }
+  }
+
+  .multifeature-spotlight__cta {
+    grid-column: 1 / span 6;
+    margin-top: 24px;
+    grid-template-columns: repeat(6, 1fr);
+    justify-content: flex-start;
+
+    .cta-link {
+      grid-column: 2 / span 5;
+    }
+  }
+}
+
+@include media-query(laptop) {
+  .multifeature-spotlight__slides {
+    grid-column: 2 / span 4;
+  }
+
+  .multifeature-spotlight-background {
+    grid-template-columns: repeat(12, 1fr);
+    grid-column: 2 / span 12;
+    padding: 60px 0;
+    border-radius: 8px;
+  }
+
+  .multifeature-spotlight-background--full-width {
+    border-radius: 0;
+  }
+
+  .multifeature-spotlight__main-content-area {
+    grid-template-columns: repeat(6, 1fr);
+    grid-column: 2 / span 5;
+  }
+
+  .multifeature-spotlight__image-area {
+    grid-template-columns: repeat(6, 1fr);
+    grid-column: 7 / span 7;
+    display: grid;
+    position: relative;
+    height: unset;
+  }
+
+  .multifeature-spotlight__product-screenshot {
+    grid-column: -1 / -7;
+  }
+
+  .multifeature-spotlight__cta {
+    grid-column: 2 / span 4;
+  }
+}
+`

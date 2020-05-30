@@ -1,5 +1,5 @@
-import { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
+// import { useContext } from 'react'
+// import { ThemeContext } from 'styled-components'
 import media from 'use-media'
 // import { GlobalStyles } from './globalStyles'
 import themeTpe from './themeTpe'
@@ -26,6 +26,6 @@ export const theme = () => {
   }
 }
 
-export const useTheme = () => useContext(ThemeContext)
+// export const useTheme = () => useContext(ThemeContext)
 
 // export { theme, useTheme }
