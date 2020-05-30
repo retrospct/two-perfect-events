@@ -2,7 +2,8 @@ import React from 'react'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import { Header } from 'components/theme'
 import { Container, Button } from 'components/common'
-import dev from 'assets/illustrations/dev.svg'
+// import dev from 'assets/illustrations/dev.svg'
+import heroMain from 'assets/illustrations/heroMain.svg'
 import { Wrapper, IntroWrapper, Details, Thumbnail } from './styles'
 
 export const Intro = () => (
@@ -10,15 +11,18 @@ export const Intro = () => (
     <Header />
     <IntroWrapper as={Container}>
       <Details>
-        <h1>Welcome!</h1>
-        <h4>Two Perfect Events & Weddings</h4>
+        <h1>Go, enjoy yourself!</h1>
+        <h4>We'll take care of the rest.</h4>
         <Button as={AnchorLink} href="#contact">
           Contact Us
         </Button>
       </Details>
-      <Thumbnail>
-        <img src={dev} alt="Two Perfect Events & Weddings" />
-      </Thumbnail>
+      {/* <Thumbnail>
+        <img
+          src={heroMain}
+          alt="Line illustration of a beautifully set rectangular table with floral arrangments, crystal, fine china, and a linen runner."
+        />
+      </Thumbnail> */}
     </IntroWrapper>
   </Wrapper>
 )
