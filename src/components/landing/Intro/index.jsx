@@ -1,10 +1,9 @@
 import React from 'react'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-import { Header } from 'components/theme'
+import { Header, Section } from 'components/theme'
 import { Container, Button } from 'components/common'
-// import dev from 'assets/illustrations/dev.svg'
-import heroMain from 'assets/illustrations/heroMain.svg'
-import { Wrapper, IntroWrapper, Details, Thumbnail } from './styles'
+import arrowSquiggly from 'assets/illustrations/arrowSquiggly.svg'
+import { Wrapper, IntroWrapper, Details, ArrowNext } from './styles'
 
 export const Intro = () => (
   <Wrapper>
@@ -17,12 +16,12 @@ export const Intro = () => (
           Contact Us
         </Button>
       </Details>
-      {/* <Thumbnail>
+      <ArrowNext>
         <img
-          src={heroMain}
+          src={arrowSquiggly}
           alt="Line illustration of a beautifully set rectangular table with floral arrangments, crystal, fine china, and a linen runner."
         />
-      </Thumbnail> */}
+      </ArrowNext>
     </IntroWrapper>
   </Wrapper>
 )

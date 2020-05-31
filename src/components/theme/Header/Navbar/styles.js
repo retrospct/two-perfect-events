@@ -5,8 +5,23 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  a {
-    color: #212121;
+  max-width: 1400px;
+  @media (max-width: ${({ theme }) => `${theme.mq.xxl}px`}) {
+    max-width: 100%;
+    padding-top: 1rem;
+  }
+`
+export const LogoWrapper = styled.div`
+  flex: 1;
+  /* max-width: 500px;
+  @media (max-width: ${({ theme }) => `${theme.mq.xxl}px`}) {
+    max-width: 90px;
+  } */
+  & svg {
+    height: 80px;
+    max-width: 500px;
+    @media (max-width: ${({ theme }) => `${theme.mq.xxl}px`}) {
+      max-width: 90px;
+    }
   }
 `

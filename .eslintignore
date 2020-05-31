@@ -1,18 +1,18 @@
 # # gatsby files
-# .cache/*
-# node_modules/*
-# public/*
-# .storybook/*
-# @types
-# __mocks__
-# __tests__
+.cache/*
+node_modules/*
+public/*
+.storybook/*
+@types
+__mocks__
+__tests__
 
-# gatsby-*.js
-# loadershim.ts
-# stories/*
+gatsby-*.js
+loadershim.ts
+stories/*
 
-# jest*.js
-# gatsby*.ts
-# jest*.ts
-# *.test.*
-# *.spec.*
+jest*.js
+gatsby*.ts
+jest*.ts
+*.test.*
+*.spec.*

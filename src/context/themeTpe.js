@@ -1,25 +1,26 @@
-export default {
+const baseTheme = {
   screens: {
     // max-widths in pixels
     sm: 640,
     md: 768,
     lg: 1024,
     xl: 1280,
+    xxl: 1400,
   },
-  colors: {
-    primary: '#694a86',
-    primaryLighter: '#7c6194',
-    secondary: '#8D426C',
-    accent: '#BF9000',
-    accentLight: '#FBB040',
-    accentLightest: '#E9CB99',
-    text: '#414042',
-    gray: '#707070',
-    light: '#fff',
-    // blue: '#0099ff',
-    // darkblue: '#00072e',
-    // orange: '#FF9429',
-  },
+  // colors: {
+  //   primary: '#694a86',
+  //   primaryLighter: '#7c6194',
+  //   secondary: '#8D426C',
+  //   accent: '#BF9000',
+  //   accentLight: '#FBB040',
+  //   accentLightest: '#E9CB99',
+  //   text: '#414042',
+  //   gray: '#707070',
+  //   light: '#fff',
+  //   // blue: '#0099ff',
+  //   // darkblue: '#00072e',
+  //   // orange: '#FF9429',
+  // },
   opacity: {
     0: 0,
     25: 0.25,
@@ -30,6 +31,51 @@ export default {
   py: value => `padding-top: ${value}; padding-bottom: ${value};`,
   // Add anything else you'd like.
 }
+
+const lightTheme = {
+  ...baseTheme,
+  colors: {
+    primary: '#694a86',
+    primaryLighter: '#7c6194',
+    secondary: '#8D426C',
+    accent: '#BF9000',
+    accentLight: '#FBB040',
+    accentLightest: '#E9CB99',
+    text: '#414042',
+    heading: '#212121',
+    subheading: '#707070',
+    link: '#BF9000',
+    bg: '#fff',
+    bgDark: '#e6e6e6',
+    // #565656
+    // offwhite: '#e6e6e6',
+    // color: '#000',
+  },
+}
+
+const darkTheme = {
+  ...baseTheme,
+  colors: {
+    primary: '#694a86',
+    primaryLighter: '#7c6194',
+    secondary: '#8D426C',
+    accent: '#BF9000',
+    accentLight: '#FBB040',
+    accentLightest: '#E9CB99', // #e7bf86
+    text: '#fff',
+    heading: '#fff',
+    subheading: '#e6e6e6',
+    link: '#BF9000',
+    bg: '#2F384B',
+    bgDark: '#1F2B34',
+    // #3D4457
+    // #ef86a9
+    // offwhite: '#e6e6e6',
+    // color: '#fff',
+  },
+}
+
+export { lightTheme, darkTheme }
 
 // From gatsby theme-ui before
 // export default {

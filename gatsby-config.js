@@ -32,6 +32,17 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Lato`,
+            variants: [`300`, `300i`, `400`, `400i`, `700`, `700i`]
+          },
+        ],
+      },
+    },
+    {
       resolve: 'gatsby-source-graphql',
       options: {
         typeName: 'GitHub',
@@ -48,13 +59,6 @@ module.exports = {
       options: {
         color: config.themeColor,
         showSpinner: false,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: config.googleAnalyticsID,
-        head: true,
       },
     },
     {
@@ -86,6 +90,19 @@ module.exports = {
         theme_color: config.themeColor,
         display: 'minimal-ui',
         icon: './static/favicon/favicon-11.png',
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: process.env.GOOGLE_ANALYTICS,
+        head: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: process.env.FACEBOOK_PIXEL,
       },
     },
     'gatsby-plugin-offline',

@@ -3,6 +3,8 @@ import { StaticQuery, graphql } from 'gatsby'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import { Link } from '../Link'
 
+// TODO: Combine this into the Seo component
+
 export const LayoutCms = ({ children }) => {
   const [showMenu, setShowMenu] = useState(false)
   return (
