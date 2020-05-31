@@ -1,6 +1,6 @@
 
-import postcssStyledJsxUrlLoader_0 from '../../images/edge-texture.svg';
 import css from 'styled-jsx/css';
+import postcssStyledJsxUrlLoader_0 from '../../images/edge-texture.svg';
 
 export default css.global`/* @styled-jsx=global */
 

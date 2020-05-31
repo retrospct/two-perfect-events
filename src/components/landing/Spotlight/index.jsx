@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const Spotlight = () => (
   <Section>
-    <MultiFeatureSpot></MultiFeatureSpot>
+    <MultiFeatureSpot />
   </Section>
 )
 

@@ -3,5 +3,17 @@
  *
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
+import React from 'react'
+import 'normalize.css'
 
-// You can delete this file if you're not using it
+import { ThemeProvider } from './src/context/theme-context'
+import { GlobalStyle } from './src/components/common'
+
+export const wrapRootElement = ({ element }) => (
+  <ThemeProvider>
+    <>
+      <GlobalStyle />
+      {element}
+    </>
+  </ThemeProvider>
+)

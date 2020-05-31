@@ -1,3 +1,4 @@
+export * from './GlobalStyle'
 export * from './Seo'
 export * from './Section'
 export * from './LayoutCms'
