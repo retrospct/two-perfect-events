@@ -28,8 +28,12 @@ const baseTheme = {
     75: 0.75,
     100: 1,
   },
+  p: value => `padding: ${value};`,
   py: value => `padding-top: ${value}; padding-bottom: ${value};`,
-  // Add anything else you'd like.
+  px: value => `padding-right: ${value}; padding-left: ${value};`,
+  m: value => `padding: ${value};`,
+  my: value => `margin-top: ${value}; margin-bottom: ${value};`,
+  mx: value => `margin-right: ${value}; margin-left: ${value};`,
 }
 
 const lightTheme = {

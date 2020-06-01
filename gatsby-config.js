@@ -16,6 +16,19 @@ module.exports = {
     image: `${config.url}/icons/icon_512x512.png`,
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: process.env.GOOGLE_ANALYTICS,
+        head: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: process.env.FACEBOOK_PIXEL,
+      },
+    },
     'gatsby-alias-imports',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
@@ -39,6 +52,10 @@ module.exports = {
             family: `Lato`,
             variants: [`300`, `300i`, `400`, `400i`, `700`, `700i`]
           },
+          {
+            family: `Crimson Text`,
+            variants: [`400i`, `700i`]
+          }
         ],
       },
     },
@@ -90,19 +107,6 @@ module.exports = {
         theme_color: config.themeColor,
         display: 'minimal-ui',
         icon: './static/favicon/favicon-11.png',
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: process.env.GOOGLE_ANALYTICS,
-        head: true,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-facebook-pixel`,
-      options: {
-        pixelId: process.env.FACEBOOK_PIXEL,
       },
     },
     'gatsby-plugin-offline',

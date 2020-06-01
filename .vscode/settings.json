@@ -6,7 +6,7 @@
     "editor.formatOnSave": false
   },
   "[javascriptreact]": {
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": false
   },
   // Optional BUT IMPORTANT: If you have the prettier extension enabled for other languages like CSS and HTML, turn it off for JS since we are doing it through Eslint already
   "prettier.disableLanguages": ["javascript", "javascriptreact"],
@@ -15,3 +15,126 @@
     "source.fixAll.eslint": true
   }
 }
+
+// https://github.com/CodingGarden/vscode-settings
+// {
+//   "explorer.openEditors.visible": 0,
+//   "editor.snippetSuggestions": "top",
+//   "emmet.showAbbreviationSuggestions": false,
+//   "editor.multiCursorModifier": "ctrlCmd",
+//   "editor.formatOnPaste": false,
+//   "workbench.colorTheme": "Just Black",
+//   "window.zoomLevel": 1,
+//   "workbench.iconTheme": "vscode-icons",
+//   "editor.fontLigatures": true,
+//   "terminal.integrated.fontSize": 24,
+//   "editor.fontSize": 24,
+//   "files.autoSave": "off",
+//   "editor.fontFamily": "Anonymous Pro",
+//   "markdown.preview.fontSize": 36,
+//   "editor.tabSize": 2,
+//   "editor.detectIndentation": true,
+//   "editor.minimap.enabled": false,
+//   "eslint.enable": true,
+//   "files.exclude": { "**/.*": true },
+//   "eslint.validate": [
+//       {
+//           "language": "vue",
+//           "autoFix": true
+//       },
+//       {
+//           "language": "html",
+//           "autoFix": true
+//       },
+//       {
+//           "language": "javascript",
+//           "autoFix": true
+//       }
+//   ],
+//   "workbench.startupEditor": "newUntitledFile",
+//   "editor.suggestSelection": "first",
+//   "[javascript]": {
+//       "editor.defaultFormatter": "HookyQR.beautify"
+//   },
+//   "[json]": {
+//       "editor.defaultFormatter": "HookyQR.beautify"
+//   },
+//   "[html]": {
+//       "editor.defaultFormatter": "HookyQR.beautify"
+//   },
+//   "[css]": {
+//       "editor.defaultFormatter": "HookyQR.beautify"
+//   },
+//   "liveshare.featureSet": "insiders",
+//   "[vue]": {
+//       "editor.defaultFormatter": "octref.vetur"
+//   },
+//   "diffEditor.ignoreTrimWhitespace": false,
+//   "[typescriptreact]": {
+//       "editor.defaultFormatter": "esbenp.prettier-vscode"
+//   },
+//   "liveshare.anonymousGuestApproval": "accept",
+//   "[typescript]": {
+//       "editor.defaultFormatter": "esbenp.prettier-vscode"
+//   },
+//   "workbench.colorCustomizations": {},
+//   "[scss]": {
+//       "editor.defaultFormatter": "esbenp.prettier-vscode"
+//   },
+//   "[javascriptreact]": {
+//       "editor.defaultFormatter": "esbenp.prettier-vscode"
+//   },
+//   "[jsonc]": {
+//       "editor.defaultFormatter": "esbenp.prettier-vscode"
+//   },
+//   "editor.tokenColorCustomizations": {
+//       "textMateRules": [
+//           {
+//               "scope": [
+//                   "keyword.operator.logical"
+//               ],
+//               "settings": {
+//                   "fontStyle": ""
+//               }
+//           },
+//           {
+//               "scope": [
+//                   "keyword.operator.logical"
+//               ],
+//               "settings": {
+//                   "fontStyle": ""
+//               }
+//           },
+//           {
+//               "name": "envKeys",
+//               "scope": "string.quoted.double.env,source.env,constant.numeric.env",
+//               "settings": {
+//                   "foreground": "#19354900"
+//               }
+//           },
+//           {
+//               "scope": [
+//                   "keyword.operator.logical"
+//               ],
+//               "settings": {
+//                   "fontStyle": ""
+//               }
+//           },
+//           {
+//               "scope": [
+//                   "keyword.operator.logical"
+//               ],
+//               "settings": {
+//                   "fontStyle": ""
+//               }
+//           },
+//           {
+//               "name": "envKeys",
+//               "scope": "string.quoted.double.env,source.env,constant.numeric.env",
+//               "settings": {
+//                   "foreground": "#19354900"
+//               }
+//           }
+//       ]
+//   }
+// }

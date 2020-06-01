@@ -601,6 +601,38 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 100%;
       }
     }
+
+    :root {
+      --primary-color: ${({ theme }) => theme.colors.primary || '#694a86'};
+      --primaryLighter-color: ${({ theme }) => theme.colors.primaryLighter || '#7c6194'};
+      --secondary-color: ${({ theme }) => theme.colors.secondary || '#8D426C'};
+      --accent-color: ${({ theme }) => theme.colors.accent || '#BF9000'};
+      --accentLight-color: ${({ theme }) => theme.colors.accentLight || '#FBB040'};
+      --accentLightest-color: ${({ theme }) => theme.colors.accentLightest || '#E9CB99'};
+      --text-color: ${({ theme }) => theme.colors.text || '#414042'};
+      --heading-color: ${({ theme }) => theme.colors.heading || '#212121'};
+      --subheading-color: ${({ theme }) => theme.colors.subheading || '#707070'};
+      --link-color: ${({ theme }) => theme.colors.link || '#BF9000'};
+      --bg-color: ${({ theme }) => theme.colors.bg || '#fff'};
+      --bgDark-color: ${({ theme }) => theme.colors.bgDark || '#e6e6e6'};
+      --sm-screen: ${({ theme }) => theme.screens.sm || '640px'};
+      --md-screen: ${({ theme }) => theme.screens.md || '768px'};
+      --lg-screen: ${({ theme }) => theme.screens.lg || '1024px'};
+      --xl-screen: ${({ theme }) => theme.screens.xl || '1280px'};
+      --xxl-screen: ${({ theme }) => theme.screens.xxl || '1400px'};
+    }
+
+    ${
+      '' /* // get variable from inline style
+            element.style.getPropertyValue("--my-var");
+
+            // get variable from wherever
+            getComputedStyle(element).getPropertyValue("--my-var");
+
+            // set variable on inline style
+            element.style.setProperty("--my-var", jsVar + 4); */
+    }
+
     body {
       margin: 0;
       padding: 0;

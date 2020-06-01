@@ -13,10 +13,10 @@
   ],
   "scripts": {
     "build": "gatsby build",
-    "format": "prettier src/**/*.{ts,js}* --write",
+    "format": "prettier src/**/*.{ts,tsx,js,jsx,json,css,svg}* --write",
     "start": "gatsby develop -o",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.json,.css .",
-    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx,.json,.css . --fix",
+    "lint": "./node_modules/.bin/eslint --ext .js,.jsx,.ts,.tsx,.json,.css .",
+    "lint:fix": "./node_modules/.bin/eslint --ext .js,.jsx,.ts,.tsx,.json,.css . --fix",
     "reset": "rm -rf .cache/ public/",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },

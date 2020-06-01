@@ -53,7 +53,8 @@ export const CTANavButton = styled.button`
   border: none;
   user-select: none;
   color: #fff;
-  background: ${({ theme }) => theme.colors.primary};
+  background: var(--primary-color);
+  /* background: ${({ theme }) => theme.colors.primary}; */
   &:focus {
     outline: none;
   }
@@ -63,5 +64,6 @@ export const CTANavButton = styled.button`
   /* &.selected {
     display: none;
   } */
-  ${({ secondary, theme }) => secondary && `background: ${theme.colors.secondary};`}
+  /* ${({ secondary, theme }) => secondary && `background: ${theme.colors.secondary};`} */
+  ${({ secondary }) => secondary && `background: var(--secondary-color);`}
 `

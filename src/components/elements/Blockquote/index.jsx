@@ -1,0 +1,5 @@
+// // <blockquote cite="https://www.huxley.net/bnw/four.html">
+//     <p>Words can be like X-rays, if you use them properly—they’ll go through anything. You read and you’re pierced.</p>
+//     <footer>—Aldous Huxley, <cite>Brave New World</cite></footer>
+// </blockquote>
+// USE CRIMSON TEXT https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote
