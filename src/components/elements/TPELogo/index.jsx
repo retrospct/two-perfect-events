@@ -1,10 +1,10 @@
 import React from 'react'
 
-export const TPELogo = ({ width, height, color }) => (
+export const TPELogo = ({ color }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={width || '582.999'}
-    height={height || '85.998'}
+    width="582.999"
+    height="85.998"
     viewBox="0 0 582.999 85.998"
     role="img"
     aria-labelledby="tpeLogoTitle tpeLogoDesc"

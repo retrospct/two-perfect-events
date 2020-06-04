@@ -1,27 +1,21 @@
 import React from 'react'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-import { Header, Section } from 'components/theme'
 import { Container, Button } from 'components/common'
-import arrowSquiggly from 'assets/illustrations/arrowSquiggly.svg'
-import { Wrapper, IntroWrapper, Details, ArrowNext } from './styles'
+import dev from 'assets/illustrations/skills.svg'
+import { Wrapper, SkillsWrapper, Details, Thumbnail } from './styles'
 
-export const Intro = () => (
-  <Wrapper>
-    <Header />
-    <IntroWrapper as={Container}>
+export const Intro = ({ textNode }) => (
+  <Wrapper id="about">
+    <SkillsWrapper as={Container}>
+      <Thumbnail>
+        <img src={dev} alt="I’m John and I’m a Backend & Devops engineer!" />
+      </Thumbnail>
       <Details>
-        <h1>Go, enjoy yourself!</h1>
-        <h4>We'll take care of the rest.</h4>
+        <div dangerouslySetInnerHTML={{ __html: textNode }} />
         <Button as={AnchorLink} href="#contact">
           Contact Us
         </Button>
       </Details>
-      <ArrowNext>
-        <img
-          src={arrowSquiggly}
-          alt="Line illustration of a beautifully set rectangular table with floral arrangments, crystal, fine china, and a linen runner."
-        />
-      </ArrowNext>
-    </IntroWrapper>
+    </SkillsWrapper>
   </Wrapper>
 )

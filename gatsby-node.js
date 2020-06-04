@@ -38,7 +38,7 @@ exports.createPages = ({ graphql, actions }) => {
               slug: work.slug,
             },
           })
-          return console.log('createPage complete') // TODO: this should return something stating that the pages were created
+          // return console.log('createPage complete') // TODO: this should return something stating that the pages were created
         })
         resolve()
       })

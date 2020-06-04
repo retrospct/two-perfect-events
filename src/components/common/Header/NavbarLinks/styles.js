@@ -37,7 +37,8 @@ export const Wrapper = styled.div`
 `
 
 export const NavLink = styled.a`
-  color: ${({ theme }) => theme.colors.subheading};
+  /* color: ${({ theme }) => theme.colors.subheading}; */
+  color: var(--subheading-color);
   font-weight: 300;
   &.selected {
     font-weight: 400;

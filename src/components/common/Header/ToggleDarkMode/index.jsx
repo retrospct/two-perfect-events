@@ -45,18 +45,27 @@ export const Toggler = styled(Toggle)`
   }
 
   &.react-toggle--focus .react-toggle-thumb {
-    box-shadow: 0px 0px 2px 3px rgb(255, 167, 196);
+    /* box-shadow: 0px 0px 2px 3px rgb(255, 167, 196); */
+    box-shadow: 0px 0px 2px 3px var(--primary-color);
   }
 
   &:active:not(.react-toggle--disabled) .react-toggle-thumb {
-    box-shadow: 0px 0px 2px 3px rgb(255, 167, 196);
+    /* box-shadow: 0px 0px 2px 3px rgb(255, 167, 196); */
+    box-shadow: 0px 0px 2px 3px var(--primary-color);
+  }
+
+  &:active:not(.react-toggle--disabled) .react-toggle-thumb {
+    /* box-shadow: 0px 0px 2px 3px rgb(255, 167, 196); */
+    box-shadow: 0px 0px 2px 3px var(--primary-color);
   }
   &.react-toggle--focus .react-toggle-thumb {
-    box-shadow: 0px 0px 2px 3px rgb(255, 167, 196);
+    /* box-shadow: 0px 0px 2px 3px rgb(255, 167, 196); */
+    box-shadow: 0px 0px 2px 3px var(--primary-color);
   }
 
   &:active:not(.react-toggle--disabled) .react-toggle-thumb {
-    box-shadow: 0px 0px 5px 5px rgb(255, 167, 196);
+    /* box-shadow: 0px 0px 5px 5px rgb(255, 167, 196); */
+    box-shadow: 0px 0px 2px 3px var(--primary-color);
   }
 `
 

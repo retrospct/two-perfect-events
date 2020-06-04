@@ -8,5 +8,3 @@ export const Hamburger = ({ sidebar, toggle }) => (
     <Bar bottom sidebar={sidebar} />
   </Wrapper>
 )
-
-// export default Hamburger

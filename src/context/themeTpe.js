@@ -81,6 +81,27 @@ const darkTheme = {
 
 export { lightTheme, darkTheme }
 
+// color: {
+//   primary: "#071435",
+//   secondary: "#098c8c",
+//   accent: "#cca86e",
+//   background: {
+//     white: "#ffffff",
+//     light: "#f8f8f8",
+//   },
+//   white: {
+//     regular: "#ffffff",
+//     lessdark: "#faf9f8",
+//     dark: "#f6f6f6",
+//     darker: "#eeeeee",
+//   },
+//   black: {
+//     lightest: "#ABA8AF",
+//     light: "#564F62",
+//     regular: "#071435",
+//   },
+// },
+
 // From gatsby theme-ui before
 // export default {
 //   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],

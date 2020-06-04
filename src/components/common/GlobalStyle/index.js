@@ -1,10 +1,26 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
+
   html {
     font-family: "Lato", "Lucida Grande", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+
+    :root {
+      --primary-color: ${({ theme }) => theme.colors.primary || '#694a86'};
+      --primaryLighter-color: ${({ theme }) => theme.colors.primaryLighter || '#7c6194'};
+      --secondary-color: ${({ theme }) => theme.colors.secondary || '#8D426C'};
+      --accent-color: ${({ theme }) => theme.colors.accent || '#BF9000'};
+      --accentLight-color: ${({ theme }) => theme.colors.accentLight || '#FBB040'};
+      --accentLightest-color: ${({ theme }) => theme.colors.accentLightest || '#E9CB99'};
+      --text-color: ${({ theme }) => theme.colors.text || '#414042'};
+      --heading-color: ${({ theme }) => theme.colors.heading || '#212121'};
+      --subheading-color: ${({ theme }) => theme.colors.subheading || '#707070'};
+      --link-color: ${({ theme }) => theme.colors.link || '#BF9000'};
+      --bg-color: ${({ theme }) => theme.colors.bg || '#fff'};
+      --bgDark-color: ${({ theme }) => theme.colors.bgDark || '#e6e6e6'};
+    }
 
     article,
     aside,
@@ -248,10 +264,14 @@ export const GlobalStyle = createGlobalStyle`
       padding-right: 0;
       padding-top: 0;
       margin-bottom: 1.45rem;
-      color: inherit;
-      font-weight: bold;
+      ${'' /* color: inherit; */}
+      font-family: 'Crimson Text', "Lucida Grande", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      color: var(--accent-color);
+      ${'' /* font-weight: bold; */}
+      font-weight: 400;
       text-rendering: optimizeLegibility;
-      font-size: 1.38316rem;
+      ${'' /* font-size: 1.38316rem; */}
+      font-size: 2.25rem;
       line-height: 1.1;
     }
     h4 {
@@ -602,25 +622,7 @@ export const GlobalStyle = createGlobalStyle`
       }
     }
 
-    :root {
-      --primary-color: ${({ theme }) => theme.colors.primary || '#694a86'};
-      --primaryLighter-color: ${({ theme }) => theme.colors.primaryLighter || '#7c6194'};
-      --secondary-color: ${({ theme }) => theme.colors.secondary || '#8D426C'};
-      --accent-color: ${({ theme }) => theme.colors.accent || '#BF9000'};
-      --accentLight-color: ${({ theme }) => theme.colors.accentLight || '#FBB040'};
-      --accentLightest-color: ${({ theme }) => theme.colors.accentLightest || '#E9CB99'};
-      --text-color: ${({ theme }) => theme.colors.text || '#414042'};
-      --heading-color: ${({ theme }) => theme.colors.heading || '#212121'};
-      --subheading-color: ${({ theme }) => theme.colors.subheading || '#707070'};
-      --link-color: ${({ theme }) => theme.colors.link || '#BF9000'};
-      --bg-color: ${({ theme }) => theme.colors.bg || '#fff'};
-      --bgDark-color: ${({ theme }) => theme.colors.bgDark || '#e6e6e6'};
-      --sm-screen: ${({ theme }) => theme.screens.sm || '640px'};
-      --md-screen: ${({ theme }) => theme.screens.md || '768px'};
-      --lg-screen: ${({ theme }) => theme.screens.lg || '1024px'};
-      --xl-screen: ${({ theme }) => theme.screens.xl || '1280px'};
-      --xxl-screen: ${({ theme }) => theme.screens.xxl || '1400px'};
-    }
+    
 
     ${
       '' /* // get variable from inline style

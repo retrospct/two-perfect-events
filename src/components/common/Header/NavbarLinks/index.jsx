@@ -1,7 +1,7 @@
 import React from 'react'
 // import AnchorLink from 'react-anchor-link-smooth-scroll' // TODO: Remove this package if not being used
 import { Link } from 'components/common'
-import { useTheme } from 'context/theme-context'
+import { useTheme } from 'context/themeContext'
 import { Wrapper, NavLink, CTANavButton } from './styles'
 import { ToggleDarkMode } from '../ToggleDarkMode'
 

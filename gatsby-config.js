@@ -54,7 +54,7 @@ module.exports = {
           },
           {
             family: `Crimson Text`,
-            variants: [`400i`, `700i`]
+            variants: [`400`, `400i`, `700i`]
           }
         ],
       },
