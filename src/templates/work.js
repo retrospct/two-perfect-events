@@ -2,10 +2,10 @@ import React from 'react'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
-import { LayoutCMS } from 'components/common'
+import { Layout } from 'components/common'
 
 const Work = ({ data }) => (
-  <LayoutCMS>
+  <Layout>
     <article className="sheet">
       <HelmetDatoCms seo={data.datoCmsWork.seoMetaTags} />
       <div className="sheet__inner">
@@ -27,7 +27,7 @@ const Work = ({ data }) => (
         </div>
       </div>
     </article>
-  </LayoutCMS>
+  </Layout>
 )
 
 export default Work

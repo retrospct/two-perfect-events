@@ -2,10 +2,10 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Img from 'gatsby-image'
-import { LayoutCMS } from 'components/common'
+import { Layout } from 'components/common'
 
 const About = ({ data: { about } }) => (
-  <LayoutCMS>
+  <Layout>
     <article className="sheet">
       <HelmetDatoCms seo={about.seoMetaTags} />
       <div className="sheet__inner">
@@ -22,7 +22,7 @@ const About = ({ data: { about } }) => (
         />
       </div>
     </article>
-  </LayoutCMS>
+  </Layout>
 )
 
 export default About
