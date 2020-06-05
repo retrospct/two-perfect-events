@@ -1,6 +1,6 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
+// import { HelmetDatoCms } from 'gatsby-source-datocms'
 import { Footer } from 'components/common'
 // import { Link } from '../Link'
 
@@ -16,21 +16,21 @@ export const LayoutCMS = ({ children }) => {
             globalSeo {
               siteName
             }
-            faviconMetaTags {
-              ...GatsbyDatoCmsFaviconMetaTags
-            }
+            # faviconMetaTags {
+            #   ...GatsbyDatoCmsFaviconMetaTags
+            # }
           }
-          datoCmsHome {
-            seoMetaTags {
-              ...GatsbyDatoCmsSeoMetaTags
-            }
-            introTextNode {
-              childMarkdownRemark {
-                html
-              }
-            }
-            copyright
-          }
+          # datoCmsHome {
+          #   seoMetaTags {
+          #     ...GatsbyDatoCmsSeoMetaTags
+          #   }
+          #   # introTextNode {
+          #   #   childMarkdownRemark {
+          #   #     html
+          #   #   }
+          #   # }
+          #   copyright
+          # }
           allDatoCmsSocialLink(sort: { fields: [position], order: ASC }) {
             edges {
               node {
@@ -43,7 +43,7 @@ export const LayoutCMS = ({ children }) => {
       `}
       render={data => (
         <>
-          <HelmetDatoCms favicon={data.datoCmsSite.faviconMetaTags} seo={data.datoCmsHome.seoMetaTags} />
+          {/* <HelmetDatoCms seo={data.datoCmsHome.seoMetaTags} /> */}
           {children}
           <Footer />
         </>
