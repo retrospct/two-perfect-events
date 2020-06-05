@@ -9,13 +9,13 @@ export const Footer = () => (
       <Details>
         <h2>Two Perfect Events</h2>
         <span>
-          © All rights are reserved | {new Date().getFullYear()} | Made with{' '}
-          <span aria-label="love" role="img">
+          © All rights are reserved | {new Date().getFullYear()} | {/* Made with{' '} */}
+          {/* <span aria-label="love" role="img">
             💖
           </span>{' '}
-          by{' '}
+          by{' '} */}{' '}
           <a href="https://twoperfectevents.com" rel="noopener noreferrer" target="_blank">
-            Smakosh
+            Two Perfect Events
           </a>
         </span>
       </Details>

@@ -16,8 +16,8 @@ module.exports = {
     google: 'https://plus.google.com/u/0/+twoperfectevents',
   },
   googleAnalyticsID: 'REPLACETHIS',
-  themeColor: '#6b63ff',
-  backgroundColor: '#6b63ff',
+  themeColor: '#694a86',
+  backgroundColor: '#694a86',
   social: {
     facebook: 'twoperfectevents',
     twitter: '@twoperfectevents',

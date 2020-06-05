@@ -8,8 +8,8 @@ const Home = ({ data: { home } }) => (
   <Layout>
     <HelmetDatoCms seo={home.seoMetaTags} />
     {/* <Seo /> */}
-    <Hero heading={home.heroHeading} subheading={home.heroSubheading} />
-    <Intro textNode={home.introTextNode.childMarkdownRemark.html} />
+    <Hero heading={home.heading} subheading={home.subtitle} />
+    <Intro image={home.introPhoto} textNode={home.introTextNode.childMarkdownRemark.html} />
     <Projects />
     <Skills />
     <Contact />
@@ -24,13 +24,22 @@ export const query = graphql`
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
-      heroHeading
-      heroSubheading
+      # faviconMetaTags {
+      #   ...GatsbyDatoCmsFaviconMetaTags
+      # }
+      heading
+      subtitle
       introTextNode {
         childMarkdownRemark {
           html
         }
       }
+      introPhoto {
+        fluid(maxWidth: 1064, imgixParams: { fm: "jpg", auto: "compress" }) {
+          ...GatsbyDatoCmsFluid
+        }
+      }
+      copyright
     }
   }
 `

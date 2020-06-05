@@ -13,7 +13,7 @@ import {
   legalName,
   foundingDate,
   logo,
-} from 'data/config'
+} from 'meta'
 
 export const Seo = ({ title = defaultTitle, description = defaultDescription, location = '' }) => {
   const structuredDataOrganization = `{ 

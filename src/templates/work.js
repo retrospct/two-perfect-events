@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 import { LayoutCMS } from 'components/common'
 
 const Work = ({ data }) => (
-  <LayoutCms>
+  <LayoutCMS>
     <article className="sheet">
       <HelmetDatoCms seo={data.datoCmsWork.seoMetaTags} />
       <div className="sheet__inner">
@@ -27,7 +27,7 @@ const Work = ({ data }) => (
         </div>
       </div>
     </article>
-  </LayoutCms>
+  </LayoutCMS>
 )
 
 export default Work

@@ -1,4 +1,4 @@
-const config = require('./src/data/config')
+const meta = require('./src/meta')
 
 require('dotenv').config()
 // removed for now, may be causing build issues with variables not being passed
@@ -8,12 +8,12 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    title: config.defaultTitle,
-    description: config.defaultDescription,
-    author: config.author,
-    url: config.url,
-    keywords: config.keywords,
-    image: `${config.url}/icons/icon_512x512.png`,
+    title: meta.defaultTitle,
+    description: meta.defaultDescription,
+    author: meta.author,
+    url: meta.url,
+    keywords: meta.keywords,
+    image: `${meta.url}/icons/icon_512x512.png`,
   },
   plugins: [
     {
@@ -53,8 +53,8 @@ module.exports = {
             variants: [`300`, `300i`, `400`, `400i`, `700`, `700i`]
           },
           {
-            family: `Crimson Text`,
-            variants: [`400`, `400i`, `700i`]
+            family: `Crimson Pro`,
+            variants: [`300`, `300i`, `400`, `400i`, `700i`]
           }
         ],
       },
@@ -74,7 +74,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {
-        color: config.themeColor,
+        color: meta.themeColor,
         showSpinner: false,
       },
     },
@@ -99,12 +99,12 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: config.defaultTitle,
-        short_name: config.defaultTitle,
-        description: config.defaultDescription,
+        name: meta.defaultTitle,
+        short_name: meta.defaultTitle,
+        description: meta.defaultDescription,
         start_url: '/',
-        background_color: config.backgroundColor,
-        theme_color: config.themeColor,
+        background_color: meta.backgroundColor,
+        theme_color: meta.themeColor,
         display: 'minimal-ui',
         icon: './static/favicon/favicon-11.png',
       },

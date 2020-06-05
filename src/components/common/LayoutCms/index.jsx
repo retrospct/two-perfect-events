@@ -31,7 +31,7 @@ export const LayoutCMS = ({ children }) => {
             }
             copyright
           }
-          allDatoCmsSocialProfile(sort: { fields: [position], order: ASC }) {
+          allDatoCmsSocialLink(sort: { fields: [position], order: ASC }) {
             edges {
               node {
                 profileType

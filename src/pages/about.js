@@ -29,7 +29,7 @@ export default About
 
 export const query = graphql`
   query AboutQuery {
-    about: datoCmsAboutPage {
+    about: datoCmsAbout {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }

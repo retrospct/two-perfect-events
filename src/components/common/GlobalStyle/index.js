@@ -268,10 +268,10 @@ export const GlobalStyle = createGlobalStyle`
       font-family: 'Crimson Text', "Lucida Grande", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
       color: var(--accent-color);
       ${'' /* font-weight: bold; */}
-      font-weight: 400;
+      font-weight: 300;
       text-rendering: optimizeLegibility;
       ${'' /* font-size: 1.38316rem; */}
-      font-size: 2.25rem;
+      font-size: 2.4rem;
       line-height: 1.1;
     }
     h4 {
