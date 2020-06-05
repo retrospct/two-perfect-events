@@ -1,6 +1,6 @@
 export * from './GlobalStyle'
-export * from './LayoutCMS'
 export * from './Seo'
+export * from './LayoutCMS'
 export * from './Section'
 export * from './Container'
 export * from './Button'
