@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Formik, Form, FastField, ErrorMessage } from 'formik'
+import { Formik, Form, Field, FastField, ErrorMessage } from 'formik'
 import Recaptcha from 'react-google-recaptcha'
 import * as Yup from 'yup'
 import { Button, Input } from 'components/common'
@@ -14,6 +14,8 @@ export const ContactForm = () => (
       message: '',
       recaptcha: '',
       success: false,
+      'form-name': 'contact',
+      'bot-field': '',
     }}
     validationSchema={Yup.object().shape({
       name: Yup.string().required('Full name field is required'),
@@ -46,7 +48,7 @@ export const ContactForm = () => (
     }}
   >
     {({ values, touched, errors, setFieldValue, isSubmitting }) => (
-      <Form>
+      <Form data-netlify="true" data-netlify-honeypot="bot-field">
         <InputField>
           <Input
             as={FastField}
@@ -109,6 +111,8 @@ export const ContactForm = () => (
             Submit
           </Button>
         </Center>
+        <Field type="hidden" name="bot-field" />
+        <Field type="hidden" name="form-name" />
       </Form>
     )}
   </Formik>
