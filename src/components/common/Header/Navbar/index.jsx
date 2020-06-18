@@ -1,6 +1,5 @@
 import React from 'react'
-import { Container, Link } from 'components/common'
-import { TPELogo, TPELogomark } from 'components/elements'
+import { Container, Link, TPELogo, TPELogomark } from 'components/common'
 import { useTheme } from 'context/themeContext'
 import { NavbarLinks } from '../NavbarLinks'
 import { Wrapper, LogoWrapper } from './styles'

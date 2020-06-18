@@ -14,8 +14,6 @@ export const ContactForm = () => (
       message: '',
       recaptcha: '',
       success: false,
-      'form-name': 'contact',
-      'bot-field': '',
     }}
     validationSchema={Yup.object().shape({
       name: Yup.string().required('Full name field is required'),
@@ -48,7 +46,7 @@ export const ContactForm = () => (
     }}
   >
     {({ values, touched, errors, setFieldValue, isSubmitting }) => (
-      <Form data-netlify="true" data-netlify-honeypot="bot-field">
+      <Form netlify-honeypot="bot-field" data-netlify="true" name="contact">
         <InputField>
           <Input
             as={FastField}

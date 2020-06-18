@@ -1,80 +1,145 @@
 import React from 'react'
+// import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
-// import { useStaticQuery, graphql } from 'gatsby'
-import Thumbnail from 'assets/thumbnail/thumbnail.png'
-import {
-  url,
-  defaultDescription,
-  social,
-  defaultTitle,
-  socialLinks,
-  address,
-  contact,
-  legalName,
-  foundingDate,
-  logo,
-} from 'meta'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 
-export const Seo = ({ title = defaultTitle, description = defaultDescription, location = '' }) => {
-  const structuredDataOrganization = `{ 
-		"@context": "http://schema.org",
-		"@type": "Organization",
-		"legalName": "${legalName}",
-		"url": "${url}",
-		"logo": "${logo}",
-		"foundingDate": "${foundingDate}",
-		"founders": [{
-			"@type": "Person",
-			"name": "${legalName}"
-		}],
-		"contactPoint": [{
-			"@type": "ContactPoint",
-			"email": "${contact.email}",
-			"telephone": "${contact.phone}",
-			"contactType": "customer service"
-		}],
-		"address": {
-			"@type": "PostalAddress",
-			"addressLocality": "${address.city}",
-			"addressRegion": "${address.region}",
-			"addressCountry": "${address.country}",
-			"postalCode": "${address.zipCode}"
-		},
-		"sameAs": [
-			"${socialLinks.twitter}",
-			"${socialLinks.google}",
-			"${socialLinks.youtube}",
-			"${socialLinks.linkedin}",
-			"${socialLinks.instagram}",
-			"${socialLinks.github}"
-		]
-  	}`
-
+export const Seo = ({ siteSeo, pageSeo, location = '' }) => {
   return (
-    <Helmet>
-      <meta name="description" content={description} />
-      <meta name="image" content={Thumbnail} />
+    <>
+      {!pageSeo && siteSeo && (
+        <>
+          <Helmet>
+            <meta name="description" content={siteSeo.globalSeo.fallbackSeo.description} />
+            <meta name="image" content={siteSeo.globalSeo.fallbackSeo.image.url} />
 
-      <meta property="og:url" content={`${url}${location}/?ref=smakosh.com`} />
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={Thumbnail} />
-      <meta property="fb:app_id" content={social.facebook} />
+            <meta property="og:url" content={`${siteSeo.domain}${location}`} />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content={siteSeo.globalSeo.siteName} />
+            <meta property="og:description" content={siteSeo.globalSeo.fallbackSeo.description} />
+            <meta property="og:image" content={siteSeo.globalSeo.fallbackSeo.image.url} />
+            <meta property="fb:app_id" content={siteSeo.globalSeo.facebookPageUrl} />
 
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:creator" content={socialLinks.twitter} />
-      <meta name="twitter:site" content={social.twitter} />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image:src" content={Thumbnail} />
-      <script type="application/ld+json">{structuredDataOrganization}</script>
-      <link rel="publisher" href={socialLinks.google} />
-      <title>{title}</title>
-      <html lang="en" dir="ltr" />
-    </Helmet>
+            <meta name="twitter:card" content={siteSeo.globalSeo.fallbackSeo.twitterCard} />
+            <meta name="twitter:creator" content={siteSeo.globalSeo.twitterAccount} />
+            <meta name="twitter:site" content={`https://twitter.com/${siteSeo.globalSeo.twitterAccount}`} />
+            <meta name="twitter:title" content={siteSeo.globalSeo.siteName} />
+            <meta name="twitter:description" content={siteSeo.globalSeo.fallbackSeo.description} />
+            <meta name="twitter:image:src" content={siteSeo.globalSeo.fallbackSeo.image.url} />
+            {/* <script type="application/ld+json">{structuredDataOrganization}</script> */}
+            {/* <link rel="publisher" href={socialLinks.google} /> */}
+            <title>{siteSeo.globalSeo.siteName}</title>
+            <html lang="en" dir="ltr" />
+          </Helmet>
+          <HelmetDatoCms seo={pageSeo} favicon={siteSeo.faviconMetaTags} />
+        </>
+      )}
+      {pageSeo && <HelmetDatoCms seo={pageSeo} favicon={siteSeo.faviconMetaTags} />}
+    </>
   )
 }
+
+// export const query = graphql`
+//   query SeoQuery {
+//     datoCmsSite {
+//       domain
+//       globalSeo {
+//         siteName
+//         titleSuffix
+//         twitterAccount
+//         facebookPageUrl
+//         fallbackSeo {
+//           title
+//           description
+//           image {
+//             url
+//           }
+//           twitterCard
+//         }
+//       }
+//       faviconMetaTags {
+//         ...GatsbyDatoCmsFaviconMetaTags
+//       }
+//     }
+//   }
+// `
+
+// import React from 'react'
+// import { Helmet } from 'react-helmet'
+// // import { useStaticQuery, graphql } from 'gatsby'
+// import Thumbnail from 'assets/thumbnail/thumbnail.png'
+// import {
+//   url,
+//   defaultDescription,
+//   social,
+//   defaultTitle,
+//   socialLinks,
+//   address,
+//   contact,
+//   legalName,
+//   foundingDate,
+//   logo,
+// } from 'meta'
+
+// export const Seo = ({ title = defaultTitle, description = defaultDescription, location = '' }) => {
+// const structuredDataOrganization = `{
+// 	"@context": "http://schema.org",
+// 	"@type": "Organization",
+// 	"legalName": "${legalName}",
+// 	"url": "${url}",
+// 	"logo": "${logo}",
+// 	"foundingDate": "${foundingDate}",
+// 	"founders": [{
+// 		"@type": "Person",
+// 		"name": "${legalName}"
+// 	}],
+// 	"contactPoint": [{
+// 		"@type": "ContactPoint",
+// 		"email": "${contact.email}",
+// 		"telephone": "${contact.phone}",
+// 		"contactType": "customer service"
+// 	}],
+// 	"address": {
+// 		"@type": "PostalAddress",
+// 		"addressLocality": "${address.city}",
+// 		"addressRegion": "${address.region}",
+// 		"addressCountry": "${address.country}",
+// 		"postalCode": "${address.zipCode}"
+// 	},
+// 	"sameAs": [
+// 		"${socialLinks.twitter}",
+// 		"${socialLinks.google}",
+// 		"${socialLinks.youtube}",
+// 		"${socialLinks.linkedin}",
+// 		"${socialLinks.instagram}",
+// 		"${socialLinks.github}"
+// 	]
+// 	}`
+
+// return (
+// <Helmet>
+//   <meta name="description" content={description} />
+//   <meta name="image" content={Thumbnail} />
+
+//   <meta property="og:url" content={`${url}${location}/?ref=smakosh.com`} />
+//   <meta property="og:type" content="website" />
+//   <meta property="og:title" content={title} />
+//   <meta property="og:description" content={description} />
+//   <meta property="og:image" content={Thumbnail} />
+//   <meta property="fb:app_id" content={social.facebook} />
+
+//   <meta name="twitter:card" content="summary" />
+//   <meta name="twitter:creator" content={socialLinks.twitter} />
+//   <meta name="twitter:site" content={social.twitter} />
+//   <meta name="twitter:title" content={title} />
+//   <meta name="twitter:description" content={description} />
+//   <meta name="twitter:image:src" content={Thumbnail} />
+//   <script type="application/ld+json">{structuredDataOrganization}</script>
+//   <link rel="publisher" href={socialLinks.google} />
+//   <title>{title}</title>
+//   <html lang="en" dir="ltr" />
+// </Helmet>
+//   )
+// }
 
 // From TS previous project
 // TODO: Delete this at a later commit when no longer needed for active reference
