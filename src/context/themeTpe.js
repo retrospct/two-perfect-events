@@ -46,6 +46,7 @@ const lightTheme = {
     accentLight: '#FBB040',
     accentLightest: '#E9CB99',
     text: '#414042',
+    textInverse: '#fff',
     heading: '#212121',
     subheading: '#707070',
     link: '#BF9000',
@@ -67,6 +68,7 @@ const darkTheme = {
     accentLight: '#FBB040',
     accentLightest: '#E9CB99', // #e7bf86
     text: '#fff',
+    textInverse: '#414042',
     heading: '#fff',
     subheading: '#e6e6e6',
     link: '#BF9000',

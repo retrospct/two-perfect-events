@@ -20,12 +20,17 @@ export const SkillsWrapper = styled.div`
 `
 
 export const Details = styled.div`
+  background: var(--bg-color);
   flex: 1;
-  padding-left: 2rem;
-
+  /* padding-right: 2rem; */
+  width: 100%;
+  height: 100%;
+  padding: 4rem;
+  margin: 1.5rem -5rem 1.5rem 0;
+  z-index: 10;
   @media (max-width: 960px) {
-    padding-left: unset;
-    width: 100%;
+    padding: 1rem;
+    margin-right: 0;
   }
 
   /* h1 {
@@ -48,7 +53,7 @@ export const Thumbnail = styled.div`
 
   @media (max-width: 960px) {
     width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   img {

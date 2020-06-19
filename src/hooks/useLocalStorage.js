@@ -9,7 +9,6 @@ export const useLocalStorage = (name, initialValue) => {
     }
     return initialValue
   })
-
   useEffect(() => {
     if (windowGlobal) windowGlobal.localStorage.setItem(name, JSON.stringify(value))
   }, [name, value, windowGlobal])

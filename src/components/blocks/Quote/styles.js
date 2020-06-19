@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   p {
     font-size: 1.4rem;
     font-family: 'Crimson Pro';
-    font-weight: 400;
+    font-weight: 300;
     font-style: italic;
     max-width: 800px;
     line-height: 1.87;

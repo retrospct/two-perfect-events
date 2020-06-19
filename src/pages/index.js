@@ -1,10 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
 // import { HelmetDatoCms } from 'gatsby-source-datocms'
 import { Layout, Seo } from 'components/common'
 import { HeroImage, ImageText, TextImage, Quote } from 'components/blocks'
-import { Hero, Intro, Skills, Contact, Projects } from 'components/landing'
+import { Hero, Skills, Contact, Projects } from 'components/landing'
 
 const Home = ({ data }) => (
   <Layout>
@@ -12,7 +12,6 @@ const Home = ({ data }) => (
     <Seo siteSeo={data.siteSeo} pageSeo={data.home.seoMetaTags} />
     <Hero heading={data.home.heading} subheading={data.home.subtitle} />
     {/* <Intro image={data.home.introPhoto} textNode={data.home.introTextNode.childMarkdownRemark.html} /> */}
-    {/* <section> */}
     {data.home.introBlock.map(block => (
       <section key={block.id}>
         {block.model.apiKey === 'hero_image' && <HeroImage block={block} />}
@@ -21,7 +20,6 @@ const Home = ({ data }) => (
         {block.model.apiKey === 'quote' && <Quote block={block} />}
       </section>
     ))}
-    {/* </section> */}
     <Projects />
     <Skills />
     <Contact />
@@ -115,6 +113,9 @@ export const query = graphql`
             fluid(maxWidth: 1920, imgixParams: { fm: "jpg", auto: "compress" }) {
               ...GatsbyDatoCmsFluid
             }
+            # fixed(height: 500, imgixParams: { fm: "jpg", auto: "compress" }) {
+            #   ...GatsbyDatoCmsFixed
+            # }
           }
         }
         ... on DatoCmsQuote {
