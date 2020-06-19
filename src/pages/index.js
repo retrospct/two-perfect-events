@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 // import { HelmetDatoCms } from 'gatsby-source-datocms'
 import { Layout, Seo } from 'components/common'
 import { HeroImage, ImageText, TextImage, Quote } from 'components/blocks'
-import { Hero, Skills, Contact, Projects } from 'components/landing'
+import { Hero, Contact, Projects } from 'components/landing'
 
 const Home = ({ data }) => (
   <Layout>
@@ -21,7 +21,7 @@ const Home = ({ data }) => (
       </section>
     ))}
     <Projects />
-    <Skills />
+    {/* <Skills /> */}
     <Contact />
   </Layout>
 )

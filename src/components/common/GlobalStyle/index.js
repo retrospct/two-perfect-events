@@ -205,13 +205,13 @@ export const GlobalStyle = createGlobalStyle`
       overflow-y: scroll;
     }
     * {
-      box-sizing: inherit;
+      box-sizing: border-box;
     }
     *:before {
-      box-sizing: inherit;
+      box-sizing: border-box;
     }
     *:after {
-      box-sizing: inherit;
+      box-sizing: border-box;
     }
     ${
       '' /* img {
