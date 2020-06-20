@@ -1,10 +1,8 @@
 const meta = require('./src/meta')
 
-require('dotenv').config()
-// removed for now, may be causing build issues with variables not being passed
-// require('dotenv').config({
-//   path: `.env.${process.env.NODE_ENV}`,
-// })
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 module.exports = {
   siteMetadata: {
@@ -66,7 +64,7 @@ module.exports = {
         fieldName: 'github',
         url: 'https://api.github.com/graphql',
         headers: {
-          Authorization: `bearer ${process.env.GATSBY_PORTFOLIO_GITHUB_TOKEN}`,
+          Authorization: `bearer ${process.env.GATSBY_GITHUB_TOKEN}`,
         },
         fetchOptions: {},
       },

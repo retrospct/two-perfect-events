@@ -25,7 +25,7 @@ export const ContactForm = () => (
       try {
         await axios({
           method: 'POST',
-          url: `${process.env.GATSBY_PORTFOLIO_FORMIK_ENDPOINT}`,
+          url: `${process.env.GATSBY_FORMIK_ENDPOINT}`,
           headers: {
             'Content-Type': 'application/json',
           },
@@ -90,7 +90,7 @@ export const ContactForm = () => (
           <InputField>
             <FastField
               component={Recaptcha}
-              sitekey={process.env.GATSBY_PORTFOLIO_RECAPTCHA_KEY}
+              sitekey={process.env.GATSBY_RECAPTCHA_KEY}
               name="recaptcha"
               onChange={value => setFieldValue('recaptcha', value)}
             />
