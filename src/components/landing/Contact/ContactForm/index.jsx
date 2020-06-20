@@ -46,7 +46,7 @@ export const ContactForm = () => (
     }}
   >
     {({ values, touched, errors, setFieldValue, isSubmitting }) => (
-      <Form netlify-honeypot="bot-field" data-netlify="true" name="contact">
+      <Form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
         <InputField>
           <Input
             as={FastField}
@@ -110,7 +110,7 @@ export const ContactForm = () => (
           </Button>
         </Center>
         <Field type="hidden" name="bot-field" />
-        <Field type="hidden" name="form-name" />
+        <Field type="hidden" name="contact" />
       </Form>
     )}
   </Formik>
