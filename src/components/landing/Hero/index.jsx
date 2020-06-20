@@ -1,12 +1,11 @@
 import React from 'react'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-import { Header, Container, Button } from 'components/common'
+import { Container, Button } from 'components/common'
 import arrowSquiggly from 'assets/illustrations/arrowSquiggly.svg'
 import { Wrapper, IntroWrapper, Details, ArrowNext } from './styles'
 
 export const Hero = ({ heading, subheading }) => (
   <Wrapper>
-    <Header />
     <IntroWrapper as={Container}>
       <Details>
         <h1>{heading}</h1>
@@ -16,10 +15,7 @@ export const Hero = ({ heading, subheading }) => (
         </Button>
       </Details>
       <ArrowNext>
-        <img
-          src={arrowSquiggly}
-          alt="Line illustration of a beautifully set rectangular table with floral arrangments, crystal, fine china, and a linen runner."
-        />
+        <img src={arrowSquiggly} alt="Line illustration of a purple downward facing squiggly arrow." />
       </ArrowNext>
     </IntroWrapper>
   </Wrapper>

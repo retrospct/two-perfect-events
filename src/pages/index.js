@@ -2,17 +2,18 @@ import React from 'react'
 import { graphql } from 'gatsby'
 // import Img from 'gatsby-image'
 // import { HelmetDatoCms } from 'gatsby-source-datocms'
-import { Layout, Seo } from 'components/common'
+import { Layout, Seo, Header } from 'components/common'
 import { HeroImage, ImageText, TextImage, Quote } from 'components/blocks'
-import { Hero, Contact, Projects } from 'components/landing'
+import { Hero, Contact } from 'components/landing'
 
 const Home = ({ data }) => (
   <Layout>
+    <Header />
     {/* <HelmetDatoCms seo={data.home.seoMetaTags} favicon={data.datoCmsSite.faviconMetaTags} /> */}
     <Seo siteSeo={data.siteSeo} pageSeo={data.home.seoMetaTags} />
     <Hero heading={data.home.heading} subheading={data.home.subtitle} />
     {/* <Intro image={data.home.introPhoto} textNode={data.home.introTextNode.childMarkdownRemark.html} /> */}
-    {data.home.introBlock.map(block => (
+    {data.home.homeBlock.map(block => (
       <section key={block.id}>
         {block.model.apiKey === 'hero_image' && <HeroImage block={block} />}
         {block.model.apiKey === 'image_text' && <ImageText block={block} />}
@@ -20,7 +21,7 @@ const Home = ({ data }) => (
         {block.model.apiKey === 'quote' && <Quote block={block} />}
       </section>
     ))}
-    <Projects />
+    {/* <Projects /> */}
     {/* <Skills /> */}
     <Contact />
   </Layout>
@@ -56,18 +57,18 @@ export const query = graphql`
       }
       heading
       subtitle
-      introTextNode {
-        childMarkdownRemark {
-          html
-        }
-      }
-      introPhoto {
-        fluid(maxWidth: 1064, imgixParams: { fm: "jpg", auto: "compress" }) {
-          ...GatsbyDatoCmsFluid
-        }
-      }
+      # introTextNode {
+      #   childMarkdownRemark {
+      #     html
+      #   }
+      # }
+      # introPhoto {
+      #   fluid(maxWidth: 1064, imgixParams: { fm: "jpg", auto: "compress" }) {
+      #     ...GatsbyDatoCmsFluid
+      #   }
+      # }
       copyright
-      introBlock {
+      homeBlock {
         ... on DatoCmsImageText {
           model {
             apiKey
@@ -79,8 +80,18 @@ export const query = graphql`
               html
             }
           }
+          ctaButton {
+            text
+            path
+          }
+          ctaButtonText
+          links {
+            id
+            text
+            path
+          }
           image {
-            fluid(maxWidth: 1064, imgixParams: { fm: "jpg", auto: "compress" }) {
+            fluid(maxHeight: 1064, imgixParams: { fm: "jpg", auto: "compress" }) {
               ...GatsbyDatoCmsFluid
             }
           }
@@ -124,6 +135,7 @@ export const query = graphql`
           }
           id
           quote
+          author
         }
       }
     }

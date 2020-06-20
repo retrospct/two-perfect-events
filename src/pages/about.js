@@ -2,22 +2,24 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Img from 'gatsby-image'
-import { Layout } from 'components/common'
+import { Layout, Seo, Header } from 'components/common'
 
-const About = ({ data: { about } }) => (
+const About = ({ data }) => (
   <Layout>
+    <Header />
+    <Seo siteSeo={data.siteSeo} pageSeo={data.about.seoMetaTags} />
+    {/* <HelmetDatoCms seo={about.seoMetaTags} /> */}
     <article className="sheet">
-      <HelmetDatoCms seo={about.seoMetaTags} />
       <div className="sheet__inner">
-        <h1 className="sheet__title">{about.title}</h1>
-        <p className="sheet__lead">{about.subtitle}</p>
+        <h1 className="sheet__title">{data.about.title}</h1>
+        <p className="sheet__lead">{data.about.subtitle}</p>
         <div className="sheet__gallery">
-          <Img fluid={about.photo.fluid} />
+          <Img fluid={data.about.photo.fluid} />
         </div>
         <div
           className="sheet__body"
           dangerouslySetInnerHTML={{
-            __html: about.bioNode.childMarkdownRemark.html,
+            __html: data.about.bioNode.childMarkdownRemark.html,
           }}
         />
       </div>
@@ -29,6 +31,26 @@ export default About
 
 export const query = graphql`
   query AboutQuery {
+    siteSeo: datoCmsSite {
+      domain
+      globalSeo {
+        siteName
+        titleSuffix
+        twitterAccount
+        facebookPageUrl
+        fallbackSeo {
+          title
+          description
+          image {
+            url
+          }
+          twitterCard
+        }
+      }
+      faviconMetaTags {
+        ...GatsbyDatoCmsFaviconMetaTags
+      }
+    }
     about: datoCmsAbout {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags

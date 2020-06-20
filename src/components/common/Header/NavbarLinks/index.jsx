@@ -2,7 +2,7 @@ import React from 'react'
 // import AnchorLink from 'react-anchor-link-smooth-scroll' // TODO: Remove this package if not being used
 import { Link } from 'components/common'
 import { useTheme } from 'context/themeContext'
-import { Wrapper, NavLink, CTANavButton } from './styles'
+import { Wrapper, NavLink, CTANavLink } from './styles'
 import { ToggleDarkMode } from '../ToggleDarkMode'
 
 export const NavbarLinks = ({ desktop }) => {
@@ -21,9 +21,9 @@ export const NavbarLinks = ({ desktop }) => {
       <NavLink as={Link} to="/blog" activeClassName="selected">
         BLOG
       </NavLink>
-      <CTANavButton as={Link} to="/contact" activeClassName="selected">
+      <CTANavLink as={Link} to="/contact" activeClassName="selected">
         CONTACT
-      </CTANavButton>
+      </CTANavLink>
       <ToggleDarkMode currentTheme={currentTheme} toggleTheme={toggleTheme} />
       {/* <AnchorLink href="#about">About</AnchorLink>
       <AnchorLink href="#projects">Projects</AnchorLink>

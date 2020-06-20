@@ -49,8 +49,6 @@ export const Button = styled.button`
   }
 
   :hover {
-    /* font-size: 26px; */
-    letter-spacing: 0.2em;
     transform: translate(6px, 6px);
     color: var(--text-inverse-color);
     background-color: var(--primary-color);
@@ -63,6 +61,7 @@ export const Button = styled.button`
 // .btn:after, .btn--secondary:after, .site-footer__item-inner--newsletter form .input-group__btn .newsletter__submit:after, .shopify-payment-button .shopify-payment-button__button--unbranded:after
 // .btn--secondary:not([disabled]):hover,
 export const ButtonOutline = styled(Button)`
+  font-weight: 400;
   background-color: transparent;
   border-width: 2px;
   color: var(--primary-color);

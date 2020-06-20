@@ -23,6 +23,7 @@ export const Details = styled.div`
   background: var(--bg-color);
   flex: 1;
   /* padding-right: 2rem; */
+  border-radius: 3px;
   width: 100%;
   height: 100%;
   padding: 4rem;
@@ -57,6 +58,7 @@ export const Thumbnail = styled.div`
   }
 
   img {
+    border-radius: 3px;
     width: 100%;
   }
 `

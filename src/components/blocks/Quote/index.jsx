@@ -6,6 +6,7 @@ export const Quote = ({ block }) => {
     <Wrapper>
       <p>{block.quote}</p>
       <hr />
+      <small>{block.author}</small>
     </Wrapper>
   )
 }

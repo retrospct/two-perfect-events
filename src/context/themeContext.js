@@ -1,7 +1,7 @@
 import React, { useState, useContext, useCallback } from 'react'
 import media from 'use-media'
-// import { useLocalStorage } from "hooks/useLocalStorage";
 import { ThemeProvider as BaseThemeProvider, ThemeContext } from 'styled-components'
+// import { useLocalStorage } from 'hooks/useLocalStorage'
 import { lightTheme, darkTheme } from './themeTpe'
 
 // const ThemeContext = createContext()
@@ -29,10 +29,7 @@ const themeFormatter = themeToFormat => {
 }
 
 const ThemeProvider = ({ children }) => {
-  // const [themeString, setThemeString] = useLocalStorage(
-  //   "theme",
-  //   "light"
-  // );
+  // const [themeString, setThemeString] = useLocalStorage('theme', 'light')
   const [themeString, setThemeString] = useState('light') // comment out if using local storage
   const themeObject = themeString === 'dark' ? themeFormatter(darkTheme) : themeFormatter(lightTheme)
   return (
@@ -56,13 +53,5 @@ const useTheme = () => {
     ...context,
   }
 }
-
-// const useTheme = () => {
-//   const context = useContext(ThemeContext)
-//   console.log('theme: ', context)
-//   if (!context) throw new Error('useTheme must be used within a ThemeProvider')
-//   const { theme } = context
-//   return theme
-// }
 
 export { ThemeProvider, useTheme }

@@ -1,8 +1,9 @@
 import React from 'react'
-import AnchorLink from 'react-anchor-link-smooth-scroll'
+// import AnchorLink from 'react-anchor-link-smooth-scroll'
+import { Link as GatsbyLink } from 'gatsby'
 import Img from 'gatsby-image'
-import { Container, Button } from 'components/common'
-import { Wrapper, SkillsWrapper, Details, Thumbnail } from './styles'
+import { Container, ButtonOutline, Link } from 'components/common'
+import { Wrapper, SkillsWrapper, Details, Thumbnail, MoreLinks } from './styles'
 
 export const ImageText = ({ block }) => (
   <Wrapper id="intro">
@@ -12,10 +13,25 @@ export const ImageText = ({ block }) => (
       </Thumbnail>
       <Details>
         <div dangerouslySetInnerHTML={{ __html: block.textNode.childMarkdownRemark.html }} />
-        <Button as={AnchorLink} href="#contact">
-          Contact Us
-        </Button>
+        {block.ctaButton && block.ctaButtonText && (
+          <ButtonOutline as={GatsbyLink} to={block.ctaButton.path}>
+            {block.ctaButtonText}
+          </ButtonOutline>
+        )}
+        {block.links && (
+          <MoreLinks>
+            {block.links.map(link => (
+              <li key={link.id}>
+                <Link to={link.path}>{link.text}</Link>
+              </li>
+            ))}
+          </MoreLinks>
+        )}
       </Details>
     </SkillsWrapper>
   </Wrapper>
 )
+
+// {/* <Button as={AnchorLink} href="#contact">
+//   Contact Us
+// </Button> */}

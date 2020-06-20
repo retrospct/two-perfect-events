@@ -17,6 +17,8 @@ export const Wrapper = styled.div`
     text-align: center;
     word-wrap: break-word;
   }
+  small {
+  }
   hr {
     border: 0;
     margin: 10px 0;

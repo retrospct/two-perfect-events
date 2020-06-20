@@ -57,7 +57,7 @@ export const Wrapper = styled.div`
 `
 
 export const IntroWrapper = styled.div`
-  padding: 4rem 0;
+  padding: 7rem 0 4rem;
   display: flex;
   align-items: flex-start;
   justify-content: center;

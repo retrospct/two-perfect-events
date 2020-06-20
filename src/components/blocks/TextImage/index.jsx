@@ -8,7 +8,7 @@ export const TextImage = ({ block }) => (
   <Wrapper id="intro">
     <SkillsWrapper as={Container}>
       <Details>
-        <div dangerouslySetInnerHTML={{ __html: block.textNode.childMarkdownRemark.html }} />
+        <div dangerouslySetInnerHTML={{ __html: block.text }} />
         <Button as={AnchorLink} href="#contact">
           Contact Us
         </Button>
