@@ -4,6 +4,7 @@
 // export * from './TPELogo'
 // export * from './TPELogomark'
 // export * from './TPEWordmark'
+export * from './Featured'
 export * from './HeroImage'
 export * from './ImageText'
 export * from './Quote'

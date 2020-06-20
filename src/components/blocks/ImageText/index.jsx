@@ -6,13 +6,13 @@ import { Container, ButtonOutline, Link } from 'components/common'
 import { Wrapper, SkillsWrapper, Details, Thumbnail, MoreLinks } from './styles'
 
 export const ImageText = ({ block }) => (
-  <Wrapper id="intro">
+  <Wrapper>
     <SkillsWrapper as={Container}>
       <Thumbnail>
         <Img fluid={block.image.fluid} alt={block.image.alt} />
       </Thumbnail>
       <Details>
-        <div dangerouslySetInnerHTML={{ __html: block.textNode.childMarkdownRemark.html }} />
+        <div dangerouslySetInnerHTML={{ __html: block.text }} />
         {block.ctaButton && block.ctaButtonText && (
           <ButtonOutline as={GatsbyLink} to={block.ctaButton.path}>
             {block.ctaButtonText}

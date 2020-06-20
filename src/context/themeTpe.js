@@ -40,6 +40,7 @@ const lightTheme = {
   ...baseTheme,
   colors: {
     primary: '#694a86',
+    primaryInverse: '#694a86',
     primaryLighter: '#7c6194',
     secondary: '#8D426C',
     accent: '#BF9000',
@@ -47,6 +48,7 @@ const lightTheme = {
     accentLightest: '#E9CB99',
     text: '#414042',
     textInverse: '#fff',
+    textLight: '#fff',
     heading: '#212121',
     subheading: '#707070',
     link: '#BF9000',
@@ -62,6 +64,7 @@ const darkTheme = {
   ...baseTheme,
   colors: {
     primary: '#694a86',
+    primaryInverse: '#fff',
     primaryLighter: '#7c6194',
     secondary: '#8D426C',
     accent: '#BF9000',
@@ -69,6 +72,7 @@ const darkTheme = {
     accentLightest: '#E9CB99', // #e7bf86
     text: '#fff',
     textInverse: '#414042',
+    textLight: '#fff',
     heading: '#fff',
     subheading: '#e6e6e6',
     link: '#BF9000',

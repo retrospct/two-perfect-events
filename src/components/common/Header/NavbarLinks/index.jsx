@@ -9,7 +9,7 @@ export const NavbarLinks = ({ desktop }) => {
   const { currentTheme, toggleTheme } = useTheme()
   return (
     <Wrapper desktop={desktop}>
-      <NavLink as={Link} to="/demo" activeClassName="selected">
+      <NavLink as={Link} to="/portfolio" activeClassName="selected">
         PORTFOLIO
       </NavLink>
       <NavLink as={Link} to="/about" activeClassName="selected">

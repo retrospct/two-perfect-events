@@ -9,13 +9,15 @@ export const GlobalStyle = createGlobalStyle`
 
     :root {
       --primary-color: ${({ theme }) => theme.colors.primary || '#694a86'};
+      --primaryInverse-color: ${({ theme }) => theme.colors.primaryInverse || '#694a86'};
       --primaryLighter-color: ${({ theme }) => theme.colors.primaryLighter || '#7c6194'};
       --secondary-color: ${({ theme }) => theme.colors.secondary || '#8D426C'};
       --accent-color: ${({ theme }) => theme.colors.accent || '#BF9000'};
       --accentLight-color: ${({ theme }) => theme.colors.accentLight || '#FBB040'};
       --accentLightest-color: ${({ theme }) => theme.colors.accentLightest || '#E9CB99'};
       --text-color: ${({ theme }) => theme.colors.text || '#414042'};
-      --text-inverse-color: ${({ theme }) => theme.colors.textInverse || '#fff'};
+      --textInverse-color: ${({ theme }) => theme.colors.textInverse || '#fff'};
+      --textLight-color: ${({ theme }) => theme.colors.textLight || '#fff'};
       --heading-color: ${({ theme }) => theme.colors.heading || '#212121'};
       --subheading-color: ${({ theme }) => theme.colors.subheading || '#707070'};
       --link-color: ${({ theme }) => theme.colors.link || '#BF9000'};

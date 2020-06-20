@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 // import Img from 'gatsby-image'
 // import { HelmetDatoCms } from 'gatsby-source-datocms'
 import { Layout, Seo, Header } from 'components/common'
-import { HeroImage, ImageText, TextImage, Quote } from 'components/blocks'
+import { HeroImage, ImageText, TextImage, Quote, Featured } from 'components/blocks'
 import { Hero, Contact } from 'components/landing'
 
 const Home = ({ data }) => (
@@ -19,6 +19,7 @@ const Home = ({ data }) => (
         {block.model.apiKey === 'image_text' && <ImageText block={block} />}
         {block.model.apiKey === 'text_image' && <TextImage block={block} />}
         {block.model.apiKey === 'quote' && <Quote block={block} />}
+        {block.model.apiKey === 'featured' && <Featured block={block} />}
       </section>
     ))}
     {/* <Projects /> */}
@@ -75,11 +76,11 @@ export const query = graphql`
           }
           id
           text
-          textNode {
-            childMarkdownRemark {
-              html
-            }
-          }
+          # textNode {
+          #   childMarkdownRemark {
+          #     html
+          #   }
+          # }
           ctaButton {
             text
             path
@@ -102,11 +103,11 @@ export const query = graphql`
           }
           id
           text
-          textNode {
-            childMarkdownRemark {
-              html
-            }
-          }
+          # textNode {
+          #   childMarkdownRemark {
+          #     html
+          #   }
+          # }
           image {
             fluid(maxWidth: 1064, imgixParams: { fm: "jpg", auto: "compress" }) {
               ...GatsbyDatoCmsFluid
@@ -136,6 +137,23 @@ export const query = graphql`
           id
           quote
           author
+        }
+        ... on DatoCmsFeatured {
+          model {
+            apiKey
+          }
+          id
+          heading
+          badges {
+            originalId
+            fixed(width: 180, height: 180, imgixParams: { fm: "png", auto: "compress" }) {
+              ...GatsbyDatoCmsFixed
+            }
+          }
+          moreLink {
+            text
+            path
+          }
         }
       }
     }

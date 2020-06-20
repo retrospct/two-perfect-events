@@ -24,7 +24,7 @@ export const Button = styled.button`
   border-radius: 8px;
   padding: 0.7rem 2rem;
   background-color: var(--primary-color);
-  color: var(--text-inverse-color);
+  color: var(--textLight-color);
   font-weight: 300;
   font-size: 22px;
   text-transform: uppercase;
@@ -50,7 +50,7 @@ export const Button = styled.button`
 
   :hover {
     transform: translate(6px, 6px);
-    color: var(--text-inverse-color);
+    color: var(--textLight-color);
     background-color: var(--primary-color);
     :after {
       transform: translate(-6px, -6px);
@@ -61,10 +61,10 @@ export const Button = styled.button`
 // .btn:after, .btn--secondary:after, .site-footer__item-inner--newsletter form .input-group__btn .newsletter__submit:after, .shopify-payment-button .shopify-payment-button__button--unbranded:after
 // .btn--secondary:not([disabled]):hover,
 export const ButtonOutline = styled(Button)`
-  font-weight: 400;
+  font-weight: 300;
   background-color: transparent;
   border-width: 2px;
-  color: var(--primary-color);
+  color: var(--primaryInverse-color);
   border-color: var(--primary-color);
 
   :after {
@@ -73,7 +73,7 @@ export const ButtonOutline = styled(Button)`
 
   :hover {
     background-color: transparent;
-    color: var(--primary-color);
+    color: var(--primaryInverse-color);
     border-color: var(--primary-color);
     :after {
       transform: translate(-5px, -5px);
@@ -96,7 +96,7 @@ export const ButtonSimple = styled.button`
   -ms-user-select: none;
   user-select: none;
   color: #fff;
-  background: ${({ theme }) => theme.colors.primary || 'slateblue'};
+  background: var(--primary-color);
 
   &:focus {
     outline: none;

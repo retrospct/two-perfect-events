@@ -1,18 +1,18 @@
 import styled from 'styled-components'
-import detailsIllustration from 'assets/illustrations/details.svg'
+// import detailsIllustration from 'assets/illustrations/details.svg'
 
 export const Wrapper = styled.div`
-  background-image: url(${detailsIllustration});
-  background-size: contain;
+  /* background-image: url(${detailsIllustration}); */
+  /* background-size: contain;
   background-position: left top;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 `
 
 export const SkillsWrapper = styled.div`
   padding: 4rem 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   @media (max-width: 960px) {
     flex-direction: column;
@@ -63,7 +63,7 @@ export const Thumbnail = styled.div`
   }
 `
 
-export const MoreLinks = styled.ul`
+export const MoreLink = styled.div`
   margin-top: 1.5rem;
   li a {
     text-transform: uppercase;
