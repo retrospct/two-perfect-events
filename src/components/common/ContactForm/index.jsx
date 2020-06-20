@@ -6,9 +6,9 @@ import React from 'react'
 // import { Error, Center, InputField } from './styles'
 
 export const ContactForm = () => {
-  const handleSubmit = e => {
-    e.preventDefault()
-  }
+  // const handleSubmit = e => {
+  //   e.preventDefault()
+  // }
   return (
     <form
       name="contact"
@@ -16,9 +16,9 @@ export const ContactForm = () => {
       data-netlify-recaptcha="true"
       data-netlify="true"
       netlify-honeypot="bot-field"
-      onSubmit={handleSubmit}
+      action="/"
     >
-      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="bot-field" />
       <p>
         <label>
           Name: <input type="text" name="name" />
@@ -50,7 +50,7 @@ export const ContactForm = () => {
             /> */}
       {/* <ErrorMessage component={Error} name="recaptcha" /> */}
       {/* </p> */}
-      <input type="hidden" name="bot-field" />
+
       <div data-netlify-recaptcha="true" />
       <p>
         <button type="submit">Send</button>
