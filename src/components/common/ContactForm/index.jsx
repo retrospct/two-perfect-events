@@ -48,7 +48,7 @@ export const ContactForm = () => {
       </FormField>
       {/* <ErrorMessage>Error placeholder</ErrorMessage> */}
       <FormField>
-        {process.env.NODE_ENV === 'development' && <ReCAPTCHA sitekey={process.env.GATSBY_RECAPTCHA_KEY} />}
+        <ReCAPTCHA sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
       </FormField>
       <FormField>
         <Button type="submit" id="input-submit">
