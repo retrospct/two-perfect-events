@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
-export const Input = styled.input`
+export const TextField = styled.textarea`
+  /* position: relative; */
   width: 100%;
   box-sizing: border-box;
   border: 2px solid var(--primary-color);

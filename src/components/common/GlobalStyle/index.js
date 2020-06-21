@@ -23,6 +23,7 @@ export const GlobalStyle = createGlobalStyle`
       --link-color: ${({ theme }) => theme.colors.link || '#BF9000'};
       --bg-color: ${({ theme }) => theme.colors.bg || '#fff'};
       --bgDark-color: ${({ theme }) => theme.colors.bgDark || '#e6e6e6'};
+      --error-color: ${({ theme }) => theme.colors.error || '#ff4136'};
     }
 
     article,
@@ -642,8 +643,10 @@ export const GlobalStyle = createGlobalStyle`
       margin: 0;
       padding: 0;
       font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-      color: ${({ theme }) => theme.colors.text || 'hsla(0, 0%, 0%, 0.8)'};
-      background-color: ${({ theme }) => theme.colors.bg || '#fff'};
+      ${'' /* color: ${({ theme }) => theme.colors.text || 'hsla(0, 0%, 0%, 0.8)'}; */}
+      ${'' /* background-color: ${({ theme }) => theme.colors.bg || '#fff'}; */}
+      color: var(--text-color);
+      background-color: var(--bg-color);
       font-weight: normal;
       word-wrap: break-word;
       font-kerning: normal;
@@ -651,6 +654,7 @@ export const GlobalStyle = createGlobalStyle`
       -ms-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
       -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
       font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+      transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     a {

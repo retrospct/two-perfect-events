@@ -5,7 +5,7 @@ import { Container, Button } from 'components/common'
 import { Wrapper, SkillsWrapper, Details, Thumbnail } from './styles'
 
 export const TextImage = ({ block }) => (
-  <Wrapper id="intro">
+  <Wrapper>
     <SkillsWrapper as={Container}>
       <Details>
         <div dangerouslySetInnerHTML={{ __html: block.text }} />

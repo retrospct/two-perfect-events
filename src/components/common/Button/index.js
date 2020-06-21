@@ -58,6 +58,30 @@ export const Button = styled.button`
   }
 `
 
+export const ButtonAccent = styled(Button)`
+  background-color: var(--accent-color);
+  color: var(--textLight-color);
+  :after {
+    border-color: var(--accent-color);
+  }
+  :hover {
+    color: var(--textLight-color);
+    background-color: var(--accent-color);
+  }
+`
+
+export const ButtonContrast = styled(Button)`
+  background-color: var(--textLight-color);
+  color: var(--accent-color);
+  :after {
+    border-color: var(--textLight-color);
+  }
+  :hover {
+    color: var(--accent-color);
+    background-color: var(--textLight-color);
+  }
+`
+
 // .btn:after, .btn--secondary:after, .site-footer__item-inner--newsletter form .input-group__btn .newsletter__submit:after, .shopify-payment-button .shopify-payment-button__button--unbranded:after
 // .btn--secondary:not([disabled]):hover,
 export const ButtonOutline = styled(Button)`

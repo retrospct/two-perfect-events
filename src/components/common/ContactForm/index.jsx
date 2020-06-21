@@ -3,8 +3,8 @@ import ReCAPTCHA from 'react-google-recaptcha'
 // import { Formik, Form, Field, FastField, ErrorMessage } from 'formik'
 // import Recaptcha from 'react-google-recaptcha'
 // import * as Yup from 'yup'
-// import { Button, Input } from 'components/common'
-// import { Error, Center, InputField } from './styles'
+import { Button, Input, TextField } from 'components/common'
+import { FormField, Label, ErrorMessage } from './styles'
 
 export const ContactForm = () => {
   // const handleSubmit = e => {
@@ -17,46 +17,44 @@ export const ContactForm = () => {
       data-netlify="true"
       data-netlify-recaptcha="true"
       netlify-honeypot="bot-field"
-      action="/"
+      action="/success"
     >
       <input type="hidden" name="bot-field" />
       <input type="hidden" name="form-name" value="contact" />
-      <p>
-        <label>Name:</label>
-        <input type="text" name="name" required />
-      </p>
-      <p>
-        <label>Email:</label>
-        <input type="email" name="email" required />
-      </p>
-      {/* <p>
-    <label>Your Role: <select name="role[]" multiple>
+      <FormField>
+        <Label htmlFor="contact-name">
+          <span>Name</span>
+          <Input type="text" name="name" id="contact-name" required />
+        </Label>
+      </FormField>
+      <FormField>
+        <Label htmlFor="contact-email">
+          <span>Email</span>
+          <Input type="email" name="email" id="contact-email" required />
+        </Label>
+      </FormField>
+      {/* <FormField>
+    <Label>Your Role: <select name="role[]" multiple>
       <option value="leader">Leader</option>
       <option value="follower">Follower</option>
-    </select></label>
-  </p> */}
-      <p>Date of event if known (placeholder)</p>
-      <p>
-        <label>Message:</label>
-        <textarea name="message" id="input-message" rows="8" />
-      </p>
-      {/* <p> */}
-      {/* <input
-              component={Recaptcha}
-              sitekey={process.env.GATSBY_PORTFOLIO_RECAPTCHA_KEY}
-              name="recaptcha"
-              onChange={value => setFieldValue('recaptcha', value)}
-            /> */}
-      {/* <ErrorMessage component={Error} name="recaptcha" /> */}
-      {/* </p> */}
-
-      {/* <div netlify-recaptcha></div> */}
-      <ReCAPTCHA sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
-      <p>
-        <button type="submit" id="input-submit">
+    </select></Label>
+  </FormField> */}
+      {/* <p>Date of event if known (placeholder)</p> */}
+      <FormField>
+        <Label htmlFor="contact-message">
+          <span>Message</span>
+          <TextField name="message" id="contact-message" rows="8" />
+        </Label>
+      </FormField>
+      {/* <ErrorMessage>Error placeholder</ErrorMessage> */}
+      <FormField>
+        {process.env.NODE_ENV === 'development' && <ReCAPTCHA sitekey={process.env.GATSBY_RECAPTCHA_KEY} />}
+      </FormField>
+      <FormField>
+        <Button type="submit" id="input-submit">
           Send
-        </button>
-      </p>
+        </Button>
+      </FormField>
     </form>
   )
 }

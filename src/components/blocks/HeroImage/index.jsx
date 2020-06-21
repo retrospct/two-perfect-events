@@ -1,6 +1,7 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
+import { ButtonAccent } from 'components/common'
 
 export const HeroImage = ({ block }) => {
   return (
@@ -10,6 +11,7 @@ export const HeroImage = ({ block }) => {
           <div>
             {block.heading && <h3>{block.heading}</h3>}
             {block.text && <p>{block.text}</p>}
+            <ButtonAccent>Hello</ButtonAccent>
           </div>
         </Overlay>
       )}

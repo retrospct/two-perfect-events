@@ -1,13 +1,10 @@
 import React from 'react'
-// import { Container } from '../../common'
-// import contact from '../../../assets/illustrations/contact.svg'
 import { Container, ContactForm } from 'components/common'
 import contact from 'assets/illustrations/contact.svg'
 import { Wrapper, Details, Thumbnail } from './styles'
-// import { ContactForm } from './ContactForm'
 
 export const Contact = () => (
-  <Wrapper as={Container} id="contact">
+  <Wrapper as={Container} id="contact-us">
     <Details>
       <ContactForm />
     </Details>
