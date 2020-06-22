@@ -18,7 +18,7 @@ export const Button = styled.button`
   width: auto;
   text-decoration: none;
   text-align: center;
-  vertical-align: middle;
+  /* vertical-align: middle; */
   cursor: pointer;
   border: 1px solid transparent;
   border-radius: 8px;
@@ -55,6 +55,21 @@ export const Button = styled.button`
     :after {
       transform: translate(-6px, -6px);
     }
+  }
+`
+
+export const ButtonNavCTA = styled(Button)`
+  background-color: var(--accent-color);
+  color: var(--textLight-color);
+  padding: 0.3rem 1rem;
+  margin: 0;
+  font-size: 20px;
+  :after {
+    border-color: var(--accent-color);
+  }
+  :hover {
+    color: var(--textLight-color);
+    background-color: var(--accent-color);
   }
 `
 
