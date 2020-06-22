@@ -7,5 +7,6 @@
 export * from './Featured'
 export * from './HeroImage'
 export * from './ImageText'
+export * from './Instagram'
 export * from './Quote'
 export * from './TextImage'
