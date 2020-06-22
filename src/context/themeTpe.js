@@ -1,26 +1,12 @@
 const baseTheme = {
   screens: {
-    // max-widths in pixels
     sm: 640,
     md: 768,
     lg: 1024,
     xl: 1280,
     xxl: 1400,
   },
-  // colors: {
-  //   primary: '#694a86',
-  //   primaryLighter: '#7c6194',
-  //   secondary: '#8D426C',
-  //   accent: '#BF9000',
-  //   accentLight: '#FBB040',
-  //   accentLightest: '#E9CB99',
-  //   text: '#414042',
-  //   gray: '#707070',
-  //   light: '#fff',
-  //   // blue: '#0099ff',
-  //   // darkblue: '#00072e',
-  //   // orange: '#FF9429',
-  // },
+
   opacity: {
     0: 0,
     25: 0.25,
@@ -89,6 +75,20 @@ const darkTheme = {
 
 export { lightTheme, darkTheme }
 
+// colors: {
+//   primary: '#694a86',
+//   primaryLighter: '#7c6194',
+//   secondary: '#8D426C',
+//   accent: '#BF9000',
+//   accentLight: '#FBB040',
+//   accentLightest: '#E9CB99',
+//   text: '#414042',
+//   gray: '#707070',
+//   light: '#fff',
+//   // blue: '#0099ff',
+//   // darkblue: '#00072e',
+//   // orange: '#FF9429',
+// },
 // color: {
 //   primary: "#071435",
 //   secondary: "#098c8c",
