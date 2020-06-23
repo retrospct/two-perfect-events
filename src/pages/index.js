@@ -22,7 +22,7 @@ const Home = ({ data }) => {
           {block.model.apiKey === 'instagram' && <Instagram block={block} />}
         </section>
       ))}
-      <Contact />
+      <Contact heading={data.home.contactHeading} image={data.home.contactImage} />
     </Layout>
   )
 }
@@ -37,6 +37,16 @@ export const query = graphql`
       }
       heading
       subtitle
+      contactHeading
+      contactImage {
+        fluid(
+          maxWidth: 564
+          maxHeight: 1471
+          imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "564", h: "1471" }
+        ) {
+          ...GatsbyDatoCmsFluid
+        }
+      }
       copyright
       homeBlock {
         ... on DatoCmsImageText {

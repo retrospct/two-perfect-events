@@ -7,8 +7,17 @@ import 'react-toggle/style.css'
 
 export const Toggler = styled(Toggle)`
   position: absolute;
-  top: 2.75rem;
-  right: 2rem;
+  top: 3rem;
+  right: 0.5rem;
+
+  @media (max-width: ${({ theme }) => theme.mq.xl}px) {
+    top: 2.1rem;
+    right: 0.1rem;
+  }
+  /* @media (max-width: ${({ theme }) => theme.mq.xl}px) {
+    top: 3rem;
+  } */
+
   .react-toggle-track {
     background-color: #ddd;
   }

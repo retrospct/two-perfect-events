@@ -3,7 +3,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 // import { Formik, Form, Field, FastField, ErrorMessage } from 'formik'
 // import Recaptcha from 'react-google-recaptcha'
 // import * as Yup from 'yup'
-import { Button, Input, TextField } from 'components/common'
+import { ButtonContrast, InputContrast, TextFieldContrast } from 'components/common'
 import { FormField, Label, ErrorMessage } from './styles'
 
 export const ContactForm = () => {
@@ -24,13 +24,13 @@ export const ContactForm = () => {
       <FormField>
         <Label htmlFor="contact-name">
           <span>Name</span>
-          <Input type="text" name="name" id="contact-name" required />
+          <InputContrast type="text" name="name" id="contact-name" required />
         </Label>
       </FormField>
       <FormField>
         <Label htmlFor="contact-email">
           <span>Email</span>
-          <Input type="email" name="email" id="contact-email" required />
+          <InputContrast type="email" name="email" id="contact-email" required />
         </Label>
       </FormField>
       {/* <FormField>
@@ -43,7 +43,7 @@ export const ContactForm = () => {
       <FormField>
         <Label htmlFor="contact-message">
           <span>Message</span>
-          <TextField name="message" id="contact-message" rows="8" />
+          <TextFieldContrast name="message" id="contact-message" rows="8" />
         </Label>
       </FormField>
       {/* <ErrorMessage>Error placeholder</ErrorMessage> */}
@@ -51,14 +51,34 @@ export const ContactForm = () => {
         <ReCAPTCHA sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
       </FormField>
       <FormField>
-        <Button type="submit" id="input-submit">
-          Send
-        </Button>
+        <ButtonContrast type="submit" id="input-submit">
+          Submit
+        </ButtonContrast>
       </FormField>
     </form>
   )
 }
 
+// <div className="field half first">
+//     <label htmlFor="name">Name</label>
+//     <input type="text" name="name" id="name" />
+//   </div>
+//   <div className="field half">
+//     <label htmlFor="email">Email</label>
+//     <input type="text" name="email" id="email" />
+//   </div>
+//   <div className="field">
+//     <label htmlFor="message">Message</label>
+//     <textarea name="message" id="message" rows="6" />
+//   </div>
+//   <ul className="actions">
+//     <li>
+//       <input type="submit" value="Send Message" className="special" />
+//     </li>
+//     <li>
+//       <input type="reset" value="Clear" />
+//     </li>
+//   </ul>
 // <form
 //   name="contact"
 //   method="POST"

@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media (max-width: 960px) {
+  @media (max-width: ${({ theme }) => theme.mq.lg}px) {
     flex-direction: column;
   }
 `
@@ -41,7 +41,7 @@ export const InstaGallery = styled.div`
   margin: 1rem 0;
   /* height: 100%; */
   display: grid;
-  gap: 20px;
+  grid-gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   /* grid-template-columns: 1fr 1fr 1fr; */
   /* grid-template-rows: 1fr; */
@@ -63,7 +63,7 @@ export const InstaGallery = styled.div`
   }
   @media (max-width: ${({ theme }) => `${theme.mq.md}px`}) {
     max-width: 96%;
-    gap: 10px;
+    grid-gap: 10px;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     /* & .gatsby-image-wrapper {
       max-width: 45%;

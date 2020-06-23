@@ -5,9 +5,9 @@ export const FormField = styled.div`
 `
 
 export const Label = styled.label`
-  font-size: 1.2rem;
+  font-size: 1.66rem;
   line-height: 1.5;
-  color: var(--text-color);
+  color: inherit;
 `
 
 export const ErrorMessage = styled.span`

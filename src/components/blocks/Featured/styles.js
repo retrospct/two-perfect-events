@@ -27,9 +27,10 @@ export const Content = styled.div`
 export const Badges = styled.div`
   width: 100%;
   display: grid;
-  gap: 20px;
+  grid-gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  justify-items: center;
+  justify-content: center;
+  /* justify-items: center; */
   margin: 1rem 0;
 `
 

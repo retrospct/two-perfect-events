@@ -9,11 +9,21 @@ export const Wrapper = styled.div`
 			}
 
 			a {
-				margin-right: 2rem;
+				margin-right: 1.25rem;
 
 				&:nth-last-child(2) {
 					margin-right: unset;
 				}
+			}
+
+      @media (max-width: ${theme.mq.xxl}px) {
+				a {
+          margin-right: 0.75rem;
+
+          &:nth-last-child(2) {
+					  margin-right: unset;
+				  }
+        }
 			}
 		`
       : `
@@ -27,11 +37,11 @@ export const Wrapper = styled.div`
 					margin-bottom: unset;
 				}
 				:hover:after {
-      right: 80%;
-  }
-  &.selected:after {
-      right: 80%;
-  }
+          right: 80%;
+        }
+        &.selected:after {
+          right: 80%;
+        }
 			}
 	`}
 `

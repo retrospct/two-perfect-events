@@ -4,9 +4,8 @@ const baseTheme = {
     md: 768,
     lg: 1024,
     xl: 1280,
-    xxl: 1400,
+    xxl: 1480,
   },
-
   opacity: {
     0: 0,
     25: 0.25,
@@ -45,6 +44,7 @@ const lightTheme = {
     // offwhite: '#e6e6e6',
     // color: '#000',
   },
+  maxW: `${baseTheme.screens.xl}px`,
 }
 
 const darkTheme = {
@@ -71,6 +71,7 @@ const darkTheme = {
     // offwhite: '#e6e6e6',
     // color: '#fff',
   },
+  maxW: `${baseTheme.screens.xl}px`,
 }
 
 export { lightTheme, darkTheme }

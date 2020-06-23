@@ -20,11 +20,11 @@ export const Wrapper = styled.div`
 			top: 1.4rem;
 		
 			@media (max-width: ${theme.mq.lg}px) {
-				right: 35%;
+				right: 33%;
 			}
 		
 			@media (max-width: ${theme.mq.sm}px) {
-				right: 66%;
+				right: 64%;
 			}
 	`}
 `
