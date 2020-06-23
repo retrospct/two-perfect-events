@@ -1,16 +1,29 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import { Layout, Seo, Header } from 'components/common'
 import { HeroImage, ImageText, TextImage, Quote, Featured, Instagram } from 'components/blocks'
 import { Hero, Contact } from 'components/landing'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
+import { useInstaLatest } from 'hooks/useInstaLatest'
 
 const Home = ({ data }) => {
   const siteSeo = useSiteDatoMeta()
+  const instaLatest = useInstaLatest()
   return (
     <Layout>
       <Header />
       <Seo siteSeo={siteSeo} pageSeo={data.home.seoMetaTags} />
+      {/* <div>
+        {instaLatest &&
+          instaLatest.map(insta => (
+            <Img
+              key={insta.node.id}
+              fixed={insta.node.localFile.childImageSharp.fixed}
+              alt={insta.node.caption.substring(0, 100)}
+            />
+          ))}
+      </div> */}
       <Hero heading={data.home.heading} subheading={data.home.subtitle} />
       {data.home.homeBlock.map(block => (
         <section key={block.id}>
@@ -19,7 +32,7 @@ const Home = ({ data }) => {
           {block.model.apiKey === 'text_image' && <TextImage block={block} />}
           {block.model.apiKey === 'quote' && <Quote block={block} />}
           {block.model.apiKey === 'featured' && <Featured block={block} />}
-          {block.model.apiKey === 'instagram' && <Instagram block={block} />}
+          {block.model.apiKey === 'instagram' && <Instagram block={block} latest={instaLatest} />}
         </section>
       ))}
       <Contact heading={data.home.contactHeading} image={data.home.contactImage} />
@@ -77,11 +90,6 @@ export const query = graphql`
           }
           id
           text
-          # textNode {
-          #   childMarkdownRemark {
-          #     html
-          #   }
-          # }
           image {
             fluid(maxWidth: 1064, imgixParams: { fm: "jpg", auto: "compress" }) {
               ...GatsbyDatoCmsFluid
@@ -137,16 +145,16 @@ export const query = graphql`
             username
             url
           }
-          instaGallery {
-            originalId
-            fluid(
-              maxWidth: 320
-              maxHeight: 320
-              imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "320", h: "320" }
-            ) {
-              ...GatsbyDatoCmsFluid
-            }
-          }
+          # instaGallery {
+          #   originalId
+          #   fluid(
+          #     maxWidth: 320
+          #     maxHeight: 320
+          #     imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "320", h: "320" }
+          #   ) {
+          #     ...GatsbyDatoCmsFluid
+          #   }
+          # }
         }
       }
     }
