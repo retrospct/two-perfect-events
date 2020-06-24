@@ -1,5 +1,5 @@
 import React from 'react'
-// import AnchorLink from 'react-anchor-link-smooth-scroll' // TODO: Remove this package if not being used
+import AnchorLink from 'react-anchor-link-smooth-scroll' // TODO: Remove this package if not being used
 import { Link, LinkBase, ButtonNavCTA } from 'components/common'
 import { useTheme } from 'context/themeContext'
 import { Wrapper, NavLink, NavLinkFirst } from './styles'
@@ -31,16 +31,16 @@ export const NavbarLinks = ({ desktop }) => {
       <NavLink as={Link} to="/blog" activeClassName="selected">
         BLOG
       </NavLink>
-      <ButtonNavCTA as={LinkBase} to="/contact" activeClassName="selected">
+      <ButtonNavCTA as={AnchorLink} href="#contact">
         CONTACT
       </ButtonNavCTA>
+      {/* <ButtonNavCTA as={LinkBase} to="/contact" activeClassName="selected">
+        CONTACT
+      </ButtonNavCTA> */}
       {/* <CTANavLink as={Link} to="/contact" activeClassName="selected">
         CONTACT
       </CTANavLink> */}
       <ToggleDarkMode currentTheme={currentTheme} toggleTheme={toggleTheme} />
-      {/* <AnchorLink href="#about">About</AnchorLink>
-      <AnchorLink href="#projects">Projects</AnchorLink>
-      <AnchorLink href="#contact">Contact</AnchorLink> */}
     </Wrapper>
   )
 }

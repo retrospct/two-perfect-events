@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-gap: 30px;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
     grid-template-columns: 1fr;

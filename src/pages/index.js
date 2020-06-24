@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import { Layout, Seo, Header } from 'components/common'
 import { HeroImage, ImageText, TextImage, Quote, Featured, Instagram } from 'components/blocks'
 import { Hero, Contact } from 'components/landing'
@@ -14,16 +13,6 @@ const Home = ({ data }) => {
     <Layout>
       <Header />
       <Seo siteSeo={siteSeo} pageSeo={data.home.seoMetaTags} />
-      {/* <div>
-        {instaLatest &&
-          instaLatest.map(insta => (
-            <Img
-              key={insta.node.id}
-              fixed={insta.node.localFile.childImageSharp.fixed}
-              alt={insta.node.caption.substring(0, 100)}
-            />
-          ))}
-      </div> */}
       <Hero heading={data.home.heading} subheading={data.home.subtitle} />
       {data.home.homeBlock.map(block => (
         <section key={block.id}>
