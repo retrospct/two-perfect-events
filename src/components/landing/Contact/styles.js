@@ -27,7 +27,7 @@ export const Wrapper = styled.div`
 
 export const ContactBlock = styled.div`
   position: relative;
-  padding: 6rem 0 2rem 1rem;
+  padding: 6rem 1rem 2rem 1rem;
   font-size: 1.5rem;
   font-weight: 300;
   color: var(--textLight-color);
