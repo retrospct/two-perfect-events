@@ -3,8 +3,8 @@ import ReCAPTCHA from 'react-google-recaptcha'
 // import { Formik, Form, Field, FastField, ErrorMessage } from 'formik'
 // import Recaptcha from 'react-google-recaptcha'
 // import * as Yup from 'yup'
-import { ButtonContrast, InputContrast, TextFieldContrast } from 'components/common'
-import { FormField, Label, ErrorMessage } from './styles'
+import { Button, InputContrast, TextFieldContrast } from 'components/common'
+import { FormField, FormFieldSplit, Label, ErrorMessage } from './styles'
 
 export const ContactForm = () => {
   // const handleSubmit = e => {
@@ -21,18 +21,26 @@ export const ContactForm = () => {
     >
       <input type="hidden" name="bot-field" />
       <input type="hidden" name="form-name" value="contact" />
-      <FormField>
+      <FormFieldSplit>
         <Label htmlFor="contact-name">
-          <span>Name</span>
+          <span>Name*</span>
           <InputContrast type="text" name="name" id="contact-name" required />
         </Label>
-      </FormField>
-      <FormField>
+        <Label htmlFor="contact-phone">
+          <span>Phone*</span>
+          <InputContrast type="tel" name="phone" id="contact-phone" required />
+        </Label>
+      </FormFieldSplit>
+      <FormFieldSplit>
         <Label htmlFor="contact-email">
-          <span>Email</span>
+          <span>Email*</span>
           <InputContrast type="email" name="email" id="contact-email" required />
         </Label>
-      </FormField>
+        <Label htmlFor="contact-dateloc">
+          <span>Date & Location</span>
+          <InputContrast type="text" name="dateloc" id="contact-dateloc" required />
+        </Label>
+      </FormFieldSplit>
       {/* <FormField>
     <Label>Your Role: <select name="role[]" multiple>
       <option value="leader">Leader</option>
@@ -43,7 +51,7 @@ export const ContactForm = () => {
       <FormField>
         <Label htmlFor="contact-message">
           <span>Message</span>
-          <TextFieldContrast name="message" id="contact-message" rows="8" />
+          <TextFieldContrast name="message" id="contact-message" rows="5" />
         </Label>
       </FormField>
       {/* <ErrorMessage>Error placeholder</ErrorMessage> */}
@@ -51,9 +59,9 @@ export const ContactForm = () => {
         <ReCAPTCHA sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
       </FormField>
       <FormField>
-        <ButtonContrast type="submit" id="input-submit">
+        <Button type="submit" id="input-submit">
           Submit
-        </ButtonContrast>
+        </Button>
       </FormField>
     </form>
   )

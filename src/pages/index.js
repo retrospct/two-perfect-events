@@ -52,12 +52,12 @@ export const query = graphql`
       subtitle
       contactHeading
       contactImage {
-        fluid(
-          maxWidth: 564
-          maxHeight: 1471
-          imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "564", h: "1471" }
+        fixed(
+          width: 500
+          height: 1471
+          imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "500", h: "1471" }
         ) {
-          ...GatsbyDatoCmsFluid
+          ...GatsbyDatoCmsFixed
         }
       }
       copyright

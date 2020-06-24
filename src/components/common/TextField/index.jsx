@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const TextField = styled.textarea`
-  /* position: relative; */
   width: 100%;
   box-sizing: border-box;
   border: 2px solid var(--primary-color);
@@ -9,7 +8,6 @@ export const TextField = styled.textarea`
   border-radius: 7px;
   margin-bottom: 0.5rem;
   transition: 0.3s;
-
   ${({ error }) =>
     error &&
     `
@@ -22,17 +20,13 @@ export const TextField = styled.textarea`
 `
 
 export const TextFieldContrast = styled.textarea`
-  /* position: relative; */
   width: 100%;
   box-sizing: border-box;
   border: 2px solid var(--textLight-color);
-  padding: 0.8rem 1rem;
-  /* border-radius: 7px; */
-  /* margin-top: 0.5rem; */
+  padding: 0.5rem 1rem;
   margin-bottom: 0.5rem;
   transition: 0.3s;
   background: var(--accent-color);
-
   ${({ error }) =>
     error &&
     `

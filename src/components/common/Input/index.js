@@ -25,10 +25,10 @@ export const InputContrast = styled.input`
   box-sizing: border-box;
   border: none;
   border-bottom: 2px solid var(--textLight-color);
-  padding: 0.6rem 1rem;
+  padding: 0.5rem 0.1rem;
   /* border-radius: 7px; */
   /* margin-top: 0.5rem; */
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   transition: 0.3s;
   background: var(--accent-color);
 
@@ -39,6 +39,6 @@ export const InputContrast = styled.input`
 	`}
 
   &::placeholder {
-    color: #a7a7a7;
+    color: #c8c8c8;
   }
 `
