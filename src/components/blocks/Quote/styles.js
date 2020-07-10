@@ -16,6 +16,7 @@ export const Wrapper = styled.div`
     line-height: 1.87;
     text-align: center;
     word-wrap: break-word;
+    margin: 40px 0;
   }
   small {
   }

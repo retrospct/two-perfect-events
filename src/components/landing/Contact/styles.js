@@ -8,26 +8,26 @@ export const Fluid = styled.div`
   grid-template-columns: 1fr;
   justify-content: center;
   align-items: center;
-  @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
+  /* @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
     grid-template-columns: 1fr;
-  }
+  } */
 `
 
 export const Wrapper = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 30px;
   /* justify-content: center; */
   align-items: center;
-  @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
+  /* @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
     grid-template-columns: 1fr;
-  }
+  } */
 `
 
 export const ContactBlock = styled.div`
   position: relative;
-  padding: 6rem 1rem 2rem 1rem;
+  padding: 6rem 6rem 1rem;
   font-size: 1.5rem;
   font-weight: 300;
   color: var(--textLight-color);
@@ -44,17 +44,12 @@ export const ContactBlock = styled.div`
     line-height: 1.3;
   } */
 `
-// /* content: ' '; */
-// /* background: url(${arrowSquiggly}); */
-// /* background-repeat: no-repeat; */
-// /* z-index: 1; */
 export const Spotlight = styled.div`
   height: 222px;
   width: 111px;
   position: absolute;
   top: 0;
   right: 1.5rem;
-  margin-top: -4rem;
   color: var(--textLight-color);
   & img {
     height: 80%;
@@ -69,7 +64,6 @@ export const Spotlight = styled.div`
 
 export const Header = styled.div`
   text-align: left;
-  /* overflow: auto; */
   h3 {
     color: var(--textLight-color);
     margin-bottom: 5rem;

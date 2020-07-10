@@ -56,12 +56,12 @@ export const ContactForm = () => {
       </FormField>
       {/* <ErrorMessage>Error placeholder</ErrorMessage> */}
       <FormField>
-        <ReCAPTCHA sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
-      </FormField>
-      <FormField>
         <Button type="submit" id="input-submit">
           Submit
         </Button>
+      </FormField>
+      <FormField>
+        <ReCAPTCHA sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
       </FormField>
     </form>
   )

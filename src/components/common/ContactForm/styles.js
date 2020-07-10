@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
 export const FormField = styled.div`
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 `
 export const FormFieldSplit = styled.div`
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 3rem;

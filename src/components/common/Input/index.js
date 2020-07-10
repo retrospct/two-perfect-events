@@ -6,7 +6,7 @@ export const Input = styled.input`
   border: 2px solid var(--primary-color);
   padding: 0.8rem 1rem;
   border-radius: 7px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   transition: 0.3s;
 
   ${({ error }) =>
@@ -28,7 +28,7 @@ export const InputContrast = styled.input`
   padding: 0.5rem 0.1rem;
   /* border-radius: 7px; */
   /* margin-top: 0.5rem; */
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   transition: 0.3s;
   background: var(--accent-color);
 

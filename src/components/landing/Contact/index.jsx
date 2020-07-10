@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
 import { Container, ContactForm } from 'components/common'
 import arrowSquiggly from 'assets/illustrations/arrowSquiggly.svg'
 import { Fluid, Wrapper, ContactBlock, Spotlight, Header, ImgBlock } from './styles'
@@ -14,9 +14,9 @@ export const Contact = ({ heading, image }) => (
         <Header>{heading && <h3>{heading}</h3>}</Header>
         <ContactForm heading={heading} />
       </ContactBlock>
-      <ImgBlock>
+      {/* <ImgBlock>
         <Img fixed={image.fixed} alt={image.alt} />
-      </ImgBlock>
+      </ImgBlock> */}
     </Wrapper>
   </Fluid>
 )
