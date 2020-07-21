@@ -6,6 +6,8 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "Lato", "Lucida Grande", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+    max-width: 100vw;
 
     :root {
       --primary-color: ${({ theme }) => theme.colors.primary || '#694a86'};
@@ -643,6 +645,7 @@ export const GlobalStyle = createGlobalStyle`
       margin: 0;
       padding: 0;
       overflow-x: hidden;
+      max-width: 100vw;
       font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
       ${'' /* color: ${({ theme }) => theme.colors.text || 'hsla(0, 0%, 0%, 0.8)'}; */}
       ${'' /* background-color: ${({ theme }) => theme.colors.bg || '#fff'}; */}
