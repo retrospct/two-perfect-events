@@ -29,7 +29,7 @@ export const Flex = styled.div`
 
 export const Links = styled.div`
   width: 100%;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
