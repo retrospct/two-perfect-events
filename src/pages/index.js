@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Layout, Seo, Header, Footer } from 'components/common'
 import { HeroImage, ImageText, TextImage, Quote, Featured, Instagram } from 'components/blocks'
-import { Hero, Contact } from 'components/landing'
+import { Hero, Contact, PhotoCredits } from 'components/landing'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 import { useInstaLatest } from 'hooks/useInstaLatest'
 
@@ -25,6 +25,7 @@ const Home = ({ data }) => {
         </section>
       ))}
       <Contact heading={data.home.contactHeading} image={data.home.contactImage} />
+      <PhotoCredits heading="PHOTO CREDITS" />
       <Footer links={data.footer.links} serving={data.footer.serving} copyright={data.footer.copyright} />
     </Layout>
   )
