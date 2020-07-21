@@ -1,31 +1,23 @@
 import React from 'react'
-import { Container } from 'components/common'
-import { Wrapper, Flex, Links, Details } from './styles'
-import social from './social.json'
+// import Img from 'gatsby-image'
+import { Container, TPELogoFooter, LinkExternalBase } from 'components/common'
+import { Wrapper, Flex, Links, Details, Company } from './styles'
+// import social from './social.json'
 
-export const Footer = () => (
+export const Footer = ({ links, serving, copyright }) => (
   <Wrapper>
     <Flex as={Container}>
-      <Details>
-        <h2>Two Perfect Events</h2>
-        <span>
-          © All rights are reserved | {new Date().getFullYear()} | {/* Made with{' '} */}
-          {/* <span aria-label="love" role="img">
-            💖
-          </span>{' '}
-          by{' '} */}{' '}
-          <a href="https://twoperfectevents.com" rel="noopener noreferrer" target="_blank">
-            Two Perfect Events
-          </a>
-        </span>
-      </Details>
       <Links>
-        {social.map(({ id, name, link, icon }) => (
-          <a key={id} href={link} target="_blank" rel="noopener noreferrer" aria-label={`follow me on ${name}`}>
-            <img width="24" src={icon} alt={name} />
-          </a>
-        ))}
+        {links.map((link) => <LinkExternalBase key={link.id} href={link.linkUrl} target="_blank" rel="noopener noreferrer" aria-label={`follow me on ${link.text}`}>
+          <div><img width="36" height="36" src={link.icon.url} alt={link?.icon?.alt || 'Two Perfect Events Contact Icons'} /> <span>{link.title}</span></div>
+          <p>{link.linkText}</p>
+        </LinkExternalBase>)}
       </Links>
+      <Details>{serving}</Details>
+      <Company>
+        <span>© {new Date().getFullYear()} {copyright}</span>
+        <TPELogoFooter />
+      </Company>
     </Flex>
   </Wrapper>
 )

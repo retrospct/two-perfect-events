@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Layout, Seo, Header } from 'components/common'
+import { Layout, Seo, Header, Footer } from 'components/common'
 import { HeroImage, ImageText, TextImage, Quote, Featured, Instagram } from 'components/blocks'
 import { Hero, Contact } from 'components/landing'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
@@ -25,6 +25,7 @@ const Home = ({ data }) => {
         </section>
       ))}
       <Contact heading={data.home.contactHeading} image={data.home.contactImage} />
+      <Footer links={data.footer.links} serving={data.footer.serving} copyright={data.footer.copyright} />
     </Layout>
   )
 }
@@ -146,6 +147,29 @@ export const query = graphql`
           # }
         }
       }
+    }
+    footer: datoCmsFooter {
+      links {
+        id
+        icon {
+          originalId
+          alt
+          url
+          # fixed(width: 36, height: 36, imgixParams: { fm: "png", auto: "compress" }) {
+          #   ...GatsbyDatoCmsFixed
+          # }
+        }
+        title
+        linkText
+        linkUrl
+      }
+      serving
+      copyright
+      # footerLogo {
+      #   fixed(width: 180, height: 180, imgixParams: { fm: "svg", auto: "compress" }) {
+      #         ...GatsbyDatoCmsFixed
+      #       }
+      # }
     }
   }
 `

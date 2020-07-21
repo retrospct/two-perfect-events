@@ -31,7 +31,6 @@ export const Badges = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   justify-content: center;
   justify-items: center;
-  /* justify-items: center; */
   margin: 1rem 0;
 `
 

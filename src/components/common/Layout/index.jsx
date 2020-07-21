@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Footer } from 'components/common'
+// import { Footer } from 'components/common'
 
 export const Layout = ({ children }) => (
   <>
     {children}
-    <Footer />
+    {/* <Footer /> */}
   </>
 )
 
