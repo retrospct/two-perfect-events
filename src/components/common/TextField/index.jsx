@@ -5,7 +5,8 @@ export const TextField = styled.textarea`
   box-sizing: border-box;
   border: 2px solid var(--primary-color);
   padding: 0.8rem 1rem;
-  border-radius: 7px;
+  border-radius: 0;
+  /* border-radius: 7px; */
   margin-bottom: 0.5rem;
   transition: 0.3s;
   ${({ error }) =>
@@ -25,6 +26,7 @@ export const TextFieldContrast = styled.textarea`
   border: 2px solid var(--textLight-color);
   padding: 0.5rem 1rem;
   margin-bottom: 0.5rem;
+  border-radius: 0;
   transition: 0.3s;
   background: var(--accent-color);
   ${({ error }) =>

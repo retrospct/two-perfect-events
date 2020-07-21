@@ -642,6 +642,7 @@ export const GlobalStyle = createGlobalStyle`
     body {
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
       font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
       ${'' /* color: ${({ theme }) => theme.colors.text || 'hsla(0, 0%, 0%, 0.8)'}; */}
       ${'' /* background-color: ${({ theme }) => theme.colors.bg || '#fff'}; */}

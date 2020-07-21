@@ -5,7 +5,8 @@ export const Input = styled.input`
   box-sizing: border-box;
   border: 2px solid var(--primary-color);
   padding: 0.8rem 1rem;
-  border-radius: 7px;
+  border-radius: 0;
+  /* border-radius: 7px; */
   margin-bottom: 0.3rem;
   transition: 0.3s;
 
@@ -26,6 +27,7 @@ export const InputContrast = styled.input`
   border: none;
   border-bottom: 2px solid var(--textLight-color);
   padding: 0.5rem 0.1rem;
+  border-radius: 0;
   /* border-radius: 7px; */
   /* margin-top: 0.5rem; */
   margin-bottom: 0.3rem;
