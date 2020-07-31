@@ -659,6 +659,8 @@ export const GlobalStyle = createGlobalStyle`
       -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
       font-feature-settings: 'kern', 'liga', 'clig', 'calt';
       transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      ${'' /* https://css-tricks.com/simplified-fluid-typography/ */}
+      ${'' /* font-size: clamp(100%, 1rem + 2vw, 24px); */}
     }
 
     a {

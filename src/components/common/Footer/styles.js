@@ -55,7 +55,7 @@ export const Links = styled.div`
   }
 `
 
-export const Details = styled.div`
+export const Serving = styled.div`
   margin-bottom: 3rem;
   font-size: 1.25rem;
   letter-spacing: 0.1rem;
@@ -76,6 +76,12 @@ export const Company = styled.div`
     flex-direction: column;
     text-align: center;
     & span {
+      order: 2;
+    }
+    & svg {
+      order: 1;
+      padding: 0.5rem;
+      max-width: 100%;
       margin-bottom: 1rem;
     }
   }
