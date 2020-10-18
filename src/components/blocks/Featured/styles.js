@@ -11,11 +11,6 @@ export const Wrapper = styled.div`
   }
 `
 
-export const Header = styled.div`
-  margin-bottom: 1rem;
-  text-align: center;
-`
-
 export const Content = styled.div`
   width: 100%;
   padding: 4rem 0;

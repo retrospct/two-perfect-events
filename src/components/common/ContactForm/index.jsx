@@ -6,11 +6,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 import { Button, InputContrast, TextFieldContrast } from 'components/common'
 import { FormField, FormFieldSplit, Label, ErrorMessage } from './styles'
 
-export const ContactForm = () => {
-  // const handleSubmit = e => {
-  //   e.preventDefault()
-  // }
-  return (
+export const ContactForm = ({config}) => (
     <form
       name="contact"
       method="POST"
@@ -23,22 +19,22 @@ export const ContactForm = () => {
       <input type="hidden" name="form-name" value="contact" />
       <FormFieldSplit>
         <Label htmlFor="contact-name">
-          <span>Name*</span>
-          <InputContrast type="text" name="name" id="contact-name" required />
+          <span>{config.name || 'Name'}{config.nameRequired && '*'}</span>
+          <InputContrast type="text" name="name" id="contact-name" required={config.nameRequired} />
         </Label>
         <Label htmlFor="contact-phone">
-          <span>Phone*</span>
-          <InputContrast type="tel" name="phone" id="contact-phone" required />
+        <span>{config.phone || 'Phone'}{config.phoneRequired && '*'}</span>
+          <InputContrast type="tel" name="phone" id="contact-phone" required={config.phoneRequired} />
         </Label>
       </FormFieldSplit>
       <FormFieldSplit>
         <Label htmlFor="contact-email">
-          <span>Email*</span>
-          <InputContrast type="email" name="email" id="contact-email" required />
+        <span>{config.email || 'Email'}{config.emailRequired && '*'}</span>
+          <InputContrast type="email" name="email" id="contact-email" required={config.emailRequired} />
         </Label>
-        <Label htmlFor="contact-dateloc">
-          <span>Date & Location</span>
-          <InputContrast type="text" name="dateloc" id="contact-dateloc" required />
+        <Label htmlFor="contact-eventDate">
+        <span>{config.eventDate || 'Event Date'}{config.eventDateRequired && '*'}</span>
+          <InputContrast type="text" name="eventDate" id="contact-eventDate" required={config.eventDateRequired} />
         </Label>
       </FormFieldSplit>
       {/* <FormField>
@@ -49,9 +45,9 @@ export const ContactForm = () => {
   </FormField> */}
       {/* <p>Date of event if known (placeholder)</p> */}
       <FormField>
-        <Label htmlFor="contact-message">
-          <span>Message</span>
-          <TextFieldContrast name="message" id="contact-message" rows="5" />
+        <Label htmlFor="contact-additional-info">
+        <span>{config.additionalInfo || 'Additional Information'}{config.additionalInfoRequired && '*'}</span>
+          <TextFieldContrast name="additional-info" id="contact-additional-info" rows="5" required={config.additionalInfoRequired} />
         </Label>
       </FormField>
       {/* <ErrorMessage>Error placeholder</ErrorMessage> */}
@@ -65,7 +61,6 @@ export const ContactForm = () => {
       </FormField>
     </form>
   )
-}
 
 // <div className="field half first">
 //     <label htmlFor="name">Name</label>

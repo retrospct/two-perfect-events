@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  padding: 6rem 0 0;
+  padding: 0.5rem 0 0;
 `
 
 export const Flex = styled.div`
@@ -17,12 +17,12 @@ export const Flex = styled.div`
   }
 `
 
-export const Header = styled.div`
+export const Title = styled.div`
   text-align: center;
   h3 {
     font-size: 1.75rem;
     color: var(--accent-color);
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     letter-spacing: 0.2rem;
   }
 

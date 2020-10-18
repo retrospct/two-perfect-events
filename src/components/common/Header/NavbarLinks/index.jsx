@@ -28,9 +28,9 @@ export const NavbarLinks = ({ desktop }) => {
       <NavLink as={Link} to="/services" activeClassName="selected">
         SERVICES
       </NavLink>
-      <NavLink as={Link} to="/blog" activeClassName="selected">
+      {/* <NavLink as={Link} to="/blog" activeClassName="selected">
         BLOG
-      </NavLink>
+      </NavLink> */}
       <ButtonNavCTA as={AnchorLink} href="#contact">
         CONTACT
       </ButtonNavCTA>

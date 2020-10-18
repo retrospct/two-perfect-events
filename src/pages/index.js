@@ -1,8 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Layout, Seo, Header, Footer } from 'components/common'
-import { HeroImage, ImageText, TextImage, Quote, Featured, Instagram } from 'components/blocks'
-import { Hero, Contact, PhotoCredits } from 'components/landing'
+import { Contact, HeroImage, ImageText, TextImage, Quote, Featured, Instagram, HeadingDescription } from 'components/blocks'
+import { Hero, PhotoCredits } from 'components/landing'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 import { useInstaLatest } from 'hooks/useInstaLatest'
 
@@ -19,13 +19,14 @@ const Home = ({ data }) => {
           {block.model.apiKey === 'hero_image' && <HeroImage block={block} />}
           {block.model.apiKey === 'image_text' && <ImageText block={block} />}
           {block.model.apiKey === 'text_image' && <TextImage block={block} />}
+          {block.model.apiKey === 'heading_description' && <HeadingDescription block={block} />}
           {block.model.apiKey === 'quote' && <Quote block={block} />}
           {block.model.apiKey === 'featured' && <Featured block={block} />}
           {block.model.apiKey === 'instagram' && <Instagram block={block} latest={instaLatest} />}
+          {block.model.apiKey === 'contact_form' && <Contact block={block} />}
         </section>
       ))}
-      <Contact heading={data.home.contactHeading} image={data.home.contactImage} />
-      <PhotoCredits heading="PHOTO CREDITS" />
+      <PhotoCredits heading="PHOTO CREDITS (WIP)" creditsBlock={data.home.creditsBlock} />
       <Footer links={data.footer.links} serving={data.footer.serving} copyright={data.footer.copyright} />
     </Layout>
   )
@@ -41,17 +42,6 @@ export const query = graphql`
       }
       heading
       subtitle
-      contactHeading
-      contactImage {
-        fixed(
-          width: 500
-          height: 1471
-          imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "500", h: "1471" }
-        ) {
-          ...GatsbyDatoCmsFixed
-        }
-      }
-      copyright
       homeBlock {
         ... on DatoCmsImageText {
           model {
@@ -86,6 +76,21 @@ export const query = graphql`
               ...GatsbyDatoCmsFluid
             }
           }
+        }
+        ... on DatoCmsHeadingDescription {
+          model {
+            apiKey
+          }
+          id
+          accentTop
+          heading
+          description
+          descriptionNode {
+            childMarkdownRemark {
+              html
+            }
+          }
+          accentBottom
         }
         ... on DatoCmsHeroImage {
           model {
@@ -146,6 +151,42 @@ export const query = graphql`
           #     ...GatsbyDatoCmsFluid
           #   }
           # }
+        }
+        ... on DatoCmsContactForm {
+          model {
+            apiKey
+          }
+          id
+          squigglyIcon
+          heading
+          name
+          nameRequired
+          email
+          emailRequired
+          phone
+          phoneRequired
+          eventDate
+          eventDateRequired
+          additionalInfo
+          additionalInfoRequired
+        }
+      }
+      creditsBlock {
+        ... on DatoCmsCreditTitle {
+          model {
+            apiKey
+          }
+          id
+          title
+        }
+        ... on DatoCmsCreditItem {
+          model {
+            apiKey
+          }
+          id
+          location
+          vendorName
+          vendorLink
         }
       }
     }

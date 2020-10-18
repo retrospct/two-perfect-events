@@ -32,7 +32,8 @@ export const Footer = ({ links, serving, copyright }) => (
       <Serving>{serving}</Serving>
       <Company>
         <span>
-          © {new Date().getFullYear()} {copyright}
+          {copyright}
+          {/* © {new Date().getFullYear()} {copyright} */}
         </span>
         <TPELogoFooter />
       </Company>
