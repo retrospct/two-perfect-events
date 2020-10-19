@@ -34,6 +34,11 @@ export const Username = styled.h4`
   letter-spacing: 0.08rem;
 `
 
+export const InstaLink = styled.a`
+  height: 100%;
+  width: 100%;
+`
+
 export const InstaGallery = styled.div`
   /* max-width: 1000px; */
   width: 100%;

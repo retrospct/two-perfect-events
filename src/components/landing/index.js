@@ -1,5 +1,5 @@
 export * from './Hero'
-export * from './PhotoCredits'
+// export * from './PhotoCredits'
 // export * from './Intro'
 // export * from './Skills'
 // export * from './Projects'

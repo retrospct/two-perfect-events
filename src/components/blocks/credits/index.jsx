@@ -1,18 +1,19 @@
 import React from 'react'
-import { CreditItem, CreditTitle } from 'components/blocks'
+import { CreditItem } from './CreditItem'
+import { CreditTitle } from './CreditTitle'
 import { Container } from 'components/common'
-import { Wrapper, Flex, Header } from './styles'
+import { Wrapper, Content, Header } from './styles'
 
-export const PhotoCredits = ({ heading, creditsBlock }) => (
-  <Wrapper>
-    <Flex as={Container}>
-        <Header>{heading && <h3>{heading}</h3>}</Header>
+export const CreditsBlock = ({ heading, creditsBlock }) => (
+  <Wrapper as={Container}>
+    <Content>
+        <Header>{heading && <p>{heading}</p>}</Header>
         {creditsBlock.map(block => (
         <div key={block.id}>
           {block.model.apiKey === 'credit_title' && <CreditTitle block={block} />}
           {block.model.apiKey === 'credit_item' && <CreditItem block={block} />}
         </div>
       ))}
-    </Flex>
+    </Content>
   </Wrapper>
 )

@@ -1,10 +1,13 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Layout, Seo, Header, Footer } from 'components/common'
-import { Contact, HeroImage, ImageText, TextImage, Quote, Featured, Instagram, HeadingDescription } from 'components/blocks'
-import { Hero, PhotoCredits } from 'components/landing'
+
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 import { useInstaLatest } from 'hooks/useInstaLatest'
+
+import { Layout, Seo, Header, Footer } from 'components/common'
+import { HomeBlock } from 'components/blocks/home'
+import { CreditsBlock } from 'components/blocks/credits'
+import { Hero } from 'components/landing'
 
 const Home = ({ data }) => {
   const siteSeo = useSiteDatoMeta()
@@ -12,21 +15,11 @@ const Home = ({ data }) => {
   return (
     <Layout>
       <Header />
+      {data.nav.edges.map((link) => console.log('link.path: ', link.path))}
       <Seo siteSeo={siteSeo} pageSeo={data.home.seoMetaTags} />
       <Hero heading={data.home.heading} subheading={data.home.subtitle} />
-      {data.home.homeBlock.map(block => (
-        <section key={block.id}>
-          {block.model.apiKey === 'hero_image' && <HeroImage block={block} />}
-          {block.model.apiKey === 'image_text' && <ImageText block={block} />}
-          {block.model.apiKey === 'text_image' && <TextImage block={block} />}
-          {block.model.apiKey === 'heading_description' && <HeadingDescription block={block} />}
-          {block.model.apiKey === 'quote' && <Quote block={block} />}
-          {block.model.apiKey === 'featured' && <Featured block={block} />}
-          {block.model.apiKey === 'instagram' && <Instagram block={block} latest={instaLatest} />}
-          {block.model.apiKey === 'contact_form' && <Contact block={block} />}
-        </section>
-      ))}
-      <PhotoCredits heading="PHOTO CREDITS (WIP)" creditsBlock={data.home.creditsBlock} />
+      <HomeBlock homeBlock={data.home.homeBlock} instaLatest={instaLatest} />
+      <CreditsBlock heading="PHOTO CREDITS (WIP)" creditsBlock={data.home.creditsBlock} />
       <Footer links={data.footer.links} serving={data.footer.serving} copyright={data.footer.copyright} />
     </Layout>
   )
@@ -36,6 +29,17 @@ export default Home
 
 export const query = graphql`
   query HomeQuery {
+    nav: allDatoCmsNavLink(sort: { fields: position }) {
+      edges {
+        node {
+          text
+          path
+          position
+          id
+          originalId
+        }
+      }
+    }
     home: datoCmsHome {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
@@ -137,20 +141,11 @@ export const query = graphql`
           id
           heading
           socialLink {
-            text
+            title
+            linkText
+            linkUrl
             username
-            url
           }
-          # instaGallery {
-          #   originalId
-          #   fluid(
-          #     maxWidth: 320
-          #     maxHeight: 320
-          #     imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "320", h: "320" }
-          #   ) {
-          #     ...GatsbyDatoCmsFluid
-          #   }
-          # }
         }
         ... on DatoCmsContactForm {
           model {

@@ -1,73 +1,138 @@
 import React from 'react'
-import { graphql } from 'gatsby'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
+import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-import { Layout, Seo, Header } from 'components/common'
+import styled from 'styled-components'
 
-const Portfolio = ({ data }) => (
-  <Layout>
-    <Header />
-    {/* <Seo siteSeo={data.siteSeo} pageSeo={data.about.seoMetaTags} /> */}
-    {/* <HelmetDatoCms seo={about.seoMetaTags} /> */}
-    {/* <article className="sheet">
-      <div className="sheet__inner">
-        <h1 className="sheet__title">{data.about.title}</h1>
-        <p className="sheet__lead">{data.about.subtitle}</p>
-        <div className="sheet__gallery">
-          <Img fluid={data.about.photo.fluid} />
-        </div>
-        <div
-          className="sheet__body"
-          dangerouslySetInnerHTML={{
-            __html: data.about.bioNode.childMarkdownRemark.html,
-          }}
-        />
-      </div>
-    </article> */}
-    <h2>Portfolio</h2>
-  </Layout>
-)
+import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
+
+import { Layout, Seo, Header, Container, Footer } from 'components/common'
+
+const Wrapper = styled(Container)`
+  padding: 4rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: ${({ theme }) => theme.mq.lg}px) {
+    flex-direction: column;
+  }
+`
+
+const Gallery = styled.div`
+  width: 100%;
+  max-width: calc(420px * 3 + 40px);
+  margin: 1rem 0;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  justify-items: center;
+  justify-content: space-around;
+  & .gatsby-image-wrapper {
+    width: 100%;
+    height: 100%;
+    max-width: 420px;
+    max-height: 420px;
+  }
+  @media (max-width: ${({ theme }) => `${theme.mq.xl}px`}) {
+    max-width: calc(420px * 2 + 20px);
+  }
+  @media (max-width: ${({ theme }) => `${theme.mq.md}px`}) {
+    max-width: 96%;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  }
+`
+
+const Portfolio = ({ data }) => {
+  const siteSeo = useSiteDatoMeta()
+
+  return (
+    <Layout>
+      <Header />
+      <Seo siteSeo={siteSeo} pageSeo={data.portfolio.seoMetaTags} />
+      <Container>
+        <Img fluid={data.portfolio.heroImage.fluid} alt={data.portfolio.heroImage.alt} />
+      </Container>
+      <Container>
+      <h3>{data.portfolio.heading}</h3>
+      <h4>{data.portfolio.filters}</h4></Container>
+      <Wrapper>
+      <Gallery>
+        {' '}
+        {data.portfolio.events.map((event) => (
+            <Link key={event.slug} to={`/${event.slug}`} style={{width: '100%', height: '100%'}}>
+              <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
+            </Link>
+        ))}
+      </Gallery>
+      </Wrapper>
+      <Footer links={data.footer.links} serving={data.footer.serving} copyright={data.footer.copyright} />
+    </Layout>
+  )
+}
 
 export default Portfolio
 
-// export const query = graphql`
-//   query AboutQuery {
-//     siteSeo: datoCmsSite {
-//       domain
-//       globalSeo {
-//         siteName
-//         titleSuffix
-//         twitterAccount
-//         facebookPageUrl
-//         fallbackSeo {
-//           title
-//           description
-//           image {
-//             url
-//           }
-//           twitterCard
-//         }
-//       }
-//       faviconMetaTags {
-//         ...GatsbyDatoCmsFaviconMetaTags
-//       }
-//     }
-//     about: datoCmsAbout {
-//       seoMetaTags {
-//         ...GatsbyDatoCmsSeoMetaTags
-//       }
-//       title
-//       subtitle
-//       photo {
-//         fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
-//           ...GatsbyDatoCmsSizes
-//         }
-//       }
-//       bioNode {
-//         childMarkdownRemark {
-//           html
-//         }
-//       }
-//     }
-//   }
-// `
+export const query = graphql`
+  query PortfolioQuery {
+    portfolio: datoCmsPortfolio {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+      heroImage {
+        fluid(maxWidth: 1920, imgixParams: { fm: "jpg", auto: "compress" }) {
+          ...GatsbyDatoCmsFluid
+        }
+        alt
+      }
+      heading
+      filters
+      events {
+        title
+        slug
+        venue
+        location
+        eventType
+        photographer
+        excerpt
+        excerptNode {
+          childMarkdownRemark {
+            html
+          }
+        }
+        coverImage {
+          originalId
+          fluid(
+            maxWidth: 420
+            maxHeight: 420
+            imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "420", h: "420" }
+          ) {
+            ...GatsbyDatoCmsFluid
+          }
+          alt
+        }
+        # gallery{
+        #   originalId
+        #   fluid(maxHeight: 1440, imgixParams: { fm: "jpg", auto: "compress" }) {
+        #     ...GatsbyDatoCmsFluid
+        #   }
+        # }
+      }
+    }
+    footer: datoCmsFooter {
+      links {
+        id
+        icon {
+          originalId
+          alt
+          url
+        }
+        title
+        linkText
+        linkUrl
+      }
+      serving
+      copyright
+    }
+  }
+`
