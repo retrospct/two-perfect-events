@@ -17,6 +17,13 @@ const Wrapper = styled(Container)`
     flex-direction: column;
   }
 `
+export const Content = styled.div`
+  width: 100%;
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
 const Gallery = styled.div`
   width: 100%;
@@ -53,18 +60,20 @@ const Portfolio = ({ data }) => {
       <Container>
         <Img fluid={data.portfolio.heroImage.fluid} alt={data.portfolio.heroImage.alt} />
       </Container>
-      <Container>
-      <h3>{data.portfolio.heading}</h3>
-      <h4>{data.portfolio.filters}</h4></Container>
       <Wrapper>
-      <Gallery>
-        {' '}
-        {data.portfolio.events.map((event) => (
-            <Link key={event.slug} to={`/${event.slug}`} style={{width: '100%', height: '100%'}}>
+        <Content>
+          <h3>{data.portfolio.heading}</h3>
+          <h4>{data.portfolio.filters}</h4>
+        </Content>
+      </Wrapper>
+      <Wrapper>
+        <Gallery>
+          {data.portfolio.events.map((event) => (
+            <Link key={event.slug} to={`/${event.slug}`} style={{ width: '100%', height: '100%' }}>
               <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
             </Link>
-        ))}
-      </Gallery>
+          ))}
+        </Gallery>
       </Wrapper>
       <Footer links={data.footer.links} serving={data.footer.serving} copyright={data.footer.copyright} />
     </Layout>
