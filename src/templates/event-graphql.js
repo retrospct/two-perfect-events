@@ -50,80 +50,75 @@ const Gallery = styled.div`
   }
 `
 
-const Portfolio = ({ data }) => {
+const Event = ({ data }) => {
   const siteSeo = useSiteDatoMeta()
-
+  const { event, footer } = data
   return (
     <Layout>
       <Header />
-      <Seo siteSeo={siteSeo} pageSeo={data.portfolio.seoMetaTags} />
-      <Container>
-        <Img fluid={data.portfolio.heroImage.fluid} alt={data.portfolio.heroImage.alt} />
-      </Container>
+      <Seo siteSeo={siteSeo} pageSeo={event.seoMetaTags} />
       <Wrapper>
         <Content>
-          <h3>{data.portfolio.heading}</h3>
-          <h4>{data.portfolio.filters}</h4>
+          <h3>{event.title}</h3>
+          <h4>{event.venue}</h4>
+          <h4>{event.location}</h4>
+          <h4>{event.eventType}</h4>
+          <h4>{event.photographer}</h4>
+          <p>{event.excerpt}</p>
+          <div dangerouslySetInnerHTML={{ __html: event.excerptNode.childMarkdownRemark.html }} />
         </Content>
       </Wrapper>
+      <Container>
+        <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
+      </Container>
       <Wrapper>
         <Gallery>
-          {data.events.edges.map(({ event }) => (
-            <Link key={event.slug} to={`/events/${event.slug}`} style={{ width: '100%', height: '100%' }}>
-              <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
-            </Link>
+          {event.gallery.map((img) => (
+            <Img key={img.originalId} fluid={img.fluid} alt={img.alt} />
           ))}
         </Gallery>
       </Wrapper>
-      <Footer links={data.footer.links} serving={data.footer.serving} copyright={data.footer.copyright} />
+      <Footer links={footer.links} serving={footer.serving} copyright={footer.copyright} />
     </Layout>
   )
 }
-
-export default Portfolio
+// style={{ width: '100%', height: '100%' }}
+export default Event
 
 export const query = graphql`
-  query PortfolioQuery {
-    portfolio: datoCmsPortfolio {
+  query EventQuery($slug: String!) {
+    event: datoCmsEvent(slug: { eq: $slug }) {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
-      heroImage {
-        fluid(maxWidth: 1920, imgixParams: { fm: "jpg", auto: "compress" }) {
+      title
+      slug
+      venue
+      location
+      eventType
+      photographer
+      excerpt
+      excerptNode {
+        childMarkdownRemark {
+          html
+        }
+      }
+      coverImage {
+        originalId
+        fluid(
+          maxHeight: 1440
+          imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "420", h: "420" }
+        ) {
           ...GatsbyDatoCmsFluid
         }
         alt
       }
-      heading
-      filters
-    }
-    events: allDatoCmsEvent(sort: { fields: position }) {
-      edges {
-        event: node {
-          title
-          slug
-          venue
-          location
-          eventType
-          # photographer
-          # excerpt
-          # excerptNode {
-          #   childMarkdownRemark {
-          #     html
-          #   }
-          # }
-          coverImage {
-            originalId
-            fluid(
-              maxWidth: 420
-              maxHeight: 420
-              imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "420", h: "420" }
-            ) {
-              ...GatsbyDatoCmsFluid
-            }
-            alt
-          }
+      gallery {
+        originalId
+        fluid(maxHeight: 1440, imgixParams: { fm: "jpg", auto: "compress" }) {
+          ...GatsbyDatoCmsFluid
         }
+        alt
       }
     }
     footer: datoCmsFooter {

@@ -12,10 +12,11 @@ import { Hero } from 'components/landing'
 const Home = ({ data }) => {
   const siteSeo = useSiteDatoMeta()
   const instaLatest = useInstaLatest()
+  console.log('data.nav: ', data.nav)
   return (
     <Layout>
       <Header />
-      {data.nav.edges.map((link) => console.log('link.path: ', link.path))}
+      {/* {data.nav.edges.map((link) => console.log('link.path: ', link.path))} */}
       <Seo siteSeo={siteSeo} pageSeo={data.home.seoMetaTags} />
       <Hero heading={data.home.heading} subheading={data.home.subtitle} />
       <HomeBlock homeBlock={data.home.homeBlock} instaLatest={instaLatest} />
@@ -167,12 +168,12 @@ export const query = graphql`
         }
       }
       creditsBlock {
-        ... on DatoCmsCreditTitle {
+        ... on DatoCmsCreditSection {
           model {
             apiKey
           }
           id
-          title
+          heading
         }
         ... on DatoCmsCreditItem {
           model {
@@ -180,8 +181,12 @@ export const query = graphql`
           }
           id
           location
-          vendorName
-          vendorLink
+          credits {
+            id
+            name
+            referralLink
+            website
+          }
         }
       }
     }

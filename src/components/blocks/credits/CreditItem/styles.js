@@ -6,8 +6,11 @@ export const Item = styled.h4`
   font-weight: 300;
   font-size: 1.5rem;
   letter-spacing: 0.08rem;
+  & a {
+    font-weight: 500;
+  }
 `
 
 export const ItemVendor = styled(Item)`
-  font-style: italic;
+  font-weight: 500;
 `

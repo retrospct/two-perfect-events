@@ -1,15 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const CreditTitle = ({ block }) => <Title>{block.title && <h3>{block.title}</h3>}</Title>
+export const CreditSection = ({ block }) => <Section>{block.heading && <h3>{block.heading}</h3>}</Section>
 
-const Title = styled.div`
+const Section = styled.div`
   text-align: center;
   text-transform: uppercase;
   h3 {
     font-size: 1.5rem;
     color: var(--accent-color);
-    margin-bottom: 1rem;
+    margin: 1.5rem 0 1rem;
     letter-spacing: 0.2rem;
   }
 

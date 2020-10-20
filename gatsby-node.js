@@ -3,8 +3,7 @@
 //  *
 //  * See: https://www.gatsbyjs.org/docs/node-apis/
 //  */
-// // import path from 'path'
-// const path = require('path')
+const path = require('path')
 
 // // exports.onCreateWebpackConfig = ({ actions }) => {
 // //   actions.setWebpackConfig({
@@ -47,3 +46,27 @@
 //       })
 //   })
 // }
+exports.createPages = async ({ graphql, actions: { createPage } }) => {
+  const results = await graphql(`
+    {
+      allDatoCmsEvent {
+        edges {
+          node {
+            title
+            slug
+          }
+        }
+      }
+    }
+  `)
+  results.data.allDatoCmsEvent.edges.forEach((edge) => {
+    const event = edge.node
+    createPage({
+      path: `/events/${event.slug}/`,
+      component: require.resolve('./src/templates/event-graphql.js'),
+      context: {
+        slug: event.slug,
+      },
+    })
+  })
+}
