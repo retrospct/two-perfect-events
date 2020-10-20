@@ -62,7 +62,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   results.data.allDatoCmsEvent.edges.forEach((edge) => {
     const event = edge.node
     createPage({
-      path: `/events/${event.slug}/`,
+      path: `/portfolio/${event.slug}/`,
       component: require.resolve('./src/templates/event-graphql.js'),
       context: {
         slug: event.slug,
