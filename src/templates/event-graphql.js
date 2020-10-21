@@ -1,23 +1,69 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 
+// import { useTheme } from 'context/themeContext'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
 import { Layout, Seo, Header, Container, Footer } from 'components/common'
 
+const Event = ({ data }) => {
+  const { event, footer } = data
+  const siteSeo = useSiteDatoMeta()
+  // const { currentTheme, toggleTheme } = useTheme()
+
+  // useEffect(() => {
+    // if (currentTheme !== 'superDark') toggleTheme('superDark')
+  // }, [])
+
+  return (
+    <Layout>
+      <Seo siteSeo={siteSeo} pageSeo={event.seoMetaTags} />
+      <Header />
+      <Wrapper>
+        <h4>
+          <Link to="/portfolio">{'< Back to Porfolio'}</Link>
+        </h4>
+        <Content>
+          <h3>{event.title}</h3>
+          <h4>{event.venue}</h4>
+          <h4>{event.location}</h4>
+          <h4>{event.eventType}</h4>
+          <h4>{event.photographer}</h4>
+          <p>{event.excerpt}</p>
+          <div dangerouslySetInnerHTML={{ __html: event.excerptNode.childMarkdownRemark.html }} />
+        </Content>
+      </Wrapper>
+      <Container>
+        <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
+      </Container>
+      <Wrapper>
+        <Gallery>
+          {event.gallery.map((img) => (
+            <Img key={img.originalId} fluid={img.fluid} alt={img.alt} />
+          ))}
+        </Gallery>
+      </Wrapper>
+      <Footer links={footer.links} serving={footer.serving} copyright={footer.copyright} />
+    </Layout>
+  )
+}
+// style={{ width: '100%', height: '100%' }}
+export default Event
+
 const Wrapper = styled(Container)`
   padding: 4rem 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  @media (max-width: ${({ theme }) => theme.mq.lg}px) {
+  /* @media (max-width: ${({ theme }) => theme.mq.lg}px) {
     flex-direction: column;
-  }
+  } */
 `
-export const Content = styled.div`
+const Content = styled.div`
   width: 100%;
   padding: 4rem 0;
   display: flex;
@@ -49,41 +95,6 @@ const Gallery = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
   }
 `
-
-const Event = ({ data }) => {
-  const siteSeo = useSiteDatoMeta()
-  const { event, footer } = data
-  return (
-    <Layout>
-      <Header />
-      <Seo siteSeo={siteSeo} pageSeo={event.seoMetaTags} />
-      <Wrapper>
-        <Content>
-          <h3>{event.title}</h3>
-          <h4>{event.venue}</h4>
-          <h4>{event.location}</h4>
-          <h4>{event.eventType}</h4>
-          <h4>{event.photographer}</h4>
-          <p>{event.excerpt}</p>
-          <div dangerouslySetInnerHTML={{ __html: event.excerptNode.childMarkdownRemark.html }} />
-        </Content>
-      </Wrapper>
-      <Container>
-        <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
-      </Container>
-      <Wrapper>
-        <Gallery>
-          {event.gallery.map((img) => (
-            <Img key={img.originalId} fluid={img.fluid} alt={img.alt} />
-          ))}
-        </Gallery>
-      </Wrapper>
-      <Footer links={footer.links} serving={footer.serving} copyright={footer.copyright} />
-    </Layout>
-  )
-}
-// style={{ width: '100%', height: '100%' }}
-export default Event
 
 export const query = graphql`
   query EventQuery($slug: String!) {

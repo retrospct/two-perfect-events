@@ -2,11 +2,11 @@ import React, { useState, useContext, useCallback } from 'react'
 import media from 'use-media'
 import { ThemeProvider as BaseThemeProvider, ThemeContext } from 'styled-components'
 // import { useLocalStorage } from 'hooks/useLocalStorage'
-import { lightTheme, darkTheme } from './themeTpe'
+import { lightTheme, darkTheme, superDarkTheme } from './themeTpe'
 
 // const ThemeContext = createContext()
 
-const themeFormatter = themeToFormat => {
+const themeFormatter = (themeToFormat) => {
   const { screens, ...themeValues } = themeToFormat
   const breakpointSizes = Object.keys(screens).reduce((accum, key) => {
     const value = media({ maxWidth: screens[key] })
@@ -31,9 +31,13 @@ const themeFormatter = themeToFormat => {
 const ThemeProvider = ({ children }) => {
   // const [themeString, setThemeString] = useLocalStorage('theme', 'light')
   const [themeString, setThemeString] = useState('light') // comment out if using local storage
-  const themeObject = themeString === 'dark' ? themeFormatter(darkTheme) : themeFormatter(lightTheme)
+  const [prevTheme, setPrevTheme] = useState('light') // comment out if using local storage
+  let themeObject
+  if (themeString === 'dark') themeObject = themeFormatter(darkTheme)
+  else if (themeString === 'superDark') themeObject = themeFormatter(superDarkTheme)
+  else themeObject = themeFormatter(lightTheme)
   return (
-    <ThemeContext.Provider value={{ themeString, setThemeString }}>
+    <ThemeContext.Provider value={{ themeString, setThemeString, prevTheme, setPrevTheme }}>
       <BaseThemeProvider theme={themeObject}>{children}</BaseThemeProvider>
     </ThemeContext.Provider>
   )
@@ -42,13 +46,24 @@ const ThemeProvider = ({ children }) => {
 const useTheme = () => {
   const context = useContext(ThemeContext)
   if (!context) throw new Error('useTheme must be used within a ThemeProvider')
-  const { themeString, setThemeString } = context
-  const toggleTheme = useCallback(() => {
-    if (themeString === 'light') setThemeString('dark')
-    else if (themeString === 'dark') setThemeString('light')
-  }, [themeString, setThemeString])
+  const { themeString, setThemeString, prevTheme, setPrevTheme } = context
+  const toggleTheme = useCallback(
+    (newTheme) => {
+      setPrevTheme(themeString)
+      if (newTheme) {
+        setThemeString(newTheme)
+      } else {
+        if (themeString === 'dark') setThemeString('light')
+        else if (themeString === 'superDark') setThemeString('light')
+        else if (themeString === 'light' && window?.location?.pathname?.includes('/portfolio')) setThemeString('superDark')
+        else setThemeString('dark')
+      }
+    },
+    [themeString, setThemeString, prevTheme, setPrevTheme]
+  )
   return {
     currentTheme: themeString,
+    prevTheme,
     toggleTheme,
     ...context,
   }

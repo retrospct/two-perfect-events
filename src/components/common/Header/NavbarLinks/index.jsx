@@ -1,7 +1,9 @@
 import React from 'react'
 import AnchorLink from 'react-anchor-link-smooth-scroll' // TODO: Remove this package if not being used
-import { Link, LinkBase, ButtonNavCTA } from 'components/common'
+
 import { useTheme } from 'context/themeContext'
+
+import { Link, LinkBase, ButtonNavCTA } from 'components/common'
 import { Wrapper, NavLink, NavLinkFirst } from './styles'
 import { ToggleDarkMode } from '../ToggleDarkMode'
 // import { useNavLinks } from 'hooks/useNavLinks'
@@ -9,6 +11,8 @@ import { ToggleDarkMode } from '../ToggleDarkMode'
 export const NavbarLinks = ({ desktop }) => {
   const { currentTheme, toggleTheme } = useTheme()
   // const navLinks = useNavLinks()
+  console.log('currentTheme: ', currentTheme)
+  // console.log('toggleTheme: ', toggleTheme)
   return (
     <Wrapper desktop={desktop}>
     {/* {navLinks.map(link => (
@@ -24,7 +28,7 @@ export const NavbarLinks = ({ desktop }) => {
           HOME
         </NavLink>
       )}
-      <NavLink as={Link} to="/portfolio" activeClassName="selected">
+      <NavLink as={Link} to="/portfolio" activeClassName="selected" partiallyActive={true}>
         PORTFOLIO
       </NavLink>
       <NavLink as={Link} to="/about" activeClassName="selected">
@@ -45,7 +49,7 @@ export const NavbarLinks = ({ desktop }) => {
       {/* <CTANavLink as={Link} to="/contact" activeClassName="selected">
         CONTACT
       </CTANavLink> */}
-      <ToggleDarkMode currentTheme={currentTheme} toggleTheme={toggleTheme} />
+      <ToggleDarkMode currentTheme={currentTheme} toggleTheme={() => toggleTheme()} />
     </Wrapper>
   )
 }

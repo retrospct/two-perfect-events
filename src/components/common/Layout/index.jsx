@@ -1,13 +1,24 @@
-import React from 'react'
-import styled from 'styled-components'
-// import { Footer } from 'components/common'
+import React, { useEffect } from 'react'
+// import styled from 'styled-components'
 
-export const Layout = ({ children }) => (
-  <>
-    {children}
-    {/* <Footer /> */}
-  </>
-)
+import { useTheme } from 'context/themeContext'
+
+// import { Footer } from 'components/common'
+export const Layout = ({ children }) => {
+  const { prevTheme, currentTheme, toggleTheme } = useTheme()
+  useEffect(() => {
+    const isPortfolio = window?.location?.pathname?.includes('/portfolio')
+    console.log('useEffect isPortfolio: ', isPortfolio)
+    if (isPortfolio && currentTheme !== 'superDark') toggleTheme('superDark')
+    else if (currentTheme === 'superDark' && !isPortfolio) toggleTheme(prevTheme)
+  }, [])
+  return (
+    <>
+      {children}
+      {/* <Footer /> */}
+    </>
+  )
+}
 
 // const GridLayout = styled.div`
 //   height: 100vh;

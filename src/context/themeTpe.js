@@ -74,7 +74,34 @@ const darkTheme = {
   maxW: `${baseTheme.screens.xl}px`,
 }
 
-export { lightTheme, darkTheme }
+const superDarkTheme = {
+  ...baseTheme,
+  colors: {
+    primary: '#694a86',
+    primaryInverse: '#fff',
+    primaryLighter: '#7c6194',
+    secondary: '#8D426C',
+    accent: '#BF9000',
+    accentLight: '#FBB040',
+    accentLightest: '#E9CB99', // #e7bf86
+    text: '#fff',
+    textInverse: '#414042',
+    textLight: '#fff',
+    heading: '#fff',
+    subheading: '#e6e6e6',
+    link: '#BF9000',
+    bg: '#000', // #2F384B
+    bgDark: '#1F2B34', // #1F2B34
+    error: '#ff4136',
+    // #3D4457
+    // #ef86a9
+    // offwhite: '#e6e6e6',
+    // color: '#fff',
+  },
+  maxW: `${baseTheme.screens.xl}px`,
+}
+
+export { lightTheme, darkTheme, superDarkTheme }
 
 // colors: {
 //   primary: '#694a86',

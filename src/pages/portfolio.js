@@ -1,11 +1,51 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 
+// import { useTheme } from 'context/themeContext'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
 import { Layout, Seo, Header, Container, Footer } from 'components/common'
+
+const Portfolio = ({ data }) => {
+  const siteSeo = useSiteDatoMeta()
+  // const { currentTheme, toggleTheme } = useTheme()
+
+  // useEffect(() => {
+  //   if (currentTheme !== 'superDark') toggleTheme('superDark')
+  //   // return () => {
+  //   //   toggleTheme('light')
+  //   // }
+  // }, [])
+  return (
+    <Layout>
+      <Header />
+      <Seo siteSeo={siteSeo} pageSeo={data.portfolio.seoMetaTags} />
+      <Container>
+        <StyledImg fluid={data.portfolio.heroImage.fluid} alt={data.portfolio.heroImage.alt} />
+      </Container>
+      <Wrapper>
+        <Content>
+          <h3>{data.portfolio.heading}</h3>
+          <h4>{data.portfolio.filters}</h4>
+        </Content>
+      </Wrapper>
+      <Wrapper>
+        <Gallery>
+          {data.events.edges.map(({ event }) => (
+            <Link key={event.slug} to={`/portfolio/${event.slug}`} style={{ width: '100%', height: '100%' }}>
+              <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
+            </Link>
+          ))}
+        </Gallery>
+      </Wrapper>
+      <Footer links={data.footer.links} serving={data.footer.serving} copyright={data.footer.copyright} />
+    </Layout>
+  )
+}
+
+export default Portfolio
 
 const Wrapper = styled(Container)`
   padding: 4rem 0;
@@ -17,14 +57,16 @@ const Wrapper = styled(Container)`
     flex-direction: column;
   }
 `
-export const Content = styled.div`
+const Content = styled.div`
   width: 100%;
   padding: 4rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 `
-
+const StyledImg = styled(Img)`
+  opacity: 0.87;
+`
 const Gallery = styled.div`
   width: 100%;
   max-width: calc(420px * 3 + 40px);
@@ -50,38 +92,6 @@ const Gallery = styled.div`
   }
 `
 
-const Portfolio = ({ data }) => {
-  const siteSeo = useSiteDatoMeta()
-
-  return (
-    <Layout>
-      <Header />
-      <Seo siteSeo={siteSeo} pageSeo={data.portfolio.seoMetaTags} />
-      <Container>
-        <Img fluid={data.portfolio.heroImage.fluid} alt={data.portfolio.heroImage.alt} />
-      </Container>
-      <Wrapper>
-        <Content>
-          <h3>{data.portfolio.heading}</h3>
-          <h4>{data.portfolio.filters}</h4>
-        </Content>
-      </Wrapper>
-      <Wrapper>
-        <Gallery>
-          {data.events.edges.map(({ event }) => (
-            <Link key={event.slug} to={`/events/${event.slug}`} style={{ width: '100%', height: '100%' }}>
-              <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
-            </Link>
-          ))}
-        </Gallery>
-      </Wrapper>
-      <Footer links={data.footer.links} serving={data.footer.serving} copyright={data.footer.copyright} />
-    </Layout>
-  )
-}
-
-export default Portfolio
-
 export const query = graphql`
   query PortfolioQuery {
     portfolio: datoCmsPortfolio {
@@ -89,7 +99,7 @@ export const query = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
       heroImage {
-        fluid(maxWidth: 1920, imgixParams: { fm: "jpg", auto: "compress" }) {
+        fluid(maxWidth: 1920, imgixParams: { fm: "png", auto: "compress" }) {
           ...GatsbyDatoCmsFluid
         }
         alt

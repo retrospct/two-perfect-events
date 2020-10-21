@@ -78,14 +78,17 @@ export const Toggler = styled(Toggle)`
   }
 `
 
-export const ToggleDarkMode = ({ currentTheme, toggleTheme, className }) => (
+export const ToggleDarkMode = ({ currentTheme, toggleTheme, className }) => {
+  
+  return (
   <Toggler
     className={className}
-    defaultChecked={currentTheme === 'dark'}
+    // defaultChecked={currentTheme !== 'light'}
+    checked={currentTheme !== 'light'}
     onChange={toggleTheme}
     icons={{
       checked: <img style={{ pointerEvents: 'none' }} width="16" height="16" alt="moon" aria-hidden src={moon} />,
       unchecked: <img style={{ pointerEvents: 'none' }} width="16" height="16" alt="sun" aria-hidden src={sun} />,
     }}
   />
-)
+)}

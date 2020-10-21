@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { graphql } from 'gatsby'
 
+// import { useTheme } from 'context/themeContext'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 import { useInstaLatest } from 'hooks/useInstaLatest'
 
@@ -12,7 +13,11 @@ import { Hero } from 'components/landing'
 const Home = ({ data }) => {
   const siteSeo = useSiteDatoMeta()
   const instaLatest = useInstaLatest()
-  console.log('data.nav: ', data.nav)
+  // const { prevTheme, currentTheme, toggleTheme } = useTheme()
+  // useEffect(() => {
+    // if (currentTheme === 'superDark') toggleTheme(prevTheme)
+  // }, [])
+  // console.log('data.nav: ', data.nav)
   return (
     <Layout>
       <Header />
