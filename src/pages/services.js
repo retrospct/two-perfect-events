@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
 
-// import { useTheme } from 'context/themeContext'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
 import { Layout, Seo, Header, Footer } from 'components/common'
 
 const Services = ({ data }) => {
   const siteSeo = useSiteDatoMeta()
-  // const { prevTheme, currentTheme, toggleTheme } = useTheme()
-  // useEffect(() => {
-    // if (currentTheme === 'superDark') toggleTheme(prevTheme)
-  // }, [])
   return (
     <Layout>
       <Header />

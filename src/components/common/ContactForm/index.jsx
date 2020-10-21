@@ -6,61 +6,81 @@ import ReCAPTCHA from 'react-google-recaptcha'
 import { Button, InputContrast, TextFieldContrast } from 'components/common'
 import { FormField, FormFieldSplit, Label, ErrorMessage } from './styles'
 
-export const ContactForm = ({config}) => (
-    <form
-      name="contact"
-      method="POST"
-      data-netlify="true"
-      data-netlify-recaptcha="true"
-      netlify-honeypot="bot-field"
-      action="/success"
-    >
-      <input type="hidden" name="bot-field" />
-      <input type="hidden" name="form-name" value="contact" />
-      <FormFieldSplit>
-        <Label htmlFor="contact-name">
-          <span>{config.name || 'Name'}{config.nameRequired && '*'}</span>
-          <InputContrast type="text" name="name" id="contact-name" required={config.nameRequired} />
-        </Label>
-        <Label htmlFor="contact-phone">
-        <span>{config.phone || 'Phone'}{config.phoneRequired && '*'}</span>
-          <InputContrast type="tel" name="phone" id="contact-phone" required={config.phoneRequired} />
-        </Label>
-      </FormFieldSplit>
-      <FormFieldSplit>
-        <Label htmlFor="contact-email">
-        <span>{config.email || 'Email'}{config.emailRequired && '*'}</span>
-          <InputContrast type="email" name="email" id="contact-email" required={config.emailRequired} />
-        </Label>
-        <Label htmlFor="contact-eventDate">
-        <span>{config.eventDate || 'Event Date'}{config.eventDateRequired && '*'}</span>
-          <InputContrast type="text" name="eventDate" id="contact-eventDate" required={config.eventDateRequired} />
-        </Label>
-      </FormFieldSplit>
-      {/* <FormField>
+export const ContactForm = ({ config }) => (
+  <form
+    name="contact"
+    method="POST"
+    data-netlify="true"
+    data-netlify-recaptcha="true"
+    netlify-honeypot="bot-field"
+    action="/success"
+  >
+    <input type="hidden" name="bot-field" />
+    <input type="hidden" name="form-name" value="contact" />
+    <FormFieldSplit>
+      <Label htmlFor="contact-name">
+        <span>
+          {config.name || 'Name'}
+          {config.nameRequired && '*'}
+        </span>
+        <InputContrast type="text" name="name" id="contact-name" required={config.nameRequired} />
+      </Label>
+      <Label htmlFor="contact-phone">
+        <span>
+          {config.phone || 'Phone'}
+          {config.phoneRequired && '*'}
+        </span>
+        <InputContrast type="tel" name="phone" id="contact-phone" required={config.phoneRequired} />
+      </Label>
+    </FormFieldSplit>
+    <FormFieldSplit>
+      <Label htmlFor="contact-email">
+        <span>
+          {config.email || 'Email'}
+          {config.emailRequired && '*'}
+        </span>
+        <InputContrast type="email" name="email" id="contact-email" required={config.emailRequired} />
+      </Label>
+      <Label htmlFor="contact-eventDate">
+        <span>
+          {config.eventDate || 'Event Date'}
+          {config.eventDateRequired && '*'}
+        </span>
+        <InputContrast type="text" name="eventDate" id="contact-eventDate" required={config.eventDateRequired} />
+      </Label>
+    </FormFieldSplit>
+    {/* <FormField>
     <Label>Your Role: <select name="role[]" multiple>
       <option value="leader">Leader</option>
       <option value="follower">Follower</option>
     </select></Label>
   </FormField> */}
-      {/* <p>Date of event if known (placeholder)</p> */}
-      <FormField>
-        <Label htmlFor="contact-additional-info">
-        <span>{config.additionalInfo || 'Additional Information'}{config.additionalInfoRequired && '*'}</span>
-          <TextFieldContrast name="additional-info" id="contact-additional-info" rows="5" required={config.additionalInfoRequired} />
-        </Label>
-      </FormField>
-      {/* <ErrorMessage>Error placeholder</ErrorMessage> */}
-      <FormField>
-        <Button type="submit" id="input-submit">
-          Submit
-        </Button>
-      </FormField>
-      <FormField>
-        <ReCAPTCHA sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
-      </FormField>
-    </form>
-  )
+    {/* <p>Date of event if known (placeholder)</p> */}
+    <FormField>
+      <Label htmlFor="contact-additional-info">
+        <span>
+          {config.additionalInfo || 'Additional Information'}
+          {config.additionalInfoRequired && '*'}
+        </span>
+        <TextFieldContrast
+          name="additional-info"
+          id="contact-additional-info"
+          rows="5"
+          required={config.additionalInfoRequired}
+        />
+      </Label>
+    </FormField>
+    {/* <ErrorMessage>Error placeholder</ErrorMessage> */}
+    <FormField>
+      <Button type="submit" id="input-submit">
+        Submit
+      </Button>
+    </FormField>
+    <FormField>
+      <ReCAPTCHA sitekey={process.env.GATSBY_RECAPTCHA_KEY} />
+    </FormField>
+  </form>
+)
 
 // <div className="field half first">
 //     <label htmlFor="name">Name</label>

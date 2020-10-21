@@ -8,7 +8,6 @@ export const Layout = ({ children }) => {
   const { prevTheme, currentTheme, toggleTheme } = useTheme()
   useEffect(() => {
     const isPortfolio = window?.location?.pathname?.includes('/portfolio')
-    console.log('useEffect isPortfolio: ', isPortfolio)
     if (isPortfolio && currentTheme !== 'superDark') toggleTheme('superDark')
     else if (currentTheme === 'superDark' && !isPortfolio) toggleTheme(prevTheme)
   }, [])

@@ -1,23 +1,15 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 
-// import { useTheme } from 'context/themeContext'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
 import { Layout, Seo, Header, Container, Footer } from 'components/common'
 
 const Portfolio = ({ data }) => {
   const siteSeo = useSiteDatoMeta()
-  // const { currentTheme, toggleTheme } = useTheme()
 
-  // useEffect(() => {
-  //   if (currentTheme !== 'superDark') toggleTheme('superDark')
-  //   // return () => {
-  //   //   toggleTheme('light')
-  //   // }
-  // }, [])
   return (
     <Layout>
       <Header />

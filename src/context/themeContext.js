@@ -55,11 +55,12 @@ const useTheme = () => {
       } else {
         if (themeString === 'dark') setThemeString('light')
         else if (themeString === 'superDark') setThemeString('light')
-        else if (themeString === 'light' && window?.location?.pathname?.includes('/portfolio')) setThemeString('superDark')
+        else if (themeString === 'light' && window?.location?.pathname?.includes('/portfolio'))
+          setThemeString('superDark')
         else setThemeString('dark')
       }
     },
-    [themeString, setThemeString, prevTheme, setPrevTheme]
+    [themeString, setThemeString, setPrevTheme]
   )
   return {
     currentTheme: themeString,

@@ -57,13 +57,13 @@ export const NavLink = styled.a`
   padding: 6px 0 6px;
   border-color: var(--primaryInverse-color);
   background: transparent;
-    /* font-size: 1.42857em;
+  /* font-size: 1.42857em;
     line-height: 1.5;
     letter-spacing: -0.02em;
     color: #595959; */
   :after {
     border-top: 1px solid;
-    content: "";
+    content: '';
     position: absolute;
     right: 100%;
     bottom: -1px;

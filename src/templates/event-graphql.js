@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 
-// import { useTheme } from 'context/themeContext'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
 import { Layout, Seo, Header, Container, Footer } from 'components/common'
@@ -11,11 +10,6 @@ import { Layout, Seo, Header, Container, Footer } from 'components/common'
 const Event = ({ data }) => {
   const { event, footer } = data
   const siteSeo = useSiteDatoMeta()
-  // const { currentTheme, toggleTheme } = useTheme()
-
-  // useEffect(() => {
-    // if (currentTheme !== 'superDark') toggleTheme('superDark')
-  // }, [])
 
   return (
     <Layout>
