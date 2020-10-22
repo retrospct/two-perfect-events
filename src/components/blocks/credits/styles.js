@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  padding: 4rem 0;
+  padding: 4rem 0 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
   width: 100%;
-  padding: 4rem 0;
+  padding: 4rem 0 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,11 +21,15 @@ export const Content = styled.div`
 
 export const Header = styled.div`
   text-align: center;
-  p {
-    font-size: 1.75rem;
+  & p {
+    font-size: 1.5rem;
     color: var(--accent-color);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     letter-spacing: 0.2rem;
+    cursor: pointer;
+  }
+  & p:hover {
+    text-decoration: underline;
   }
 
   @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
@@ -33,4 +37,8 @@ export const Header = styled.div`
       font-size: 2rem;
     }
   }
+`
+
+export const IconImg = styled.img`
+  padding: 0 0 3px 5px;
 `
