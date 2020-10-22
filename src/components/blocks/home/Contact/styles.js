@@ -56,7 +56,6 @@ export const Spotlight = styled.div`
     width: 111px;
     transform: scale(-1, 1) rotate(-25deg);
   }
-
   @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
     margin-top: -2rem;
   }
@@ -69,7 +68,6 @@ export const Header = styled.div`
     margin-bottom: 5rem;
     letter-spacing: 0.2rem;
   }
-
   @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
     h3 {
       font-size: 2rem;

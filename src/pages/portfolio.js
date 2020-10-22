@@ -51,6 +51,7 @@ const Portfolio = ({ location, data }) => {
         </Gallery>
       </Wrapper>
       <Connect>
+        <hr />
         <Spotlight>
           <img src={arrowSquiggly} alt="Squiggly arrow pointing towards a Let's Connect button." />
         </Spotlight>
@@ -58,6 +59,7 @@ const Portfolio = ({ location, data }) => {
         <SpotlightBottom>
           <img src={iconPartyHat} alt="Hand drawn line illustration of a party hat." />
         </SpotlightBottom>
+        <hr className="hr-connect-second" />
       </Connect>
     </Layout>
   )
@@ -97,15 +99,12 @@ const Spotlight = styled.div`
   width: 111px;
   position: absolute;
   top: 0;
-  right: 25%;
+  right: 20%;
   color: var(--textLight-color);
   & img {
     height: 80%;
     width: 111px;
-    transform: scale(-1, 1) rotate(-25deg);
-  }
-  @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
-    margin-top: -1rem;
+    transform: scale(-1, 1) rotate(-25deg) translateY(-2rem);
   }
 `
 
@@ -113,9 +112,9 @@ const SpotlightBottom = styled(Spotlight)`
   top: unset;
   left: 25%;
   bottom: 0;
-  transform: rotate(260deg);
+  transform: rotate(260deg) translateX(-1.87rem);
   @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
-    margin-bottom: -2rem;
+    transform: rotate(260deg) translateX(-1.87rem);
   }
 `
 
