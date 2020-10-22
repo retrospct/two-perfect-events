@@ -10,8 +10,10 @@ export const Navbar = () => {
     <Wrapper as={Container}>
       <Link to="/">
         <LogoWrapper>
-          {!screens.md && <TPELogo color={currentTheme === 'dark' ? '#fff' : null} />}
-          {screens.md && <TPELogomark color={currentTheme === 'dark' ? '#fff' : null} />}
+          {!screens.md && <TPELogo color={currentTheme === 'dark' || currentTheme === 'superDark' ? '#fff' : null} />}
+          {screens.md && (
+            <TPELogomark color={currentTheme === 'dark' || currentTheme === 'superDark' ? '#fff' : null} />
+          )}
         </LogoWrapper>
       </Link>
       <NavbarLinks desktop />

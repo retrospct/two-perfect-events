@@ -3,7 +3,7 @@ import AnchorLink from 'react-anchor-link-smooth-scroll' // TODO: Remove this pa
 
 import { useTheme } from 'context/themeContext'
 
-import { Link, ButtonNavCTA } from 'components/common'
+import { Link, LinkBase, ButtonNavCTA } from 'components/common'
 import { Wrapper, NavLink, NavLinkFirst } from './styles'
 import { ToggleDarkMode } from '../ToggleDarkMode'
 // import { useNavLinks } from 'hooks/useNavLinks'
@@ -40,15 +40,16 @@ export const NavbarLinks = ({ desktop }) => {
       {/* <NavLink as={Link} to="/blog" activeClassName="selected">
         BLOG
       </NavLink> */}
-      <ButtonNavCTA as={AnchorLink} href="#contact">
-        CONTACT
-      </ButtonNavCTA>
-      {/* <ButtonNavCTA as={LinkBase} to="/contact" activeClassName="selected">
-        CONTACT
-      </ButtonNavCTA> */}
-      {/* <CTANavLink as={Link} to="/contact" activeClassName="selected">
-        CONTACT
-      </CTANavLink> */}
+      {window.location.pathname !== '/' && (
+        <ButtonNavCTA as={LinkBase} to="/contact">
+          CONTACT
+        </ButtonNavCTA>
+      )}
+      {window.location.pathname === '/' && (
+        <ButtonNavCTA as={AnchorLink} href="#contact">
+          CONTACT
+        </ButtonNavCTA>
+      )}
       <ToggleDarkMode currentTheme={currentTheme} toggleTheme={() => toggleTheme()} />
     </Wrapper>
   )

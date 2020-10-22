@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 // import styled from 'styled-components'
 
 import { useTheme } from 'context/themeContext'
+import { Footer } from 'components/common'
 
-// import { Footer } from 'components/common'
-export const Layout = ({ children }) => {
+export const Layout = ({ footer, children }) => {
   const { prevTheme, currentTheme, toggleTheme } = useTheme()
   useEffect(() => {
     const isPortfolio = window?.location?.pathname?.includes('/portfolio')
@@ -14,7 +14,7 @@ export const Layout = ({ children }) => {
   return (
     <>
       {children}
-      {/* <Footer /> */}
+      {footer && <Footer links={footer.links} serving={footer.serving} copyright={footer.copyright} />}
     </>
   )
 }

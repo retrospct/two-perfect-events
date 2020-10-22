@@ -15,7 +15,7 @@ export const TextImage = ({ block }) => (
       )}
       {block.links && (
         <MoreLinks>
-          {block.links.map(link => (
+          {block.links.map((link) => (
             <li key={link.id}>
               <Link to={link.path}>{link.text}</Link>
             </li>

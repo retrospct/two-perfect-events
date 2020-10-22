@@ -37,45 +37,33 @@ export const Username = styled.h4`
 export const InstaLink = styled.a`
   height: 100%;
   width: 100%;
+  transition: all 0.3s ease-out;
+  &:hover {
+    transform: scale(1.05);
+  }
 `
 
 export const InstaGallery = styled.div`
-  /* max-width: 1000px; */
   width: 100%;
   max-width: calc(320px * 3 + 40px);
   margin: 1rem 0;
-  /* height: 100%; */
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  /* grid-template-columns: 1fr 1fr 1fr; */
-  /* grid-template-rows: 1fr; */
   justify-items: center;
   justify-content: space-around;
-  /* justify-items: space-around; */
-  /* margin: 1rem 0; */
   & .gatsby-image-wrapper {
-    width: 100%;
+    /* width: 100%;
     height: 100%;
     max-width: 320px;
-    max-height: 320px;
+    max-height: 320px; */
   }
   @media (max-width: ${({ theme }) => `${theme.mq.xl}px`}) {
     max-width: calc(320px * 2 + 20px);
-    /* & .gatsby-image-wrapper {
-      width: 200px;
-    } */
   }
   @media (max-width: ${({ theme }) => `${theme.mq.md}px`}) {
     max-width: 96%;
     grid-gap: 10px;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    /* & .gatsby-image-wrapper {
-      max-width: 45%;
-    } */
   }
 `
-
-// export const MoreLink = styled.div`
-//   margin-top: 2rem;
-// `

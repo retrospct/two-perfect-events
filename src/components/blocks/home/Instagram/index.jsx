@@ -19,11 +19,13 @@ export const Instagram = ({ block, instaLatest }) => (
       <InstaGallery>
         {instaLatest &&
           instaLatest.map((insta) => (
-            <InstaLink key={insta.node.id} href={`https://instagram.com/p/${insta.node.id}`} target="_blank" rel="noopener noreferrer">
-              <Img
-                fluid={insta.node.localFile.childImageSharp.fluid}
-                alt={insta.node.caption.substring(0, 100)}
-              />
+            <InstaLink
+              key={insta.node.id}
+              href={`https://instagram.com/p/${insta.node.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Img fluid={insta.node.localFile.childImageSharp.fluid} alt={insta.node.caption.substring(0, 100)} />
             </InstaLink>
           ))}
       </InstaGallery>
