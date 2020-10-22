@@ -1,11 +1,24 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql, Link, navigate } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Header, Container, Fluid, ImgFluid, Gallery, ImgOverlay } from 'components/common'
+import {
+  Layout,
+  Seo,
+  Header,
+  Container,
+  Connect,
+  Fluid,
+  ImgFluid,
+  Gallery,
+  ImgOverlay,
+  ButtonContrast,
+} from 'components/common'
+import arrowSquiggly from 'assets/illustrations/arrowSquiggly.svg'
+import iconPartyHat from 'assets/illustrations/icon-party-hat.svg'
 
 const Portfolio = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
@@ -37,6 +50,15 @@ const Portfolio = ({ location, data }) => {
           ))}
         </Gallery>
       </Wrapper>
+      <Connect>
+        <Spotlight>
+          <img src={arrowSquiggly} alt="Squiggly arrow pointing towards a Let's Connect button." />
+        </Spotlight>
+        <ButtonContrast onClick={() => navigate('/contact')}>{data.connect.title}</ButtonContrast>
+        <SpotlightBottom>
+          <img src={iconPartyHat} alt="Hand drawn line illustration of a party hat." />
+        </SpotlightBottom>
+      </Connect>
     </Layout>
   )
 }
@@ -53,24 +75,48 @@ const ImgLink = styled(Link)`
     transform: scale(1.05);
   }
 `
-
 const Wrapper = styled(Container)`
   padding: 4rem 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
-
   @media (max-width: ${({ theme }) => theme.mq.lg}px) {
     flex-direction: column;
   }
 `
-
 const Content = styled.div`
   width: 100%;
   padding: 4rem 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+`
+
+const Spotlight = styled.div`
+  height: 222px;
+  width: 111px;
+  position: absolute;
+  top: 0;
+  right: 25%;
+  color: var(--textLight-color);
+  & img {
+    height: 80%;
+    width: 111px;
+    transform: scale(-1, 1) rotate(-25deg);
+  }
+  @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
+    margin-top: -1rem;
+  }
+`
+
+const SpotlightBottom = styled(Spotlight)`
+  top: unset;
+  left: 25%;
+  bottom: 0;
+  transform: rotate(260deg);
+  @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
+    margin-bottom: -2rem;
+  }
 `
 
 export const query = graphql`
@@ -96,13 +142,6 @@ export const query = graphql`
           venue
           location
           eventType
-          # photographer
-          # excerpt
-          # excerptNode {
-          #   childMarkdownRemark {
-          #     html
-          #   }
-          # }
           coverImage {
             originalId
             fluid(
@@ -115,6 +154,12 @@ export const query = graphql`
             alt
           }
         }
+      }
+    }
+    connect: datoCmsConnect {
+      title
+      contactPage {
+        slug
       }
     }
     footer: datoCmsFooter {

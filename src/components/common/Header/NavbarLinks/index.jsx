@@ -1,5 +1,5 @@
 import React from 'react'
-import AnchorLink from 'react-anchor-link-smooth-scroll' // TODO: Remove this package if not being used
+// import AnchorLink from 'react-anchor-link-smooth-scroll' // TODO: Remove this package if not being used
 
 import { useTheme } from 'context/themeContext'
 

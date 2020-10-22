@@ -1,6 +1,7 @@
 export * from './GlobalStyle'
 export * from './Seo'
 export * from './Section'
+export * from './Connect'
 export * from './Container'
 export * from './Fluid'
 export * from './ImgFluid'
