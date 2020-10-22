@@ -37,10 +37,13 @@ export const NavbarLinks = ({ desktop }) => {
       <NavLink as={Link} to="/services" activeClassName="selected">
         SERVICES
       </NavLink>
+      <ButtonNavCTA as={LinkBase} to="/contact">
+        CONTACT
+      </ButtonNavCTA>
       {/* <NavLink as={Link} to="/blog" activeClassName="selected">
         BLOG
       </NavLink> */}
-      {window.location.pathname !== '/' && (
+      {/* {window.location.pathname !== '/' && (
         <ButtonNavCTA as={LinkBase} to="/contact">
           CONTACT
         </ButtonNavCTA>
@@ -49,7 +52,7 @@ export const NavbarLinks = ({ desktop }) => {
         <ButtonNavCTA as={AnchorLink} href="#contact">
           CONTACT
         </ButtonNavCTA>
-      )}
+      )} */}
       <ToggleDarkMode currentTheme={currentTheme} toggleTheme={() => toggleTheme()} />
     </Wrapper>
   )

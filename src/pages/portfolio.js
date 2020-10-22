@@ -7,10 +7,10 @@ import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
 import { Layout, Seo, Header, Container, Fluid, ImgFluid, Gallery, ImgOverlay } from 'components/common'
 
-const Portfolio = ({ data }) => {
+const Portfolio = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
   return (
-    <Layout footer={data.footer}>
+    <Layout location={location} footer={data.footer}>
       <Header />
       <Seo siteSeo={siteSeo} pageSeo={data.portfolio.seoMetaTags} />
       <Fluid>

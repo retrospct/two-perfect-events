@@ -6,10 +6,10 @@ import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 import { Layout, Seo, Header } from 'components/common'
 import partyItems from 'assets/illustrations/partyItems.svg'
 
-const Success = ({ data }) => {
+const Success = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
   return (
-    <Layout footer={data.footer}>
+    <Layout location={location} footer={data.footer}>
       <Header />
       <Seo siteSeo={siteSeo} pageSeo={data.success.seoMetaTags} />
 

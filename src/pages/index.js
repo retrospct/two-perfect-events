@@ -9,12 +9,12 @@ import { HomeBlock } from 'components/blocks/home'
 import { CreditsBlock } from 'components/blocks/credits'
 import { Hero } from 'components/landing'
 
-const Home = ({ data }) => {
+const Home = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
   const instaLatest = useInstaLatest()
   // console.log('data.nav: ', data.nav)
   return (
-    <Layout footer={data.footer}>
+    <Layout location={location} footer={data.footer}>
       <Header />
       {/* {data.nav.edges.map((link) => console.log('link.path: ', link.path))} */}
       <Seo siteSeo={siteSeo} pageSeo={data.home.seoMetaTags} />

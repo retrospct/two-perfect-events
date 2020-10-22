@@ -6,11 +6,11 @@ import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
 import { Layout, Seo, Header } from 'components/common'
 
-const Contact = ({ data }) => {
+const Contact = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
 
   return (
-    <Layout footer={data.footer}>
+    <Layout location={location} footer={data.footer}>
       <Header />
       <Seo siteSeo={siteSeo} pageSeo={data.contact.seoMetaTags} />
       <article className="sheet">

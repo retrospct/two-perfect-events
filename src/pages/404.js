@@ -4,10 +4,10 @@ import { Link, graphql } from 'gatsby'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 import { Layout, Seo } from 'components/common'
 
-export default ({ data }) => {
+export default ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
   return (
-    <Layout footer={data.footer}>
+    <Layout location={location} footer={data.footer}>
       <Seo siteSeo={siteSeo} pageSeo={data.notfound.seoMetaTags} />
       <h1>NOT FOUND</h1>
       <p>You just hit a route that doesn&#39;t exist... the sadness.</p>

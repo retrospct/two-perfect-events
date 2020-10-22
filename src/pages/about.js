@@ -6,11 +6,11 @@ import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
 import { Layout, Seo, Header } from 'components/common'
 
-const About = ({ data }) => {
+const About = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
 
   return (
-    <Layout footer={data.footer}>
+    <Layout location={location} footer={data.footer}>
       <Header />
       <Seo siteSeo={siteSeo} pageSeo={data.about.seoMetaTags} />
       {/* <HelmetDatoCms seo={about.seoMetaTags} /> */}

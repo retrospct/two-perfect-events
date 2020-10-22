@@ -7,12 +7,12 @@ import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
 import { Layout, Seo, Header, Container, Footer } from 'components/common'
 
-const Event = ({ data }) => {
+const Event = ({ location, data }) => {
   const { event, footer } = data
   const siteSeo = useSiteDatoMeta()
 
   return (
-    <Layout>
+    <Layout location={location}>
       <Seo siteSeo={siteSeo} pageSeo={event.seoMetaTags} />
       <Header />
       <Wrapper>

@@ -4,10 +4,10 @@ import React, { useEffect } from 'react'
 import { useTheme } from 'context/themeContext'
 import { Footer } from 'components/common'
 
-export const Layout = ({ footer, children }) => {
+export const Layout = ({ location, footer, children }) => {
   const { prevTheme, currentTheme, toggleTheme } = useTheme()
   useEffect(() => {
-    const isPortfolio = window?.location?.pathname?.includes('/portfolio')
+    const isPortfolio = location?.pathname?.includes('/portfolio')
     if (isPortfolio && currentTheme !== 'superDark') toggleTheme('superDark')
     else if (currentTheme === 'superDark' && !isPortfolio) toggleTheme(prevTheme)
   }, [])
