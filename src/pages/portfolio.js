@@ -5,42 +5,57 @@ import styled from 'styled-components'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Header, Container, Footer } from 'components/common'
+import { Layout, Seo, Header, Container, Fluid, ImgFluid, Gallery, ImgOverlay } from 'components/common'
 
 const Portfolio = ({ data }) => {
   const siteSeo = useSiteDatoMeta()
-
   return (
-    <Layout>
+    <Layout footer={data.footer}>
       <Header />
       <Seo siteSeo={siteSeo} pageSeo={data.portfolio.seoMetaTags} />
-      <Container>
-        <StyledImg fluid={data.portfolio.heroImage.fluid} alt={data.portfolio.heroImage.alt} />
-      </Container>
+      <Fluid>
+        <ImgFluid fluid={data.portfolio.heroImage.fluid} alt={data.portfolio.heroImage.alt} />
+      </Fluid>
       <Wrapper>
         <Content>
           <h3>{data.portfolio.heading}</h3>
           <h4>{data.portfolio.filters}</h4>
         </Content>
       </Wrapper>
-      <Wrapper>
+      <Wrapper style={{ paddingBottom: '4rem' }}>
         <Gallery>
           {data.events.edges.map(({ event }) => (
-            <Link key={event.slug} to={`/portfolio/${event.slug}`} style={{ width: '100%', height: '100%' }}>
+            <ImgLink key={event.slug} to={`/portfolio/${event.slug}`}>
+              <ImgOverlay>
+                <div>
+                  {event.venue && <h4>{event.venue}</h4>}
+                  {event.location && <h5>{event.location}</h5>}
+                </div>
+              </ImgOverlay>
               <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
-            </Link>
+            </ImgLink>
           ))}
         </Gallery>
       </Wrapper>
-      <Footer links={data.footer.links} serving={data.footer.serving} copyright={data.footer.copyright} />
     </Layout>
   )
 }
 
 export default Portfolio
 
+const ImgLink = styled(Link)`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); */
+  transition: all 0.3s ease-out;
+  &:hover {
+    transform: scale(1.05);
+  }
+`
+
 const Wrapper = styled(Container)`
-  padding: 4rem 0;
+  padding: 4rem 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,39 +64,13 @@ const Wrapper = styled(Container)`
     flex-direction: column;
   }
 `
+
 const Content = styled.div`
   width: 100%;
-  padding: 4rem 0;
+  padding: 4rem 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-`
-const StyledImg = styled(Img)`
-  opacity: 0.87;
-`
-const Gallery = styled.div`
-  width: 100%;
-  max-width: calc(420px * 3 + 40px);
-  margin: 1rem 0;
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-  justify-items: center;
-  justify-content: space-around;
-  & .gatsby-image-wrapper {
-    width: 100%;
-    height: 100%;
-    max-width: 420px;
-    max-height: 420px;
-  }
-  @media (max-width: ${({ theme }) => `${theme.mq.xl}px`}) {
-    max-width: calc(420px * 2 + 20px);
-  }
-  @media (max-width: ${({ theme }) => `${theme.mq.md}px`}) {
-    max-width: 96%;
-    grid-gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-  }
 `
 
 export const query = graphql`

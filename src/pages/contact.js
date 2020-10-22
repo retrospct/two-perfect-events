@@ -1,40 +1,42 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
 import { Layout, Seo, Header } from 'components/common'
-import partyItems from 'assets/illustrations/partyItems.svg'
 
-const Success = ({ data }) => {
+const Contact = ({ data }) => {
   const siteSeo = useSiteDatoMeta()
+
   return (
     <Layout footer={data.footer}>
       <Header />
-      <Seo siteSeo={siteSeo} pageSeo={data.success.seoMetaTags} />
-
-      <div id="success" className="alt">
-        <section id="one">
-          <div className="inner">
-            <header className="major">
-              <h1>Success/Thank You Page</h1>
-            </header>
-            <span className="image main">
-              <img src={partyItems} alt="" />
-            </span>
-            <p>Thank you for contacting us!</p>
+      <Seo siteSeo={siteSeo} pageSeo={data.contact.seoMetaTags} />
+      <article className="sheet">
+        <div className="sheet__inner">
+          <h1 className="sheet__title">{data.contact.title}</h1>
+          <p className="sheet__lead">{data.contact.subtitle}</p>
+          <div className="sheet__gallery">
+            <Img fluid={data.contact.photo.fluid} />
           </div>
-        </section>
-      </div>
+          <div
+            className="sheet__body"
+            dangerouslySetInnerHTML={{
+              __html: data.contact.bioNode.childMarkdownRemark.html,
+            }}
+          />
+        </div>
+      </article>
     </Layout>
   )
 }
 
-export default Success
+export default Contact
 
 export const query = graphql`
-  query SuccessQuery {
-    success: datoCmsAbout {
+  query ContactQuery {
+    contact: datoCmsAbout {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }

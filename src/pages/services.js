@@ -4,12 +4,12 @@ import { graphql } from 'gatsby'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Header, Footer } from 'components/common'
+import { Layout, Seo, Header } from 'components/common'
 
 const Services = ({ data }) => {
   const siteSeo = useSiteDatoMeta()
   return (
-    <Layout>
+    <Layout footer={data.footer}>
       <Header />
       <Seo siteSeo={siteSeo} pageSeo={data.services.seoMetaTags} />
       {/* <article className="sheet">
@@ -28,7 +28,6 @@ const Services = ({ data }) => {
       </div>
     </article> */}
       <h2>Services</h2>
-      <Footer links={data.footer.links} serving={data.footer.serving} copyright={data.footer.copyright} />
     </Layout>
   )
 }

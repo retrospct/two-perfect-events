@@ -1,16 +1,56 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import { Layout, Seo } from 'components/common'
-// import { SEO } from '../components/common/SEO'
+import { Link, graphql } from 'gatsby'
 
-export default () => (
-  <Layout>
-    <Seo title="404: Not found" location="/404" description="Page Not Found" />
-    {/* <SEO /> */}
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-    <Link to="/">Go Home</Link>
-  </Layout>
-)
+import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
+import { Layout, Seo } from 'components/common'
+
+export default ({ data }) => {
+  const siteSeo = useSiteDatoMeta()
+  return (
+    <Layout footer={data.footer}>
+      <Seo siteSeo={siteSeo} pageSeo={data.notfound.seoMetaTags} />
+      <h1>NOT FOUND</h1>
+      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+      <Link to="/">Go Home</Link>
+    </Layout>
+  )
+}
 
 // export default NoMatch
+
+export const query = graphql`
+  query NotFoundQuery {
+    notfound: datoCmsAbout {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+      title
+      subtitle
+      photo {
+        fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
+          ...GatsbyDatoCmsSizes
+        }
+      }
+      bioNode {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+    footer: datoCmsFooter {
+      links {
+        id
+        icon {
+          originalId
+          alt
+          url
+        }
+        title
+        linkText
+        linkUrl
+      }
+      serving
+      copyright
+    }
+  }
+`

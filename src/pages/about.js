@@ -4,13 +4,13 @@ import Img from 'gatsby-image'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Header, Footer } from 'components/common'
+import { Layout, Seo, Header } from 'components/common'
 
 const About = ({ data }) => {
   const siteSeo = useSiteDatoMeta()
 
   return (
-    <Layout>
+    <Layout footer={data.footer}>
       <Header />
       <Seo siteSeo={siteSeo} pageSeo={data.about.seoMetaTags} />
       {/* <HelmetDatoCms seo={about.seoMetaTags} /> */}
@@ -29,7 +29,6 @@ const About = ({ data }) => {
           />
         </div>
       </article>
-      <Footer links={data.footer.links} serving={data.footer.serving} copyright={data.footer.copyright} />
     </Layout>
   )
 }
@@ -38,26 +37,6 @@ export default About
 
 export const query = graphql`
   query AboutQuery {
-    # siteSeo: datoCmsSite {
-    #   domain
-    #   globalSeo {
-    #     siteName
-    #     titleSuffix
-    #     twitterAccount
-    #     facebookPageUrl
-    #     fallbackSeo {
-    #       title
-    #       description
-    #       image {
-    #         url
-    #       }
-    #       twitterCard
-    #     }
-    #   }
-    #   faviconMetaTags {
-    #     ...GatsbyDatoCmsFaviconMetaTags
-    #   }
-    # }
     about: datoCmsAbout {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags

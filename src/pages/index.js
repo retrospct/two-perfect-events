@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 import { useInstaLatest } from 'hooks/useInstaLatest'
 
-import { Layout, Seo, Header, Footer } from 'components/common'
+import { Layout, Seo, Header } from 'components/common'
 import { HomeBlock } from 'components/blocks/home'
 import { CreditsBlock } from 'components/blocks/credits'
 import { Hero } from 'components/landing'
@@ -14,14 +14,13 @@ const Home = ({ data }) => {
   const instaLatest = useInstaLatest()
   // console.log('data.nav: ', data.nav)
   return (
-    <Layout>
+    <Layout footer={data.footer}>
       <Header />
       {/* {data.nav.edges.map((link) => console.log('link.path: ', link.path))} */}
       <Seo siteSeo={siteSeo} pageSeo={data.home.seoMetaTags} />
       <Hero heading={data.home.heading} subheading={data.home.subtitle} />
       <HomeBlock homeBlock={data.home.homeBlock} instaLatest={instaLatest} />
-      <CreditsBlock heading="PHOTO CREDITS (WIP)" creditsBlock={data.home.creditsBlock} />
-      <Footer links={data.footer.links} serving={data.footer.serving} copyright={data.footer.copyright} />
+      <CreditsBlock heading="PHOTO CREDITS" creditsBlock={data.home.creditsBlock} />
     </Layout>
   )
 }
