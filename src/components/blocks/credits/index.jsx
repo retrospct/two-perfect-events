@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { CreditItem } from './CreditItem'
 import { CreditSection } from './CreditSection'
-import { Container } from 'components/common'
-import { Wrapper, Content, Header, IconImg } from './styles'
-import iconArrow from 'assets/icon-arrow.svg'
+import { Container, Icon, IconArrow } from 'components/common'
+import { Wrapper, Content, Header } from './styles'
+// import iconArrow from 'assets/icon-arrow.svg'
 
 export const CreditsBlock = ({ heading, creditsBlock }) => {
   const [isShowing, setIsShowing] = useState(false)
@@ -13,7 +13,11 @@ export const CreditsBlock = ({ heading, creditsBlock }) => {
         <Header>
           {heading && (
             <p onClick={() => setIsShowing(!isShowing)}>
-              {heading} <IconImg src={iconArrow} alt="Arrow pointing to the right" />
+              {/* {heading} <IconImg src={iconArrow} alt="Arrow pointing to the right" /> */}
+              {heading}{' '}
+              <Icon>
+                <IconArrow size="18px" />
+              </Icon>
             </p>
           )}
         </Header>

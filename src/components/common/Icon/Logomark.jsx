@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Logomark = props => (
+export const Logomark = (props) => (
   <svg data-name="Group 5" width={86.808} height={86.805} {...props}>
     <defs>
       <clipPath id="logomarkTpe_svg__a">

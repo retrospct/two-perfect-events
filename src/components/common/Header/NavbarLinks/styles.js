@@ -49,6 +49,7 @@ export const Wrapper = styled.div`
 export const NavLink = styled.a`
   /* color: ${({ theme }) => theme.colors.subheading}; */
   position: relative;
+  font-size: 1.1rem;
   font-weight: 300;
   letter-spacing: 0.02em;
   text-decoration: none;

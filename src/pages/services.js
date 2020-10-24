@@ -1,6 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import styled from 'styled-components'
 // import Img from 'gatsby-image'
+import { Icon, IconParty } from 'components/common'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
@@ -12,27 +14,19 @@ const Services = ({ location, data }) => {
     <Layout location={location} footer={data.footer}>
       <Header />
       <Seo siteSeo={siteSeo} pageSeo={data.services.seoMetaTags} />
-      {/* <article className="sheet">
-      <div className="sheet__inner">
-        <h1 className="sheet__title">{data.about.title}</h1>
-        <p className="sheet__lead">{data.about.subtitle}</p>
-        <div className="sheet__gallery">
-          <Img fluid={data.about.photo.fluid} />
-        </div>
-        <div
-          className="sheet__body"
-          dangerouslySetInnerHTML={{
-            __html: data.about.bioNode.childMarkdownRemark.html,
-          }}
-        />
-      </div>
-    </article> */}
+      <Icon size="250px">
+        <IconParty />
+      </Icon>
       <h2>Services</h2>
     </Layout>
   )
 }
 
 export default Services
+
+const IconServices = styled(IconParty)`
+  width: 250px;
+`
 
 export const query = graphql`
   query ServicesQuery {

@@ -4,7 +4,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 // import Recaptcha from 'react-google-recaptcha'
 // import * as Yup from 'yup'
 import { Button, InputContrast, TextFieldContrast } from 'components/common'
-import { FormField, FormFieldSplit, Label, ErrorMessage } from './styles'
+import { FormField, FormFieldSplit, Label, FormFieldOneCol, ErrorMessage } from './styles'
 
 export const ContactForm = ({ config }) => (
   <form
@@ -23,14 +23,14 @@ export const ContactForm = ({ config }) => (
           {config.name || 'Name'}
           {config.nameRequired && '*'}
         </span>
-        <InputContrast type="text" name="name" id="contact-name" required={config.nameRequired} />
+        <InputContrast type="text" name="contact-name" id="contact-name" required={config.nameRequired} />
       </Label>
       <Label htmlFor="contact-phone">
         <span>
           {config.phone || 'Phone'}
           {config.phoneRequired && '*'}
         </span>
-        <InputContrast type="tel" name="phone" id="contact-phone" required={config.phoneRequired} />
+        <InputContrast type="tel" name="contact-phone" id="contact-phone" required={config.phoneRequired} />
       </Label>
     </FormFieldSplit>
     <FormFieldSplit>
@@ -39,14 +39,45 @@ export const ContactForm = ({ config }) => (
           {config.email || 'Email'}
           {config.emailRequired && '*'}
         </span>
-        <InputContrast type="email" name="email" id="contact-email" required={config.emailRequired} />
+        <InputContrast type="email" name="contact-email" id="contact-email" required={config.emailRequired} />
       </Label>
       <Label htmlFor="contact-eventDate">
         <span>
           {config.eventDate || 'Event Date'}
           {config.eventDateRequired && '*'}
         </span>
-        <InputContrast type="text" name="eventDate" id="contact-eventDate" required={config.eventDateRequired} />
+        <InputContrast
+          type="text"
+          name="contact-eventDate"
+          id="contact-eventDate"
+          required={config.eventDateRequired}
+        />
+      </Label>
+    </FormFieldSplit>
+    <FormFieldSplit>
+      <Label htmlFor="contact-referral">
+        <span>How did you hear about us?</span>
+        {/* <InputContrast type="text" name="eventDate" id="contact-eventDate" required={config.eventDateRequired} /> */}
+        {/* <select defaultValue="--" name="contact-referral" id="contact-referral" style={{ marginTop: 20 }}> */}
+        <select name="contact-referral" id="contact-referral" style={{ marginTop: 24 }}>
+          {/* <option value="--">--</option> */}
+          <option value="friend">Friend</option>
+          <option value="Friend">Family</option>
+          <option value="Friend">Another Blog</option>
+          <option value="Friend">Instagram</option>
+          <option value="Friend">Facebook</option>
+          <option value="Friend">Our Blog</option>
+          <option value="Friend">Other</option>
+        </select>
+      </Label>
+      <Label htmlFor="contact-other-referral">
+        <span>Care to share who?</span>
+        <InputContrast
+          type="text"
+          name="contact-referral-other"
+          id="contact-referral-other"
+          required={config.eventDateRequired}
+        />
       </Label>
     </FormFieldSplit>
     {/* <FormField>

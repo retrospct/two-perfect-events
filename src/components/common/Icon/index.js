@@ -1,2 +1,5 @@
-export { Logo } from './Logo'
-export { Logomark } from './Logomark'
+export * from './Icon'
+export * from './Logo'
+export * from './Logomark'
+export * from './IconArrow'
+export * from './IconParty'

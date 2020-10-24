@@ -32,7 +32,7 @@ const Portfolio = ({ location, data }) => {
       <Wrapper>
         <Content>
           <h3>{data.portfolio.heading}</h3>
-          <h4>{data.portfolio.filters}</h4>
+          {/* <h4>{data.portfolio.filters}</h4> */}
         </Content>
       </Wrapper>
       <Wrapper style={{ paddingBottom: '4rem' }}>

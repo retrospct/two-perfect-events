@@ -10,6 +10,13 @@ export const FormFieldSplit = styled.div`
   grid-gap: 3rem;
   justify-content: flex-start;
 `
+export const FormFieldOneCol = styled.div`
+  margin-bottom: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 3rem;
+  justify-content: flex-start;
+`
 
 export const Label = styled.label`
   font-size: 1.66rem;

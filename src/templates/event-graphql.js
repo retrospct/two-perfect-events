@@ -1,6 +1,7 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import { LinkBase, Icon, IconArrow } from 'components/common'
 import styled from 'styled-components'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
@@ -16,17 +17,31 @@ const Event = ({ location, data }) => {
       <Seo siteSeo={siteSeo} pageSeo={event.seoMetaTags} />
       <Header />
       <Wrapper>
-        <h4>
-          <Link to="/portfolio">{'< Back to Porfolio'}</Link>
-        </h4>
+        <LinkBack to="/portfolio">
+          <Icon size="18px">
+            <IconArrowLeft />
+          </Icon>{' '}
+          Back to Porfolio
+        </LinkBack>
         <Content>
-          <h3>{event.title}</h3>
-          <h4>{event.venue}</h4>
-          <h4>{event.location}</h4>
-          <h4>{event.eventType}</h4>
-          <h4>{event.photographer}</h4>
-          <p>{event.excerpt}</p>
-          <div dangerouslySetInnerHTML={{ __html: event.excerptNode.childMarkdownRemark.html }} />
+          <Heading>{event.title}</Heading>
+          <Meta>
+            <MetaItem>
+              <h2>Location</h2>
+              <h3>{event.venue}</h3>
+              <h3>{event.location}</h3>
+            </MetaItem>
+            <MetaItem>
+              <h2>Event Type</h2>
+              <h3>{event.eventType}</h3>
+            </MetaItem>
+            <MetaItem>
+              <h2>Photographer</h2>
+              <h3>{event.photographer}</h3>
+            </MetaItem>
+          </Meta>
+          {/* <p>{event.excerpt}</p>
+          <div dangerouslySetInnerHTML={{ __html: event.excerptNode.childMarkdownRemark.html }} /> */}
         </Content>
       </Wrapper>
       <Container>
@@ -52,17 +67,71 @@ const Wrapper = styled(Container)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  /* @media (max-width: ${({ theme }) => theme.mq.lg}px) {
-    flex-direction: column;
-  } */
 `
-const Content = styled.div`
+const Content = styled.header`
   width: 100%;
-  padding: 4rem 0;
+  padding: 4rem 0 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+`
+const Meta = styled.div`
+  width: 75%;
+  padding: 4rem 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: ${({ theme }) => theme.mq.xl}px) {
+    width: 90%;
+  }
+  @media (max-width: ${({ theme }) => theme.mq.md}px) {
+    width: 100%;
+    flex-direction: column;
+  }
+`
+const MetaItem = styled.div`
+  padding-right: 3rem;
+  & h2 {
+    font-family: var(--serif-font);
+    font-size: 1.75rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+  }
+  & h3 {
+    font-family: var(--sans-font);
+    font-size: 1.33rem;
+    color: var(--text-color);
+  }
+  @media (max-width: ${({ theme }) => theme.mq.xl}px) {
+    padding-right: 2rem;
+  }
+  @media (max-width: ${({ theme }) => theme.mq.md}px) {
+    padding-right: 0;
+  }
+`
+const IconArrowLeft = styled(IconArrow)`
+  color: var(--text-color);
+  transform: rotate(180deg);
+  margin-right: 5px;
+`
+const LinkBack = styled(LinkBase)`
+  color: var(--text-color);
+  font-size: 1.5rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  padding-bottom: 20px;
+  align-self: flex-start;
+  &:hover {
+    text-decoration: underline;
+  }
+`
+const Heading = styled.h1`
+  font-family: var(--serif-font);
+  font-weight: 300;
+  font-size: 2.87rem;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 0.4rem;
 `
 
 const Gallery = styled.div`

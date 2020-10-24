@@ -39,6 +39,6 @@ export const Header = styled.div`
   }
 `
 
-export const IconImg = styled.img`
-  padding: 0 0 3px 5px;
-`
+// export const IconImg = styled.img`
+//   padding: 0 0 3px 5px;
+// `

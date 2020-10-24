@@ -10,6 +10,9 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 100vw;
 
     :root {
+      --serif-font: 'Crimson Text', "Lucida Grande", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      --sans-font: "Lato", "Lucida Grande", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      --quote-font: 'Crimson Pro', 'Crimson Text', "Lucida Grande", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";;
       --primary-color: ${({ theme }) => theme.colors.primary || '#694a86'};
       --primaryInverse-color: ${({ theme }) => theme.colors.primaryInverse || '#694a86'};
       --primaryLighter-color: ${({ theme }) => theme.colors.primaryLighter || '#7c6194'};
