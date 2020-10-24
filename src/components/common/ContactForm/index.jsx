@@ -1,10 +1,7 @@
 import React from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
-// import { Formik, Form, Field, FastField, ErrorMessage } from 'formik'
-// import Recaptcha from 'react-google-recaptcha'
-// import * as Yup from 'yup'
 import { Button, InputContrast, TextFieldContrast } from 'components/common'
-import { FormField, FormFieldSplit, Label, FormFieldOneCol, ErrorMessage } from './styles'
+import { FormField, FormFieldSplit, Label, ErrorMessage } from './styles'
 
 export const ContactForm = ({ config }) => (
   <form
@@ -76,7 +73,7 @@ export const ContactForm = ({ config }) => (
           type="text"
           name="contact-referral-other"
           id="contact-referral-other"
-          required={config.eventDateRequired}
+          required={config.referralSource}
         />
       </Label>
     </FormFieldSplit>
