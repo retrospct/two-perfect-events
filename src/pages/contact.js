@@ -1,67 +1,42 @@
 import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
-// import Img from 'gatsby-image'
-import arrowSquiggly from 'assets/illustrations/arrowSquiggly.svg'
-// import { Fluid, Wrapper, ContactBlock, Spotlight } from './styles'
 
+import { useTheme } from 'context/themeContext'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Header, Container, ContactPageForm } from 'components/common'
+import { Layout, Seo, Header, Container, ContactPageForm, Icon, IconSquiggly } from 'components/common'
 
 const Contact = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
-  // const {
-  //   name,
-  //   nameRequired,
-  //   email,
-  //   emailRequired,
-  //   phone,
-  //   phoneRequired,
-  //   eventDate,
-  //   eventDateRequired,
-  //   additionalInfo,
-  //   additionalInfoRequired,
-  // } = block
+  const { colors } = useTheme()
   return (
     <Layout location={location} footer={data.footer}>
       <Header />
       <Seo siteSeo={siteSeo} pageSeo={data.contact.seoMetaTags} />
-      {/* <Fluid id="contact"> */}
       <Wrapper as={Container}>
-        <ContactBlock>
+        <ContactUs>
           {data.contact.squigglyIcon && (
             <Spotlight>
-              <img src={arrowSquiggly} alt="Arrow pointing towards let's get this party started" />
+              <Icon color={colors.accent}>
+                <IconSquiggly />
+              </Icon>
             </Spotlight>
           )}
-          {data.contact.heading && (
+          {data?.contact?.heading && (
             <Heading>
-              <h3>{data.contact.heading}</h3>
+              <h3>{data?.contact?.heading?.toUpperCase()}</h3>
             </Heading>
           )}
-          <ContactPageForm
-            config={{
-              name: 'Name',
-              nameRequired: true,
-              email: 'Email',
-              emailRequired: true,
-              phone: 'Phone',
-              phoneRequired: true,
-              eventDate: 'Event Date',
-              eventDateRequired: false,
-              additionalInfo: 'Additional Information',
-              additionalInfoRequired: false,
-            }}
-          />
-        </ContactBlock>
-        {/* <ImgBlock>
-        <Img fixed={image.fixed} alt={image.alt} />
-      </ImgBlock> */}
+          <ContactPageForm config={data.contact} />
+        </ContactUs>
       </Wrapper>
     </Layout>
   )
 }
+// <Spotlight>
+//   <img src={arrowSquiggly} alt="Arrow pointing towards let's get this party started" />
+// </Spotlight>
 
 export default Contact
 
@@ -89,7 +64,7 @@ export const Wrapper = styled.div`
   } */
 `
 
-export const ContactBlock = styled.div`
+export const ContactUs = styled.div`
   position: relative;
   padding: 6rem 6rem 1rem;
   font-size: 1.5rem;
@@ -101,12 +76,6 @@ export const ContactBlock = styled.div`
     width: 100%;
     padding: 6rem 1.5rem 4rem;
   }
-  /* p {
-    margin-bottom: 2.5rem;
-    font-size: 20pt;
-    font-weight: normal;
-    line-height: 1.3;
-  } */
 `
 export const Spotlight = styled.div`
   height: 222px;
@@ -161,7 +130,30 @@ export const query = graphql`
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
+      squigglyIcon
       heading
+      nameLabel
+      nameRequired
+      emailLabel
+      emailRequired
+      phoneLabel
+      phoneRequired
+      eventDateLabel
+      eventDateRequired
+      referralLabel
+      referralRequired
+      referralOptions {
+        referralType
+        id
+      }
+      referralDetailLabel
+      referralDetailRequired
+      referralDetailEnabled
+      referralHelptext
+      referralHelptextEnabled
+      additionalInformationLabel
+      additionalInformationRequired
+      slug
     }
     footer: datoCmsFooter {
       links {
@@ -180,3 +172,22 @@ export const query = graphql`
     }
   }
 `
+
+// name_label
+//       email_label
+//       phone_label
+//       event_date_label
+//       referral_label
+//       referral_options {
+//         referral_source
+//       }
+//       referral_detail_enabled
+//       referral_detail_label
+//       additional_information_label
+//       name_required
+//       email_required
+//       phone_required
+//       event_date_required
+//       referral_required
+//       referral_detail_required
+//       additional_information_required

@@ -666,6 +666,8 @@ export const GlobalStyle = createGlobalStyle`
       ${'' /* font-size: clamp(100%, 1rem + 2vw, 24px); */}
     }
 
+    font-size: min(max(1rem, 4vw), 22px);
+
     a {
       text-decoration: none;
     }

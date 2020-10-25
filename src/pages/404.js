@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
-import { Layout, Seo } from 'components/common'
+import { Layout, Seo, Connect } from 'components/common'
 
 export default ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
@@ -12,6 +12,7 @@ export default ({ location, data }) => {
       <h1>NOT FOUND</h1>
       <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
       <Link to="/">Go Home</Link>
+      <Connect />
     </Layout>
   )
 }

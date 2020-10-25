@@ -21,7 +21,7 @@ export const FormFieldOneCol = styled.div`
 export const Label = styled.label`
   font-size: 1.66rem;
   line-height: 1.5;
-  color: inherit;
+  color: ${(props) => (props.contrast ? 'var(--textLight-color)' : 'black')};
 `
 
 export const ErrorMessage = styled.span`

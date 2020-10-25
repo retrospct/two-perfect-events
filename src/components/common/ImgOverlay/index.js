@@ -19,6 +19,14 @@ export const ImgOverlay = styled.div`
     height: 100%;
     padding: 1rem;
     word-wrap: break-word;
+    color: var(--textLight-color);
+    text-align: right;
+    font-weight: normal;
+    & .portfolio-venue {
+      font-weight: normal;
+      padding: 0;
+      font-size: 0.85rem;
+    }
     h4 {
       /* font-size: 3rem; */
       color: var(--textLight-color);

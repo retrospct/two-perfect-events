@@ -9,19 +9,23 @@ import {
   Layout,
   Seo,
   Header,
+  Heading,
   Container,
   Connect,
   Fluid,
   ImgFluid,
   Gallery,
   ImgOverlay,
-  ButtonContrast,
 } from 'components/common'
-import arrowSquiggly from 'assets/illustrations/arrowSquiggly.svg'
-import iconPartyHat from 'assets/illustrations/icon-party-hat.svg'
+// import arrowSquiggly from 'assets/illustrations/arrowSquiggly.svg'
+// import iconPartyHat from 'assets/illustrations/icon-party-hat.svg'
+
+// import { useTheme } from 'context/themeContext'
+// import { Icon, IconSquiggly, IconParty } from 'components/common'
 
 const Portfolio = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
+  // const { colors } = useTheme()
   return (
     <Layout location={location} footer={data.footer}>
       <Header />
@@ -31,7 +35,9 @@ const Portfolio = ({ location, data }) => {
       </Fluid>
       <Wrapper>
         <Content>
-          <h3>{data.portfolio.heading}</h3>
+          <Heading>
+            <h3>{data.portfolio.heading}</h3>
+          </Heading>
           {/* <h4>{data.portfolio.filters}</h4> */}
         </Content>
       </Wrapper>
@@ -41,7 +47,12 @@ const Portfolio = ({ location, data }) => {
             <ImgLink key={event.slug} to={`/portfolio/${event.slug}`}>
               <ImgOverlay>
                 <div>
-                  {event.venue && <h4>{event.venue}</h4>}
+                  {event.venueNode && (
+                    <div
+                      className="portfolio-venue"
+                      dangerouslySetInnerHTML={{ __html: event.venueNode.childMarkdownRemark.excerpt }}
+                    />
+                  )}
                   {event.location && <h5>{event.location}</h5>}
                 </div>
               </ImgOverlay>
@@ -50,17 +61,7 @@ const Portfolio = ({ location, data }) => {
           ))}
         </Gallery>
       </Wrapper>
-      <Connect>
-        <hr />
-        <Spotlight>
-          <img src={arrowSquiggly} alt="Squiggly arrow pointing towards a Let's Connect button." />
-        </Spotlight>
-        <ButtonContrast onClick={() => navigate('/contact')}>{data.connect.title}</ButtonContrast>
-        <SpotlightBottom>
-          <img src={iconPartyHat} alt="Hand drawn line illustration of a party hat." />
-        </SpotlightBottom>
-        <hr className="hr-connect-second" />
-      </Connect>
+      {data.portfolio.connectEnabled && <Connect />}
     </Layout>
   )
 }
@@ -92,30 +93,11 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
-
-const Spotlight = styled.div`
-  height: 222px;
-  width: 111px;
-  position: absolute;
-  top: 0;
-  right: 20%;
-  color: var(--textLight-color);
-  & img {
-    height: 80%;
-    width: 111px;
-    transform: scale(-1, 1) rotate(-25deg) translateY(-2rem);
-  }
-`
-
-const SpotlightBottom = styled(Spotlight)`
-  top: unset;
-  left: 25%;
-  bottom: 0;
-  transform: rotate(260deg) translateX(-1.87rem);
-  @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
-    transform: rotate(260deg) translateX(-1.87rem);
-  }
+  /* & h3 {
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-family: var(--serif-font);
+  } */
 `
 
 export const query = graphql`
@@ -132,13 +114,18 @@ export const query = graphql`
       }
       heading
       filters
+      connectEnabled
     }
     events: allDatoCmsEvent(sort: { fields: position }) {
       edges {
         event: node {
           title
           slug
-          venue
+          venueNode {
+            childMarkdownRemark {
+              excerpt
+            }
+          }
           location
           eventType
           coverImage {
@@ -153,12 +140,6 @@ export const query = graphql`
             alt
           }
         }
-      }
-    }
-    connect: datoCmsConnect {
-      title
-      contactPage {
-        slug
       }
     }
     footer: datoCmsFooter {

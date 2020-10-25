@@ -7,7 +7,7 @@ import { useInstaLatest } from 'hooks/useInstaLatest'
 import { Layout, Seo, Header } from 'components/common'
 import { HomeBlock } from 'components/blocks/home'
 import { CreditsBlock } from 'components/blocks/credits'
-import { Hero } from 'components/landing'
+import { Hero, ContactSection } from 'components/landing'
 
 const Home = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
@@ -20,6 +20,7 @@ const Home = ({ location, data }) => {
       <Seo siteSeo={siteSeo} pageSeo={data.home.seoMetaTags} />
       <Hero heading={data.home.heading} subheading={data.home.subtitle} />
       <HomeBlock homeBlock={data.home.homeBlock} instaLatest={instaLatest} />
+      <ContactSection heading="LET’S GET THIS PARTY STARTED!" config={data.contact} />
       <CreditsBlock heading="PHOTO CREDITS" creditsBlock={data.home.creditsBlock} />
     </Layout>
   )
@@ -147,24 +148,24 @@ export const query = graphql`
             username
           }
         }
-        ... on DatoCmsContactForm {
-          model {
-            apiKey
-          }
-          id
-          squigglyIcon
-          heading
-          name
-          nameRequired
-          email
-          emailRequired
-          phone
-          phoneRequired
-          eventDate
-          eventDateRequired
-          additionalInfo
-          additionalInfoRequired
-        }
+        # ... on DatoCmsContactForm {
+        #   model {
+        #     apiKey
+        #   }
+        #   id
+        #   squigglyIcon
+        #   heading
+        #   name
+        #   nameRequired
+        #   email
+        #   emailRequired
+        #   phone
+        #   phoneRequired
+        #   eventDate
+        #   eventDateRequired
+        #   additionalInfo
+        #   additionalInfoRequired
+        # }
       }
       creditsBlock {
         ... on DatoCmsCreditSection {
@@ -188,6 +189,35 @@ export const query = graphql`
           }
         }
       }
+    }
+    contact: datoCmsContact {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+      squigglyIcon
+      heading
+      nameLabel
+      nameRequired
+      emailLabel
+      emailRequired
+      phoneLabel
+      phoneRequired
+      eventDateLabel
+      eventDateRequired
+      referralLabel
+      referralRequired
+      referralOptions {
+        referralType
+        id
+      }
+      referralDetailLabel
+      referralDetailRequired
+      referralDetailEnabled
+      referralHelptext
+      referralHelptextEnabled
+      additionalInformationLabel
+      additionalInformationRequired
+      slug
     }
     footer: datoCmsFooter {
       links {

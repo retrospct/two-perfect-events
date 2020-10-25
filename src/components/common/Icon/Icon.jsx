@@ -16,11 +16,13 @@ import styled from 'styled-components'
 
 // const IconContainer = (props: IconProps) => <div {...props}>{props.children}</div>
 
-export const Icon = styled(({ ...rest }) => <span {...rest} />)`
+export const Icon = styled(({ ...props }) => <span {...props} />)`
   /* display: ${(props) => (props.inline ? 'inline-block' : 'inherit')}; */
+  /* width: ${(props) => props.size};
+  height: ${(props) => props.size}; */
   & svg {
-    width: ${(props) => props.size || '28px'};
-    height: ${(props) => props.size || '28px'};
+    width: ${(props) => props.size};
+    height: ${(props) => props.size};
     padding: ${(props) => props.padding || '0'};
     /* vertical-align: middle; */
     display: ${(props) => props.block || 'inline-block'};

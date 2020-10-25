@@ -15,32 +15,50 @@ export const ContactPageForm = ({ config }) => (
     <input type="hidden" name="bot-field" />
     <input type="hidden" name="form-name" value="contact-page" />
     <FormFieldSplit>
-      <Label htmlFor="contact-page-name">
+      <Label htmlFor="contact-page-name" contrast>
         <span>
-          {config.name || 'Name'}
+          {config.nameLabel || 'Name'}
           {config.nameRequired && '*'}
         </span>
-        <InputContact type="text" name="contact-page-name" id="contact-page-name" required={config.nameRequired} />
+        <InputContact
+          type="text"
+          name="contact-page-name"
+          id="contact-page-name"
+          required={config.nameRequired}
+          contrast
+        />
       </Label>
-      <Label htmlFor="contact-page-phone">
+      <Label htmlFor="contact-page-phone" contrast>
         <span>
-          {config.phone || 'Phone'}
+          {config.phoneLabel || 'Phone'}
           {config.phoneRequired && '*'}
         </span>
-        <InputContact type="tel" name="contact-page-phone" id="contact-page-phone" required={config.phoneRequired} />
+        <InputContact
+          type="tel"
+          name="contact-page-phone"
+          id="contact-page-phone"
+          required={config.phoneRequired}
+          contrast
+        />
       </Label>
     </FormFieldSplit>
     <FormFieldSplit>
-      <Label htmlFor="contact-page-email">
+      <Label htmlFor="contact-page-email" contrast>
         <span>
-          {config.email || 'Email'}
+          {config.emailLabel || 'Email'}
           {config.emailRequired && '*'}
         </span>
-        <InputContact type="email" name="contact-page-email" id="contact-page-email" required={config.emailRequired} />
+        <InputContact
+          type="email"
+          name="contact-page-email"
+          id="contact-page-email"
+          required={config.emailRequired}
+          contrast
+        />
       </Label>
-      <Label htmlFor="contact-page-eventDate">
+      <Label htmlFor="contact-page-eventDate" contrast>
         <span>
-          {config.eventDate || 'Event Date'}
+          {config.eventDateLabel || 'Event Date'}
           {config.eventDateRequired && '*'}
         </span>
         <InputContact
@@ -48,31 +66,44 @@ export const ContactPageForm = ({ config }) => (
           name="contact-page-eventDate"
           id="contact-page-eventDate"
           required={config.eventDateRequired}
+          contrast
         />
       </Label>
     </FormFieldSplit>
     <FormFieldSplit>
-      <Label htmlFor="contact-page-referral">
-        <span>How did you hear about us?</span>
-        <select name="contact-page-referral" id="contact-page-referral" style={{ marginTop: 24 }}>
-          <option value="friend">Friend</option>
-          <option value="Friend">Family</option>
-          <option value="Friend">Another Blog</option>
-          <option value="Friend">Instagram</option>
-          <option value="Friend">Facebook</option>
-          <option value="Friend">Our Blog</option>
-          <option value="Friend">Other</option>
+      <Label htmlFor="contact-page-referral" contrast>
+        <span>
+          {config.referralLabel || 'How did you hear about us?'}
+          {config.referralRequired && '*'}
+        </span>
+        <select name="contact-page-referral" id="contact-page-referral" style={{ marginTop: 28 }}>
+          {config.referralOptions.map((option) => (
+            <option key={option.id} value={option?.referralType?.toLowerCase()}>
+              {option.referralType}
+            </option>
+          ))}
         </select>
       </Label>
-      <Label htmlFor="contact-page-other-referral">
-        <span>Care to share who?</span>
-        <InputContact
-          type="text"
-          name="contact-page-referral-other"
-          id="contact-page-referral-other"
-          required={config.referralSource}
-        />
-      </Label>
+      {config.referralDetailEnabled && (
+        <Label htmlFor="contact-page-referral-detail" contrast>
+          <span>
+            {config.referralDetailLabel || 'Care to share the specific source?'}
+            {config.referralDetailRequired && '*'}
+          </span>
+          <InputContact
+            type="text"
+            name="contact-page-referral-detail"
+            id="contact-page-referral-detail"
+            required={config.referralDetail}
+            contrast
+          />
+          {config.referralHelptextEnabled && (
+            <span style={{ fontSize: '0.8rem' }}>
+              <em>{config.referralHelptext || 'This info really helps manage our efforts as a small business.'}</em>
+            </span>
+          )}
+        </Label>
+      )}
     </FormFieldSplit>
     {/* <FormField>
     <Label>Your Role: <select name="role[]" multiple>
@@ -82,16 +113,17 @@ export const ContactPageForm = ({ config }) => (
   </FormField> */}
     {/* <p>Date of event if known (placeholder)</p> */}
     <FormField>
-      <Label htmlFor="contact-page-additional-info">
+      <Label htmlFor="contact-page-additional-info" contrast>
         <span>
-          {config.additionalInfo || 'Additional Information'}
-          {config.additionalInfoRequired && '*'}
+          {config.additionalInformationLabel || 'Additional Information'}
+          {config.additionalInformationRequired && '*'}
         </span>
         <TextFieldContact
           name="contact-page-additional-info"
           id="contact-page-additional-info"
           rows="5"
-          required={config.additionalInfoRequired}
+          required={config.additionalInformationRequired}
+          contrast
         />
       </Label>
     </FormField>

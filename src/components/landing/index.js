@@ -1,4 +1,5 @@
 export * from './Hero'
+export * from './ContactSection'
 // export * from './PhotoCredits'
 // export * from './Intro'
 // export * from './Skills'

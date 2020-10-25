@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { LinkExternal } from 'components/common'
 
 export const Wrapper = styled.div`
   padding: 4rem 0;
@@ -32,6 +33,13 @@ export const Username = styled.h4`
   font-weight: 300;
   font-size: 1.5rem;
   letter-spacing: 0.08rem;
+`
+
+export const UsernameLink = styled(LinkExternal)`
+  color: var(--primary-color);
+  &:hover {
+    color: var(--primaryLighter-color);
+  }
 `
 
 export const InstaLink = styled.a`

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Contact } from './Contact'
 import { HeroImage } from './HeroImage'
 import { ImageText } from './ImageText'
 import { TextImage } from './TextImage'
@@ -19,18 +18,7 @@ export const HomeBlock = ({ homeBlock, instaLatest }) => (
         {block.model.apiKey === 'quote' && <Quote block={block} />}
         {block.model.apiKey === 'featured' && <Featured block={block} />}
         {block.model.apiKey === 'instagram' && <Instagram block={block} instaLatest={instaLatest} />}
-        {block.model.apiKey === 'contact_form' && <Contact block={block} />}
       </section>
     ))}
   </>
 )
-
-
-// export * from './Contact'
-// export * from './Featured'
-// export * from './HeadingDescription'
-// export * from './HeroImage'
-// export * from './ImageText'
-// export * from './Instagram'
-// export * from './Quote'
-// export * from './TextImage'

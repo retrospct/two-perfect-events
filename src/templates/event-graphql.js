@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Header, Container, Footer } from 'components/common'
+import { Layout, Seo, Header, Container, Footer, Connect } from 'components/common'
 
 const Event = ({ location, data }) => {
   const { event, footer } = data
@@ -25,10 +25,12 @@ const Event = ({ location, data }) => {
         </LinkBack>
         <Content>
           <Heading>{event.title}</Heading>
+          <MetaOneLiner>{event.oneLiner}</MetaOneLiner>
           <Meta>
             <MetaItem>
               <h2>Location</h2>
               <h3>{event.venue}</h3>
+              <div dangerouslySetInnerHTML={{ __html: event?.venueNode?.childMarkdownRemark?.html }} />
               <h3>{event.location}</h3>
             </MetaItem>
             <MetaItem>
@@ -40,8 +42,19 @@ const Event = ({ location, data }) => {
               <h3>{event.photographer}</h3>
             </MetaItem>
           </Meta>
-          {/* <p>{event.excerpt}</p>
-          <div dangerouslySetInnerHTML={{ __html: event.excerptNode.childMarkdownRemark.html }} /> */}
+          <Meta>
+            <MetaItem>
+              <h2>{event?.couple?.toUpperCase() || 'Event'}</h2>
+              <h3>{event.venue}</h3>
+              <div dangerouslySetInnerHTML={{ __html: event?.venueNode?.childMarkdownRemark?.html }} />
+              <h3>{event.location}</h3>
+              <h3>{event.eventType}</h3>
+            </MetaItem>
+            <MetaItem>
+              <h2>Vendors</h2>
+              <div dangerouslySetInnerHTML={{ __html: event?.vendorsNode?.childMarkdownRemark?.html }} />
+            </MetaItem>
+          </Meta>
         </Content>
       </Wrapper>
       <Container>
@@ -54,6 +67,7 @@ const Event = ({ location, data }) => {
           ))}
         </Gallery>
       </Wrapper>
+      <Connect />
       <Footer links={footer.links} serving={footer.serving} copyright={footer.copyright} />
     </Layout>
   )
@@ -76,34 +90,58 @@ const Content = styled.header`
   align-items: flex-start;
 `
 const Meta = styled.div`
-  width: 75%;
-  padding: 4rem 0 1rem;
+  width: 100%;
+  padding: 3rem 0 1rem;
   display: flex;
-  justify-content: space-between;
-  @media (max-width: ${({ theme }) => theme.mq.xl}px) {
+  /* justify-content: space-between; */
+  /* @media (max-width: ${({ theme }) => theme.mq.xl}px) {
     width: 90%;
-  }
+  } */
   @media (max-width: ${({ theme }) => theme.mq.md}px) {
     width: 100%;
     flex-direction: column;
   }
 `
+const MetaOneLiner = styled.div`
+  font-family: var(--sans-font);
+  font-size: 1.15rem;
+  color: var(--text-color);
+  font-weight: 300;
+  /* margin-bottom: 0.5rem; */
+`
 const MetaItem = styled.div`
-  padding-right: 3rem;
+  padding: 1rem 5rem 2rem 0;
   & h2 {
     font-family: var(--serif-font);
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: normal;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
   }
+  & ul,
+  & ol {
+    margin-left: 0;
+    list-style: none;
+    margin-bottom: 0.5rem;
+  }
+  & p,
+  & a,
+  & li,
   & h3 {
     font-family: var(--sans-font);
-    font-size: 1.33rem;
+    font-size: 1.15rem;
     color: var(--text-color);
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+  }
+  & a {
+    &:hover {
+      /* text-decoration: underline; */
+      color: var(--primary-color);
+    }
   }
   @media (max-width: ${({ theme }) => theme.mq.xl}px) {
-    padding-right: 2rem;
+    padding-right: 2.5rem;
   }
   @media (max-width: ${({ theme }) => theme.mq.md}px) {
     padding-right: 0;
@@ -167,15 +205,29 @@ export const query = graphql`
       }
       title
       slug
-      venue
-      location
-      eventType
-      photographer
-      excerpt
-      excerptNode {
+      couple
+      venueNode {
         childMarkdownRemark {
           html
         }
+      }
+      location
+      eventType
+      oneLiner
+      photographer
+      vendorsNode {
+        childMarkdownRemark {
+          html
+        }
+      }
+      vendorList {
+        # unused currently
+        id
+        originalId
+        name
+        referralLink
+        website
+        # logo
       }
       coverImage {
         originalId
@@ -193,6 +245,38 @@ export const query = graphql`
           ...GatsbyDatoCmsFluid
         }
         alt
+      }
+      eventGallery {
+        ... on DatoCmsImageOneColumn {
+          model {
+            apiKey
+          }
+          id
+          imageFluid {
+            fluid(maxHeight: 1440, imgixParams: { fm: "jpg", auto: "compress" }) {
+              ...GatsbyDatoCmsFluid
+            }
+            alt
+          }
+        }
+        ... on DatoCmsImageTwoColumn {
+          model {
+            apiKey
+          }
+          id
+          imageLeft {
+            fluid(maxHeight: 1440, imgixParams: { fm: "jpg", auto: "compress" }) {
+              ...GatsbyDatoCmsFluid
+            }
+            alt
+          }
+          imageRight {
+            fluid(maxHeight: 1440, imgixParams: { fm: "jpg", auto: "compress" }) {
+              ...GatsbyDatoCmsFluid
+            }
+            alt
+          }
+        }
       }
     }
     footer: datoCmsFooter {

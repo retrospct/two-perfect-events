@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-// import arrowSquiggly from 'assets/illustrations/arrowSquiggly.svg'
 
 export const Fluid = styled.div`
   width: 100%;

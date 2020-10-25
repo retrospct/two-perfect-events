@@ -15,8 +15,8 @@ export const CreditsBlock = ({ heading, creditsBlock }) => {
             <p onClick={() => setIsShowing(!isShowing)}>
               {/* {heading} <IconImg src={iconArrow} alt="Arrow pointing to the right" /> */}
               {heading}{' '}
-              <Icon>
-                <IconArrow size="18px" />
+              <Icon size="18px">
+                <IconArrow />
               </Icon>
             </p>
           )}

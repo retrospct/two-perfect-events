@@ -1,8 +1,8 @@
 import React from 'react'
 // import { Link } from 'gatsby'
 import Img from 'gatsby-image'
-import { Container, LinkExternal } from 'components/common'
-import { Wrapper, Content, Header, Username, InstaGallery, InstaLink } from './styles'
+import { Container } from 'components/common'
+import { Wrapper, Content, Header, Username, InstaGallery, InstaLink, UsernameLink } from './styles'
 
 // TODO: add the correct security HTML attributes to the link a element below
 export const Instagram = ({ block, instaLatest }) => (
@@ -11,9 +11,9 @@ export const Instagram = ({ block, instaLatest }) => (
       <Header>{block.heading && <h3>{block.heading}</h3>}</Header>
       {block.socialLink && (
         <Username>
-          <LinkExternal href={block.socialLink.linkUrl} target="_blank" rel="noopener noreferrer">
+          <UsernameLink href={block.socialLink.linkUrl} target="_blank" rel="noopener noreferrer">
             {block.socialLink.username}
-          </LinkExternal>
+          </UsernameLink>
         </Username>
       )}
       <InstaGallery>

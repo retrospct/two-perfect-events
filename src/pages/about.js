@@ -4,7 +4,7 @@ import Img from 'gatsby-image'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Header } from 'components/common'
+import { Layout, Seo, Header, Connect } from 'components/common'
 
 const About = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
@@ -29,6 +29,7 @@ const About = ({ location, data }) => {
           />
         </div>
       </article>
+      {data.about.connectEnabled && <Connect />}
     </Layout>
   )
 }
@@ -53,6 +54,7 @@ export const query = graphql`
           html
         }
       }
+      connectEnabled
     }
     footer: datoCmsFooter {
       links {

@@ -54,10 +54,7 @@ export const ContactForm = ({ config }) => (
     <FormFieldSplit>
       <Label htmlFor="contact-referral">
         <span>How did you hear about us?</span>
-        {/* <InputContrast type="text" name="eventDate" id="contact-eventDate" required={config.eventDateRequired} /> */}
-        {/* <select defaultValue="--" name="contact-referral" id="contact-referral" style={{ marginTop: 20 }}> */}
         <select name="contact-referral" id="contact-referral" style={{ marginTop: 24 }}>
-          {/* <option value="--">--</option> */}
           <option value="friend">Friend</option>
           <option value="Friend">Family</option>
           <option value="Friend">Another Blog</option>
