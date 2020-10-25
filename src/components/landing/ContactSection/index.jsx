@@ -3,7 +3,7 @@ import React from 'react'
 import { Container, ContactForm, Icon, IconSquiggly } from 'components/common'
 import { Fluid, Wrapper, ContactBlock, Spotlight, Header } from './styles'
 
-export const ContactSection = ({ heading, config, contrast }) => {
+export const ContactSection = ({ heading, config, contrast, formName }) => {
   return (
     <Fluid id="contact">
       <Wrapper as={Container}>
@@ -24,7 +24,7 @@ export const ContactSection = ({ heading, config, contrast }) => {
               <h3>{config?.heading?.toUpperCase()}</h3>
             </Header>
           )}
-          <ContactForm config={config} contrast={contrast} />
+          <ContactForm config={config} contrast={contrast} formName={formName} />
         </ContactBlock>
       </Wrapper>
     </Fluid>

@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 import { useTheme } from 'context/themeContext'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Header, Container, ContactPageForm, Icon, IconSquiggly } from 'components/common'
+import { Layout, Seo, Header, Container, ContactForm, Icon, IconSquiggly } from 'components/common'
 
 const Contact = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
@@ -28,7 +28,7 @@ const Contact = ({ location, data }) => {
               <h3>{data?.contact?.heading?.toUpperCase()}</h3>
             </Heading>
           )}
-          <ContactPageForm config={data.contact} />
+          <ContactForm config={data.contact} formName="contact-page" />
         </ContactUs>
       </Wrapper>
     </Layout>

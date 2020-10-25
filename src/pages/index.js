@@ -20,7 +20,7 @@ const Home = ({ location, data }) => {
       <Seo siteSeo={siteSeo} pageSeo={data.home.seoMetaTags} />
       <Hero heading={data.home.heading} subheading={data.home.subtitle} />
       <HomeBlock homeBlock={data.home.homeBlock} instaLatest={instaLatest} />
-      <ContactSection heading="LET’S GET THIS PARTY STARTED!" config={data.contact} contrast />
+      <ContactSection heading="LET’S GET THIS PARTY STARTED!" config={data.contact} contrast formName="contact-home" />
       <CreditsBlock heading="PHOTO CREDITS" creditsBlock={data.home.creditsBlock} />
     </Layout>
   )
