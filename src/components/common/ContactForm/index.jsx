@@ -4,24 +4,23 @@ import { Button, InputContact, TextFieldContact } from 'components/common'
 import { FormField, FormFieldSplit, Label, ErrorMessage } from './styles'
 import { navigate } from 'gatsby'
 
-const RECAPTCHA_KEY = process.env.GATSBY_RECAPTCHA_KEY
-if (typeof RECAPTCHA_KEY === 'undefined') {
-  throw new Error(`
-  Env var GATSBY_RECAPTCHA_KEY is undefined! 
-  You probably forget to set it in your Netlify build environment variables. 
-  `)
-}
-
-const encode = (data) => {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&')
-}
-
 export const ContactForm = ({ config, contrast = false, formName = 'contact-page' }) => {
   const [formState, setFormState] = useState({})
   const [errorMessage, setErrorMessage] = useState(false)
   const recaptchaRef = createRef()
+
+  const RECAPTCHA_KEY = process.env.GATSBY_RECAPTCHA_KEY
+  if (typeof RECAPTCHA_KEY === 'undefined') {
+    throw new Error(
+      `Env var GATSBY_RECAPTCHA_KEY is undefined! You probably forget to set it in your Netlify build environment variables.`
+    )
+  }
+
+  const encode = (data) => {
+    return Object.keys(data)
+      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&')
+  }
 
   const resetForm = () => {
     setErrorMessage(false)
