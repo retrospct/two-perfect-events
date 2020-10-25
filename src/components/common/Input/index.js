@@ -4,7 +4,7 @@ export const Input = styled.input`
   width: 100%;
   box-sizing: border-box;
   border: 2px solid var(--primary-color);
-  padding: 0.8rem 1rem;
+  padding: 0.8rem 0.5rem;
   border-radius: 0;
   /* border-radius: 7px; */
   margin-bottom: 0.3rem;
@@ -26,7 +26,7 @@ export const InputContrast = styled.input`
   box-sizing: border-box;
   border: none;
   border-bottom: 2px solid var(--textLight-color);
-  padding: 0.5rem 0.1rem;
+  padding: 0.5rem;
   border-radius: 0;
   /* border-radius: 7px; */
   /* margin-top: 0.5rem; */
@@ -48,7 +48,7 @@ export const InputContact = styled.input`
   box-sizing: border-box;
   border: ${(props) => (props.contrast ? 'none' : '2px solid var(--primary-color)')};
   border-bottom: ${(props) => (props.contrast ? '2px solid var(--textLight-color)' : '2px solid var(--primary-color)')};
-  padding: 0.5rem 0.1rem;
+  padding: 0.5rem;
   border-radius: 0;
   margin-bottom: 0.3rem;
   transition: 0.3s;

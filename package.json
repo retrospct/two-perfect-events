@@ -12,7 +12,7 @@
     "weddings"
   ],
   "scripts": {
-    "build": "gatsby build",
+    "build": "echo SITE_RECAPTCHA_KEY=$SITE_RECAPTCHA_KEY >> .env.production && gatsby build",
     "format": "prettier src/**/*.{ts,tsx,js,jsx,json,css,svg}* --write",
     "start": "gatsby develop -o",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx,.ts,.tsx,.json,.css .",

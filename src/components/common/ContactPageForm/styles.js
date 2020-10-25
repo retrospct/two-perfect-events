@@ -26,6 +26,7 @@ export const Label = styled.label`
 
 export const ErrorMessage = styled.span`
   color: var(--error-color);
+  margin-bottom: 2rem;
 `
 
 // export const Center = styled.div`

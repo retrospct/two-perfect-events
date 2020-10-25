@@ -24,7 +24,7 @@ export const TextFieldContrast = styled.textarea`
   width: 100%;
   box-sizing: border-box;
   border: 2px solid var(--textLight-color);
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   margin-bottom: 0.5rem;
   border-radius: 0;
   transition: 0.3s;
@@ -45,7 +45,7 @@ export const TextFieldContact = styled.textarea`
   font-size: 1.33rem;
   box-sizing: border-box;
   border: ${(props) => (props.contrast ? '2px solid var(--textLight-color)' : '2px solid var(--primary-color)')};
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   margin-bottom: 0.5rem;
   border-radius: 0;
   transition: 0.3s;
