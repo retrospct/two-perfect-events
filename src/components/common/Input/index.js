@@ -46,7 +46,7 @@ export const InputContrast = styled.input`
 export const InputContact = styled.input`
   width: 100%;
   box-sizing: border-box;
-  border: none;
+  border: ${(props) => (props.contrast ? 'none' : '2px solid var(--primary-color)')};
   border-bottom: ${(props) => (props.contrast ? '2px solid var(--textLight-color)' : '2px solid var(--primary-color)')};
   padding: 0.5rem 0.1rem;
   border-radius: 0;
