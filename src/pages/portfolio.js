@@ -17,15 +17,9 @@ import {
   Gallery,
   ImgOverlay,
 } from 'components/common'
-// import arrowSquiggly from 'assets/illustrations/arrowSquiggly.svg'
-// import iconPartyHat from 'assets/illustrations/icon-party-hat.svg'
-
-// import { useTheme } from 'context/themeContext'
-// import { Icon, IconSquiggly, IconParty } from 'components/common'
 
 const Portfolio = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
-  // const { colors } = useTheme()
   return (
     <Layout location={location} footer={data.footer}>
       <Header />
@@ -48,10 +42,7 @@ const Portfolio = ({ location, data }) => {
               <ImgOverlay>
                 <div>
                   {event.venueNode && (
-                    <div
-                      className="portfolio-venue"
-                      dangerouslySetInnerHTML={{ __html: event.venueNode.childMarkdownRemark.excerpt }}
-                    />
+                    <h4 dangerouslySetInnerHTML={{ __html: event.venueNode.childMarkdownRemark.excerpt }} />
                   )}
                   {event.location && <h5>{event.location}</h5>}
                 </div>
@@ -93,11 +84,6 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* & h3 {
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    font-family: var(--serif-font);
-  } */
 `
 
 export const query = graphql`

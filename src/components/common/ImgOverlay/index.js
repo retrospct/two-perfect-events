@@ -22,11 +22,11 @@ export const ImgOverlay = styled.div`
     color: var(--textLight-color);
     text-align: right;
     font-weight: normal;
-    & .portfolio-venue {
+    /* & .portfolio-venue {
       font-weight: normal;
       padding: 0;
       font-size: 0.85rem;
-    }
+    } */
     h4 {
       /* font-size: 3rem; */
       color: var(--textLight-color);

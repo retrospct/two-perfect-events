@@ -1,9 +1,9 @@
 import React from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { Button, InputContact, TextFieldContact } from 'components/common'
-import { FormField, FormFieldSplit, Label, FormFieldOneCol, ErrorMessage } from './styles'
+import { FormField, FormFieldSplit, Label, ErrorMessage } from './styles'
 
-export const ContactPageForm = ({ config }) => (
+export const ContactPageForm = ({ config, contrast = false }) => (
   <form
     name="contact-page"
     method="POST"
@@ -15,7 +15,7 @@ export const ContactPageForm = ({ config }) => (
     <input type="hidden" name="bot-field" />
     <input type="hidden" name="form-name" value="contact-page" />
     <FormFieldSplit>
-      <Label htmlFor="contact-page-name" contrast>
+      <Label htmlFor="contact-page-name" contrast={contrast}>
         <span>
           {config.nameLabel || 'Name'}
           {config.nameRequired && '*'}
@@ -25,10 +25,10 @@ export const ContactPageForm = ({ config }) => (
           name="contact-page-name"
           id="contact-page-name"
           required={config.nameRequired}
-          contrast
+          contrast={contrast}
         />
       </Label>
-      <Label htmlFor="contact-page-phone" contrast>
+      <Label htmlFor="contact-page-phone" contrast={contrast}>
         <span>
           {config.phoneLabel || 'Phone'}
           {config.phoneRequired && '*'}
@@ -38,12 +38,12 @@ export const ContactPageForm = ({ config }) => (
           name="contact-page-phone"
           id="contact-page-phone"
           required={config.phoneRequired}
-          contrast
+          contrast={contrast}
         />
       </Label>
     </FormFieldSplit>
     <FormFieldSplit>
-      <Label htmlFor="contact-page-email" contrast>
+      <Label htmlFor="contact-page-email" contrast={contrast}>
         <span>
           {config.emailLabel || 'Email'}
           {config.emailRequired && '*'}
@@ -53,10 +53,10 @@ export const ContactPageForm = ({ config }) => (
           name="contact-page-email"
           id="contact-page-email"
           required={config.emailRequired}
-          contrast
+          contrast={contrast}
         />
       </Label>
-      <Label htmlFor="contact-page-eventDate" contrast>
+      <Label htmlFor="contact-page-eventDate" contrast={contrast}>
         <span>
           {config.eventDateLabel || 'Event Date'}
           {config.eventDateRequired && '*'}
@@ -66,12 +66,12 @@ export const ContactPageForm = ({ config }) => (
           name="contact-page-eventDate"
           id="contact-page-eventDate"
           required={config.eventDateRequired}
-          contrast
+          contrast={contrast}
         />
       </Label>
     </FormFieldSplit>
     <FormFieldSplit>
-      <Label htmlFor="contact-page-referral" contrast>
+      <Label htmlFor="contact-page-referral" contrast={contrast}>
         <span>
           {config.referralLabel || 'How did you hear about us?'}
           {config.referralRequired && '*'}
@@ -85,7 +85,7 @@ export const ContactPageForm = ({ config }) => (
         </select>
       </Label>
       {config.referralDetailEnabled && (
-        <Label htmlFor="contact-page-referral-detail" contrast>
+        <Label htmlFor="contact-page-referral-detail" contrast={contrast}>
           <span>
             {config.referralDetailLabel || 'Care to share the specific source?'}
             {config.referralDetailRequired && '*'}
@@ -95,7 +95,7 @@ export const ContactPageForm = ({ config }) => (
             name="contact-page-referral-detail"
             id="contact-page-referral-detail"
             required={config.referralDetail}
-            contrast
+            contrast={contrast}
           />
           {config.referralHelptextEnabled && (
             <span style={{ fontSize: '0.8rem' }}>
@@ -105,15 +105,8 @@ export const ContactPageForm = ({ config }) => (
         </Label>
       )}
     </FormFieldSplit>
-    {/* <FormField>
-    <Label>Your Role: <select name="role[]" multiple>
-      <option value="leader">Leader</option>
-      <option value="follower">Follower</option>
-    </select></Label>
-  </FormField> */}
-    {/* <p>Date of event if known (placeholder)</p> */}
     <FormField>
-      <Label htmlFor="contact-page-additional-info" contrast>
+      <Label htmlFor="contact-page-additional-info" contrast={contrast}>
         <span>
           {config.additionalInformationLabel || 'Additional Information'}
           {config.additionalInformationRequired && '*'}
@@ -123,7 +116,7 @@ export const ContactPageForm = ({ config }) => (
           id="contact-page-additional-info"
           rows="5"
           required={config.additionalInformationRequired}
-          contrast
+          contrast={contrast}
         />
       </Label>
     </FormField>

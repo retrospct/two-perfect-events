@@ -72,7 +72,7 @@ const Event = ({ location, data }) => {
     </Layout>
   )
 }
-// style={{ width: '100%', height: '100%' }}
+
 export default Event
 
 const Wrapper = styled(Container)`
