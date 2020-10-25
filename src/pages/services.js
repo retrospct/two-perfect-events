@@ -1,12 +1,11 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-// import Img from 'gatsby-image'
 // import styled from 'styled-components'
-
-import { Icon, IconParty, Layout, Seo, Header, Connect } from 'components/common'
 
 import { useTheme } from 'context/themeContext'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
+
+import { Layout, Seo, Header, Container, Connect, Icon, IconParty } from 'components/common'
 
 const Services = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
@@ -15,10 +14,12 @@ const Services = ({ location, data }) => {
     <Layout location={location} footer={data.footer}>
       <Header />
       <Seo siteSeo={siteSeo} pageSeo={data.services.seoMetaTags} />
-      <Icon size="250px" color={colors.accent}>
-        <IconParty />
-      </Icon>
-      <h2>Services</h2>
+      <Container>
+        <Icon size="250px" color={colors.accent}>
+          <IconParty />
+        </Icon>
+        <h2>Services</h2>
+      </Container>
       {data.services.connectEnabled && <Connect />}
     </Layout>
   )

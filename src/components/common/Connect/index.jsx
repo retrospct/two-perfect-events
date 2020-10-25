@@ -3,26 +3,35 @@ import { navigate } from 'gatsby'
 
 import { useTheme } from 'context/themeContext'
 
-import { Icon, IconSquiggly, IconParty, ButtonContrast } from 'components/common'
+import { Icon, IconSquiggly, IconParty, Button, ButtonContrast } from 'components/common'
 import { ConnectWrapper, Spotlight, SpotlightBottom } from './styles'
 
-export const Connect = () => {
+export const Connect = ({ variant = 'accent' }) => {
   const { colors } = useTheme()
   return (
-    <ConnectWrapper>
+    <ConnectWrapper variant={variant}>
       <hr />
       <Spotlight>
-        <Icon>
-          <IconSquiggly color={colors.accent} alt="Squiggly arrow pointing towards a Let's Connect button." />
+        <Icon color={variant === 'inverse' ? colors.primary : colors.textLight}>
+          <IconSquiggly alt="Squiggly arrow pointing towards a Let's Connect button." />
         </Icon>
       </Spotlight>
-      <ButtonContrast onClick={() => navigate('/contact')}>LET'S CONNECT!</ButtonContrast>
+      {variant === 'inverse' ? (
+        <Button onClick={() => navigate('/contact')}>LET'S CONNECT!</Button>
+      ) : (
+        <ButtonContrast variant={variant} onClick={() => navigate('/contact')}>
+          LET'S CONNECT!
+        </ButtonContrast>
+      )}
       <SpotlightBottom>
-        <Icon>
-          <IconParty color={colors.accent} alt="Hand drawn line illustration of a party hat." />
+        <Icon color={variant === 'inverse' ? colors.primary : colors.textLight}>
+          <IconParty alt="Hand drawn line illustration of a party hat." />
         </Icon>
       </SpotlightBottom>
       <hr className="hr-connect-second" />
     </ConnectWrapper>
   )
 }
+
+// color={variant === 'accent' ? colors.accent : colors.primary}
+// color={variant === 'accent' ? colors.accent : colors.primary}

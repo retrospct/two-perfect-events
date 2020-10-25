@@ -2,16 +2,18 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
-import { Layout, Seo, Connect } from 'components/common'
+import { Layout, Seo, Container, Connect } from 'components/common'
 
 export default ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
   return (
     <Layout location={location} footer={data.footer}>
       <Seo siteSeo={siteSeo} pageSeo={data.notfound.seoMetaTags} />
-      <h1>NOT FOUND</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-      <Link to="/">Go Home</Link>
+      <Container>
+        <h1>NOT FOUND</h1>
+        <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+        <Link to="/">Go Home</Link>
+      </Container>
       <Connect />
     </Layout>
   )
@@ -25,18 +27,15 @@ export const query = graphql`
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
-      title
-      subtitle
-      photo {
-        fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
-          ...GatsbyDatoCmsSizes
-        }
-      }
-      bioNode {
-        childMarkdownRemark {
-          html
-        }
-      }
+      # title
+      # subtitle
+      # backgroundImage {
+      #   fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
+      #     ...GatsbyDatoCmsSizes
+      #   }
+      #   alt
+      # }
+      # intro
     }
     footer: datoCmsFooter {
       links {

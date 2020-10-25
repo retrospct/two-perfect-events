@@ -87,12 +87,12 @@ export const ButtonAccent = styled(Button)`
 
 export const ButtonContrast = styled(Button)`
   background-color: var(--textLight-color);
-  color: var(--accent-color);
+  color: ${(props) => (props.variant === 'primary' ? 'var(--primary-color)' : 'var(--accent-color)')};
   :after {
     border-color: var(--textLight-color);
   }
   :hover {
-    color: var(--accent-color);
+    color: ${(props) => (props.variant === 'primary' ? 'var(--primary-color)' : 'var(--accent-color)')};
     background-color: var(--textLight-color);
   }
 `

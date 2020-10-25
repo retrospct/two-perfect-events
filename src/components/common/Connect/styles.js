@@ -9,7 +9,12 @@ export const ConnectWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--accent-color);
+  background-color: ${(props) =>
+    props.variant === 'primary'
+      ? 'var(--primary-color)'
+      : props.variant === 'inverse'
+      ? 'white'
+      : 'var(--accent-color)'};
   color: var(--textLight-color);
   overflow: hidden;
   & hr,
@@ -18,7 +23,7 @@ export const ConnectWrapper = styled.div`
     top: 16px;
     left: 0;
     right: 0;
-    background: white;
+    background: ${(props) => (props.variant === 'inverse' ? 'var(--primary-color)' : 'white')};
     height: 2px;
     width: 100%;
     margin: 0;

@@ -38,18 +38,15 @@ export const query = graphql`
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
-      title
-      subtitle
-      photo {
-        fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
-          ...GatsbyDatoCmsSizes
-        }
-      }
-      bioNode {
-        childMarkdownRemark {
-          html
-        }
-      }
+      # title
+      # subtitle
+      # backgroundImage {
+      #   fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
+      #     ...GatsbyDatoCmsSizes
+      #   }
+      #   alt
+      # }
+      # intro
     }
     footer: datoCmsFooter {
       links {

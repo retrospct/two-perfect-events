@@ -11,7 +11,6 @@ import { Layout, Seo, Header, Container, Footer, Connect } from 'components/comm
 const Event = ({ location, data }) => {
   const { event, footer } = data
   const siteSeo = useSiteDatoMeta()
-
   return (
     <Layout location={location}>
       <Seo siteSeo={siteSeo} pageSeo={event.seoMetaTags} />
@@ -29,8 +28,7 @@ const Event = ({ location, data }) => {
           <Meta>
             <MetaItem>
               <h2>Location</h2>
-              <h3>{event.venue}</h3>
-              <div dangerouslySetInnerHTML={{ __html: event?.venueNode?.childMarkdownRemark?.html }} />
+              <div dangerouslySetInnerHTML={{ __html: event.venue }} />
               <h3>{event.location}</h3>
             </MetaItem>
             <MetaItem>
@@ -44,21 +42,22 @@ const Event = ({ location, data }) => {
           </Meta>
           <Meta>
             <MetaItem>
-              <h2>{event?.couple?.toUpperCase() || 'Event'}</h2>
-              <h3>{event.venue}</h3>
-              <div dangerouslySetInnerHTML={{ __html: event?.venueNode?.childMarkdownRemark?.html }} />
+              <h2>{event.eventType}</h2>
+              {event.client && <h3>{event.client}</h3>}
+              <div dangerouslySetInnerHTML={{ __html: event.venue }} />
               <h3>{event.location}</h3>
-              <h3>{event.eventType}</h3>
             </MetaItem>
             <MetaItem>
               <h2>Vendors</h2>
-              <div dangerouslySetInnerHTML={{ __html: event?.vendorsNode?.childMarkdownRemark?.html }} />
+              <div dangerouslySetInnerHTML={{ __html: event.vendors }} />
             </MetaItem>
           </Meta>
         </Content>
       </Wrapper>
       <Container>
-        <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
+        <OneColImage>
+          <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
+        </OneColImage>
       </Container>
       <Wrapper>
         <Gallery>
@@ -67,7 +66,24 @@ const Event = ({ location, data }) => {
           ))}
         </Gallery>
       </Wrapper>
-      <Connect />
+      <Wrapper>
+        {event.eventGallery.map((block) => (
+          <BlockSection key={block.id}>
+            {block.model.apiKey === 'image_one_column' && (
+              <OneColImage>
+                <Img fluid={block.imageFluid.fluid} alt={block?.imageFluid?.alt} />
+              </OneColImage>
+            )}
+            {block.model.apiKey === 'image_two_column' && (
+              <TwoColImage>
+                <Img fluid={block.imageLeft.fluid} alt={block?.imageLeft?.alt} />
+                <Img fluid={block.imageRight.fluid} alt={block?.imageRight?.alt} />
+              </TwoColImage>
+            )}
+          </BlockSection>
+        ))}
+      </Wrapper>
+      <Connect variant="primary" />
       <Footer links={footer.links} serving={footer.serving} copyright={footer.copyright} />
     </Layout>
   )
@@ -93,10 +109,6 @@ const Meta = styled.div`
   width: 100%;
   padding: 3rem 0 1rem;
   display: flex;
-  /* justify-content: space-between; */
-  /* @media (max-width: ${({ theme }) => theme.mq.xl}px) {
-    width: 90%;
-  } */
   @media (max-width: ${({ theme }) => theme.mq.md}px) {
     width: 100%;
     flex-direction: column;
@@ -107,7 +119,6 @@ const MetaOneLiner = styled.div`
   font-size: 1.15rem;
   color: var(--text-color);
   font-weight: 300;
-  /* margin-bottom: 0.5rem; */
 `
 const MetaItem = styled.div`
   padding: 1rem 5rem 2rem 0;
@@ -136,7 +147,6 @@ const MetaItem = styled.div`
   }
   & a {
     &:hover {
-      /* text-decoration: underline; */
       color: var(--primary-color);
     }
   }
@@ -196,6 +206,34 @@ const Gallery = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
   }
 `
+const BlockSection = styled.section`
+  width: 100%;
+`
+const OneColImage = styled.div`
+  width: 100%;
+  min-height: 420px;
+  margin-bottom: 20px;
+  & .gatsby-image-wrapper {
+    min-height: 420px;
+  }
+  & img {
+    min-height: 420px;
+  }
+`
+const TwoColImage = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  margin-bottom: 20px;
+  /* min-height: 420px; */
+  & .gatsby-image-wrapper {
+    width: 100%;
+  }
+  & img {
+    width: 100%;
+  }
+`
 
 export const query = graphql`
   query EventQuery($slug: String!) {
@@ -205,43 +243,43 @@ export const query = graphql`
       }
       title
       slug
-      couple
-      venueNode {
-        childMarkdownRemark {
-          html
-        }
-      }
+      client
+      venue
+      # venueNode {
+      #   childMarkdownRemark {
+      #     html
+      #     excerpt
+      #   }
+      # }
       location
       eventType
       oneLiner
       photographer
-      vendorsNode {
-        childMarkdownRemark {
-          html
-        }
-      }
-      vendorList {
-        # unused currently
-        id
-        originalId
-        name
-        referralLink
-        website
-        # logo
-      }
+      vendors
+      # vendorsNode {
+      #   childMarkdownRemark {
+      #     html
+      #   }
+      # }
+      # vendorList {
+      #   # unused currently
+      #   id
+      #   originalId
+      #   name
+      #   referralLink
+      #   website
+      #   # logo
+      # }
       coverImage {
         originalId
-        fluid(
-          maxHeight: 1440
-          imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "420", h: "420" }
-        ) {
+        fluid(maxWidth: 1440, imgixParams: { fm: "jpg", auto: "compress" }) {
           ...GatsbyDatoCmsFluid
         }
         alt
       }
       gallery {
         originalId
-        fluid(maxHeight: 1440, imgixParams: { fm: "jpg", auto: "compress" }) {
+        fluid(maxWidth: 1440, maxHeight: 1080, imgixParams: { fm: "jpg", auto: "compress" }) {
           ...GatsbyDatoCmsFluid
         }
         alt
@@ -253,7 +291,7 @@ export const query = graphql`
           }
           id
           imageFluid {
-            fluid(maxHeight: 1440, imgixParams: { fm: "jpg", auto: "compress" }) {
+            fluid(maxWidth: 1440, imgixParams: { fm: "jpg", auto: "compress" }) {
               ...GatsbyDatoCmsFluid
             }
             alt
@@ -265,13 +303,13 @@ export const query = graphql`
           }
           id
           imageLeft {
-            fluid(maxHeight: 1440, imgixParams: { fm: "jpg", auto: "compress" }) {
+            fluid(maxWidth: 720, imgixParams: { fm: "jpg", auto: "compress" }) {
               ...GatsbyDatoCmsFluid
             }
             alt
           }
           imageRight {
-            fluid(maxHeight: 1440, imgixParams: { fm: "jpg", auto: "compress" }) {
+            fluid(maxWidth: 720, imgixParams: { fm: "jpg", auto: "compress" }) {
               ...GatsbyDatoCmsFluid
             }
             alt

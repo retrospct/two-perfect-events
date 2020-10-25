@@ -8,7 +8,7 @@ export const Gallery = ({ size, children }) => (
   </>
 )
 
-const BaseGallery = styled.div`
+export const BaseGallery = styled.div`
   width: 100%;
   max-width: calc(420px * 3 + 40px);
   margin: 1rem 0;
@@ -33,7 +33,7 @@ const BaseGallery = styled.div`
   }
 `
 
-const DynamicGallery = styled(BaseGallery)`
+export const DynamicGallery = styled(BaseGallery)`
   max-width: ${({ size }) => `calc(${size} * 3 + 40px)`};
   grid-template-columns: ${({ size }) => `repeat(auto-fit, minmax(${size}, 1fr))`};
   @media (max-width: ${({ theme }) => `${theme.mq.xl}px`}) {

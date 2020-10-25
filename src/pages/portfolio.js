@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, Link, navigate } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 
@@ -42,7 +42,7 @@ const Portfolio = ({ location, data }) => {
               <ImgOverlay>
                 <div>
                   {event.venueNode && (
-                    <h4 dangerouslySetInnerHTML={{ __html: event.venueNode.childMarkdownRemark.excerpt }} />
+                    <h4 dangerouslySetInnerHTML={{ __html: event?.venueNode?.childMarkdownRemark?.excerpt }} />
                   )}
                   {event.location && <h5>{event.location}</h5>}
                 </div>
@@ -59,16 +59,6 @@ const Portfolio = ({ location, data }) => {
 
 export default Portfolio
 
-const ImgLink = styled(Link)`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  /* transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); */
-  transition: all 0.3s ease-out;
-  &:hover {
-    transform: scale(1.05);
-  }
-`
 const Wrapper = styled(Container)`
   padding: 4rem 0 0;
   display: flex;
@@ -84,6 +74,17 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`
+
+const ImgLink = styled(Link)`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); */
+  transition: all 0.3s ease-out;
+  &:hover {
+    transform: scale(1.05);
+  }
 `
 
 export const query = graphql`
