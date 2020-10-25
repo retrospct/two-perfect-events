@@ -10,14 +10,41 @@ import { ToggleDarkMode } from '../ToggleDarkMode'
 
 export const NavbarLinks = ({ desktop }) => {
   const { currentTheme, toggleTheme } = useTheme()
-  // const navLinks = useNavLinks()
-  // console.log('currentTheme: ', currentTheme)
-  // console.log('toggleTheme: ', toggleTheme)
+  // const routes = useNavLinks()
+  // console.log('routes: ', routes)
+  // // console.log('toggleTheme: ', toggleTheme)
+  // const Route = (route) => {
+  //   switch (route.path) {
+  //     case '/home':
+  //       return desktop ? (
+  //         <NavLink as={Link} to="/" activeClassName="selected" partiallyActive={route.partiallyActive}>
+  //           {route.text}
+  //         </NavLink>
+  //       ) : (
+  //         <NavLinkFirst as={Link} to="/" activeClassName="selected" partiallyActive={route.partiallyActive}>
+  //           {route.text}
+  //         </NavLinkFirst>
+  //       )
+  //     case '/contact':
+  //       return (
+  //         <ButtonNavCTA as={LinkBase} to={route.path}>
+  //           {route.text}
+  //         </ButtonNavCTA>
+  //       )
+  //     default:
+  //       return (
+  //         <NavLink as={Link} to={route.path} activeClassName="selected" partiallyActive={route.partiallyActive}>
+  //           {route.text}
+  //         </NavLink>
+  //       )
+  //   }
+  // }
   return (
     <Wrapper desktop={desktop}>
       {/* {navLinks.map(link => (
       <NavLink as={Link} to={link.path} activeClassName="selected">{link.text}</NavLink>
     ))} */}
+      {/* {routes && routes.map((route) => <Route key={route.path} route={route} />)} */}
       {!desktop && (
         <NavLinkFirst as={Link} to="/" activeClassName="selected">
           HOME

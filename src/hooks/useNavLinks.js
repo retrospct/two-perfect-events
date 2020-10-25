@@ -1,20 +1,23 @@
 // import { useStaticQuery, graphql } from 'gatsby'
 
 // export const useNavLinks = () => {
-//   const { nav } = useStaticQuery(graphql`
+//   const {
+//     nav: { routes },
+//   } = useStaticQuery(graphql`
 //     query NavLinksStaticQuery {
 //       nav: allDatoCmsNavLink(sort: { fields: position }) {
-//         edges {
+//         routes: edges {
 //           node {
 //             text
 //             path
 //             position
 //             id
 //             originalId
+//             partiallyActive
 //           }
 //         }
 //       }
 //     }
 //   `)
-//   return nav
+//   return routes
 // }

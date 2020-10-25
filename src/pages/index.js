@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 import { useInstaLatest } from 'hooks/useInstaLatest'
 
-import { Layout, Seo, Header } from 'components/common'
+import { Layout, Seo, Navigation } from 'components/common'
 import { HomeBlock } from 'components/blocks/home'
 import { CreditsBlock } from 'components/blocks/credits'
 import { Hero, ContactSection } from 'components/landing'
@@ -12,11 +12,9 @@ import { Hero, ContactSection } from 'components/landing'
 const Home = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
   const instaLatest = useInstaLatest()
-  // console.log('data.nav: ', data.nav)
   return (
     <Layout location={location} footer={data.footer}>
-      <Header />
-      {/* {data.nav.edges.map((link) => console.log('link.path: ', link.path))} */}
+      <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.home.seoMetaTags} />
       <Hero heading={data.home.heading} subheading={data.home.subtitle} />
       <HomeBlock homeBlock={data.home.homeBlock} instaLatest={instaLatest} />
@@ -31,13 +29,14 @@ export default Home
 export const query = graphql`
   query HomeQuery {
     nav: allDatoCmsNavLink(sort: { fields: position }) {
-      edges {
+      routes: edges {
         node {
           text
           path
           position
           id
           originalId
+          partiallyActive
         }
       }
     }

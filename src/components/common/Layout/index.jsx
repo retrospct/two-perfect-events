@@ -13,6 +13,7 @@ export const Layout = ({ location, footer, children }) => {
   }, [])
   return (
     <>
+      {/* <Navigation /> */}
       {children}
       {footer && <Footer links={footer.links} serving={footer.serving} copyright={footer.copyright} />}
     </>

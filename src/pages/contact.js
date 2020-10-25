@@ -5,14 +5,14 @@ import { graphql } from 'gatsby'
 import { useTheme } from 'context/themeContext'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Header, Container, ContactForm, Icon, IconSquiggly } from 'components/common'
+import { Layout, Seo, Navigation, Container, ContactForm, Icon, IconSquiggly } from 'components/common'
 
 const Contact = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
   const { colors } = useTheme()
   return (
     <Layout location={location} footer={data.footer}>
-      <Header />
+      <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.contact.seoMetaTags} />
       <Wrapper as={Container}>
         <ContactUs>

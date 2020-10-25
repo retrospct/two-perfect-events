@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Header, Container, Footer, Connect } from 'components/common'
+import { Layout, Seo, Navigation, Container, Footer, Connect } from 'components/common'
 
 const Event = ({ location, data }) => {
   const { event, footer } = data
@@ -14,7 +14,7 @@ const Event = ({ location, data }) => {
   return (
     <Layout location={location}>
       <Seo siteSeo={siteSeo} pageSeo={event.seoMetaTags} />
-      <Header />
+      <Navigation />
       <Wrapper>
         <LinkBack to="/portfolio">
           <Icon size="18px">
@@ -243,7 +243,7 @@ export const query = graphql`
       }
       title
       slug
-      client
+      # client
       venue
       # venueNode {
       #   childMarkdownRemark {
@@ -254,7 +254,7 @@ export const query = graphql`
       location
       eventType
       oneLiner
-      photographer
+      # photographer
       vendors
       # vendorsNode {
       #   childMarkdownRemark {

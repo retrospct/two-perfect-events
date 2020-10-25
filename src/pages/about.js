@@ -5,14 +5,13 @@ import styled from 'styled-components'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Header, Container, Connect, BaseGallery } from 'components/common'
+import { Layout, Seo, Navigation, Container, Connect, BaseGallery } from 'components/common'
 
 const About = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
-
   return (
     <Layout location={location} footer={data.footer}>
-      <Header />
+      <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.about.seoMetaTags} />
       <Container>
         <Content>

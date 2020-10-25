@@ -5,14 +5,14 @@ import { graphql } from 'gatsby'
 import { useTheme } from 'context/themeContext'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Header, Container, Connect, Icon, IconParty } from 'components/common'
+import { Layout, Seo, Navigation, Container, Connect, Icon, IconParty } from 'components/common'
 
 const Services = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
   const { colors } = useTheme()
   return (
     <Layout location={location} footer={data.footer}>
-      <Header />
+      <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.services.seoMetaTags} />
       <Container>
         <Icon size="250px" color={colors.accent}>
