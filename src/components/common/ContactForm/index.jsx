@@ -145,6 +145,7 @@ export const ContactForm = ({ config, contrast = false, formName = 'contact-page
             style={{ marginTop: 28 }}
             onChange={handleChange}
           >
+            <option value="none">--</option>
             {config.referralOptions.map((option) => (
               <option key={option.id} value={option?.referralType?.toLowerCase()}>
                 {option.referralType}
