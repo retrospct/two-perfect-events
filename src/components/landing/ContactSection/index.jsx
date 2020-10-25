@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Container, ContactPageForm, Icon, IconSquiggly } from 'components/common'
+import { Container, ContactForm, Icon, IconSquiggly } from 'components/common'
 import { Fluid, Wrapper, ContactBlock, Spotlight, Header } from './styles'
 
 export const ContactSection = ({ heading, config, contrast }) => {
@@ -24,7 +24,7 @@ export const ContactSection = ({ heading, config, contrast }) => {
               <h3>{config?.heading?.toUpperCase()}</h3>
             </Header>
           )}
-          <ContactPageForm config={config} contrast={contrast} />
+          <ContactForm config={config} contrast={contrast} />
         </ContactBlock>
       </Wrapper>
     </Fluid>
