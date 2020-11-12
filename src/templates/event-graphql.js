@@ -11,6 +11,29 @@ import { Layout, Seo, Navigation, Container, Footer, Connect } from 'components/
 const Event = ({ location, data }) => {
   const { event, footer } = data
   const siteSeo = useSiteDatoMeta()
+  // const galleryRow = () => {
+  //   for (let i = 0; i < event.gallery.length; i++) {
+  //     if (event.gallery[i].fluid.aspectRatio <= 1 && event.gallery[i + 1].fluid.aspectRatio <= 1) {
+  //       const TwoCol = (
+  //         <BlockSection key={event.gallery[i].originalId}>
+  //           <TwoColImage>
+  //             <Img fluid={event.gallery[i].fluid} alt={event.gallery[i].alt} />
+  //             <Img fluid={event.gallery[i + 1].fluid} alt={event.gallery[i + 1].alt} />
+  //           </TwoColImage>
+  //         </BlockSection>
+  //       )
+  //       return TwoCol
+  //     } else {
+  //       return (
+  //         <BlockSection key={event.gallery[i].originalId}>
+  //           <OneColImage>
+  //             <Img fluid={event.gallery[i].fluid} alt={event.gallery[i].alt} />
+  //           </OneColImage>
+  //         </BlockSection>
+  //       )
+  //     }
+  //   }
+  // }
   return (
     <Layout location={location}>
       <Seo siteSeo={siteSeo} pageSeo={event.seoMetaTags} />
@@ -60,11 +83,18 @@ const Event = ({ location, data }) => {
         </OneColImage>
       </Container>
       <Wrapper>
-        <Gallery>
-          {event.gallery.map((img) => (
-            <Img key={img.originalId} fluid={img.fluid} alt={img.alt} />
-          ))}
-        </Gallery>
+        {/* <Gallery> */}
+        {/* {galleryRow()} */}
+        <GalleryGrid>
+          {event.gallery.map((img) => {
+            if (img.fluid.aspectRatio <= 1) {
+              return <Img key={img.originalId} fluid={img.fluid} alt={img.alt} style={{ gridColumn: 'span 1' }} />
+            } else {
+              return <Img key={img.originalId} fluid={img.fluid} alt={img.alt} style={{ gridColumn: 'span 2' }} />
+            }
+          })}
+        </GalleryGrid>
+        {/* </Gallery> */}
       </Wrapper>
       <Wrapper>
         {event.eventGallery.map((block) => (
@@ -182,29 +212,30 @@ const Heading = styled.h1`
   letter-spacing: 0.4rem;
 `
 
-const Gallery = styled.div`
+const GalleryGrid = styled.div`
   width: 100%;
-  max-width: calc(420px * 3 + 40px);
+  max-width: 1440px;
   margin: 1rem 0;
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(720px, 1fr)); */
+  grid-template-columns: 1fr 1fr;
   justify-items: center;
   justify-content: space-around;
   & .gatsby-image-wrapper {
     width: 100%;
     height: 100%;
-    max-width: 420px;
-    max-height: 420px;
+    /* max-width: 720px; */
+    /* max-height: 720px; */
   }
-  @media (max-width: ${({ theme }) => `${theme.mq.xl}px`}) {
-    max-width: calc(420px * 2 + 20px);
+  /* @media (max-width: ${({ theme }) => `${theme.mq.xl}px`}) {
+    max-width: calc(720px * 2 + 20px);
   }
   @media (max-width: ${({ theme }) => `${theme.mq.md}px`}) {
     max-width: 96%;
     grid-gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-  }
+    grid-template-columns: repeat(auto-fit, minmax(720px, 1fr));
+  } */
 `
 const BlockSection = styled.section`
   width: 100%;
@@ -281,6 +312,7 @@ export const query = graphql`
         originalId
         fluid(maxWidth: 1440, maxHeight: 1080, imgixParams: { fm: "jpg", auto: "compress" }) {
           ...GatsbyDatoCmsFluid
+          aspectRatio
         }
         alt
       }

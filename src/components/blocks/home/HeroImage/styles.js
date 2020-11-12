@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   position: relative;
   width: 100%;
   min-height: 420px;
+  max-height: 800px;
   &:before {
     content: '';
     background: rgba(0, 0, 0, 0.1);
@@ -18,9 +19,11 @@ export const Wrapper = styled.div`
   }
   & .gatsby-image-wrapper {
     min-height: 420px;
+    max-height: 800px;
   }
   & img {
     min-height: 420px;
+    max-height: 800px;
   }
 `
 
