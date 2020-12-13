@@ -34,6 +34,8 @@ module.exports = {
     `gatsby-transformer-remark`,
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    'gatsby-plugin-netlify-cache',
+    'gatsby-plugin-offline',
     {
       resolve: `gatsby-source-datocms`,
       options: {
@@ -48,9 +50,6 @@ module.exports = {
         htmlTitle: `TPE Content Manager`,
         htmlFavicon: `${__dirname}/static/favicon/favicon.ico`,
       },
-    },
-    {
-      resolve: "gatsby-plugin-netlify-cache",
     },
     // {
     //   resolve: `gatsby-source-cloudinary`,
@@ -124,18 +123,6 @@ module.exports = {
         usePreload: true,
       },
     },
-    // {
-    //   resolve: 'gatsby-source-graphql',
-    //   options: {
-    //     typeName: 'GitHub',
-    //     fieldName: 'github',
-    //     url: 'https://api.github.com/graphql',
-    //     headers: {
-    //       Authorization: `bearer ${process.env.GATSBY_GITHUB_TOKEN}`,
-    //     },
-    //     fetchOptions: {},
-    //   },
-    // },
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {
@@ -174,6 +161,6 @@ module.exports = {
         icon: './static/favicon/favicon-11.png',
       },
     },
-    'gatsby-plugin-offline',
+    
   ],
 }
