@@ -31,7 +31,7 @@ module.exports = {
     'gatsby-alias-imports',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
-    `gatsby-transformer-remark`,
+    'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-netlify-cache',
@@ -161,6 +161,5 @@ module.exports = {
         icon: './static/favicon/favicon-11.png',
       },
     },
-    
   ],
 }
