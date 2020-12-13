@@ -22,9 +22,30 @@ media_folder: static/img/events
 public_folder: /img/events
 
 collections:
+  - name: 'corporate-events'
+    label: 'Corporate Events'
+    folder: 'content/events/corporate-events'
+    create: true
+    fields:
+      - { label: 'slug', name: 'title', widget: 'string' }
+      - { label: 'Images', name: 'images', widget: 'image' }
   - name: 'editorials'
     label: 'Editorials'
     folder: 'content/events/editorials'
+    create: true
+    fields:
+      - { label: 'slug', name: 'title', widget: 'string' }
+      - { label: 'Images', name: 'images', widget: 'image' }
+  - name: 'private-events'
+    label: 'Private Events'
+    folder: 'content/events/private-events'
+    create: true
+    fields:
+      - { label: 'slug', name: 'title', widget: 'string' }
+      - { label: 'Images', name: 'images', widget: 'image' }
+  - name: 'weddings'
+    label: 'Weddings'
+    folder: 'content/events/weddings'
     create: true
     fields:
       - { label: 'slug', name: 'title', widget: 'string' }
