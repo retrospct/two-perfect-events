@@ -38,13 +38,66 @@ module.exports = {
       resolve: `gatsby-source-datocms`,
       options: {
         apiToken: process.env.DATO_API_TOKEN,
-        // If you are working on development/staging environment, you might want to
-        // preview the latest version of records instead of the published one:
         previewMode: true,
       },
     },
     {
+      resolve: `gatsby-plugin-netlify-cms`,
+      options: {
+        modulePath: `${__dirname}/netlify-cms.js`,
+        htmlTitle: `TPE Content Manager`,
+        htmlFavicon: `${__dirname}/static/favicon/favicon.ico`,
+      },
+    },
     `gatsby-plugin-netlify-cache`,
+    // {
+    //   resolve: `gatsby-source-cloudinary`,
+    //   options: {
+    //     cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+    //     apiKey: process.env.CLOUDINARY_API_KEY,
+    //     apiSecret: process.env.CLOUDINARY_API_SECRET,
+    //     resourceType: `image`,
+    //     maxResults: 2600,
+    //     tags: true,
+    //     context: true,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `events`,
+    //     path: `${__dirname}/src/assets/events/`,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `corporate-events`,
+    //     path: `${__dirname}/src/assets/events/corporate-events/`,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `editorials`,
+    //     path: `${__dirname}/src/assets/events/editorials/`,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `private-events`,
+    //     path: `${__dirname}/src/assets/events/private-events/`,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `weddings`,
+    //     path: `${__dirname}/src/assets/events/weddings/`,
+    //   },
+    // },
+    {
       resolve: `gatsby-source-instagram`,
       options: {
         username: `2183081444`,
@@ -81,7 +134,6 @@ module.exports = {
     //     fetchOptions: {},
     //   },
     // },
-
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {
