@@ -10,11 +10,13 @@ media_library:
   config:
     cloud_name: two-perfect-events
     api_key: 682651293441357
-    # default_transformations:
-    #   - - fetch_format: auto
-    #       width: 160
-    #       quality: auto
-    #       crop: scale
+    max_files: 200
+    multiple: true
+    default_transformations:
+      - fetch_format: auto
+        quality: auto
+        # width: 160
+        # crop: scale
 
 media_folder: static/img/events
 public_folder: /img/events
@@ -26,5 +28,5 @@ collections:
     create: true
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Image', name: 'image', widget: 'image' }
+      - { label: 'Images', name: 'images', widget: 'image' }
       - { label: 'Alt', name: 'alt', widget: 'text' }
