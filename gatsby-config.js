@@ -49,7 +49,9 @@ module.exports = {
         htmlFavicon: `${__dirname}/static/favicon/favicon.ico`,
       },
     },
-    `gatsby-plugin-netlify-cache`,
+    {
+      resolve: "gatsby-plugin-netlify-cache",
+    }
     // {
     //   resolve: `gatsby-source-cloudinary`,
     //   options: {
