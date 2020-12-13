@@ -27,6 +27,5 @@ collections:
     folder: 'content/events/editorials'
     create: true
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'slug', name: 'title', widget: 'string' }
       - { label: 'Images', name: 'images', widget: 'image' }
-      - { label: 'Alt', name: 'alt', widget: 'text' }
