@@ -44,24 +44,29 @@ module.exports = {
       },
     },
     {
+    `gatsby-plugin-netlify-cache`,
       resolve: `gatsby-source-instagram`,
       options: {
         username: `2183081444`,
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-webfonts`,
       options: {
-        fonts: [
-          {
-            family: `Lato`,
-            variants: [`300`, `300i`, `400`, `400i`, `700`, `700i`]
-          },
-          {
-            family: `Crimson Pro`,
-            variants: [`300`, `300i`, `400`, `400i`, `700i`]
-          }
-        ],
+        fonts: {
+          google: [
+            {
+              family: `Lato`,
+              variants: [`300`, `300i`, `400`, `400i`, `700`, `700i`],
+            },
+            {
+              family: `Crimson Pro`,
+              variants: [`300`, `300i`, `400`, `400i`, `700i`],
+            },
+          ],
+        },
+        useMinify: true,
+        usePreload: true,
       },
     },
     // {
@@ -76,6 +81,7 @@ module.exports = {
     //     fetchOptions: {},
     //   },
     // },
+
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {
