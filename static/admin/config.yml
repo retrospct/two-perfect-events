@@ -18,7 +18,6 @@ media_library:
 
 media_folder: static/img/events
 public_folder: /img/events
-# public_folder: /img/events
 
 collections:
   - name: 'editorials'
