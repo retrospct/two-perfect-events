@@ -51,7 +51,7 @@ module.exports = {
     },
     {
       resolve: "gatsby-plugin-netlify-cache",
-    }
+    },
     // {
     //   resolve: `gatsby-source-cloudinary`,
     //   options: {
