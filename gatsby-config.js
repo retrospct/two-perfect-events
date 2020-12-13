@@ -46,7 +46,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-netlify-cms`,
       options: {
-        modulePath: `./netlify-cms.js`,
+        modulePath: `${__dirname}/src/netlify-cms/netlify-cms.js`,
         htmlTitle: `TPE Content Manager`,
         htmlFavicon: `./static/favicon/favicon.ico`,
       },

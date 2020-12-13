@@ -8,8 +8,8 @@ site_url: https://twoperfect.events
 media_library:
   name: cloudinary
   config:
-    cloud_name: ${CLOUDINARY_CLOUD_NAME}
-    api_key: ${CLOUDINARY_API_KEY}
+    cloud_name: two-perfect-events
+    api_key: 682651293441357
     # default_transformations:
     #   - - fetch_format: auto
     #       width: 160
