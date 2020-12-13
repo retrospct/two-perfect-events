@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: master
+  branch: develop
 
 site_url: https://twoperfect.events
 # logo_url: https://your-site.com/images/logo.svg
@@ -25,28 +25,40 @@ collections:
   - name: 'corporate-events'
     label: 'Corporate Events'
     folder: 'content/events/corporate-events'
+    slug: '{{title}}'
+    preview_path: portfolio/{{slug}}
     create: true
+    format: json
     fields:
       - { label: 'slug', name: 'title', widget: 'string' }
       - { label: 'Images', name: 'images', widget: 'image' }
   - name: 'editorials'
     label: 'Editorials'
     folder: 'content/events/editorials'
+    slug: '{{title}}'
+    preview_path: portfolio/{{slug}}
     create: true
+    format: json
     fields:
       - { label: 'slug', name: 'title', widget: 'string' }
       - { label: 'Images', name: 'images', widget: 'image' }
   - name: 'private-events'
     label: 'Private Events'
     folder: 'content/events/private-events'
+    slug: '{{title}}'
+    preview_path: portfolio/{{slug}}
     create: true
+    format: json
     fields:
       - { label: 'slug', name: 'title', widget: 'string' }
       - { label: 'Images', name: 'images', widget: 'image' }
   - name: 'weddings'
     label: 'Weddings'
     folder: 'content/events/weddings'
+    slug: '{{title}}'
+    preview_path: portfolio/{{slug}}
     create: true
+    format: json
     fields:
       - { label: 'slug', name: 'title', widget: 'string' }
       - { label: 'Images', name: 'images', widget: 'image' }
