@@ -31,20 +31,74 @@ module.exports = {
     'gatsby-alias-imports',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
-    `gatsby-transformer-remark`,
+    'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    'gatsby-plugin-netlify-cache',
+    'gatsby-plugin-offline',
     {
       resolve: `gatsby-source-datocms`,
       options: {
         apiToken: process.env.DATO_API_TOKEN,
-        // If you are working on development/staging environment, you might want to
-        // preview the latest version of records instead of the published one:
         previewMode: true,
       },
     },
     {
-    `gatsby-plugin-netlify-cache`,
+      resolve: `gatsby-plugin-netlify-cms`,
+      options: {
+        modulePath: `${__dirname}/netlify-cms.js`,
+        htmlTitle: `TPE Content Manager`,
+        htmlFavicon: `${__dirname}/static/favicon/favicon.ico`,
+      },
+    },
+    // {
+    //   resolve: `gatsby-source-cloudinary`,
+    //   options: {
+    //     cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+    //     apiKey: process.env.CLOUDINARY_API_KEY,
+    //     apiSecret: process.env.CLOUDINARY_API_SECRET,
+    //     resourceType: `image`,
+    //     maxResults: 2600,
+    //     tags: true,
+    //     context: true,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `events`,
+    //     path: `${__dirname}/src/assets/events/`,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `corporate-events`,
+    //     path: `${__dirname}/src/assets/events/corporate-events/`,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `editorials`,
+    //     path: `${__dirname}/src/assets/events/editorials/`,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `private-events`,
+    //     path: `${__dirname}/src/assets/events/private-events/`,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `weddings`,
+    //     path: `${__dirname}/src/assets/events/weddings/`,
+    //   },
+    // },
+    {
       resolve: `gatsby-source-instagram`,
       options: {
         username: `2183081444`,
@@ -69,19 +123,6 @@ module.exports = {
         usePreload: true,
       },
     },
-    // {
-    //   resolve: 'gatsby-source-graphql',
-    //   options: {
-    //     typeName: 'GitHub',
-    //     fieldName: 'github',
-    //     url: 'https://api.github.com/graphql',
-    //     headers: {
-    //       Authorization: `bearer ${process.env.GATSBY_GITHUB_TOKEN}`,
-    //     },
-    //     fetchOptions: {},
-    //   },
-    // },
-
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {
@@ -120,6 +161,5 @@ module.exports = {
         icon: './static/favicon/favicon-11.png',
       },
     },
-    'gatsby-plugin-offline',
   ],
 }

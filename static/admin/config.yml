@@ -1,0 +1,36 @@
+backend:
+  name: git-gateway
+  branch: master
+
+site_url: https://twoperfect.events
+# logo_url: https://your-site.com/images/logo.svg
+
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: ${CLOUDINARY_CLOUD_NAME}
+    api_key: ${CLOUDINARY_API_KEY}
+    # default_transformations:
+    #   - - fetch_format: auto
+    #       width: 160
+    #       quality: auto
+    #       crop: scale
+
+media_folder: static/img/events
+public_folder: /img/events
+# public_folder: /img/events
+
+collections:
+  - name: 'editorials'
+    label: 'Editorials'
+    folder: 'content/events/editorials'
+    create: true
+    slug: 'index'
+    media_folder: ''
+    public_folder: ''
+    path: '{{title}}/index'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Image', name: 'image', widget: 'image' }
+      - { label: 'Alt', name: 'alt', widget: 'text' }
