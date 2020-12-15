@@ -43,54 +43,6 @@ module.exports = {
         previewMode: true,
       },
     },
-    {
-      resolve: `gatsby-plugin-netlify-cms`,
-      options: {
-        modulePath: `${__dirname}/src/netlify-cms/netlify-cms.js`,
-        htmlTitle: `TPE Content Manager`,
-        htmlFavicon: `./static/favicon/favicon.ico`,
-      },
-    },
-    // {
-    //   resolve: `gatsby-source-cloudinary`,
-    //   options: {
-    //     cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-    //     apiKey: process.env.CLOUDINARY_API_KEY,
-    //     apiSecret: process.env.CLOUDINARY_API_SECRET,
-    //     resourceType: `image`,
-    //     maxResults: 2600,
-    //     tags: true,
-    //     context: true,
-    //   },
-    // },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `events`,
-    //     path: `${__dirname}/src/assets/events/`,
-    //   },
-    // },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `corporate-events`,
-    //     path: `${__dirname}/src/assets/events/corporate-events/`,
-    //   },
-    // },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `editorials`,
-    //     path: `${__dirname}/src/assets/events/editorials/`,
-    //   },
-    // },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `private-events`,
-    //     path: `${__dirname}/src/assets/events/private-events/`,
-    //   },
-    // },
     // {
     //   resolve: `gatsby-source-filesystem`,
     //   options: {

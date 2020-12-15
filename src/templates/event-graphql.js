@@ -214,7 +214,7 @@ const Heading = styled.h1`
 
 const GalleryGrid = styled.div`
   width: 100%;
-  max-width: 1440px;
+  max-width: 800px;
   margin: 1rem 0;
   display: grid;
   grid-gap: 20px;
@@ -242,8 +242,9 @@ const BlockSection = styled.section`
 `
 const OneColImage = styled.div`
   width: 100%;
+  max-width: 800px;
   min-height: 420px;
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
   & .gatsby-image-wrapper {
     min-height: 420px;
   }
@@ -303,14 +304,14 @@ export const query = graphql`
       # }
       coverImage {
         originalId
-        fluid(maxWidth: 1440, imgixParams: { fm: "jpg", auto: "compress" }) {
+        fluid(maxWidth: 800, imgixParams: { fm: "jpg", auto: "compress" }) {
           ...GatsbyDatoCmsFluid
         }
         alt
       }
       gallery {
         originalId
-        fluid(maxWidth: 1440, maxHeight: 1080, imgixParams: { fm: "jpg", auto: "compress" }) {
+        fluid(maxWidth: 800, maxHeight: 800, imgixParams: { fm: "jpg", auto: "compress" }) {
           ...GatsbyDatoCmsFluid
           aspectRatio
         }
@@ -323,7 +324,7 @@ export const query = graphql`
           }
           id
           imageFluid {
-            fluid(maxWidth: 1440, imgixParams: { fm: "jpg", auto: "compress" }) {
+            fluid(maxWidth: 800, imgixParams: { fm: "jpg", auto: "compress" }) {
               ...GatsbyDatoCmsFluid
             }
             alt

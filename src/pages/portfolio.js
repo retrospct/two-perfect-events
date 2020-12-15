@@ -25,7 +25,7 @@ const Portfolio = ({ location, data }) => {
       <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.portfolio.seoMetaTags} />
       <Fluid>
-        <ImgFluid fluid={data.portfolio.heroImage.fluid} alt={data.portfolio.heroImage.alt} />
+        <ImgFluid style={{maxWidth: 1920, margin: '0 auto'}} fluid={data.portfolio.heroImage.fluid} alt={data.portfolio.heroImage.alt} />
       </Fluid>
       <Wrapper>
         <Content>

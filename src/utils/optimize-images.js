@@ -12,9 +12,11 @@ const matches = glob.sync(`${argv.f}/**/**/*.{png,jpg,jpeg}`, { nocase: true })
 const MAX_WIDTH = argv.w ? argv.w : 1600
 const MAX_HEIGHT = argv.h ? argv.h : 1600
 const QUALITY = argv.q ? argv.q : 70
+const FORMAT = argv.e ? argv.e : 'jpg'
 
 console.log(`${matches.length} images found... (png|jpg|jpeg)`)
 console.log('QUALITY: ', QUALITY)
+console.log('FORMAT: ', FORMAT)
 
 if (argv.w && argv.h) {
   return console.log('Error, only set either -h <max_height> or -w <max_width> not both')
@@ -28,7 +30,11 @@ if (argv.w && argv.h) {
         return console.log(`${match} ${info.height}px > ${info.height}px`)
       }
       const optimizedName = match.replace(/(\..+)$/, (match, ext) => `-optimized${ext}`)
-      await stream.resize(null, MAX_HEIGHT).jpeg({ quality: QUALITY }).toFile(optimizedName)
+      if (FORMAT === 'png') {
+        await stream.resize(null, MAX_HEIGHT).png({ quality: QUALITY }).toFile(optimizedName)
+      } else {
+        await stream.resize(null, MAX_HEIGHT).jpeg({ quality: QUALITY }).toFile(optimizedName)
+      }
       console.log(`${match} ${info.height}px > ${info.height}px`)
       return fs.rename(optimizedName, match)
     })
@@ -43,7 +49,11 @@ if (argv.w && argv.h) {
         return console.log(`${match} ${info.width}px > ${info.width}px`)
       }
       const optimizedName = match.replace(/(\..+)$/, (match, ext) => `-optimized${ext}`)
-      await stream.resize(MAX_WIDTH, null).jpeg({ quality: QUALITY }).toFile(optimizedName)
+      if (FORMAT === 'png') {
+        await stream.resize(null, MAX_WIDTH).png({ quality: QUALITY }).toFile(optimizedName)
+      } else {
+        await stream.resize(null, MAX_WIDTH).jpeg({ quality: QUALITY }).toFile(optimizedName)
+      }
       console.log(`${match} ${info.width}px > ${info.width}px`)
       return fs.rename(optimizedName, match)
     })
