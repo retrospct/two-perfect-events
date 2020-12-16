@@ -25,7 +25,11 @@ const Portfolio = ({ location, data }) => {
       <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.portfolio.seoMetaTags} />
       <Fluid>
-        <ImgFluid style={{maxWidth: 1920, margin: '0 auto'}} fluid={data.portfolio.heroImage.fluid} alt={data.portfolio.heroImage.alt} />
+        <ImgFluid
+          style={{ maxWidth: 1920, margin: '0 auto' }}
+          fluid={data.portfolio.heroImage.fluid}
+          alt={data.portfolio.heroImage.alt}
+        />
       </Fluid>
       <Wrapper>
         <Content>
@@ -41,9 +45,7 @@ const Portfolio = ({ location, data }) => {
             <ImgLink key={event.slug} to={`/portfolio/${event.slug}`}>
               <ImgOverlay>
                 <div>
-                  {event.venueNode && (
-                    <h4 dangerouslySetInnerHTML={{ __html: event?.venueNode?.childMarkdownRemark?.excerpt }} />
-                  )}
+                  {event.venue && <VenueMeta dangerouslySetInnerHTML={{ __html: event?.venue }} />}
                   {event.location && <h5>{event.location}</h5>}
                 </div>
               </ImgOverlay>
@@ -87,6 +89,15 @@ const ImgLink = styled(Link)`
   }
 `
 
+const VenueMeta = styled.h4`
+  & a {
+    color: var(--textLight-color);
+  }
+  & p {
+    margin-bottom: 0;
+  }
+`
+
 export const query = graphql`
   query PortfolioQuery {
     portfolio: datoCmsPortfolio {
@@ -108,11 +119,7 @@ export const query = graphql`
         event: node {
           title
           slug
-          venueNode {
-            childMarkdownRemark {
-              excerpt
-            }
-          }
+          venue
           location
           eventType
           coverImage {

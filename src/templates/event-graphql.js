@@ -51,24 +51,12 @@ const Event = ({ location, data }) => {
           <Meta>
             <MetaItem>
               <h2>Location</h2>
-              <div dangerouslySetInnerHTML={{ __html: event.venue }} />
+              <VenueMeta dangerouslySetInnerHTML={{ __html: event.venue }} />
               <h3>{event.location}</h3>
             </MetaItem>
             <MetaItem>
               <h2>Event Type</h2>
               <h3>{event.eventType}</h3>
-            </MetaItem>
-            <MetaItem>
-              <h2>Photographer</h2>
-              <h3>{event.photographer}</h3>
-            </MetaItem>
-          </Meta>
-          <Meta>
-            <MetaItem>
-              <h2>{event.eventType}</h2>
-              {event.client && <h3>{event.client}</h3>}
-              <div dangerouslySetInnerHTML={{ __html: event.venue }} />
-              <h3>{event.location}</h3>
             </MetaItem>
             <MetaItem>
               <h2>Vendors</h2>
@@ -122,6 +110,14 @@ const Meta = styled.div`
   @media (max-width: ${({ theme }) => theme.mq.md}px) {
     width: 100%;
     flex-direction: column;
+  }
+`
+const VenueMeta = styled.h3`
+  & a {
+    color: var(--textLight-color);
+  }
+  & p {
+    margin-bottom: 0;
   }
 `
 const MetaOneLiner = styled.div`
