@@ -83,8 +83,6 @@ const Event = ({ location, data }) => {
         </OneColImage>
       </Container>
       <Wrapper>
-        {/* <Gallery> */}
-        {/* {galleryRow()} */}
         <GalleryGrid>
           {event.gallery.map((img) => {
             if (img.fluid.aspectRatio <= 1) {
@@ -94,24 +92,6 @@ const Event = ({ location, data }) => {
             }
           })}
         </GalleryGrid>
-        {/* </Gallery> */}
-      </Wrapper>
-      <Wrapper>
-        {event.eventGallery.map((block) => (
-          <BlockSection key={block.id}>
-            {block.model.apiKey === 'image_one_column' && (
-              <OneColImage>
-                <Img fluid={block.imageFluid.fluid} alt={block?.imageFluid?.alt} />
-              </OneColImage>
-            )}
-            {block.model.apiKey === 'image_two_column' && (
-              <TwoColImage>
-                <Img fluid={block.imageLeft.fluid} alt={block?.imageLeft?.alt} />
-                <Img fluid={block.imageRight.fluid} alt={block?.imageRight?.alt} />
-              </TwoColImage>
-            )}
-          </BlockSection>
-        ))}
       </Wrapper>
       <Connect variant="primary" />
       <Footer links={footer.links} serving={footer.serving} copyright={footer.copyright} />
@@ -237,12 +217,12 @@ const GalleryGrid = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(720px, 1fr));
   } */
 `
-const BlockSection = styled.section`
-  width: 100%;
-`
+// const BlockSection = styled.section`
+//   width: 100%;
+// `
 const OneColImage = styled.div`
   width: 100%;
-  max-width: 800px;
+  max-width: 1280px;
   min-height: 420px;
   margin: 0 auto 20px;
   & .gatsby-image-wrapper {
@@ -252,20 +232,20 @@ const OneColImage = styled.div`
     min-height: 420px;
   }
 `
-const TwoColImage = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  margin-bottom: 20px;
-  /* min-height: 420px; */
-  & .gatsby-image-wrapper {
-    width: 100%;
-  }
-  & img {
-    width: 100%;
-  }
-`
+// const TwoColImage = styled.div`
+//   width: 100%;
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   grid-gap: 20px;
+//   margin-bottom: 20px;
+//   /* min-height: 420px; */
+//   & .gatsby-image-wrapper {
+//     width: 100%;
+//   }
+//   & img {
+//     width: 100%;
+//   }
+// `
 
 export const query = graphql`
   query EventQuery($slug: String!) {
@@ -275,33 +255,11 @@ export const query = graphql`
       }
       title
       slug
-      # client
       venue
-      # venueNode {
-      #   childMarkdownRemark {
-      #     html
-      #     excerpt
-      #   }
-      # }
       location
       eventType
       oneLiner
-      # photographer
       vendors
-      # vendorsNode {
-      #   childMarkdownRemark {
-      #     html
-      #   }
-      # }
-      # vendorList {
-      #   # unused currently
-      #   id
-      #   originalId
-      #   name
-      #   referralLink
-      #   website
-      #   # logo
-      # }
       coverImage {
         originalId
         fluid(maxWidth: 800, imgixParams: { fm: "jpg", auto: "compress" }) {
@@ -317,38 +275,38 @@ export const query = graphql`
         }
         alt
       }
-      eventGallery {
-        ... on DatoCmsImageOneColumn {
-          model {
-            apiKey
-          }
-          id
-          imageFluid {
-            fluid(maxWidth: 800, imgixParams: { fm: "jpg", auto: "compress" }) {
-              ...GatsbyDatoCmsFluid
-            }
-            alt
-          }
-        }
-        ... on DatoCmsImageTwoColumn {
-          model {
-            apiKey
-          }
-          id
-          imageLeft {
-            fluid(maxWidth: 720, imgixParams: { fm: "jpg", auto: "compress" }) {
-              ...GatsbyDatoCmsFluid
-            }
-            alt
-          }
-          imageRight {
-            fluid(maxWidth: 720, imgixParams: { fm: "jpg", auto: "compress" }) {
-              ...GatsbyDatoCmsFluid
-            }
-            alt
-          }
-        }
-      }
+      # eventGallery {
+      #   ... on DatoCmsImageOneColumn {
+      #     model {
+      #       apiKey
+      #     }
+      #     id
+      #     imageFluid {
+      #       fluid(maxWidth: 800, imgixParams: { fm: "jpg", auto: "compress" }) {
+      #         ...GatsbyDatoCmsFluid
+      #       }
+      #       alt
+      #     }
+      #   }
+      #   ... on DatoCmsImageTwoColumn {
+      #     model {
+      #       apiKey
+      #     }
+      #     id
+      #     imageLeft {
+      #       fluid(maxWidth: 720, imgixParams: { fm: "jpg", auto: "compress" }) {
+      #         ...GatsbyDatoCmsFluid
+      #       }
+      #       alt
+      #     }
+      #     imageRight {
+      #       fluid(maxWidth: 720, imgixParams: { fm: "jpg", auto: "compress" }) {
+      #         ...GatsbyDatoCmsFluid
+      #       }
+      #       alt
+      #     }
+      #   }
+      # }
     }
     footer: datoCmsFooter {
       links {
