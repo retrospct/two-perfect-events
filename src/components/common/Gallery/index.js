@@ -13,23 +13,17 @@ export const BaseGallery = styled.div`
   max-width: calc(420px * 3 + 40px);
   margin: 1rem 0;
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
   justify-items: center;
   justify-content: space-around;
-  /* & .gatsby-image-wrapper {
-    width: 100%;
-    height: 100%;
-    max-width: 420px;
-    max-height: 420px;
-  } */
   @media (max-width: ${({ theme }) => `${theme.mq.xl}px`}) {
     max-width: calc(420px * 2 + 20px);
   }
   @media (max-width: ${({ theme }) => `${theme.mq.md}px`}) {
-    max-width: 96%;
-    grid-gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    max-width: 100%;
+    grid-gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 `
 

@@ -82,10 +82,10 @@ const ImgLink = styled(Link)`
   position: relative;
   width: 100%;
   height: 100%;
-  /* transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); */
-  transition: all 0.3s ease-out;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* transition: all 0.3s ease-out; */
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
 `
 

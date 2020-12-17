@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  padding: 4rem 1rem;
+  padding: 4rem 1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,7 +10,8 @@ export const Wrapper = styled.div`
     text-align: center;
     padding: 0;
     margin: 1.45rem 0;
-    font-family: 'Crimson Text', "Lucida Grande", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: 'Crimson Text', 'Lucida Grande', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+      Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     color: var(--accent-color);
     font-weight: 300;
     text-rendering: optimizeLegibility;

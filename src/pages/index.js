@@ -101,6 +101,11 @@ export const query = graphql`
             apiKey
           }
           id
+          moreLink {
+            text
+            path
+          }
+          moreLinkText
           services {
             id
             title
@@ -108,6 +113,9 @@ export const query = graphql`
             icon {
               url
               alt
+            }
+            serviceLink {
+              slug
             }
           }
         }

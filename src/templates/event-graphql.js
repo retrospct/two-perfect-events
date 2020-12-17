@@ -185,7 +185,7 @@ const Heading = styled.h1`
   font-size: 2.87rem;
   color: var(--accent-color);
   text-transform: uppercase;
-  letter-spacing: 0.4rem;
+  letter-spacing: 0.3rem;
 `
 
 const GalleryGrid = styled.div`
@@ -193,25 +193,18 @@ const GalleryGrid = styled.div`
   max-width: 800px;
   margin: 1rem 0;
   display: grid;
-  grid-gap: 20px;
-  /* grid-template-columns: repeat(auto-fit, minmax(720px, 1fr)); */
+  grid-gap: 10px;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   & .gatsby-image-wrapper {
     width: 100%;
     height: 100%;
-    /* max-width: 720px; */
-    /* max-height: 720px; */
-  }
-  /* @media (max-width: ${({ theme }) => `${theme.mq.xl}px`}) {
-    max-width: calc(720px * 2 + 20px);
   }
   @media (max-width: ${({ theme }) => `${theme.mq.md}px`}) {
-    max-width: 96%;
-    grid-gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(720px, 1fr));
-  } */
+    max-width: 100%;
+    grid-gap: 5px;
+  }
 `
 // const BlockSection = styled.section`
 //   width: 100%;
