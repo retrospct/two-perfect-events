@@ -9,7 +9,8 @@ export const Featured = ({ block }) => (
     <Content>
       <Heading>{block.heading && <h3>{block.heading}</h3>}</Heading>
       <Badges>
-        {block.badges && block.badges.map(badge => <Img key={badge.originalId} fixed={badge.fixed} alt={badge.alt} />)}
+        {block.badges &&
+          block.badges.map((badge) => <Img key={badge.originalId} fixed={badge.fixed} alt={badge.alt} />)}
       </Badges>
       <MoreLink>
         <ButtonOutline as={Link} to={block.moreLink.path}>

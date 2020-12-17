@@ -96,6 +96,21 @@ export const query = graphql`
           }
           accentBottom
         }
+        ... on DatoCmsServicesBlock {
+          model {
+            apiKey
+          }
+          id
+          services {
+            id
+            title
+            body
+            icon {
+              url
+              alt
+            }
+          }
+        }
         ... on DatoCmsHeroImage {
           model {
             apiKey
