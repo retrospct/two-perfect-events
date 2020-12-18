@@ -65,12 +65,12 @@ const Event = ({ location, data }) => {
           </Meta>
         </Content>
       </Wrapper>
-      <Container>
+      <Wrapper>
+        {/* <Container> */}
         <OneColImage>
           <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
         </OneColImage>
-      </Container>
-      <Wrapper>
+        {/* </Container> */}
         <GalleryGrid>
           {event.gallery.map((img) => {
             if (img.fluid.aspectRatio <= 1) {
@@ -109,6 +109,7 @@ const Wrapper = styled(Container)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: fit-content;
 `
 const Content = styled.header`
   width: 100%;
