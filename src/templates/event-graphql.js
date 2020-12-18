@@ -74,9 +74,23 @@ const Event = ({ location, data }) => {
         <GalleryGrid>
           {event.gallery.map((img) => {
             if (img.fluid.aspectRatio <= 1) {
-              return <Img key={img.originalId} fluid={img.fluid} alt={img.alt} style={{ gridColumn: 'span 1' }} />
+              return (
+                <Img
+                  key={img.originalId}
+                  fluid={img.fluid}
+                  alt={img.alt}
+                  style={{ gridColumn: 'span 1', height: '100%', width: '100%' }}
+                />
+              )
             } else {
-              return <Img key={img.originalId} fluid={img.fluid} alt={img.alt} style={{ gridColumn: 'span 2' }} />
+              return (
+                <Img
+                  key={img.originalId}
+                  fluid={img.fluid}
+                  alt={img.alt}
+                  style={{ gridColumn: 'span 2', height: '100%', width: '100%' }}
+                />
+              )
             }
           })}
         </GalleryGrid>
@@ -189,6 +203,8 @@ const Heading = styled.h1`
 `
 
 const GalleryGrid = styled.div`
+  height: 100%;
+  overflow-y: auto;
   width: 100%;
   max-width: 800px;
   margin: 1rem 0;
