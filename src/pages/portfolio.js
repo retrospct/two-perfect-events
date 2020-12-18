@@ -138,7 +138,7 @@ const FilterButton = styled(ButtonSimple)`
   border: 3px solid var(--primary-color);
   &:hover {
     background: var(--primary-color);
-    color: var(--textInverse-color);
+    color: var(--textLight-color);
   }
   &.filter-active {
     background: var(--primary-color);
