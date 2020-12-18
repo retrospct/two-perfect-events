@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
@@ -20,41 +20,75 @@ import {
 
 const Portfolio = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
+  const { footer, portfolio, events, validators } = data
+  const [filteredEvents, setFilteredEvents] = useState(events.edges)
+  const [filter, setFilter] = useState('All')
+
+  useEffect(() => {
+    const filterEvents = (type) => {
+      let tmpEvents = []
+      events.edges.forEach((node) => {
+        if (node.event.eventType === type) tmpEvents.push(node)
+      })
+      return tmpEvents
+    }
+    filter === 'All' ? setFilteredEvents(events.edges) : setFilteredEvents(filterEvents(filter))
+  }, [events.edges, filter])
+
   return (
-    <Layout location={location} footer={data.footer}>
+    <Layout location={location} footer={footer}>
       <Navigation />
-      <Seo siteSeo={siteSeo} pageSeo={data.portfolio.seoMetaTags} />
+      <Seo siteSeo={siteSeo} pageSeo={portfolio.seoMetaTags} />
       <Fluid>
         <ImgFluid
           style={{ maxWidth: 1920, margin: '0 auto' }}
-          fluid={data.portfolio.heroImage.fluid}
-          alt={data.portfolio.heroImage.alt}
+          fluid={portfolio.heroImage.fluid}
+          alt={portfolio.heroImage.alt}
         />
       </Fluid>
       <Wrapper>
         <Content>
           <Heading>
-            <h3>{data.portfolio.heading}</h3>
+            <h3>{portfolio.heading}</h3>
           </Heading>
-          {/* <h4>{data.portfolio.filters}</h4> */}
+          <div>
+            <button onClick={() => setFilter('All')}>All</button>
+            {validators?.edges?.length > 0 &&
+              validators.edges[0].node.filters.enum.values.map((value) => (
+                <button key={value} onClick={() => setFilter(value)}>
+                  {value}
+                </button>
+              ))}
+          </div>
         </Content>
       </Wrapper>
       <Wrapper style={{ paddingBottom: '4rem' }}>
         <Gallery>
-          {data.events.edges.map(({ event }) => (
+          {filteredEvents.map(({ event }) => (
             <ImgLink key={event.slug} to={`/portfolio/${event.slug}`}>
               <ImgOverlay>
                 <div>
-                  {event.venue && <VenueMeta dangerouslySetInnerHTML={{ __html: event?.venue }} />}
+                  {event.title && <VenueMeta>{event.title}</VenueMeta>}
                   {event.location && <h5>{event.location}</h5>}
                 </div>
               </ImgOverlay>
               <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
             </ImgLink>
           ))}
+          {/* {events.edges.map(({ event }) => (
+            <ImgLink key={event.slug} to={`/portfolio/${event.slug}`}>
+              <ImgOverlay>
+                <div>
+                  {event.title && <VenueMeta>{event.title}</VenueMeta>}
+                  {event.location && <h5>{event.location}</h5>}
+                </div>
+              </ImgOverlay>
+              <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
+            </ImgLink>
+          ))} */}
         </Gallery>
       </Wrapper>
-      {data.portfolio.connectEnabled && <Connect />}
+      {portfolio.connectEnabled && <Connect />}
     </Layout>
   )
 }
@@ -82,7 +116,7 @@ const ImgLink = styled(Link)`
   position: relative;
   width: 100%;
   height: 100%;
-  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   /* transition: all 0.3s ease-out; */
   &:hover {
     transform: scale(1.02);
@@ -125,14 +159,22 @@ export const query = graphql`
           coverImage {
             originalId
             fluid(
-              maxWidth: 420
-              maxHeight: 420
-              imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "420", h: "420" }
+              maxWidth: 800
+              maxHeight: 800
+              imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "800", h: "800" }
             ) {
               ...GatsbyDatoCmsFluid
             }
             alt
           }
+        }
+      }
+    }
+    validators: allDatoCmsField(filter: { label: { eq: "Event Type" } }) {
+      edges {
+        node {
+          label
+          filters: validators
         }
       }
     }

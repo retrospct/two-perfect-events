@@ -45,7 +45,8 @@ export const UsernameLink = styled(LinkExternal)`
 export const InstaLink = styled.a`
   height: 100%;
   width: 100%;
-  transition: all 0.3s ease-out;
+  /* transition: all 0.3s ease-out; */
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   &:hover {
     transform: scale(1.05);
   }
