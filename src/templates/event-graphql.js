@@ -109,7 +109,6 @@ const Wrapper = styled(Container)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: fit-content;
 `
 const Content = styled.header`
   width: 100%;
@@ -204,15 +203,15 @@ const Heading = styled.h1`
 `
 
 const GalleryGrid = styled.div`
-  height: 100%;
-  overflow-y: auto;
+  height: fit-content;
+  /* overflow-y: auto; */
   width: 100%;
   max-width: 800px;
   margin: 1rem 0;
   display: grid;
   grid-gap: 10px;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(320px, 1fr));
   justify-items: center;
   justify-content: space-between;
   & .gatsby-image-wrapper {
