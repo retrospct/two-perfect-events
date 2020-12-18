@@ -16,6 +16,7 @@ import {
   ImgFluid,
   Gallery,
   ImgOverlay,
+  ButtonSimple,
 } from 'components/common'
 
 const Portfolio = ({ location, data }) => {
@@ -51,15 +52,21 @@ const Portfolio = ({ location, data }) => {
           <Heading>
             <h3>{portfolio.heading}</h3>
           </Heading>
-          <div>
-            <button onClick={() => setFilter('All')}>All</button>
+          <Filters>
+            <FilterButton className={filter === 'All' && 'filter-active'} onClick={() => setFilter('All')}>
+              All
+            </FilterButton>
             {validators?.edges?.length > 0 &&
               validators.edges[0].node.filters.enum.values.map((value) => (
-                <button key={value} onClick={() => setFilter(value)}>
+                <FilterButton
+                  key={value}
+                  className={filter === value && 'filter-active'}
+                  onClick={() => setFilter(value)}
+                >
                   {value}
-                </button>
+                </FilterButton>
               ))}
-          </div>
+          </Filters>
         </Content>
       </Wrapper>
       <Wrapper style={{ paddingBottom: '4rem' }}>
@@ -111,7 +118,33 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
 `
-
+const Filters = styled.div`
+  width: 100%;
+  max-width: calc((130px * 5) + 40px);
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  justify-content: center;
+  justify-items: center;
+`
+const FilterButton = styled(ButtonSimple)`
+  padding: 8px 14px;
+  width: fit-content;
+  width: 120px;
+  font-size: 18px;
+  font-weight: normal;
+  background: transparent;
+  color: var(--text-color);
+  border: 3px solid var(--primary-color);
+  &:hover {
+    background: var(--primary-color);
+    color: var(--textInverse-color);
+  }
+  &.filter-active {
+    background: var(--primary-color);
+    color: var(--textLight-color);
+  }
+`
 const ImgLink = styled(Link)`
   position: relative;
   width: 100%;

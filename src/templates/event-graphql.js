@@ -195,6 +195,7 @@ const GalleryGrid = styled.div`
   display: grid;
   grid-gap: 10px;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(auto-fit, minmax(320px, 1fr));
   justify-items: center;
   justify-content: space-between;
   & .gatsby-image-wrapper {
