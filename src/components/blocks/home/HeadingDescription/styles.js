@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   & h3 {
     text-align: center;
     padding: 0;
-    margin: 1.45rem 0;
+    margin: 3rem 0 1.45rem;
     font-family: 'Crimson Text', 'Lucida Grande', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
       Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     color: var(--accent-color);
@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
     border: 0;
     margin: 10px 0;
     width: 270px;
-    height: 5px;
+    height: 3px;
     background: var(--accent-color);
   }
 `

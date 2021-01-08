@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Navigation, Container, Connect, BaseGallery } from 'components/common'
+import { Layout, Seo, Navigation, Container, Connect, Gallery, Divider } from 'components/common'
 
 const About = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
@@ -37,26 +37,60 @@ const About = ({ location, data }) => {
         </Wrapper>
       </Container>
       <Content as={Container}>
-        <Gallery>
+        <TeamGallery>
           {data.about.teamTpe.map((member) => (
             <Team key={member.originalId}>
               <Img fixed={member.fixed} alt={member.alt} />
               <div className="about-team-member">
                 <h3>{member.title}</h3>
                 <h4>{member.alt}</h4>
-                {/* <h4>{JSON.stringify(member.customData.name)}</h4>
-                  <h5>{JSON.stringify(member.customData.title)}</h5> */}
               </div>
             </Team>
           ))}
+        </TeamGallery>
+      </Content>
+      {data.about.connectEnabled && <Connect variant="primary" />}
+      <Content as={Container}>
+        <Divider />
+        <Heading style={{ marginTop: '3rem' }}>{data.about.featuresTitle || 'Features'}</Heading>
+        <Gallery size="200px" columns={5} gap={60}>
+          {data.about.features.map((feature) => (
+            <a key={feature.originalId} href="https://twoperfectevents.com" target="_blank" rel="noopener noreferrer">
+              <Img fixed={feature.fixed} alt={feature.alt} />
+            </a>
+          ))}
         </Gallery>
       </Content>
-      {data.about.connectEnabled && <Connect variant="inverse" />}
       <Content as={Container}>
-        <Heading>Features</Heading>
-        <Heading>Awards</Heading>
-        <Heading>Preferred Planner For</Heading>
+        <Heading>{data.about.awardsTitle || 'Awards'}</Heading>
+        <Gallery size="200px" columns={5} gap={60}>
+          {data.about.awards.map((award) => (
+            <a key={award.originalId} href="https://twoperfectevents.com" target="_blank" rel="noopener noreferrer">
+              <Img fixed={award.fixed} alt={award.alt} />
+            </a>
+          ))}
+        </Gallery>
       </Content>
+      <Content as={Container}>
+        <Divider />
+      </Content>
+      {/* <Content as={Container}> */}
+      <FluidContent>
+        <FluidHeader>
+          <Heading>{data.about.preferredTitle || 'Preferred Planner For'}</Heading>
+        </FluidHeader>
+        <Gallery size="260px" columns={3} gap={60}>
+          {data.about.preferredVenues.map((venue) => (
+            <a key={venue.originalId} href="https://twoperfectevents.com" target="_blank" rel="noopener noreferrer">
+              <Img fixed={venue.badge.fixed} alt={venue.badge.alt} />
+              <Label>
+                <p>{venue.name}</p>
+              </Label>
+            </a>
+          ))}
+        </Gallery>
+      </FluidContent>
+      {/* </Content> */}
       {data.about.connectEnabled && <Connect variant="primary" />}
     </Layout>
   )
@@ -70,6 +104,18 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`
+const FluidContent = styled.div`
+  width: 100%;
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`
+const FluidHeader = styled.div`
+  max-width: 600px;
+  padding: 30px 60px;
 `
 const Title = styled.h3`
   align-self: flex-start;
@@ -145,7 +191,7 @@ const ImgBlock = styled.div`
     width: 100%;
   }
 `
-const Gallery = styled.div`
+const TeamGallery = styled.div`
   width: 100%;
   /* max-width: calc(320px * 3 + 120px); */
   margin: 2rem 0;
@@ -167,14 +213,46 @@ const Gallery = styled.div`
 const Team = styled.div`
   width: 100%;
   height: 100%;
+  text-align: center;
+  & .about-team-member h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  & .about-team-member h4 {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
 `
 const Heading = styled.h1`
   font-family: var(--serif-font);
   font-weight: 300;
-  font-size: 2.87rem;
+  font-size: 2.5rem;
   color: var(--accent-color);
   text-transform: uppercase;
   letter-spacing: 0.4rem;
+`
+const Label = styled.div`
+  background: var(--accent-color);
+  padding: 12px 24px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(24px + 2rem);
+  width: 260px;
+  & p {
+    text-align: center;
+    margin: 0;
+    color: var(--textInverse-color);
+    font-weight: 300;
+    font-size: 1.1rem;
+  }
 `
 
 export const query = graphql`
@@ -183,6 +261,7 @@ export const query = graphql`
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
+      slug
       title
       subtitle
       backgroundImage {
@@ -194,6 +273,8 @@ export const query = graphql`
       intro
       teamTpe {
         originalId
+        alt
+        title
         fixed(
           width: 320
           height: 320
@@ -201,11 +282,54 @@ export const query = graphql`
         ) {
           ...GatsbyDatoCmsFixed
         }
-        alt
-        title
-        # customData
       }
       connectEnabled
+      awardsTitle
+      awards {
+        originalId
+        alt
+        fixed(
+          width: 200
+          height: 200
+          imgixParams: { fm: "png", auto: "compress", fit: "crop", crop: "faces,edges", w: "200", h: "200" }
+        ) {
+          ...GatsbyDatoCmsFixed
+        }
+      }
+      featuresTitle
+      features {
+        alt
+        originalId
+        fixed(
+          width: 200
+          height: 200
+          imgixParams: { fm: "png", auto: "compress", fit: "crop", crop: "faces,edges", w: "200", h: "200" }
+        ) {
+          ...GatsbyDatoCmsFixed
+        }
+      }
+      preferredTitle
+      preferredBackground {
+        alt
+        originalId
+        fluid(maxHeight: 800, imgixParams: { fm: "png", auto: "compress" }) {
+          ...GatsbyDatoCmsSizes
+        }
+      }
+      preferredVenues {
+        name
+        badge {
+          alt
+          originalId
+          fixed(
+            width: 260
+            height: 260
+            imgixParams: { fm: "png", auto: "compress", fit: "crop", crop: "faces,edges", w: "260", h: "260" }
+          ) {
+            ...GatsbyDatoCmsFixed
+          }
+        }
+      }
     }
     footer: datoCmsFooter {
       links {

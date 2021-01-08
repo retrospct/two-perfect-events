@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
     line-height: 1.87;
     text-align: center;
     word-wrap: break-word;
-    margin: 40px 0;
+    margin: 3rem 0;
   }
   small {
   }
@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
     border: 0;
     margin: 10px 0;
     width: 270px;
-    height: 5px;
+    height: 3px;
     background: var(--accent-color);
   }
   /* @media (max-width: 960px) {

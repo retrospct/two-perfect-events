@@ -1,10 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const Gallery = ({ size, children }) => (
+export const Gallery = ({ size, columns, gap, children }) => (
   <>
     {!size && <BaseGallery>{children}</BaseGallery>}
-    {size && <DynamicGallery size={size}>{children}</DynamicGallery>}
+    {size && (
+      <DynamicGallery size={size} columns={columns} gap={gap}>
+        {children}
+      </DynamicGallery>
+    )}
   </>
 )
 
@@ -28,10 +32,12 @@ export const BaseGallery = styled.div`
 `
 
 export const DynamicGallery = styled(BaseGallery)`
-  max-width: ${({ size }) => `calc(${size} * 3 + 40px)`};
+  max-width: ${({ size, columns, gap }) => `calc(${size} * ${columns || 3} + ${gap ? `${gap * columns}px` : '40px'})`};
   grid-template-columns: ${({ size }) => `repeat(auto-fit, minmax(${size}, 1fr))`};
+  grid-gap: ${({ gap }) => `${gap}px` || '10px'};
   @media (max-width: ${({ theme }) => `${theme.mq.xl}px`}) {
-    max-width: ${({ size }) => `calc(${size} * 2 + 20px)`};
+    max-width: ${({ size, columns, gap }) =>
+      `calc(${size} * ${columns ? columns - 1 : 2} + ${gap ? `${gap * (columns - 1)}px` : '20px'})`};
   }
   @media (max-width: ${({ theme }) => `${theme.mq.md}px`}) {
     grid-template-columns: ${({ size }) => `repeat(auto-fit, minmax(${size}, 1fr))`};
