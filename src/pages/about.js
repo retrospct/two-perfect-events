@@ -38,12 +38,21 @@ const About = ({ location, data }) => {
       </Container>
       <Content as={Container}>
         <TeamGallery>
-          {data.about.teamTpe.map((member) => (
+          {/* {data.about.teamTpe.map((member) => (
             <Team key={member.originalId}>
               <Img fixed={member.fixed} alt={member.alt} />
               <div className="about-team-member">
                 <h3>{member.title}</h3>
                 <h4>{member.alt}</h4>
+              </div>
+            </Team>
+          ))} */}
+          {data.about.tpeTeam.map((member) => (
+            <Team key={member.id}>
+              <Img fixed={member.image.fixed} alt={member.image.alt} />
+              <div className="about-team-member">
+                <h3>{member.name}</h3>
+                <h4>{member.title}</h4>
               </div>
             </Team>
           ))}
@@ -54,49 +63,102 @@ const About = ({ location, data }) => {
         <Divider />
         <Heading style={{ marginTop: '3rem' }}>{data.about.featuresTitle || 'Features'}</Heading>
         <Gallery size="200px" columns={5} gap={60}>
-          {data.about.features.map((feature) => (
-            <a key={feature.originalId} href="https://twoperfectevents.com" target="_blank" rel="noopener noreferrer">
-              <Img fixed={feature.fixed} alt={feature.alt} />
-            </a>
-          ))}
+          {data.about.features.map((feature) =>
+            feature?.linkTo ? (
+              <a key={feature.id} href={feature.linkTo} target="_blank" rel="noopener noreferrer">
+                <Img fixed={feature.badge.fixed} alt={feature.badge.alt} />
+              </a>
+            ) : (
+              <Img key={feature.id} fixed={feature.badge.fixed} alt={feature.badge.alt} />
+            )
+          )}
         </Gallery>
       </Content>
       <Content as={Container}>
         <Heading>{data.about.awardsTitle || 'Awards'}</Heading>
         <Gallery size="200px" columns={5} gap={60}>
-          {data.about.awards.map((award) => (
-            <a key={award.originalId} href="https://twoperfectevents.com" target="_blank" rel="noopener noreferrer">
-              <Img fixed={award.fixed} alt={award.alt} />
-            </a>
-          ))}
+          {data.about.awards.map((award) =>
+            award?.linkTo ? (
+              <a key={award.id} href={award.linkTo} target="_blank" rel="noopener noreferrer">
+                <Img fixed={award.badge.fixed} alt={award.badge.alt} />
+              </a>
+            ) : (
+              <Img key={award.id} fixed={award.badge.fixed} alt={award.badge.alt} />
+            )
+          )}
         </Gallery>
       </Content>
       <Content as={Container}>
         <Divider />
       </Content>
-      {/* <Content as={Container}> */}
       <FluidContent>
-        <FluidHeader>
-          <Heading>{data.about.preferredTitle || 'Preferred Planner For'}</Heading>
-        </FluidHeader>
-        <Gallery size="260px" columns={3} gap={60}>
-          {data.about.preferredVenues.map((venue) => (
+        {/* <FluidWrapper> */}
+        <Overlay>
+          <div className="overlay-content">
+            <FluidHeader>
+              <Heading>{data.about.preferredTitle || 'Preferred Planner For'}</Heading>
+            </FluidHeader>
+            {/* <Content style={{ position: 'relative' }}> */}
+            <Gallery>
+              {data.about.preferredVenues.map((venue) => (
+                <div key={venue.id}>
+                  <Img fixed={venue.badge.fixed} alt={venue.badge.alt} />
+                  <Label>
+                    <p>{venue.name}</p>
+                  </Label>
+                </div>
+              ))}
+              {/* {data.about.preferredVenues.map((venue) => (
             <a key={venue.originalId} href="https://twoperfectevents.com" target="_blank" rel="noopener noreferrer">
               <Img fixed={venue.badge.fixed} alt={venue.badge.alt} />
               <Label>
                 <p>{venue.name}</p>
               </Label>
             </a>
-          ))}
-        </Gallery>
+          ))} */}
+            </Gallery>
+            {/* </Content> */}
+          </div>
+        </Overlay>
+        <Img fluid={data.about.preferredBackground.fluid} alt={data.about.preferredBackground.alt} />
+        {/* </FluidWrapper> */}
       </FluidContent>
-      {/* </Content> */}
       {data.about.connectEnabled && <Connect variant="primary" />}
     </Layout>
   )
 }
 
 export default About
+
+const Overlay = styled.div`
+  width: 100%;
+  /* height: 100%; */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  .overlay-content {
+    position: relative;
+    width: 100%;
+    /* height: 100%; */
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  @media (max-width: ${({ theme }) => `${theme.mq.xl}px`}) {
+    .overlay-content {
+      flex-direction: column;
+    }
+  }
+  /* @media (max-width: ${({ theme }) => `${theme.mq.md}px`}) {
+    .overlay-content {
+    }
+  } */
+`
 
 const Content = styled.div`
   width: 100%;
@@ -106,12 +168,31 @@ const Content = styled.div`
   align-items: center;
 `
 const FluidContent = styled.div`
+  position: relative;
   width: 100%;
-  padding: 4rem 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  max-height: 100%;
+  /* max-height: 800px; */
+  overflow: hidden;
+  &:before {
+    content: ' ';
+    background: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    /* height: 100%; */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+  }
+  & .gatsby-image-wrapper {
+    height: 100%;
+    max-height: 100%;
+  }
+  & img {
+    height: 100%;
+    max-height: 100%;
+  }
 `
 const FluidHeader = styled.div`
   max-width: 600px;
@@ -271,61 +352,83 @@ export const query = graphql`
         alt
       }
       intro
-      teamTpe {
-        originalId
-        alt
+      # teamTpe {
+      #   originalId
+      #   alt
+      #   title
+      #   fixed(
+      #     width: 320
+      #     height: 320
+      #     imgixParams: { fm: "png", auto: "compress", fit: "crop", crop: "faces,edges", w: "320", h: "320" }
+      #   ) {
+      #     ...GatsbyDatoCmsFixed
+      #   }
+      # }
+      tpeTeam {
         title
-        fixed(
-          width: 320
-          height: 320
-          imgixParams: { fm: "png", auto: "compress", fit: "crop", crop: "faces,edges", w: "320", h: "320" }
-        ) {
-          ...GatsbyDatoCmsFixed
+        name
+        id
+        image {
+          alt
+          fixed(
+            width: 320
+            height: 320
+            imgixParams: { fm: "png", auto: "compress", fit: "crop", crop: "faces,edges", w: "320", h: "320" }
+          ) {
+            ...GatsbyDatoCmsFixed
+          }
         }
       }
       connectEnabled
       awardsTitle
       awards {
-        originalId
-        alt
-        fixed(
-          width: 200
-          height: 200
-          imgixParams: { fm: "png", auto: "compress", fit: "crop", crop: "faces,edges", w: "200", h: "200" }
-        ) {
-          ...GatsbyDatoCmsFixed
+        id
+        linkTo
+        accoladeType
+        badge {
+          alt
+          fixed(
+            width: 200
+            height: 200
+            imgixParams: { fm: "png", auto: "compress", fit: "crop", crop: "faces,edges", w: "200", h: "200" }
+          ) {
+            ...GatsbyDatoCmsFixed
+          }
         }
       }
       featuresTitle
       features {
-        alt
-        originalId
-        fixed(
-          width: 200
-          height: 200
-          imgixParams: { fm: "png", auto: "compress", fit: "crop", crop: "faces,edges", w: "200", h: "200" }
-        ) {
-          ...GatsbyDatoCmsFixed
+        id
+        linkTo
+        accoladeType
+        badge {
+          alt
+          fixed(
+            width: 200
+            height: 200
+            imgixParams: { fm: "png", auto: "compress", fit: "crop", crop: "faces,edges", w: "200", h: "200" }
+          ) {
+            ...GatsbyDatoCmsFixed
+          }
         }
       }
       preferredTitle
       preferredBackground {
         alt
         originalId
-        fluid(maxHeight: 800, imgixParams: { fm: "png", auto: "compress" }) {
+        fluid(imgixParams: { fm: "png", auto: "compress" }) {
           ...GatsbyDatoCmsSizes
         }
       }
       preferredVenues {
+        id
         name
         badge {
           alt
-          originalId
-          fixed(
-            width: 260
-            height: 260
-            imgixParams: { fm: "png", auto: "compress", fit: "crop", crop: "faces,edges", w: "260", h: "260" }
-          ) {
+          # fluid(maxWidth: 260, maxHeight: 260, imgixParams: { fm: "png", auto: "compress" }) {
+          #   ...GatsbyDatoCmsSizes
+          # }
+          fixed(width: 260, height: 260, imgixParams: { fm: "png", auto: "compress" }) {
             ...GatsbyDatoCmsFixed
           }
         }
