@@ -9,7 +9,11 @@ export const Hero = ({ heading, subheading }) => (
     <IntroWrapper as={Container}>
       <Details>
         <h1>{heading}</h1>
-        <h4>{subheading}</h4>
+        <h4
+          dangerouslySetInnerHTML={{
+            __html: subheading,
+          }}
+        />
         <Button as={AnchorLink} href="#contact">
           Contact Us
         </Button>

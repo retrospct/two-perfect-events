@@ -20,7 +20,6 @@ const About = ({ location, data }) => {
           </Title>
           <Subtitle>{data.about.subtitle}</Subtitle>
         </Content>
-
         <Wrapper>
           <HeroContent>
             <ImgBlock>
@@ -36,6 +35,9 @@ const About = ({ location, data }) => {
           </HeroContent>
         </Wrapper>
       </Container>
+      <Content as={Container}>
+        <Divider />
+      </Content>
       <Content as={Container}>
         <TeamGallery>
           {/* {data.about.teamTpe.map((member) => (
@@ -206,7 +208,7 @@ const Title = styled.h3`
   color: var(--accent-color);
   /* text-transform: capitalize; */
   letter-spacing: 0.3rem;
-  margin-bottom: 0.5rem;
+  margin: 0 0.5rem 0.5rem;
 `
 const Subtitle = styled.h3`
   align-self: flex-start;
@@ -216,11 +218,12 @@ const Subtitle = styled.h3`
   color: var(--accent-color);
   text-transform: uppercase;
   letter-spacing: 0.3rem;
+  margin: 0 0.5rem 0.5rem;
 `
 const Wrapper = styled(Container)`
   position: relative;
   height: 100%;
-  padding: 0 0 6rem;
+  padding: 0 0 1rem;
   display: flex;
   align-items: flex-start;
   justify-content: center;
