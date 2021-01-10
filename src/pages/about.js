@@ -419,17 +419,3 @@ export const query = graphql`
 //     text-transform: uppercase;
 //   }
 // `
-
-// {data.about.teamTpe.map(({ member }) => (
-//   <ButtonBase key={member.originalId}>
-//     <ImgOverlay>
-//       <div>
-//         {event.venueNode && (
-//           <h4 dangerouslySetInnerHTML={{ __html: event?.venueNode?.childMarkdownRemark?.excerpt }} />
-//         )}
-//         {event.location && <h5>{event.location}</h5>}
-//       </div>
-//     </ImgOverlay>
-//     <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
-//   </ButtonBase>
-// ))}

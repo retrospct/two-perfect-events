@@ -15,7 +15,7 @@
     "build": "echo SITE_RECAPTCHA_KEY=$SITE_RECAPTCHA_KEY >> .env.production && gatsby build",
     "clean": "gatsby clean",
     "format": "prettier src/**/*.{ts,tsx,js,jsx,json,css,svg}* --write",
-    "start": "gatsby develop -o",
+    "start": "gatsby develop -o -H 0.0.0.0",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx,.ts,.tsx,.json,.css .",
     "lint:fix": "./node_modules/.bin/eslint --ext .js,.jsx,.ts,.tsx,.json,.css . --fix",
     "reset": "rm -rf .cache/ public/",

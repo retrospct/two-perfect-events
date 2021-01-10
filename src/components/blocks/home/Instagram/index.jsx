@@ -3,13 +3,16 @@ import React from 'react'
 import Img from 'gatsby-image'
 import { Container } from 'components/common'
 import { Wrapper, Content, Header, Username, InstaGallery, InstaLink, UsernameLink } from './styles'
+import logoInstagram from 'assets/logo-instagram.png'
 
 // TODO: add the correct security HTML attributes to the link a element below
 export const Instagram = ({ block, instaLatest }) => (
   <Wrapper as={Container}>
     <Content>
       <Header>{block.heading && <h3>{block.heading}</h3>}</Header>
-      {/* <Img src="instagram" /> */}
+      <a href={block.socialLink.linkUrl} target="_blank" rel="noopener noreferrer">
+        <img style={{ marginBottom: 10 }} src={logoInstagram} alt="Instagram logo" />
+      </a>
       {block.socialLink && (
         <Username>
           Latest from{' '}
