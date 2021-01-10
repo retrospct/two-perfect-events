@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-text-size-adjust: 100%;
     overflow-x: hidden;
     max-width: 100vw;
+    height: -webkit-fill-available;
 
     :root {
       --serif-font: 'Crimson Text', "Lucida Grande", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -649,6 +650,8 @@ export const GlobalStyle = createGlobalStyle`
       padding: 0;
       overflow-x: hidden;
       max-width: 100vw;
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
       font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
       ${'' /* color: ${({ theme }) => theme.colors.text || 'hsla(0, 0%, 0%, 0.8)'}; */}
       ${'' /* background-color: ${({ theme }) => theme.colors.bg || '#fff'}; */}
