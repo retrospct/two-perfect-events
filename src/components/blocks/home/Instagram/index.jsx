@@ -9,8 +9,10 @@ export const Instagram = ({ block, instaLatest }) => (
   <Wrapper as={Container}>
     <Content>
       <Header>{block.heading && <h3>{block.heading}</h3>}</Header>
+      {/* <Img src="instagram" /> */}
       {block.socialLink && (
         <Username>
+          Latest from{' '}
           <UsernameLink href={block.socialLink.linkUrl} target="_blank" rel="noopener noreferrer">
             {block.socialLink.username}
           </UsernameLink>
