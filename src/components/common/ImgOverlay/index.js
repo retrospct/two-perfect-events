@@ -9,15 +9,16 @@ export const ImgOverlay = styled.div`
   bottom: 0;
   left: 0;
   z-index: 3;
-  background-color: rgba(0, 0, 0, 0.5);
-  div {
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+  & div {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
     height: 100%;
-    padding: 1rem;
+    padding: 1.5rem 1rem 1rem;
     word-wrap: break-word;
     color: var(--textLight-color);
     text-align: right;
@@ -27,14 +28,14 @@ export const ImgOverlay = styled.div`
       padding: 0;
       font-size: 0.85rem;
     } */
-    h4 {
+    & h4 {
       /* font-size: 3rem; */
       color: var(--textLight-color);
       text-align: right;
       margin-bottom: 0.5rem;
       font-weight: normal;
     }
-    h5 {
+    & h5 {
       /* font-size: 1.45rem; */
       color: var(--textLight-color);
       text-align: right;

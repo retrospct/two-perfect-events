@@ -47,28 +47,28 @@ const Portfolio = ({ location, data }) => {
           alt={portfolio.heroImage.alt}
         />
       </Fluid>
-      <Wrapper>
-        <Content>
-          <Heading>
-            <h3>{portfolio.heading}</h3>
-          </Heading>
-          <Filters>
-            <FilterButton className={filter === 'All' && 'filter-active'} onClick={() => setFilter('All')}>
-              All
-            </FilterButton>
-            {validators?.edges?.length > 0 &&
-              validators.edges[0].node.filters.enum.values.map((value) => (
-                <FilterButton
-                  key={value}
-                  className={filter === value && 'filter-active'}
-                  onClick={() => setFilter(value)}
-                >
-                  {value}
-                </FilterButton>
-              ))}
-          </Filters>
-        </Content>
-      </Wrapper>
+      {/* <Wrapper> */}
+      <Content>
+        <Heading>
+          <h3>{portfolio.heading}</h3>
+        </Heading>
+        <Filters>
+          <FilterButton className={filter === 'All' && 'filter-active'} onClick={() => setFilter('All')}>
+            All
+          </FilterButton>
+          {validators?.edges?.length > 0 &&
+            validators.edges[0].node.filters.enum.values.map((value) => (
+              <FilterButton
+                key={value}
+                className={filter === value && 'filter-active'}
+                onClick={() => setFilter(value)}
+              >
+                {value}
+              </FilterButton>
+            ))}
+        </Filters>
+      </Content>
+      {/* </Wrapper> */}
       <Wrapper style={{ paddingBottom: '4rem' }}>
         <Gallery>
           {filteredEvents.map(({ event }) => (
