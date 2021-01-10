@@ -35,9 +35,9 @@ const About = ({ location, data }) => {
           </HeroContent>
         </Wrapper>
       </Container>
-      <Content as={Container}>
+      {/* <Content as={Container}>
         <Divider />
-      </Content>
+      </Content> */}
       <Content as={Container}>
         <TeamGallery>
           {data.about.tpeTeam.map((member) => (
@@ -196,6 +196,22 @@ const TextBlock = styled.div`
   padding: 3rem;
   z-index: 10;
   transform: translate(5rem, 5rem);
+  /* border-radius: 12px; */
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.05);
+  & :after {
+    position: absolute;
+    left: 34px;
+    bottom: -30px;
+    content: '';
+    border: 3px solid var(--accent-color);
+    display: inline-block;
+    border-left: 0;
+    border-top: 0;
+    /* border-bottom-right-radius: 12px; */
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    transition: all 0.2s ease-out;
+  }
   & h1 {
     font-family: var(--serif-font);
     color: var(--primary-color);
