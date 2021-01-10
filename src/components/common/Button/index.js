@@ -33,7 +33,7 @@ export const Button = styled.button`
   margin: 10px 0 0 0;
   transition: all 0.2s ease-out;
 
-  :after {
+  & :after {
     position: absolute;
     left: 11px;
     bottom: -7px;
@@ -48,11 +48,11 @@ export const Button = styled.button`
     transition: all 0.2s ease-out;
   }
 
-  :hover {
+  & :hover {
     transform: translate(6px, 6px);
     color: var(--textLight-color);
     background-color: var(--primary-color);
-    :after {
+    & :after {
       transform: translate(-6px, -6px);
     }
   }
