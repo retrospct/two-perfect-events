@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 // import overlayIllustration from '../../../assets/illustrations/overlay.svg'
-import hero from 'assets/illustrations/hero.svg'
-import heroLight from 'assets/illustrations/heroLight.svg'
-// import heroAlt from 'assets/illustrations/heroAlt.svg'
+// import hero from 'assets/illustrations/hero.svg'
+import hero from 'assets/illustrations/heroClean.svg'
+import heroLight from 'assets/illustrations/heroCleanLight.svg'
 import partyItems from 'assets/illustrations/partyItems.svg'
 
 export const Wrapper = styled.div`
