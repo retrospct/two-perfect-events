@@ -108,7 +108,9 @@ const Wrapper = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 100vw;
 `
 const Content = styled.header`
   width: 100%;
@@ -205,8 +207,8 @@ const Heading = styled.h1`
 const GalleryGrid = styled.div`
   height: fit-content;
   /* overflow-y: auto; */
-  width: 100%;
-  max-width: 800px;
+  width: 80%;
+  /* max-width: 800px; */
   margin: 1rem 0;
   display: grid;
   grid-gap: 10px;
@@ -219,7 +221,7 @@ const GalleryGrid = styled.div`
     height: 100%;
   }
   @media (max-width: ${({ theme }) => `${theme.mq.md}px`}) {
-    max-width: 100%;
+    width: 100%;
     grid-gap: 5px;
   }
 `

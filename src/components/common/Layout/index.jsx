@@ -12,7 +12,7 @@ export const Layout = ({ location, footer, children }) => {
     else if (currentTheme === 'superDark' && !isPortfolio) toggleTheme(prevTheme)
   }, [])
   return (
-    <div style={{ height: '100vh' }}>
+    <div style={{ overflow: 'hidden' }}>
       {/* <Navigation /> */}
       {children}
       {footer && <Footer links={footer.links} serving={footer.serving} copyright={footer.copyright} />}

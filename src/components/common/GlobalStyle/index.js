@@ -649,6 +649,7 @@ export const GlobalStyle = createGlobalStyle`
       margin: 0;
       padding: 0;
       overflow-x: hidden;
+      width: 100%;
       max-width: 100vw;
       min-height: 100vh;
       min-height: -webkit-fill-available;
