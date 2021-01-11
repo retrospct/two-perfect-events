@@ -15,15 +15,15 @@ const Contact = ({ location, data }) => {
     <Layout location={location} footer={data.footer}>
       <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.contact.seoMetaTags} />
-      <Wrapper>
+      <Content>
         <ContactUs>
-          {data.contactForm.squigglyIcon && (
+          {/* {data.contactForm.squigglyIcon && (
             <Spotlight>
               <Icon color={colors.accent}>
                 <IconSquiggly />
               </Icon>
             </Spotlight>
-          )}
+          )} */}
           {data?.contact?.heading && (
             <Heading>
               <h3>{data.contact.heading}</h3>
@@ -31,7 +31,7 @@ const Contact = ({ location, data }) => {
           )}
           <ContactForm config={data.contactForm} formName="contact-page" />
         </ContactUs>
-      </Wrapper>
+      </Content>
       {data?.contact?.contactList && (
         <ContentInline>
           {data.contact.contactList.map((item) => (
