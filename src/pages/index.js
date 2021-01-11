@@ -212,7 +212,7 @@ export const query = graphql`
         }
       }
     }
-    contact: datoCmsContact {
+    contact: datoCmsContactField {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }

@@ -132,27 +132,29 @@ export const ContactForm = ({ config, contrast = false, formName = 'contact-page
           />
         </Label>
       </FormFieldSplit>
-      <FormFieldSplit>
+      <FormFieldSplit style={{ alignItems: 'center' }}>
         <Label htmlFor={`${formName}-referral`} contrast={contrast}>
           <span>
             {config.referralLabel || 'How did you hear about us?'}
             {config.referralRequired && '*'}
           </span>
-          <select
-            name={`${formName}-referral`}
-            id={`${formName}-referral`}
-            style={{ marginTop: 28 }}
-            onChange={handleChange}
-          >
-            <option value="none">--</option>
-            {config.referralOptions.map((option) => (
-              <option key={option.id} value={option?.referralType?.toLowerCase()}>
-                {option.referralType}
-              </option>
-            ))}
-          </select>
         </Label>
-        {config.referralDetailEnabled && (
+        <select
+          name={`${formName}-referral`}
+          id={`${formName}-referral`}
+          // style={{ marginTop: 28 }}
+          onChange={handleChange}
+        >
+          <option value="none">--</option>
+          {config.referralOptions.map((option) => (
+            <option key={option.id} value={option?.referralType?.toLowerCase()}>
+              {option.referralType}
+            </option>
+          ))}
+        </select>
+      </FormFieldSplit>
+      {config.referralDetailEnabled && (
+        <FormField>
           <Label htmlFor={`${formName}-referral-detail`} contrast={contrast}>
             <span>
               {config.referralDetailLabel || 'Care to share the specific source?'}
@@ -173,8 +175,8 @@ export const ContactForm = ({ config, contrast = false, formName = 'contact-page
               </span>
             )}
           </Label>
-        )}
-      </FormFieldSplit>
+        </FormField>
+      )}
       <FormField style={{ marginBottom: '1rem' }}>
         <Label htmlFor={`${formName}-additional-info`} contrast={contrast}>
           <span>

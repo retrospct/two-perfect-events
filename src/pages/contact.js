@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 import { useTheme } from 'context/themeContext'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Navigation, Container, ContactForm, Icon, IconSquiggly } from 'components/common'
+import { Layout, Seo, Navigation, Container, ContactForm, Icon, IconSquiggly, Divider } from 'components/common'
 
 const Contact = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
@@ -14,9 +15,9 @@ const Contact = ({ location, data }) => {
     <Layout location={location} footer={data.footer}>
       <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.contact.seoMetaTags} />
-      <Wrapper as={Container}>
+      <Wrapper>
         <ContactUs>
-          {data.contact.squigglyIcon && (
+          {data.contactForm.squigglyIcon && (
             <Spotlight>
               <Icon color={colors.accent}>
                 <IconSquiggly />
@@ -25,12 +26,44 @@ const Contact = ({ location, data }) => {
           )}
           {data?.contact?.heading && (
             <Heading>
-              <h3>{data?.contact?.heading?.toUpperCase()}</h3>
+              <h3>{data.contact.heading}</h3>
             </Heading>
           )}
-          <ContactForm config={data.contact} formName="contact-page" />
+          <ContactForm config={data.contactForm} formName="contact-page" />
         </ContactUs>
       </Wrapper>
+      {data?.contact?.contactList && (
+        <ContentInline>
+          {data.contact.contactList.map((item) => (
+            <ContactsList key={item.id}>
+              <img src={item.icon.url} alt={item.icon.alt} />
+              {item.title === 'ADDRESS' && item.address && <div dangerouslySetInnerHTML={{ __html: item.address }} />}
+              {item.title !== 'ADDRESS' && <p>{item.linkText}</p>}
+            </ContactsList>
+          ))}
+        </ContentInline>
+      )}
+      <Content>
+        <Divider />
+      </Content>
+      <FaqContent>
+        <Heading style={{ alignSelf: 'center' }}>
+          <h3>{data?.contact?.faqTitle}</h3>
+        </Heading>
+        {data.contact.faq.map((item) => (
+          <FaqBlock key={item.id}>
+            {item.model.apiKey === 'faq_item' && (
+              <>
+                <h4>{item.question}</h4>
+                <FaqItem dangerouslySetInnerHTML={{ __html: item.answer }} />
+              </>
+            )}
+          </FaqBlock>
+        ))}
+      </FaqContent>
+      <ImgFluid>
+        <Img fluid={data.contact.accentImage.fluid} alt={data.contact.accentImage.alt} />
+      </ImgFluid>
     </Layout>
   )
 }
@@ -40,19 +73,59 @@ const Contact = ({ location, data }) => {
 
 export default Contact
 
-export const Fluid = styled.div`
+const Content = styled(Container)`
   width: 100%;
-  /* background: var(--accent-color); */
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-content: center;
+  padding: 4rem 0 0;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  /* @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
-    grid-template-columns: 1fr;
-  } */
 `
+const ContentInline = styled(Container)`
+  width: 100%;
+  /* padding: 0 0 4rem; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+`
+const ContactsList = styled.div`
+  text-align: left;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  & img {
+    margin: 0 14px 0 0;
+  }
+  @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    & img {
+      margin: 0 0 14px;
+    }
+  }
+`
+// const Fluid = styled.div`
+//   width: 100%;
+//   /* background: var(--accent-color); */
+//   display: grid;
+//   grid-template-columns: 1fr;
+//   justify-content: center;
+//   align-items: center;
+//   /* @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
+//     grid-template-columns: 1fr;
+//   } */
+// `
 
-export const Wrapper = styled.div`
+const Wrapper = styled(Container)`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
@@ -64,7 +137,7 @@ export const Wrapper = styled.div`
   } */
 `
 
-export const ContactUs = styled.div`
+const ContactUs = styled.div`
   position: relative;
   padding: 6rem 6rem 1rem;
   font-size: 1.5rem;
@@ -77,7 +150,7 @@ export const ContactUs = styled.div`
     padding: 6rem 1.5rem 4rem;
   }
 `
-export const Spotlight = styled.div`
+const Spotlight = styled.div`
   height: 222px;
   width: 111px;
   position: absolute;
@@ -94,7 +167,7 @@ export const Spotlight = styled.div`
   }
 `
 
-export const Heading = styled.div`
+const Heading = styled.div`
   text-align: left;
   h3 {
     /* color: var(--textLight-color); */
@@ -107,22 +180,73 @@ export const Heading = styled.div`
     }
   }
 `
-
-export const ImgBlock = styled.div`
-  display: none;
-  height: 100%;
-  min-height: 100%;
+const FaqContent = styled(Container)`
+  width: 100%;
+  padding: 4rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+`
+const FaqBlock = styled.div`
+  margin-bottom: 1rem;
   max-width: 100%;
-  overflow: hidden;
-  margin: 0 auto;
-  @media (min-width: ${({ theme }) => `${theme.mq.lg}px`}) {
-    display: block;
-  }
-  & .gatsby-image-wrapper {
-    min-height: 100%;
-    max-width: 100%;
+  & h4 {
+    font-family: var(--serif-font);
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
   }
 `
+const FaqItem = styled.div`
+  & p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.3;
+  }
+`
+
+const ImgFluid = styled.div`
+  position: relative;
+  width: 100%;
+  min-height: 420px;
+  max-height: 800px;
+  &:before {
+    content: '';
+    background: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+  }
+  & .gatsby-image-wrapper {
+    min-height: 420px;
+    max-height: 800px;
+  }
+  & img {
+    min-height: 420px;
+    max-height: 800px;
+  }
+`
+
+// const ImgBlock = styled.div`
+//   display: none;
+//   height: 100%;
+//   min-height: 100%;
+//   max-width: 100%;
+//   overflow: hidden;
+//   margin: 0 auto;
+//   @media (min-width: ${({ theme }) => `${theme.mq.lg}px`}) {
+//     display: block;
+//   }
+//   & .gatsby-image-wrapper {
+//     min-height: 100%;
+//     max-width: 100%;
+//   }
+// `
 
 export const query = graphql`
   query ContactQuery {
@@ -130,6 +254,41 @@ export const query = graphql`
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
+      heading
+      contactList {
+        id
+        address
+        title
+        linkText
+        linkUrl
+        icon {
+          alt
+          url
+        }
+      }
+      faqTitle
+      faq {
+        id
+        ... on DatoCmsFaqItem {
+          model {
+            apiKey
+          }
+          id
+          question
+          answer
+        }
+      }
+      accentImage {
+        alt
+        fluid(maxWidth: 1920, imgixParams: { fm: "jpg", auto: "compress" }) {
+          ...GatsbyDatoCmsFluid
+        }
+      }
+    }
+    contactForm: datoCmsContactField {
+      # seoMetaTags {
+      #   ...GatsbyDatoCmsSeoMetaTags
+      # }
       squigglyIcon
       heading
       nameLabel
