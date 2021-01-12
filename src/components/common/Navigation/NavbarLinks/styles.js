@@ -16,7 +16,6 @@ export const Wrapper = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    transition-duration: 0.5s;
   }
   & li:hover {
     cursor: pointer;
@@ -26,10 +25,10 @@ export const Wrapper = styled.div`
     visibility: hidden;
     opacity: 0;
     position: absolute;
-    transition: all 0.5s ease;
     margin-top: 0.75rem;
     left: 0;
     display: none;
+    /* transition: all 1s ease-in-out; */
   }
 
   /* IE 11 Compatible */

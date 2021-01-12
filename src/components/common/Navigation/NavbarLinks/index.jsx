@@ -72,7 +72,7 @@ export const NavbarLinks = ({ desktop }) => {
             </NavLink>
           </li>
           <li className="dropdown-container">
-            <NavLink as={Link} to="/services" activeClassName="selected" aria-haspopup>
+            <NavLink as={Link} to="/services" activeClassName="selected" partiallyActive={true} aria-haspopup>
               SERVICES
             </NavLink>
             <ul className="dropdown" aria-label="submenu">
