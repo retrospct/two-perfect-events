@@ -1,81 +1,125 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-// import styled from 'styled-components'
+import Img from 'gatsby-image'
+import { Helmet } from 'react-helmet'
 
-import { useTheme } from 'context/themeContext'
+// import { useTheme } from 'context/themeContext'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
-
-import { Layout, Seo, Navigation, Container, Connect, Icon, IconParty } from 'components/common'
+import { Layout, Seo, Navigation, Connect, HeroImage } from 'components/common'
+import { WeddingsBlock } from 'components/blocks/weddings'
 
 const Weddings = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
-  const { colors } = useTheme()
+  // const { colors } = useTheme()
   return (
     <Layout location={location} footer={data.footer}>
+      <Helmet>
+        <script src="../../scripts/yelp.js" />
+      </Helmet>
       <Navigation />
-      <Seo siteSeo={siteSeo} pageSeo={data.services.seoMetaTags} />
-      <Container>
-        <Icon size="250px" color={colors.accent}>
-          <IconParty />
-        </Icon>
-        <h2>Services</h2>
-      </Container>
-      {data.services.connectEnabled && <Connect />}
+      <Seo siteSeo={siteSeo} pageSeo={data.weddings.seoMetaTags} />
+      <HeroImage title={data.weddings.title} subtitle={data.weddings.subtitle} image={data.weddings.heroImage} />
+      <WeddingsBlock blocks={data.weddings.blocks} />
+      {data.weddings.connectEnabled && <Connect />}
     </Layout>
   )
 }
 
 export default Weddings
 
-// const IconServices = styled(IconParty)`
-//   width: 250px;
-// `
-
 export const query = graphql`
   query WeddingsQuery {
-    services: datoCmsService {
+    weddings: datoCmsWedding {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
-      # heroImage {
-      #   fluid(maxWidth: 1920, imgixParams: { fm: "png", auto: "compress" }) {
-      #     ...GatsbyDatoCmsFluid
-      #   }
-      #   alt
-      # }
-      heading
-      slug
-      connectEnabled
+      title
+      subtitle
+      heroImage {
+        fluid(maxWidth: 1920, imgixParams: { fm: "png", auto: "compress" }) {
+          ...GatsbyDatoCmsFluid
+        }
+        alt
+      }
+      blocks: weddingsBlock {
+        ... on DatoCmsText {
+          id
+          model {
+            apiKey
+          }
+          statement
+        }
+        ... on DatoCmsCtaButton {
+          id
+          model {
+            apiKey
+          }
+          linkText
+          linkTo
+        }
+        ... on DatoCmsTestimonial {
+          id
+          model {
+            apiKey
+          }
+          title
+          quote
+          author
+          golden
+        }
+        ... on DatoCmsDivider {
+          id
+          enabled
+        }
+        ... on DatoCmsSection {
+          id
+          model {
+            apiKey
+          }
+          accentTop
+          heading
+          description
+          accentBottom
+          golden
+          ctaText
+          ctaLinkTo
+          externalLink
+        }
+        ... on DatoCmsProcessCard {
+          id
+          model {
+            apiKey
+          }
+          title
+          content
+          image {
+            alt
+          }
+          lastCard
+        }
+        ... on DatoCmsServiceCard {
+          id
+          model {
+            apiKey
+          }
+          image {
+            alt
+          }
+          heading
+          text
+        }
+        ... on DatoCmsYelpReview {
+          id
+          model {
+            apiKey
+          }
+          embedEnabled
+          reviewExcerpt
+          linkText
+          yelpLink
+        }
+      }
     }
-    # events: allDatoCmsEvent(sort: { fields: position }) {
-    #   edges {
-    #     event: node {
-    #       title
-    #       slug
-    #       venue
-    #       location
-    #       eventType
-    #       # photographer
-    #       # excerpt
-    #       # excerptNode {
-    #       #   childMarkdownRemark {
-    #       #     html
-    #       #   }
-    #       # }
-    #       coverImage {
-    #         originalId
-    #         fluid(
-    #           maxWidth: 420
-    #           maxHeight: 420
-    #           imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "420", h: "420" }
-    #         ) {
-    #           ...GatsbyDatoCmsFluid
-    #         }
-    #         alt
-    #       }
-    #     }
-    #   }
-    # }
     footer: datoCmsFooter {
       links {
         id

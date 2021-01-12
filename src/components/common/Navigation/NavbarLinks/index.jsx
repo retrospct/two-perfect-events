@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import AnchorLink from 'react-anchor-link-smooth-scroll' // TODO: Remove this package if not being used
 
 import { useTheme } from 'context/themeContext'
 
 import { Link, LinkBase, ButtonNavCTA } from 'components/common'
-import { Wrapper, NavLink, NavLinkFirst } from './styles'
+import { Wrapper, NavLink, NavLinkButton, NavLinkFirst } from './styles'
 import { ToggleDarkMode } from '../ToggleDarkMode'
 // import { useNavLinks } from 'hooks/useNavLinks'
 
 export const NavbarLinks = ({ desktop }) => {
   const { currentTheme, toggleTheme } = useTheme()
+  const [showDropdown, setShowDropdown] = useState(false)
   // const routes = useNavLinks()
   // console.log('routes: ', routes)
   // // console.log('toggleTheme: ', toggleTheme)
@@ -72,16 +73,24 @@ export const NavbarLinks = ({ desktop }) => {
             </NavLink>
           </li>
           <li className="dropdown-container">
-            <NavLink as={Link} to="/services" activeClassName="selected" partiallyActive={true} aria-haspopup>
+            {/* <NavLink as={Link} to="/services" activeClassName="selected" aria-haspopup>
               SERVICES
-            </NavLink>
-            <ul className="dropdown" aria-label="submenu">
-              <li>
-                <NavLink as={Link} to="/weddings" activeClassName="selected">
-                  - WEDDINGS
-                </NavLink>
-              </li>
-            </ul>
+            </NavLink> */}
+            <NavLinkButton onClick={() => setShowDropdown(!showDropdown)} aria-haspopup>
+              SERVICES
+            </NavLinkButton>
+            {showDropdown && (
+              <ul className="dropdown" aria-label="submenu">
+                <li>
+                  <NavLink as={Link} to="/services" activeClassName="selected">
+                    - ALL
+                  </NavLink>
+                  <NavLink as={Link} to="/weddings" activeClassName="selected">
+                    - WEDDINGS
+                  </NavLink>
+                </li>
+              </ul>
+            )}
           </li>
           <li>
             <ButtonNavCTA as={LinkBase} to="/contact">

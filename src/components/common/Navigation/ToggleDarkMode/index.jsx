@@ -7,7 +7,7 @@ import 'react-toggle/style.css'
 
 export const Toggler = styled(Toggle)`
   position: absolute;
-  top: 3rem;
+  top: 2.2rem;
   right: 0.5rem;
 
   @media (max-width: ${({ theme }) => theme.mq.xl}px) {

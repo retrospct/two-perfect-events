@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   position: fixed;
-  z-index: 4;
+  z-index: 10;
   overflow: auto;
   top: 0;
   right: -275px;

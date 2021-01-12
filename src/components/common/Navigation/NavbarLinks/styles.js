@@ -22,27 +22,28 @@ export const Wrapper = styled.div`
   }
 
   & ul li ul {
-    visibility: hidden;
+    /* visibility: hidden;
     opacity: 0;
+    display: none; */
+    visibility: visible;
+    opacity: 1;
+    display: block;
     position: absolute;
     margin-top: 0.75rem;
     left: 0;
-    display: none;
+    z-index: 10;
+
     /* transition: all 1s ease-in-out; */
   }
 
   /* IE 11 Compatible */
-  & ul li:hover > ul,
+  /* & ul li:hover > ul,
   & ul li ul:hover,
   & ul li ul:focus {
     visibility: visible;
     opacity: 1;
     display: block;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start; */
-  }
+  } */
 
   /* IE 11 won't get this, but at least the top-level menus will work */
   & ul li:focus-within > ul {
@@ -58,8 +59,11 @@ export const Wrapper = styled.div`
 
   & .dropdown-container {
     width: 190px;
+    /* background: var(--bg-color); */
+    /* padding: 0 0.75rem 1rem; */
     & a {
       margin-bottom: 0;
+      font-size: 0.9rem;
     }
     /* & .dropdown {
       list-style: inside;
@@ -70,6 +74,9 @@ export const Wrapper = styled.div`
   & .dropdown {
     position: relative;
     margin-left: 0;
+    width: 190px;
+    background: var(--bg-color);
+    padding: 0 0.75rem 1rem;
   }
 
   ${({ desktop, theme }) =>
@@ -148,6 +155,48 @@ export const NavLink = styled.a`
     color: var(--primaryInverse-color);
     /* transform: translate(0,0); */
     /* border-color: #e6e6e6; */
+    :after {
+      right: 40%;
+    }
+  }
+  &.selected {
+    color: var(--primaryInverse-color);
+    font-weight: 400;
+    :after {
+      right: 40%;
+    }
+  }
+`
+
+export const NavLinkButton = styled.button`
+  border: none;
+  position: relative;
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--subheading-color);
+  text-transform: initial;
+  padding: 6px 0 6px;
+  border-color: var(--primaryInverse-color);
+  background: transparent;
+  /* font-size: 1.42857em;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    color: #595959; */
+  &:after {
+    border-top: 1px solid;
+    content: '';
+    position: absolute;
+    right: 100%;
+    bottom: -1px;
+    left: 0;
+    margin-left: 1px;
+    transition: right 0.4s cubic-bezier(0, 0.5, 0, 1);
+  }
+  &:hover {
+    cursor: pointer;
+    color: var(--primaryInverse-color);
     :after {
       right: 40%;
     }
