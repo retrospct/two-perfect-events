@@ -45,28 +45,51 @@ export const NavbarLinks = ({ desktop }) => {
       <NavLink as={Link} to={link.path} activeClassName="selected">{link.text}</NavLink>
     ))} */}
       {/* {routes && routes.map((route) => <Route key={route.path} route={route} />)} */}
-      {!desktop && (
-        <NavLinkFirst as={Link} to="/" activeClassName="selected">
-          HOME
-        </NavLinkFirst>
-      )}
-      {desktop && (
-        <NavLink as={Link} to="/" activeClassName="selected">
-          HOME
-        </NavLink>
-      )}
-      <NavLink as={Link} to="/portfolio" activeClassName="selected" partiallyActive={true}>
-        PORTFOLIO
-      </NavLink>
-      <NavLink as={Link} to="/about" activeClassName="selected">
-        ABOUT
-      </NavLink>
-      <NavLink as={Link} to="/services" activeClassName="selected">
-        SERVICES
-      </NavLink>
-      <ButtonNavCTA as={LinkBase} to="/contact">
-        CONTACT
-      </ButtonNavCTA>
+      <nav role="navigation">
+        <ul className="nav">
+          {!desktop && (
+            <li>
+              <NavLinkFirst as={Link} to="/" activeClassName="selected">
+                HOME
+              </NavLinkFirst>
+            </li>
+          )}
+          {desktop && (
+            <li>
+              <NavLink as={Link} to="/" activeClassName="selected">
+                HOME
+              </NavLink>
+            </li>
+          )}
+          <li>
+            <NavLink as={Link} to="/portfolio" activeClassName="selected" partiallyActive={true}>
+              PORTFOLIO
+            </NavLink>
+          </li>
+          <li>
+            <NavLink as={Link} to="/about" activeClassName="selected">
+              ABOUT
+            </NavLink>
+          </li>
+          <li className="dropdown-container">
+            <NavLink as={Link} to="/services" activeClassName="selected" aria-haspopup>
+              SERVICES
+            </NavLink>
+            <ul className="dropdown" aria-label="submenu">
+              <li>
+                <NavLink as={Link} to="/weddings" activeClassName="selected">
+                  - WEDDINGS
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <ButtonNavCTA as={LinkBase} to="/contact">
+              CONTACT
+            </ButtonNavCTA>
+          </li>
+        </ul>
+      </nav>
       {/* <NavLink as={Link} to="/blog" activeClassName="selected">
         BLOG
       </NavLink> */}

@@ -1,6 +1,78 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
+  & .nav {
+    /* list-style: none; */
+    display: flex;
+    align-items: flex-start;
+    padding-top: 0.75rem;
+    @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
+      flex-direction: column;
+    }
+  }
+
+  & li {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transition-duration: 0.5s;
+  }
+  & li:hover {
+    cursor: pointer;
+  }
+
+  & ul li ul {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    transition: all 0.5s ease;
+    margin-top: 0.75rem;
+    left: 0;
+    display: none;
+  }
+
+  /* IE 11 Compatible */
+  & ul li:hover > ul,
+  & ul li ul:hover,
+  & ul li ul:focus {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; */
+  }
+
+  /* IE 11 won't get this, but at least the top-level menus will work */
+  & ul li:focus-within > ul {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+  }
+
+  & ul li ul li {
+    clear: both;
+    width: 100%;
+  }
+
+  & .dropdown-container {
+    width: 190px;
+    & a {
+      margin-bottom: 0;
+    }
+    /* & .dropdown {
+      list-style: inside;
+      list-style-type: '-';
+    } */
+  }
+
+  & .dropdown {
+    position: relative;
+    margin-left: 0;
+  }
+
   ${({ desktop, theme }) =>
     desktop
       ? `
@@ -11,18 +83,18 @@ export const Wrapper = styled.div`
 			a {
 				margin-right: 1.25rem;
 
-				&:nth-last-child(2) {
+				/* &:nth-last-child(1) {
 					margin-right: unset;
-				}
+				} */
 			}
 
       @media (max-width: ${theme.mq.xxl}px) {
 				a {
           margin-right: 0.75rem;
 
-          &:nth-last-child(2) {
+          /* &:nth-last-child(2) {
 					  margin-right: unset;
-				  }
+				  } */
         }
 			}
 		`
@@ -33,9 +105,9 @@ export const Wrapper = styled.div`
 
 			a {
 				margin-bottom: 1rem;
-				&:nth-last-child(2) {
+				/* &:nth-last-child(2) {
 					margin-bottom: unset;
-				}
+				} */
 				:hover:after {
           right: 80%;
         }

@@ -16,6 +16,7 @@ const Home = ({ location, data }) => {
     <Layout location={location} footer={data.footer}>
       <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.home.seoMetaTags} />
+      <div aria-hidden style={{ height: 100, width: '100%', background: 'transparent' }} />
       <Hero heading={data.home.heading} subheading={data.home.subtitle} />
       <HomeBlock homeBlock={data.home.homeBlock} instaLatest={instaLatest} />
       <ContactSection heading="LET’S GET THIS PARTY STARTED!" config={data.contact} contrast formName="contact-home" />
