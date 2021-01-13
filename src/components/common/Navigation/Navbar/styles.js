@@ -39,8 +39,8 @@ export const LogoWrapper = styled.div`
     padding: 0 0.5rem 0.5rem;
     & svg {
       /* padding: 0.25rem; */
-      height: 80px;
-      max-width: 80px;
+      height: 60px;
+      max-width: 60px;
     }
   }
 `

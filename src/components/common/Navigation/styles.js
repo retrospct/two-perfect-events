@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   z-index: 10;
   background: linear-gradient(var(--bg-color), var(--bg-color) 90%, transparent 90%, transparent 100%);
   @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
-    height: 105px;
+    height: 79px;
     background: var(--bg-color);
   }
 `

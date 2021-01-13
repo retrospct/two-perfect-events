@@ -40,6 +40,7 @@ const Portfolio = ({ location, data }) => {
     <Layout location={location} footer={footer}>
       <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={portfolio.seoMetaTags} />
+      <div aria-hidden style={{ height: 100, width: '100%', background: 'transparent' }} />
       <Fluid>
         <ImgFluid
           style={{ maxWidth: 1920, margin: '0 auto' }}

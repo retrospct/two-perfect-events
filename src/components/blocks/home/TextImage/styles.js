@@ -20,7 +20,7 @@ export const TextBlock = styled.div`
   height: 100%;
   padding: 3rem 4rem;
   margin: 1.5rem -5rem 1.5rem 0;
-  z-index: 10;
+  z-index: 5;
   @media (max-width: ${({ theme }) => theme.mq.lg}px) {
     padding: 1rem;
     margin-right: 0;

@@ -15,6 +15,7 @@ const Contact = ({ location, data }) => {
     <Layout location={location} footer={data.footer}>
       <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.contact.seoMetaTags} />
+      <div aria-hidden style={{ height: 100, width: '100%', background: 'transparent' }} />
       <Content>
         <ContactUs>
           {/* {data.contactForm.squigglyIcon && (
@@ -150,22 +151,22 @@ const ContactUs = styled.div`
     padding: 6rem 1.5rem 4rem;
   }
 `
-const Spotlight = styled.div`
-  height: 222px;
-  width: 111px;
-  position: absolute;
-  top: 0;
-  right: 1.5rem;
-  /* color: var(--textLight-color); */
-  & img {
-    height: 80%;
-    width: 111px;
-    transform: scale(-1, 1) rotate(-25deg);
-  }
-  @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
-    margin-top: -2rem;
-  }
-`
+// const Spotlight = styled.div`
+//   height: 222px;
+//   width: 111px;
+//   position: absolute;
+//   top: 0;
+//   right: 1.5rem;
+//   /* color: var(--textLight-color); */
+//   & img {
+//     height: 80%;
+//     width: 111px;
+//     transform: scale(-1, 1) rotate(-25deg);
+//   }
+//   @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
+//     margin-top: -2rem;
+//   }
+// `
 
 const Heading = styled.div`
   text-align: left;

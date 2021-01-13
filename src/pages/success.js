@@ -12,17 +12,17 @@ const Success = ({ location, data }) => {
     <Layout location={location} footer={data.footer}>
       <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.success.seoMetaTags} />
-
+      <div aria-hidden style={{ height: 100, width: '100%', background: 'transparent' }} />
       <div id="success" className="alt">
         <section id="one">
           <div className="inner">
             <header className="major">
-              <h1>Success/Thank You Page</h1>
+              <h1>We'll get back to you asap!</h1>
             </header>
             <span className="image main">
               <img src={partyItems} alt="" />
             </span>
-            <p>Thank you for contacting us!</p>
+            <p>Thank you for contacting us.</p>
           </div>
         </section>
       </div>

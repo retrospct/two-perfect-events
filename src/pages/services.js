@@ -14,6 +14,7 @@ const Services = ({ location, data }) => {
     <Layout location={location} footer={data.footer}>
       <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.services.seoMetaTags} />
+      <div aria-hidden style={{ height: 100, width: '100%', background: 'transparent' }} />
       <Container>
         <Icon size="250px" color={colors.accent}>
           <IconParty />

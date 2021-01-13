@@ -13,6 +13,7 @@ const About = ({ location, data }) => {
     <Layout location={location} footer={data.footer}>
       <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.about.seoMetaTags} />
+      <div aria-hidden style={{ height: 100, width: '100%', background: 'transparent' }} />
       <Container>
         <Content>
           <Title>
@@ -98,14 +99,6 @@ const About = ({ location, data }) => {
                 </Label>
               </div>
             ))}
-            {/* {data.about.preferredVenues.map((venue) => (
-            <Linked key={venue.originalId} href="https://twoperfectevents.com" target="_blank" rel="noopener noreferrer">
-              <Img fixed={venue.badge.fixed} alt={venue.badge.alt} />
-              <Label>
-                <p>{venue.name}</p>
-              </Label>
-            </Linked>
-          ))} */}
           </Gallery>
         </FluidContent>
       </FluidContainer>

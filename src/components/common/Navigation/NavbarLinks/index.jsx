@@ -83,10 +83,10 @@ export const NavbarLinks = ({ desktop }) => {
               <ul className="dropdown" aria-label="submenu">
                 <li>
                   <NavLink as={Link} to="/services" activeClassName="selected">
-                    - ALL
+                    OVERVIEW
                   </NavLink>
                   <NavLink as={Link} to="/weddings" activeClassName="selected">
-                    - WEDDINGS
+                    WEDDINGS
                   </NavLink>
                 </li>
               </ul>

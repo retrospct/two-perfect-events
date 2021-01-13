@@ -4,15 +4,17 @@ import styled from 'styled-components'
 
 import { Container } from 'components/common'
 
-export const HeroImage = ({ title = 'Weddings', subtitle, image }) => {
+export const HeroImage = ({ title, subtitle, image }) => {
   return (
     <Wrapper>
-      <Overlay>
-        <Container className="hero-overlay">
-          <h3>{title}</h3>
-          <div dangerouslySetInnerHTML={{ __html: subtitle }} />
-        </Container>
-      </Overlay>
+      {(title || subtitle) && (
+        <Overlay>
+          <Container className="hero-overlay">
+            <h3>{title}</h3>
+            <div dangerouslySetInnerHTML={{ __html: subtitle }} />
+          </Container>
+        </Overlay>
+      )}
       {image && <Img fluid={image.fluid} alt={image.alt} />}
     </Wrapper>
   )
