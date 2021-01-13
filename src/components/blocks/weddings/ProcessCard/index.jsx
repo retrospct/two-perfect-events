@@ -50,8 +50,10 @@ const Card = styled.div`
     height: 100%;
     max-width: 300px;
     max-height: 500px;
+    margin: 0.5rem;
     overflow: hidden;
     order: 2;
+    /* align-self: center; */
   }
   @media (max-width: ${({ theme }) => theme.mq.lg}px) {
     flex-direction: column;
