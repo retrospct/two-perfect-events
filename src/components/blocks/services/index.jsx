@@ -7,6 +7,7 @@ import { ProcessCard } from './ProcessCard'
 import { SectionBlock } from './SectionBlock'
 import { ServiceBlock } from './ServiceBlock'
 import { SliderBlock } from './SliderBlock'
+import { Spacer } from './Spacer'
 import { TextBlock } from './TextBlock'
 import { YelpReviews } from './YelpReviews'
 import { Highlight } from './Highlight'
@@ -22,7 +23,7 @@ export const ServicesBlock = ({ blocks }) => (
         {block.model.apiKey === 'section' && <SectionBlock block={block} />}
         {block.model.apiKey === 'service_block' && <ServiceBlock block={block} />}
         {block.model.apiKey === 'slider_block' && <SliderBlock block={block} />}
-        {block.model.apiKey === 'testimonial' && <div>{block.title}</div>}
+        {block.model.apiKey === 'spacer' && <Spacer block={block} />}
         {block.model.apiKey === 'text' && <TextBlock block={block} />}
         {block.model.apiKey === 'yelp_review' && <YelpReviews block={block} />}
         {block.model.apiKey === 'highlight' && <Highlight block={block} />}
@@ -42,7 +43,7 @@ export const WeddingsBlock = ({ blocks }) => (
         {block.model.apiKey === 'section' && <SectionBlock block={block} />}
         {block.model.apiKey === 'service_block' && <ServiceBlock block={block} />}
         {block.model.apiKey === 'slider_block' && <SliderBlock block={block} />}
-        {block.model.apiKey === 'testimonial' && <div>{block.title}</div>}
+        {block.model.apiKey === 'spacer' && <Spacer block={block} />}
         {block.model.apiKey === 'text' && <TextBlock block={block} />}
         {block.model.apiKey === 'yelp_review' && <YelpReviews block={block} />}
         {block.model.apiKey === 'highlight' && <Highlight block={block} />}

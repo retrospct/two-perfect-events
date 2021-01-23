@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-// import AnchorLink from 'react-anchor-link-smooth-scroll' // TODO: Remove this package if not being used
+import React, { useEffect, useState } from 'react'
+// import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 import { useTheme } from 'context/themeContext'
 
@@ -10,42 +10,14 @@ import { ToggleDarkMode } from '../ToggleDarkMode'
 
 export const NavbarLinks = ({ desktop }) => {
   const { currentTheme, toggleTheme } = useTheme()
-  const [showDropdown, setShowDropdown] = useState(false)
-  // const routes = useNavLinks()
-  // console.log('routes: ', routes)
-  // // console.log('toggleTheme: ', toggleTheme)
-  // const Route = (route) => {
-  //   switch (route.path) {
-  //     case '/home':
-  //       return desktop ? (
-  //         <NavLink as={Link} to="/" activeClassName="selected" partiallyActive={route.partiallyActive}>
-  //           {route.text}
-  //         </NavLink>
-  //       ) : (
-  //         <NavLinkFirst as={Link} to="/" activeClassName="selected" partiallyActive={route.partiallyActive}>
-  //           {route.text}
-  //         </NavLinkFirst>
-  //       )
-  //     case '/contact':
-  //       return (
-  //         <ButtonNavCTA as={LinkBase} to={route.path}>
-  //           {route.text}
-  //         </ButtonNavCTA>
-  //       )
-  //     default:
-  //       return (
-  //         <NavLink as={Link} to={route.path} activeClassName="selected" partiallyActive={route.partiallyActive}>
-  //           {route.text}
-  //         </NavLink>
-  //       )
-  //   }
-  // }
+  // const [showDropdown, setShowDropdown] = useState(false)
+
+  // useEffect(() => {
+  //   !desktop && setShowDropdown(true)
+  // }, [desktop])
+
   return (
     <Wrapper desktop={desktop}>
-      {/* {navLinks.map(link => (
-      <NavLink as={Link} to={link.path} activeClassName="selected">{link.text}</NavLink>
-    ))} */}
-      {/* {routes && routes.map((route) => <Route key={route.path} route={route} />)} */}
       <nav role="navigation">
         <ul className="nav">
           {!desktop && (
@@ -73,13 +45,25 @@ export const NavbarLinks = ({ desktop }) => {
             </NavLink>
           </li>
           <li className="dropdown-container">
-            {/* <NavLink as={Link} to="/services" activeClassName="selected" aria-haspopup>
+            <NavLink as={Link} to="/services" activeClassName="selected" aria-haspopup>
               SERVICES
-            </NavLink> */}
-            <NavLinkButton onClick={() => setShowDropdown(!showDropdown)} aria-haspopup>
+            </NavLink>
+            <ul className="dropdown" aria-label="submenu">
+              <li>
+                <NavLink as={Link} to="/services" activeClassName="selected">
+                  OVERVIEW
+                </NavLink>
+              </li>
+              <li>
+                <NavLink as={Link} to="/weddings" activeClassName="selected">
+                  WEDDINGS
+                </NavLink>
+              </li>
+            </ul>
+            {/* <NavLinkButton onClick={() => setShowDropdown(!showDropdown)} aria-haspopup>
               SERVICES
-            </NavLinkButton>
-            {showDropdown && (
+            </NavLinkButton> */}
+            {/* {showDropdown && (
               <ul className="dropdown" aria-label="submenu">
                 <li>
                   <NavLink as={Link} to="/services" activeClassName="selected">
@@ -90,29 +74,68 @@ export const NavbarLinks = ({ desktop }) => {
                   </NavLink>
                 </li>
               </ul>
-            )}
+            )} */}
           </li>
           <li>
+            {/* <ButtonNavCTA as={AnchorLink} href="#contact">
+              CONTACT
+            </ButtonNavCTA> */}
             <ButtonNavCTA as={LinkBase} to="/contact">
               CONTACT
             </ButtonNavCTA>
           </li>
         </ul>
       </nav>
-      {/* <NavLink as={Link} to="/blog" activeClassName="selected">
-        BLOG
-      </NavLink> */}
-      {/* {window.location.pathname !== '/' && (
-        <ButtonNavCTA as={LinkBase} to="/contact">
-          CONTACT
-        </ButtonNavCTA>
-      )}
-      {window.location.pathname === '/' && (
-        <ButtonNavCTA as={AnchorLink} href="#contact">
-          CONTACT
-        </ButtonNavCTA>
-      )} */}
-      <ToggleDarkMode currentTheme={currentTheme} toggleTheme={() => toggleTheme()} />
+
+      {/* <ToggleDarkMode currentTheme={currentTheme} toggleTheme={() => toggleTheme()} /> */}
     </Wrapper>
   )
 }
+
+// {/* {navLinks.map(link => (
+//       <NavLink as={Link} to={link.path} activeClassName="selected">{link.text}</NavLink>
+//     ))} */}
+//       {/* {routes && routes.map((route) => <Route key={route.path} route={route} />)} */}
+// const routes = useNavLinks()
+// console.log('routes: ', routes)
+// // console.log('toggleTheme: ', toggleTheme)
+// const Route = (route) => {
+//   switch (route.path) {
+//     case '/home':
+//       return desktop ? (
+//         <NavLink as={Link} to="/" activeClassName="selected" partiallyActive={route.partiallyActive}>
+//           {route.text}
+//         </NavLink>
+//       ) : (
+//         <NavLinkFirst as={Link} to="/" activeClassName="selected" partiallyActive={route.partiallyActive}>
+//           {route.text}
+//         </NavLinkFirst>
+//       )
+//     case '/contact':
+//       return (
+//         <ButtonNavCTA as={LinkBase} to={route.path}>
+//           {route.text}
+//         </ButtonNavCTA>
+//       )
+//     default:
+//       return (
+//         <NavLink as={Link} to={route.path} activeClassName="selected" partiallyActive={route.partiallyActive}>
+//           {route.text}
+//         </NavLink>
+//       )
+//   }
+// }
+
+// {/* <NavLink as={Link} to="/blog" activeClassName="selected">
+//       BLOG
+//     </NavLink> */}
+//     {/* {window.location.pathname !== '/' && (
+//       <ButtonNavCTA as={LinkBase} to="/contact">
+//         CONTACT
+//       </ButtonNavCTA>
+//     )}
+//     {window.location.pathname === '/' && (
+//       <ButtonNavCTA as={AnchorLink} href="#contact">
+//         CONTACT
+//       </ButtonNavCTA>
+//     )} */}

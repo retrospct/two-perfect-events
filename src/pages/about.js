@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Navigation, Container, Connect, Gallery, Divider } from 'components/common'
+import { Layout, Seo, Navigation, Container, Connect, Gallery, Divider, NavSpacer } from 'components/common'
 
 const About = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
@@ -13,96 +13,97 @@ const About = ({ location, data }) => {
     <Layout location={location} footer={data.footer}>
       <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.about.seoMetaTags} />
-      <div aria-hidden style={{ height: 100, width: '100%', background: 'transparent' }} />
-      <Container>
-        <Content>
-          <Title>
-            <em>{data.about.title}</em>
-          </Title>
-          <Subtitle>{data.about.subtitle}</Subtitle>
+      <NavSpacer>
+        <Container>
+          <Content>
+            <Title>
+              <em>{data.about.title}</em>
+            </Title>
+            <Subtitle>{data.about.subtitle}</Subtitle>
+          </Content>
+          <Wrapper>
+            <HeroContent>
+              <ImgBlock>
+                <Img fluid={data.about.backgroundImage.fluid} alt={data.about.backgroundImage.alt} />
+              </ImgBlock>
+              <TextBlock>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: data.about.intro,
+                  }}
+                />
+              </TextBlock>
+            </HeroContent>
+          </Wrapper>
+        </Container>
+        <Content as={Container}>
+          <Divider />
         </Content>
-        <Wrapper>
-          <HeroContent>
-            <ImgBlock>
-              <Img fluid={data.about.backgroundImage.fluid} alt={data.about.backgroundImage.alt} />
-            </ImgBlock>
-            <TextBlock>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: data.about.intro,
-                }}
-              />
-            </TextBlock>
-          </HeroContent>
-        </Wrapper>
-      </Container>
-      <Content as={Container}>
-        <Divider />
-      </Content>
-      <Content as={Container}>
-        <TeamGallery>
-          {data.about.tpeTeam.map((member) => (
-            <Team key={member.id}>
-              <Img fixed={member.image.fixed} alt={member.image.alt} />
-              <div className="about-team-member">
-                <h3>{member.name}</h3>
-                <h4>{member.title}</h4>
-              </div>
-            </Team>
-          ))}
-        </TeamGallery>
-      </Content>
-      {data.about.connectEnabled && <Connect variant="primary" />}
-      <Content as={Container}>
-        <Divider />
-        <Heading style={{ marginTop: '3rem' }}>{data.about.featuresTitle || 'Features'}</Heading>
-        <Gallery size="200px" columns={5} gap={60}>
-          {data.about.features.map((feature) =>
-            feature?.linkTo ? (
-              <Linked key={feature.id} href={feature.linkTo} target="_blank" rel="noopener noreferrer">
-                <Img fixed={feature.badge.fixed} alt={feature.badge.alt} />
-              </Linked>
-            ) : (
-              <Img key={feature.id} fixed={feature.badge.fixed} alt={feature.badge.alt} />
-            )
-          )}
-        </Gallery>
-      </Content>
-      <Content as={Container}>
-        <Heading>{data.about.awardsTitle || 'Awards'}</Heading>
-        <Gallery size="200px" columns={5} gap={60}>
-          {data.about.awards.map((award) =>
-            award?.linkTo ? (
-              <Linked key={award.id} href={award.linkTo} target="_blank" rel="noopener noreferrer">
-                <Img fixed={award.badge.fixed} alt={award.badge.alt} />
-              </Linked>
-            ) : (
-              <Img key={award.id} fixed={award.badge.fixed} alt={award.badge.alt} />
-            )
-          )}
-        </Gallery>
-      </Content>
-      <Content as={Container}>
-        <Divider />
-      </Content>
-      <FluidContainer>
-        <FluidContent as={Container}>
-          <FluidHeader>
-            <Heading>{data.about.preferredTitle || 'Preferred Planner For'}</Heading>
-          </FluidHeader>
-          <Gallery size="260px" columns={3} gap={30}>
-            {data.about.preferredVenues.map((venue) => (
-              <div key={venue.id}>
-                <Img fixed={venue.badge.fixed} alt={venue.badge.alt} />
-                <Label>
-                  <p>{venue.name}</p>
-                </Label>
-              </div>
+        <Content as={Container}>
+          <TeamGallery>
+            {data.about.tpeTeam.map((member) => (
+              <Team key={member.id}>
+                <Img fixed={member.image.fixed} alt={member.image.alt} />
+                <div className="about-team-member">
+                  <h3>{member.name}</h3>
+                  <h4>{member.title}</h4>
+                </div>
+              </Team>
             ))}
+          </TeamGallery>
+        </Content>
+        {data.about.connectEnabled && <Connect variant="primary" />}
+        <Content as={Container}>
+          <Divider />
+          <Heading style={{ marginTop: '3rem' }}>{data.about.featuresTitle || 'Features'}</Heading>
+          <Gallery size="200px" columns={5} gap={60}>
+            {data.about.features.map((feature) =>
+              feature?.linkTo ? (
+                <Linked key={feature.id} href={feature.linkTo} target="_blank" rel="noopener noreferrer">
+                  <Img fixed={feature.badge.fixed} alt={feature.badge.alt} />
+                </Linked>
+              ) : (
+                <Img key={feature.id} fixed={feature.badge.fixed} alt={feature.badge.alt} />
+              )
+            )}
           </Gallery>
-        </FluidContent>
-      </FluidContainer>
-      {data.about.connectEnabled && <Connect variant="primary" />}
+        </Content>
+        <Content as={Container}>
+          <Heading>{data.about.awardsTitle || 'Awards'}</Heading>
+          <Gallery size="200px" columns={5} gap={60}>
+            {data.about.awards.map((award) =>
+              award?.linkTo ? (
+                <Linked key={award.id} href={award.linkTo} target="_blank" rel="noopener noreferrer">
+                  <Img fixed={award.badge.fixed} alt={award.badge.alt} />
+                </Linked>
+              ) : (
+                <Img key={award.id} fixed={award.badge.fixed} alt={award.badge.alt} />
+              )
+            )}
+          </Gallery>
+        </Content>
+        <Content as={Container}>
+          <Divider />
+        </Content>
+        <FluidContainer>
+          <FluidContent as={Container}>
+            <FluidHeader>
+              <Heading>{data.about.preferredTitle || 'Preferred Planner For'}</Heading>
+            </FluidHeader>
+            <Gallery size="260px" columns={3} gap={30}>
+              {data.about.preferredVenues.map((venue) => (
+                <div key={venue.id}>
+                  <Img fixed={venue.badge.fixed} alt={venue.badge.alt} />
+                  <Label>
+                    <p>{venue.name}</p>
+                  </Label>
+                </div>
+              ))}
+            </Gallery>
+          </FluidContent>
+        </FluidContainer>
+        {data.about.connectEnabled && <Connect variant="primary" />}
+      </NavSpacer>
     </Layout>
   )
 }

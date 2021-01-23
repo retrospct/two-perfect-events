@@ -13,12 +13,12 @@ const baseTheme = {
     75: 0.75,
     100: 1,
   },
-  p: value => `padding: ${value};`,
-  py: value => `padding-top: ${value}; padding-bottom: ${value};`,
-  px: value => `padding-right: ${value}; padding-left: ${value};`,
-  m: value => `padding: ${value};`,
-  my: value => `margin-top: ${value}; margin-bottom: ${value};`,
-  mx: value => `margin-right: ${value}; margin-left: ${value};`,
+  p: (value) => `padding: ${value};`,
+  py: (value) => `padding-top: ${value}; padding-bottom: ${value};`,
+  px: (value) => `padding-right: ${value}; padding-left: ${value};`,
+  m: (value) => `padding: ${value};`,
+  my: (value) => `margin-top: ${value}; margin-bottom: ${value};`,
+  mx: (value) => `margin-right: ${value}; margin-left: ${value};`,
 }
 
 const lightTheme = {
@@ -35,7 +35,8 @@ const lightTheme = {
     textInverse: '#fff',
     textLight: '#fff',
     heading: '#212121',
-    subheading: '#707070',
+    subheading: '#565656',
+    // subheading: '#707070',
     link: '#BF9000',
     bg: '#fff',
     bgDark: '#e6e6e6',

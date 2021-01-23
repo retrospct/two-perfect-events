@@ -17,6 +17,7 @@ import {
   Gallery,
   ImgOverlay,
   ButtonSimple,
+  NavSpacer,
 } from 'components/common'
 
 const Portfolio = ({ location, data }) => {
@@ -40,50 +41,50 @@ const Portfolio = ({ location, data }) => {
     <Layout location={location} footer={footer}>
       <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={portfolio.seoMetaTags} />
-      <div aria-hidden style={{ height: 100, width: '100%', background: 'transparent' }} />
-      <Fluid>
-        <ImgFluid
-          style={{ maxWidth: 1920, margin: '0 auto' }}
-          fluid={portfolio.heroImage.fluid}
-          alt={portfolio.heroImage.alt}
-        />
-      </Fluid>
-      {/* <Wrapper> */}
-      <Content>
-        <Heading>
-          <h3>{portfolio.heading}</h3>
-        </Heading>
-        <Filters>
-          <FilterButton className={filter === 'All' && 'filter-active'} onClick={() => setFilter('All')}>
-            All
-          </FilterButton>
-          {validators?.edges?.length > 0 &&
-            validators.edges[0].node.filters.enum.values.map((value) => (
-              <FilterButton
-                key={value}
-                className={filter === value && 'filter-active'}
-                onClick={() => setFilter(value)}
-              >
-                {value}
-              </FilterButton>
+      <NavSpacer>
+        <Fluid>
+          <ImgFluid
+            style={{ maxWidth: 1920, margin: '0 auto' }}
+            fluid={portfolio.heroImage.fluid}
+            alt={portfolio.heroImage.alt}
+          />
+        </Fluid>
+        {/* <Wrapper> */}
+        <Content>
+          <Heading>
+            <h3>{portfolio.heading}</h3>
+          </Heading>
+          <Filters>
+            <FilterButton className={filter === 'All' && 'filter-active'} onClick={() => setFilter('All')}>
+              All
+            </FilterButton>
+            {validators?.edges?.length > 0 &&
+              validators.edges[0].node.filters.enum.values.map((value) => (
+                <FilterButton
+                  key={value}
+                  className={filter === value && 'filter-active'}
+                  onClick={() => setFilter(value)}
+                >
+                  {value}
+                </FilterButton>
+              ))}
+          </Filters>
+        </Content>
+        {/* </Wrapper> */}
+        <Wrapper style={{ paddingBottom: '4rem' }}>
+          <Gallery>
+            {filteredEvents.map(({ event }) => (
+              <ImgLink key={event.slug} to={`/portfolio/${event.slug}`}>
+                <ImgOverlay>
+                  <div>
+                    {event.title && <VenueMeta>{event.title}</VenueMeta>}
+                    {event.location && <h5>{event.location}</h5>}
+                  </div>
+                </ImgOverlay>
+                <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
+              </ImgLink>
             ))}
-        </Filters>
-      </Content>
-      {/* </Wrapper> */}
-      <Wrapper style={{ paddingBottom: '4rem' }}>
-        <Gallery>
-          {filteredEvents.map(({ event }) => (
-            <ImgLink key={event.slug} to={`/portfolio/${event.slug}`}>
-              <ImgOverlay>
-                <div>
-                  {event.title && <VenueMeta>{event.title}</VenueMeta>}
-                  {event.location && <h5>{event.location}</h5>}
-                </div>
-              </ImgOverlay>
-              <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
-            </ImgLink>
-          ))}
-          {/* {events.edges.map(({ event }) => (
+            {/* {events.edges.map(({ event }) => (
             <ImgLink key={event.slug} to={`/portfolio/${event.slug}`}>
               <ImgOverlay>
                 <div>
@@ -94,9 +95,10 @@ const Portfolio = ({ location, data }) => {
               <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
             </ImgLink>
           ))} */}
-        </Gallery>
-      </Wrapper>
-      {portfolio.connectEnabled && <Connect />}
+          </Gallery>
+        </Wrapper>
+        {portfolio.connectEnabled && <Connect />}
+      </NavSpacer>
     </Layout>
   )
 }

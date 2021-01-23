@@ -14,7 +14,6 @@ export const Wrapper = styled.div`
 export const TextBlock = styled.div`
   background: var(--bg-color);
   flex: 1;
-  /* border-radius: 3px; */
   width: 100%;
   height: 100%;
   padding: 3rem 4rem;
@@ -25,7 +24,13 @@ export const TextBlock = styled.div`
     margin-left: 0;
   }
 
-  p {
+  & h4 {
+    font-size: 1.3rem;
+    line-height: 1.2;
+    color: var(--subheading-color);
+  }
+
+  & p {
     margin-bottom: 2.5rem;
     font-size: 1.2rem;
     font-weight: 300;
@@ -41,7 +46,6 @@ export const ImgBlock = styled.div`
     margin-bottom: 1rem;
   }
   img {
-    /* border-radius: 3px; */
     width: 100%;
   }
 `

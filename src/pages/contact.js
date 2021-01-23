@@ -6,7 +6,17 @@ import Img from 'gatsby-image'
 import { useTheme } from 'context/themeContext'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Navigation, Container, ContactForm, Icon, IconSquiggly, Divider } from 'components/common'
+import {
+  Layout,
+  Seo,
+  Navigation,
+  Container,
+  ContactForm,
+  Icon,
+  IconSquiggly,
+  Divider,
+  NavSpacer,
+} from 'components/common'
 
 const Contact = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
@@ -15,56 +25,58 @@ const Contact = ({ location, data }) => {
     <Layout location={location} footer={data.footer}>
       <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.contact.seoMetaTags} />
-      <div aria-hidden style={{ height: 100, width: '100%', background: 'transparent' }} />
-      <Content>
-        <ContactUs>
-          {/* {data.contactForm.squigglyIcon && (
+      {/* <div aria-hidden style={{ height: 100, width: '100%', background: 'transparent' }} /> */}
+      <NavSpacer>
+        <Content>
+          <ContactUs>
+            {/* {data.contactForm.squigglyIcon && (
             <Spotlight>
               <Icon color={colors.accent}>
                 <IconSquiggly />
               </Icon>
             </Spotlight>
           )} */}
-          {data?.contact?.heading && (
-            <Heading>
-              <h3>{data.contact.heading}</h3>
-            </Heading>
-          )}
-          <ContactForm config={data.contactForm} formName="contact-page" />
-        </ContactUs>
-      </Content>
-      {data?.contact?.contactList && (
-        <ContentInline>
-          {data.contact.contactList.map((item) => (
-            <ContactsList key={item.id}>
-              <img src={item.icon.url} alt={item.icon.alt} />
-              {item.title === 'ADDRESS' && item.address && <div dangerouslySetInnerHTML={{ __html: item.address }} />}
-              {item.title !== 'ADDRESS' && <p>{item.linkText}</p>}
-            </ContactsList>
-          ))}
-        </ContentInline>
-      )}
-      <Content>
-        <Divider />
-      </Content>
-      <FaqContent>
-        <Heading style={{ alignSelf: 'center' }}>
-          <h3>{data?.contact?.faqTitle}</h3>
-        </Heading>
-        {data.contact.faq.map((item) => (
-          <FaqBlock key={item.id}>
-            {item.model.apiKey === 'faq_item' && (
-              <>
-                <h4>{item.question}</h4>
-                <FaqItem dangerouslySetInnerHTML={{ __html: item.answer }} />
-              </>
+            {data?.contact?.heading && (
+              <Heading>
+                <h3>{data.contact.heading}</h3>
+              </Heading>
             )}
-          </FaqBlock>
-        ))}
-      </FaqContent>
-      <ImgFluid>
-        <Img fluid={data.contact.accentImage.fluid} alt={data.contact.accentImage.alt} />
-      </ImgFluid>
+            <ContactForm config={data.contactForm} formName="contact-page" />
+          </ContactUs>
+        </Content>
+        {data?.contact?.contactList && (
+          <ContentInline>
+            {data.contact.contactList.map((item) => (
+              <ContactsList key={item.id}>
+                <img src={item.icon.url} alt={item.icon.alt} />
+                {item.title === 'ADDRESS' && item.address && <div dangerouslySetInnerHTML={{ __html: item.address }} />}
+                {item.title !== 'ADDRESS' && <p>{item.linkText}</p>}
+              </ContactsList>
+            ))}
+          </ContentInline>
+        )}
+        <Content>
+          <Divider />
+        </Content>
+        <FaqContent>
+          <Heading style={{ alignSelf: 'center' }}>
+            <h3>{data?.contact?.faqTitle}</h3>
+          </Heading>
+          {data.contact.faq.map((item) => (
+            <FaqBlock key={item.id}>
+              {item.model.apiKey === 'faq_item' && (
+                <>
+                  <h4>{item.question}</h4>
+                  <FaqItem dangerouslySetInnerHTML={{ __html: item.answer }} />
+                </>
+              )}
+            </FaqBlock>
+          ))}
+        </FaqContent>
+        <ImgFluid>
+          <Img fluid={data.contact.accentImage.fluid} alt={data.contact.accentImage.alt} />
+        </ImgFluid>
+      </NavSpacer>
     </Layout>
   )
 }

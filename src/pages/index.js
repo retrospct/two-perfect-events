@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 import { useInstaLatest } from 'hooks/useInstaLatest'
 
-import { Layout, Seo, Navigation } from 'components/common'
+import { Layout, Seo, Navigation, NavSpacer } from 'components/common'
 import { HomeBlock } from 'components/blocks/home'
 import { CreditsBlock } from 'components/blocks/credits'
 import { Hero, ContactSection } from 'components/landing'
@@ -16,11 +16,17 @@ const Home = ({ location, data }) => {
     <Layout location={location} footer={data.footer}>
       <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.home.seoMetaTags} />
-      <div aria-hidden style={{ height: 100, width: '100%', background: 'transparent' }} />
-      <Hero heading={data.home.heading} subheading={data.home.subtitle} />
-      <HomeBlock homeBlock={data.home.homeBlock} instaLatest={instaLatest} />
-      <ContactSection heading="LET’S GET THIS PARTY STARTED!" config={data.contact} contrast formName="contact-home" />
-      <CreditsBlock heading="PHOTO CREDITS" creditsBlock={data.home.creditsBlock} />
+      <NavSpacer>
+        <Hero heading={data.home.heading} subheading={data.home.subtitle} />
+        <HomeBlock homeBlock={data.home.homeBlock} instaLatest={instaLatest} />
+        <ContactSection
+          heading="LET’S GET THIS PARTY STARTED!"
+          config={data.contact}
+          contrast
+          formName="contact-home"
+        />
+        <CreditsBlock heading="PHOTO CREDITS" creditsBlock={data.home.creditsBlock} />
+      </NavSpacer>
     </Layout>
   )
 }

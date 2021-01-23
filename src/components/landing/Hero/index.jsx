@@ -14,7 +14,7 @@ export const Hero = ({ heading, subheading }) => (
             __html: subheading,
           }}
         />
-        <Button as={AnchorLink} href="#contact">
+        <Button as={AnchorLink} href="#contact" offset="100">
           Contact Us
         </Button>
       </Details>

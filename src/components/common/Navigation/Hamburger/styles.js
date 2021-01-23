@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   z-index: 11;
-  top: 1.6rem;
+  /* top: 1.6rem; */
+  top: calc(50% - 10px);
   right: 1.8rem;
   display: none;
   cursor: pointer;
@@ -11,7 +12,11 @@ export const Wrapper = styled.div`
 
   @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
     display: block;
-    top: 1.4rem;
+    /* top: calc(50% - 13.5px); */
+  }
+  @media (max-width: ${({ theme }) => `${theme.mq.md}px`}) {
+    display: block;
+    /* top: 1rem; */
   }
 
   ${({ sidebar, theme }) =>

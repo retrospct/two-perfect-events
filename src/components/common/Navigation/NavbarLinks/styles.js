@@ -1,49 +1,58 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-top: 0.25rem;
   & .nav {
     /* list-style: none; */
+    /* position: relative; */
     display: flex;
+    margin: 0;
+    /* align-items: center; */
+    justify-content: flex-end;
     align-items: flex-start;
-    padding-top: 0.75rem;
+    /* padding-top: 0.75rem; */
     @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
       flex-direction: column;
+      /* justify-content: flex-start; */
     }
   }
-
   & li {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    margin-bottom: 0;
   }
   & li:hover {
     cursor: pointer;
   }
 
   & ul li ul {
-    /* visibility: hidden;
+    visibility: hidden;
     opacity: 0;
-    display: none; */
-    visibility: visible;
-    opacity: 1;
-    display: block;
-    position: absolute;
-    margin-top: 0.75rem;
-    left: 0;
-    z-index: 10;
+    display: none;
+    /* visibility: visible; */
+    /* opacity: 1; */
+    /* display: block; */
+    /* position: absolute; */
+    /* margin-top: 0.75rem; */
+    /* left: 0; */
+    /* z-index: 10; */
 
     /* transition: all 1s ease-in-out; */
   }
 
   /* IE 11 Compatible */
-  /* & ul li:hover > ul,
+  & ul li:hover > ul,
   & ul li ul:hover,
   & ul li ul:focus {
     visibility: visible;
     opacity: 1;
     display: block;
-  } */
+  }
 
   /* IE 11 won't get this, but at least the top-level menus will work */
   & ul li:focus-within > ul {
@@ -58,25 +67,34 @@ export const Wrapper = styled.div`
   }
 
   & .dropdown-container {
-    width: 190px;
-    /* background: var(--bg-color); */
-    /* padding: 0 0.75rem 1rem; */
+    /* width: 190px; */
+    position: relative;
     & a {
+      margin-bottom: 0;
+    }
+    & ul li a {
       margin-bottom: 0;
       font-size: 0.9rem;
     }
-    /* & .dropdown {
-      list-style: inside;
-      list-style-type: '-';
-    } */
   }
 
   & .dropdown {
-    position: relative;
+    position: absolute;
+    top: 39px;
+    left: -10px;
+    z-index: 10;
+    /* left: calc(100% - (190px + 110px)); */
     margin-left: 0;
-    width: 190px;
+    /* width: 190px; */
     background: var(--bg-color);
-    padding: 0 0.75rem 1rem;
+    padding: 0.5rem 1rem 0.5rem 0.75rem;
+    margin-top: 0;
+    & li {
+      margin-bottom: 0.25rem;
+    }
+    & li a {
+      margin-right: 0;
+    }
   }
 
   ${({ desktop, theme }) =>
@@ -96,18 +114,30 @@ export const Wrapper = styled.div`
 
       @media (max-width: ${theme.mq.xxl}px) {
 				a {
+          font-size: 0.95rem;
           margin-right: 0.75rem;
-
-          /* &:nth-last-child(2) {
-					  margin-right: unset;
-				  } */
         }
 			}
 		`
       : `
 			padding: 3rem;
-			display: flex;
 			flex-direction: column;
+
+      & li {
+        margin-bottom: calc(1.45rem / 2);
+      }
+
+      & ul li ul {
+        visibility: visible;
+        opacity: 1;
+        display: block;
+      }
+
+      & .dropdown {
+        position: relative;
+        top: 0;
+        background: transparent;
+      }
 
 			a {
 				margin-bottom: 1rem;
@@ -136,11 +166,7 @@ export const NavLink = styled.a`
   padding: 6px 0 6px;
   border-color: var(--primaryInverse-color);
   background: transparent;
-  /* font-size: 1.42857em;
-    line-height: 1.5;
-    letter-spacing: -0.02em;
-    color: #595959; */
-  :after {
+  &:after {
     border-top: 1px solid;
     content: '';
     position: absolute;
@@ -150,11 +176,9 @@ export const NavLink = styled.a`
     margin-left: 1px;
     transition: right 0.4s cubic-bezier(0, 0.5, 0, 1);
   }
-  :hover {
-    /* background: transparent; */
+  &:hover {
+    cursor: pointer;
     color: var(--primaryInverse-color);
-    /* transform: translate(0,0); */
-    /* border-color: #e6e6e6; */
     :after {
       right: 40%;
     }
@@ -180,10 +204,6 @@ export const NavLinkButton = styled.button`
   padding: 6px 0 6px;
   border-color: var(--primaryInverse-color);
   background: transparent;
-  /* font-size: 1.42857em;
-    line-height: 1.5;
-    letter-spacing: -0.02em;
-    color: #595959; */
   &:after {
     border-top: 1px solid;
     content: '';

@@ -3,12 +3,13 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
   position: fixed;
   width: 100%;
-  height: 125px;
+  /* height: 120px; */
   display: block;
   z-index: 10;
-  background: linear-gradient(var(--bg-color), var(--bg-color) 90%, transparent 90%, transparent 100%);
+  /* background: linear-gradient(var(--bg-color), var(--bg-color) 90%, transparent 90%, transparent 100%); */
+  background: var(--bg-color);
   @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
-    height: 79px;
+    /* height: 79px; */
     background: var(--bg-color);
   }
 `

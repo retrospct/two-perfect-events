@@ -33,8 +33,8 @@ export const Footer = ({ links, serving, copyright }) => {
         <Serving>{serving}</Serving>
         <Company>
           <span>
-            {copyright}
-            {/* © {new Date().getFullYear()} {copyright} */}
+            {copyright && `© ${new Date().getFullYear()} ${copyright}`}
+            {!copyright && `© ${new Date().getFullYear()} Two Perfect Events™`}
           </span>
           {screens.md && (
             <TPELogomark color={currentTheme === 'dark' || currentTheme === 'superDark' ? '#fff' : null} />

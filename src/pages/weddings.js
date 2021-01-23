@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
-import { Layout, Seo, Navigation, Connect, HeroImage } from 'components/common'
+import { Layout, Seo, Navigation, Connect, HeroImage, NavSpacer } from 'components/common'
 import { WeddingsBlock } from 'components/blocks/services'
 
 const Weddings = ({ location, data }) => {
@@ -15,11 +15,12 @@ const Weddings = ({ location, data }) => {
       </Helmet>
       <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.weddings.seoMetaTags} />
-      <div aria-hidden style={{ height: 100, width: '100%', background: 'transparent' }} />
-      <HeroImage title={data.weddings.title} subtitle={data.weddings.subtitle} image={data.weddings.heroImage} />
-      <WeddingsBlock blocks={data.weddings.blocks} />
-      <HeroImage image={data.weddings.heroBottom} />
-      {data.weddings.connectEnabled && <Connect />}
+      <NavSpacer>
+        <HeroImage title={data.weddings.title} subtitle={data.weddings.subtitle} image={data.weddings.heroImage} />
+        <WeddingsBlock blocks={data.weddings.blocks} />
+        <HeroImage image={data.weddings.heroBottom} />
+        {data.weddings.connectEnabled && <Connect />}
+      </NavSpacer>
     </Layout>
   )
 }
@@ -70,16 +71,6 @@ export const query = graphql`
           id
           question
           answer
-        }
-        ... on DatoCmsTestimonial {
-          model {
-            apiKey
-          }
-          id
-          title
-          quote
-          author
-          golden
         }
         ... on DatoCmsDivider {
           model {
@@ -175,6 +166,13 @@ export const query = graphql`
               ...GatsbyDatoCmsFluid
             }
           }
+        }
+        ... on DatoCmsSpacer {
+          model {
+            apiKey
+          }
+          id
+          spacerSize
         }
         ... on DatoCmsYelpReview {
           model {
