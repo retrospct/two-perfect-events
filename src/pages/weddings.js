@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 import { Layout, Seo, Navigation, Connect, HeroImage } from 'components/common'
-import { WeddingsBlock } from 'components/blocks/weddings'
+import { WeddingsBlock } from 'components/blocks/services'
 
 const Weddings = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
@@ -18,8 +18,8 @@ const Weddings = ({ location, data }) => {
       <div aria-hidden style={{ height: 100, width: '100%', background: 'transparent' }} />
       <HeroImage title={data.weddings.title} subtitle={data.weddings.subtitle} image={data.weddings.heroImage} />
       <WeddingsBlock blocks={data.weddings.blocks} />
-      {data.weddings.connectEnabled && <Connect />}
       <HeroImage image={data.weddings.heroBottom} />
+      {data.weddings.connectEnabled && <Connect />}
     </Layout>
   )
 }
@@ -46,6 +46,7 @@ export const query = graphql`
         }
         alt
       }
+      connectEnabled
       blocks: weddingsBlock {
         ... on DatoCmsText {
           model {
@@ -150,15 +151,29 @@ export const query = graphql`
             image {
               alt
               fixed(
-                width: 360
-                height: 360
-                imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "360", h: "360" }
+                width: 320
+                height: 320
+                imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "320", h: "320" }
               ) {
                 ...GatsbyDatoCmsFixed
               }
             }
             title
             body
+            linkTo
+          }
+        }
+        ... on DatoCmsSliderBlock {
+          model {
+            apiKey
+          }
+          id
+          slides {
+            originalId
+            alt
+            fluid(maxHeight: 1080, imgixParams: { fm: "png", auto: "compress" }) {
+              ...GatsbyDatoCmsFluid
+            }
           }
         }
         ... on DatoCmsYelpReview {

@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
 
   @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
     display: block;
+    top: 1.4rem;
   }
 
   ${({ sidebar, theme }) =>

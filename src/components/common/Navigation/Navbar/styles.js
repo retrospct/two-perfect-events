@@ -3,11 +3,13 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
   padding: 1rem 0 0;
   display: flex;
-  align-items: flex-start;
   justify-content: space-between;
+  align-items: flex-start;
   max-width: 1920px;
-  /* background: var(--bg-color); */
-  /* background: linear-gradient(var(--bg-color), transparent); */
+  @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
+    /* align-items: center; */
+    padding: 0;
+  }
   @media (max-width: ${({ theme }) => `${theme.mq.md}px`}) {
     max-width: 100%;
     padding-top: 0.5rem;

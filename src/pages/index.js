@@ -118,6 +118,7 @@ export const query = graphql`
             serviceLink {
               slug
             }
+            linkTo
           }
         }
         ... on DatoCmsHeroImage {

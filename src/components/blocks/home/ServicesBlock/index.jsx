@@ -10,12 +10,14 @@ export const ServicesBlock = ({ block }) => (
         {block.services.map((service) => (
           <ServiceItem key={service.id}>
             {service.icon && (
-              <ServicesLink to={service?.serviceLink?.slug || '/services'}>
+              <ServicesLink to={service?.linkTo || '/services'}>
+                {/* <ServicesLink to={service?.serviceLink?.slug || '/services'}> */}
                 <ServicesIcon src={service?.icon?.url} alt={service?.icon?.alt} />
               </ServicesLink>
             )}
             {service.title && (
-              <ServicesLink to={service?.serviceLink?.slug || '/services'}>
+              <ServicesLink to={service?.linkTo || '/services'}>
+                {/* <ServicesLink to={service?.serviceLink?.slug || '/services'}> */}
                 <ServicesTitle>{service.title}</ServicesTitle>
               </ServicesLink>
             )}

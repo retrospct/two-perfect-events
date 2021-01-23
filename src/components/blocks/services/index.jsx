@@ -6,9 +6,30 @@ import { FaqBlock } from './FaqBlock'
 import { ProcessCard } from './ProcessCard'
 import { SectionBlock } from './SectionBlock'
 import { ServiceBlock } from './ServiceBlock'
+import { SliderBlock } from './SliderBlock'
 import { TextBlock } from './TextBlock'
 import { YelpReviews } from './YelpReviews'
 import { Highlight } from './Highlight'
+
+export const ServicesBlock = ({ blocks }) => (
+  <>
+    {blocks.map((block) => (
+      <section key={block.id}>
+        {block.model.apiKey === 'cta_button' && <ButtonCta block={block} />}
+        {block.model.apiKey === 'divider' && <DividerBlock block={block} />}
+        {block.model.apiKey === 'faq_item' && <FaqBlock block={block} />}
+        {block.model.apiKey === 'process_card' && <ProcessCard block={block} />}
+        {block.model.apiKey === 'section' && <SectionBlock block={block} />}
+        {block.model.apiKey === 'service_block' && <ServiceBlock block={block} />}
+        {block.model.apiKey === 'slider_block' && <SliderBlock block={block} />}
+        {block.model.apiKey === 'testimonial' && <div>{block.title}</div>}
+        {block.model.apiKey === 'text' && <TextBlock block={block} />}
+        {block.model.apiKey === 'yelp_review' && <YelpReviews block={block} />}
+        {block.model.apiKey === 'highlight' && <Highlight block={block} />}
+      </section>
+    ))}
+  </>
+)
 
 export const WeddingsBlock = ({ blocks }) => (
   <>
@@ -20,6 +41,7 @@ export const WeddingsBlock = ({ blocks }) => (
         {block.model.apiKey === 'process_card' && <ProcessCard block={block} />}
         {block.model.apiKey === 'section' && <SectionBlock block={block} />}
         {block.model.apiKey === 'service_block' && <ServiceBlock block={block} />}
+        {block.model.apiKey === 'slider_block' && <SliderBlock block={block} />}
         {block.model.apiKey === 'testimonial' && <div>{block.title}</div>}
         {block.model.apiKey === 'text' && <TextBlock block={block} />}
         {block.model.apiKey === 'yelp_review' && <YelpReviews block={block} />}

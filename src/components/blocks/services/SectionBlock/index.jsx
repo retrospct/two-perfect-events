@@ -62,13 +62,14 @@ const Description = styled.div`
     color: ${({ golden }) => (golden ? 'var(--textInverse-color)' : 'var(--subheading-color)')};
   }
   & h4 {
-    font-size: 1.4rem;
-    font-weight: 300;
+    font-size: 1.8rem;
+    font-family: var(--serif-font);
+    font-weight: normal;
     line-height: 2rem;
-    color: ${({ golden }) => (golden ? 'var(--textInverse-color)' : 'var(--text-color)')};
+    letter-spacing: 3px;
+    color: ${({ golden }) => (golden ? 'var(--textInverse-color)' : 'var(--accent-color)')};
   }
   & p {
-    /* margin-bottom: 2.5rem; */
     font-size: 1.2rem;
     font-weight: 300;
     line-height: 1.6rem;
