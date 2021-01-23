@@ -23,7 +23,7 @@ export const SliderBlock = ({ block }) => {
     infinite: true,
     autoplay: true,
     autoplaySpeed: 3000,
-    // speed: 3000,
+    speed: 500,
     cssEase: 'ease-out',
     pauseOnDotsHover: true,
     pauseOnFocus: true,
