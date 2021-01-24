@@ -155,13 +155,12 @@ export const Wrapper = styled.div`
 `
 
 export const NavLink = styled.a`
-  /* color: ${({ theme }) => theme.colors.subheading}; */
   position: relative;
   font-size: 1.1rem;
   font-weight: 300;
   letter-spacing: 0.02em;
   text-decoration: none;
-  color: var(--subheading-color);
+  color: var(--text-color);
   text-transform: initial;
   padding: 6px 0 6px;
   border-color: var(--primaryInverse-color);
@@ -179,15 +178,25 @@ export const NavLink = styled.a`
   &:hover {
     cursor: pointer;
     color: var(--primaryInverse-color);
-    :after {
+    &:after {
       right: 40%;
     }
   }
   &.selected {
     color: var(--primaryInverse-color);
     font-weight: 400;
-    :after {
+    &:after {
       right: 40%;
+    }
+  }
+  &.navlink-disabled {
+    color: var(--subheading-color);
+  }
+  &.navlink-disabled:hover {
+    cursor: not-allowed;
+    color: var(--text-color);
+    &:after {
+      right: 100%;
     }
   }
 `
@@ -199,7 +208,7 @@ export const NavLinkButton = styled.button`
   font-weight: 300;
   letter-spacing: 0.02em;
   text-decoration: none;
-  color: var(--subheading-color);
+  color: var(--text-color);
   text-transform: initial;
   padding: 6px 0 6px;
   border-color: var(--primaryInverse-color);
@@ -217,15 +226,25 @@ export const NavLinkButton = styled.button`
   &:hover {
     cursor: pointer;
     color: var(--primaryInverse-color);
-    :after {
+    &:after {
       right: 40%;
     }
   }
   &.selected {
     color: var(--primaryInverse-color);
     font-weight: 400;
-    :after {
+    &:after {
       right: 40%;
+    }
+  }
+  &.navlink-disabled {
+    color: var(--subheading-color);
+  }
+  &.navlink-disabled:hover {
+    cursor: not-allowed;
+    color: var(--text-color);
+    &:after {
+      right: 100%;
     }
   }
 `

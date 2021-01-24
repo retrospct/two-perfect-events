@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 // import AnchorLink from 'react-anchor-link-smooth-scroll'
 
-import { useTheme } from 'context/themeContext'
+// import { useTheme } from 'context/themeContext'
 
 import { Link, LinkBase, ButtonNavCTA } from 'components/common'
-import { Wrapper, NavLink, NavLinkButton, NavLinkFirst } from './styles'
-import { ToggleDarkMode } from '../ToggleDarkMode'
+import { Wrapper, NavLink, NavLinkFirst } from './styles'
+// import { ToggleDarkMode } from '../ToggleDarkMode'
 // import { useNavLinks } from 'hooks/useNavLinks'
 
 export const NavbarLinks = ({ desktop }) => {
-  const { currentTheme, toggleTheme } = useTheme()
+  // const { currentTheme, toggleTheme } = useTheme()
   // const [showDropdown, setShowDropdown] = useState(false)
 
   // useEffect(() => {
@@ -50,13 +50,23 @@ export const NavbarLinks = ({ desktop }) => {
             </NavLink>
             <ul className="dropdown" aria-label="submenu">
               <li>
-                <NavLink as={Link} to="/services" activeClassName="selected">
-                  OVERVIEW
+                <NavLink as={Link} to="/weddings" activeClassName="selected">
+                  WEDDINGS
                 </NavLink>
               </li>
               <li>
-                <NavLink as={Link} to="/weddings" activeClassName="selected">
-                  WEDDINGS
+                <NavLink to="/design" activeClassName="selected" className="navlink-disabled">
+                  DESIGN
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/corporate" activeClassName="selected" className="navlink-disabled">
+                  CORPORATE
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/private-parties" activeClassName="selected" className="navlink-disabled">
+                  PRIVATE PARTIES
                 </NavLink>
               </li>
             </ul>

@@ -53,6 +53,9 @@ export const IntroWrapper = styled.div`
 
 export const Details = styled.div`
   max-width: 66%;
+  @media (max-width: ${({ theme }) => `${theme.mq.xl}px`}) {
+    max-width: 80%;
+  }
   @media (max-width: ${({ theme }) => `${theme.mq.lg}px`}) {
     width: 100%;
     max-width: 100%;

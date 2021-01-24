@@ -38,7 +38,7 @@ export const LogoWrapper = styled.div`
     }
   }
   @media (max-width: ${({ theme }) => `${theme.mq.md}px`}) {
-    padding: 0.25rem 0 0 0.25rem;
+    padding: 0.25rem 0 0.25rem 0.25rem;
     & svg {
       max-width: 60px;
     }

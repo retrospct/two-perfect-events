@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Navigation, Container, Footer, Connect } from 'components/common'
+import { Layout, Seo, Navigation, Container, Footer, Connect, NavSpacer } from 'components/common'
 
 const Event = ({ location, data }) => {
   const { event, footer } = data
@@ -38,64 +38,66 @@ const Event = ({ location, data }) => {
     <Layout location={location}>
       <Seo siteSeo={siteSeo} pageSeo={event.seoMetaTags} />
       <Navigation />
-      <Wrapper>
-        <LinkBack to="/portfolio">
-          <Icon size="18px">
-            <IconArrowLeft />
-          </Icon>{' '}
-          Back to Porfolio
-        </LinkBack>
-        <Content>
-          <Heading>{event.title}</Heading>
-          <MetaOneLiner>{event.oneLiner}</MetaOneLiner>
-          <Meta>
-            <MetaItem>
-              <h2>Location</h2>
-              <VenueMeta dangerouslySetInnerHTML={{ __html: event.venue }} />
-              <h3>{event.location}</h3>
-            </MetaItem>
-            <MetaItem>
-              <h2>Event Type</h2>
-              <h3>{event.eventType}</h3>
-            </MetaItem>
-            <MetaItem>
-              <h2>Vendors</h2>
-              <div dangerouslySetInnerHTML={{ __html: event.vendors }} />
-            </MetaItem>
-          </Meta>
-        </Content>
-      </Wrapper>
-      <Wrapper>
-        {/* <Container> */}
-        <OneColImage>
-          <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
-        </OneColImage>
-        {/* </Container> */}
-        <GalleryGrid>
-          {event.gallery.map((img) => {
-            if (img.fluid.aspectRatio <= 1) {
-              return (
-                <Img
-                  key={img.originalId}
-                  fluid={img.fluid}
-                  alt={img.alt}
-                  style={{ gridColumn: 'span 1', height: '100%', width: '100%' }}
-                />
-              )
-            } else {
-              return (
-                <Img
-                  key={img.originalId}
-                  fluid={img.fluid}
-                  alt={img.alt}
-                  style={{ gridColumn: 'span 2', height: '100%', width: '100%' }}
-                />
-              )
-            }
-          })}
-        </GalleryGrid>
-      </Wrapper>
-      <Connect variant="primary" />
+      <NavSpacer>
+        <Wrapper>
+          <LinkBack to="/portfolio">
+            <Icon size="18px">
+              <IconArrowLeft />
+            </Icon>{' '}
+            Back to Porfolio
+          </LinkBack>
+          <Content>
+            <Heading>{event.title}</Heading>
+            <MetaOneLiner>{event.oneLiner}</MetaOneLiner>
+            <Meta>
+              <MetaItem>
+                <h2>Location</h2>
+                <VenueMeta dangerouslySetInnerHTML={{ __html: event.venue }} />
+                <h3>{event.location}</h3>
+              </MetaItem>
+              <MetaItem>
+                <h2>Event Type</h2>
+                <h3>{event.eventType}</h3>
+              </MetaItem>
+              <MetaItem>
+                <h2>Vendors</h2>
+                <div dangerouslySetInnerHTML={{ __html: event.vendors }} />
+              </MetaItem>
+            </Meta>
+          </Content>
+        </Wrapper>
+        <GalleryWrapper>
+          {/* <Container> */}
+          <OneColImage>
+            <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
+          </OneColImage>
+          {/* </Container> */}
+          <GalleryGrid>
+            {event.gallery.map((img) => {
+              if (img.fluid.aspectRatio <= 1) {
+                return (
+                  <Img
+                    key={img.originalId}
+                    fluid={img.fluid}
+                    alt={img.alt}
+                    style={{ gridColumn: 'span 1', height: '100%', width: '100%' }}
+                  />
+                )
+              } else {
+                return (
+                  <Img
+                    key={img.originalId}
+                    fluid={img.fluid}
+                    alt={img.alt}
+                    style={{ gridColumn: 'span 2', height: '100%', width: '100%' }}
+                  />
+                )
+              }
+            })}
+          </GalleryGrid>
+        </GalleryWrapper>
+        <Connect variant="primary" />
+      </NavSpacer>
       <Footer links={footer.links} serving={footer.serving} copyright={footer.copyright} />
     </Layout>
   )
@@ -110,7 +112,16 @@ const Wrapper = styled(Container)`
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  max-width: 100vw;
+`
+const GalleryWrapper = styled.div`
+  /* padding: 4rem 0; */
+  display: block;
+  /* flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; */
+  position: relative;
+  height: 100%;
+  width: 100%;
 `
 const Content = styled.header`
   width: 100%;
@@ -205,15 +216,15 @@ const Heading = styled.h1`
 `
 
 const GalleryGrid = styled.div`
-  height: fit-content;
+  /* height: fit-content; */
   /* overflow-y: auto; */
-  width: 80%;
-  /* max-width: 800px; */
-  margin: 1rem 0;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
   display: grid;
   grid-gap: 10px;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(auto-fill, minmax(320px, 1fr));
+  /* grid-template-rows: repeat(auto-fit, 1fr); */
   justify-items: center;
   justify-content: space-between;
   & .gatsby-image-wrapper {
@@ -230,7 +241,7 @@ const GalleryGrid = styled.div`
 // `
 const OneColImage = styled.div`
   width: 100%;
-  max-width: 1280px;
+  max-width: 960px;
   min-height: 420px;
   margin: 0 auto 20px;
   & .gatsby-image-wrapper {
@@ -270,14 +281,14 @@ export const query = graphql`
       vendors
       coverImage {
         originalId
-        fluid(maxWidth: 800, imgixParams: { fm: "jpg", auto: "compress" }) {
+        fluid(maxWidth: 960, imgixParams: { fm: "jpg" }) {
           ...GatsbyDatoCmsFluid
         }
         alt
       }
       gallery {
         originalId
-        fluid(maxWidth: 800, maxHeight: 800, imgixParams: { fm: "jpg", auto: "compress" }) {
+        fluid(maxWidth: 800, maxHeight: 800, imgixParams: { fm: "jpg" }) {
           ...GatsbyDatoCmsFluid
           aspectRatio
         }
