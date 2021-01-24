@@ -6,13 +6,13 @@ import { Wrapper, Overlay } from './styles'
 import { useTheme } from 'context/themeContext'
 import { ToggleDarkMode } from './ToggleDarkMode'
 
-export const Navigation = () => {
+export const Navigation = ({ location }) => {
   const { currentTheme, toggleTheme, screens } = useTheme()
   const [sidebar, toggle] = useState(false)
   return (
     <Wrapper>
       <Overlay sidebar={sidebar} onClick={() => toggle(!sidebar)} />
-      <Navbar />
+      <Navbar location={location} />
       <Hamburger sidebar={sidebar} toggle={toggle} />
       <Sidebar sidebar={sidebar} toggle={toggle} />
       {!screens.lg && <ToggleDarkMode currentTheme={currentTheme} toggleTheme={() => toggleTheme()} />}

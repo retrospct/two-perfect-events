@@ -1,20 +1,17 @@
-import React from 'react'
-// import AnchorLink from 'react-anchor-link-smooth-scroll'
-
-// import { useTheme } from 'context/themeContext'
+import React, { useEffect, useState } from 'react'
 
 import { Link, LinkBase, ButtonNavCTA } from 'components/common'
 import { Wrapper, NavLink, NavLinkFirst } from './styles'
-// import { ToggleDarkMode } from '../ToggleDarkMode'
-// import { useNavLinks } from 'hooks/useNavLinks'
 
-export const NavbarLinks = ({ desktop }) => {
-  // const { currentTheme, toggleTheme } = useTheme()
-  // const [showDropdown, setShowDropdown] = useState(false)
-
-  // useEffect(() => {
-  //   !desktop && setShowDropdown(true)
-  // }, [desktop])
+export const NavbarLinks = ({ desktop, location }) => {
+  const [isService, setIsService] = useState(false)
+  useEffect(() => {
+    if (location?.pathname === '/weddings') {
+      setIsService(true)
+    } else {
+      setIsService(false)
+    }
+  }, [location?.pathname])
 
   return (
     <Wrapper desktop={desktop}>
@@ -45,7 +42,13 @@ export const NavbarLinks = ({ desktop }) => {
             </NavLink>
           </li>
           <li className="dropdown-container">
-            <NavLink as={Link} to="/services" activeClassName="selected" aria-haspopup>
+            <NavLink
+              as={Link}
+              to="/services"
+              activeClassName="selected"
+              className={isService && 'selected'}
+              aria-haspopup
+            >
               SERVICES
             </NavLink>
             <ul className="dropdown" aria-label="submenu">

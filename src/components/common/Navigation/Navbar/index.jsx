@@ -4,7 +4,7 @@ import { useTheme } from 'context/themeContext'
 import { NavbarLinks } from '../NavbarLinks'
 import { Wrapper, LogoWrapper } from './styles'
 
-export const Navbar = () => {
+export const Navbar = ({ location }) => {
   const { currentTheme, screens } = useTheme()
   return (
     <Wrapper as={Container}>
@@ -16,7 +16,7 @@ export const Navbar = () => {
           )}
         </LogoWrapper>
       </Link>
-      <NavbarLinks desktop />
+      <NavbarLinks location={location} desktop />
     </Wrapper>
   )
 }

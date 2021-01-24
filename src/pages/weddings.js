@@ -11,9 +11,18 @@ const Weddings = ({ location, data }) => {
   return (
     <Layout location={location} footer={data.footer}>
       <Helmet>
-        <script src="../../scripts/yelp.js" />
+        {/* <script src="../../scripts/yelp.js" /> */}
+        {/* <script type="application/javascript">{`
+          (function (d, t) {
+            var g = d.createElement(t)
+            var s = d.getElementsByTagName(t)[0]
+            g.id = 'yelp-biz-badge-script-rrc-8Gr_UV2UmQvWo8iCXcmF7Q'
+            g.src = '//yelp.com/biz_badge_js/en_US/rrc/8Gr_UV2UmQvWo8iCXcmF7Q.js'
+            s.parentNode.insertBefore(g, s)
+          })(document, 'script')
+        `}</script> */}
       </Helmet>
-      <Navigation />
+      <Navigation location={location} />
       <Seo siteSeo={siteSeo} pageSeo={data.weddings.seoMetaTags} />
       <NavSpacer>
         <HeroImage title={data.weddings.title} subtitle={data.weddings.subtitle} image={data.weddings.heroImage} />
