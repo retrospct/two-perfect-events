@@ -41,7 +41,7 @@ const lightTheme = {
     bg: '#fff',
     bgDark: '#e6e6e6',
     error: '#ff4136',
-    // #565656
+    disabled: '#707070',
     // offwhite: '#e6e6e6',
     // color: '#000',
   },
@@ -67,6 +67,7 @@ const darkTheme = {
     bg: '#2F384B',
     bgDark: '#1F2B34',
     error: '#ff4136',
+    disabled: '#707070',
     // #3D4457
     // #ef86a9
     // offwhite: '#e6e6e6',

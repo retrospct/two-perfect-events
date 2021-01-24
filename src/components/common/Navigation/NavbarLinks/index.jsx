@@ -73,33 +73,14 @@ export const NavbarLinks = ({ desktop, location }) => {
                 </NavLink>
               </li>
             </ul>
-            {/* <NavLinkButton onClick={() => setShowDropdown(!showDropdown)} aria-haspopup>
-              SERVICES
-            </NavLinkButton> */}
-            {/* {showDropdown && (
-              <ul className="dropdown" aria-label="submenu">
-                <li>
-                  <NavLink as={Link} to="/services" activeClassName="selected">
-                    OVERVIEW
-                  </NavLink>
-                  <NavLink as={Link} to="/weddings" activeClassName="selected">
-                    WEDDINGS
-                  </NavLink>
-                </li>
-              </ul>
-            )} */}
           </li>
           <li>
-            {/* <ButtonNavCTA as={AnchorLink} href="#contact">
-              CONTACT
-            </ButtonNavCTA> */}
             <ButtonNavCTA as={LinkBase} to="/contact">
               CONTACT
             </ButtonNavCTA>
           </li>
         </ul>
       </nav>
-
       {/* <ToggleDarkMode currentTheme={currentTheme} toggleTheme={() => toggleTheme()} /> */}
     </Wrapper>
   )

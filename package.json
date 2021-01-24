@@ -23,6 +23,7 @@
     "optimize:imgs": "node ./src/utils/optimize-images.js"
   },
   "dependencies": {
+    "@svgr/webpack": "^5.5.0",
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "gatsby": "^2.31.1",
@@ -39,6 +40,7 @@
     "gatsby-plugin-sharp": "^2.13.1",
     "gatsby-plugin-sitemap": "^2.11.0",
     "gatsby-plugin-styled-components": "^3.9.0",
+    "gatsby-plugin-svgr": "^2.1.0",
     "gatsby-plugin-webfonts": "^1.1.4",
     "gatsby-source-datocms": "^2.5.8",
     "gatsby-source-filesystem": "^2.10.0",

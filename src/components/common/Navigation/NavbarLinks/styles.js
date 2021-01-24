@@ -190,7 +190,7 @@ export const NavLink = styled.a`
     }
   }
   &.navlink-disabled {
-    color: var(--subheading-color);
+    color: var(--disabled-color);
   }
   &.navlink-disabled:hover {
     cursor: not-allowed;

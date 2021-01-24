@@ -1,9 +1,5 @@
-const meta = require('./src/meta')
-
+const meta = require('./src/meta') // TODO: check if needed or this all pulled from DatoCMS
 require('dotenv').config()
-// require('dotenv').config({
-//   path: `.env.${process.env.NODE_ENV}`,
-// })
 
 module.exports = {
   siteMetadata: {
@@ -23,7 +19,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-facebook-pixel`,
+      resolve: 'gatsby-plugin-facebook-pixel',
       options: {
         pixelId: process.env.FACEBOOK_PIXEL,
       },
@@ -36,8 +32,22 @@ module.exports = {
     'gatsby-plugin-sharp',
     // 'gatsby-plugin-netlify-cache',
     // 'gatsby-plugin-offline',
+    'gatsby-plugin-svgr',
+    // {
+    //   resolve: 'gatsby-plugin-svgr',
+    //   options: {
+    //     prettier: true,          // use prettier to format JS code output (default)
+    //     svgo: true,              // use svgo to optimize SVGs (default)
+    //     svgoConfig: {
+    //       plugins: [
+    //         { removeViewBox: true }, // remove viewBox when possible (default)
+    //         { cleanupIDs: true },    // remove unused IDs and minify remaining IDs (default)
+    //       ],
+    //     },
+    //   },
+    // },
     {
-      resolve: `gatsby-source-datocms`,
+      resolve: 'gatsby-source-datocms',
       options: {
         apiToken: process.env.DATO_API_TOKEN,
         previewMode: true,
@@ -51,28 +61,29 @@ module.exports = {
     //   },
     // },
     {
-      resolve: `gatsby-source-instagram`,
+      resolve: 'gatsby-source-instagram',
       options: {
-        username: `2183081444`,
-        access_token: "EAAVh278ZAIooBAI9ZCpaSsqXcMCInZCdiZAvZBDrCZBK0iKDaFl2ac5BlopnD3Bh7OVQu6eZAw2ZBQqaEgI2ZCNlm93ZBkygNDMH6Qpdrqw6cOU43ZCJhvPdfksUCp5UCQvfvHLpdCysuROgDsjxM9nCjoGtZAPxpGUZAFXwx0rtG6KbktfZAGZAKRBTVuhy1fy3doowR8ZD",
-        instagram_id: "17841402203322885",
+        username: '2183081444',
+        access_token:
+          'EAAVh278ZAIooBAI9ZCpaSsqXcMCInZCdiZAvZBDrCZBK0iKDaFl2ac5BlopnD3Bh7OVQu6eZAw2ZBQqaEgI2ZCNlm93ZBkygNDMH6Qpdrqw6cOU43ZCJhvPdfksUCp5UCQvfvHLpdCysuROgDsjxM9nCjoGtZAPxpGUZAFXwx0rtG6KbktfZAGZAKRBTVuhy1fy3doowR8ZD',
+        instagram_id: '17841402203322885',
         // paginate: 9,
         maxPosts: 9,
         // hashtags: true
       },
     },
     {
-      resolve: `gatsby-plugin-webfonts`,
+      resolve: 'gatsby-plugin-webfonts',
       options: {
         fonts: {
           google: [
             {
-              family: `Lato`,
-              variants: [`300`, `300i`, `400`, `400i`, `700`, `700i`],
+              family: 'Lato',
+              variants: ['300', '300i', '400', '400i', '700', '700i'],
             },
             {
-              family: `Crimson Pro`,
-              variants: [`300`, `300i`, `400`, `400i`, `700i`],
+              family: 'Crimson Pro',
+              variants: ['300', '300i', '400', '400i', '700i'],
             },
           ],
         },

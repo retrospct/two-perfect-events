@@ -12,21 +12,13 @@ export const ServiceBlock = ({ block }) => (
     {block.cards && (
       <Cards>
         {block.cards.map((card) => (
-          <Card key={card.id}>
-            {card.linkTo ? (
-              <Link to={card.linkTo}>
-                <Img fixed={card.image.fixed} alt={card.image.alt} />
-                <h4>{card.title}</h4>
-              </Link>
-            ) : (
-              <>
-                <Img fixed={card.image.fixed} alt={card.image.alt} />
-                <h4>{card.title}</h4>
-              </>
-            )}
-            {/* <h4>{card.title}</h4> */}
-            <div dangerouslySetInnerHTML={{ __html: card.body }} />
-          </Card>
+          <CardLink key={card.id} to={card.linkTo || '/services'}>
+            <Card>
+              <Img fixed={card.image.fixed} alt={card.image.alt} />
+              <h4>{card.title}</h4>
+              <div dangerouslySetInnerHTML={{ __html: card.body }} />
+            </Card>
+          </CardLink>
         ))}
       </Cards>
     )}
@@ -69,5 +61,23 @@ const Card = styled.div`
     font-weight: 300;
     line-height: 1.6rem;
     color: var(--text-color);
+  }
+`
+// const ImgContainer = styled.div`
+//   overflow: hidden;
+//   height: 320px;
+//   width: 320px;
+// `
+const CardLink = styled(Link)`
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  & .gatsby-image-wrapper {
+    overflow: hidden;
+  }
+  & .gatsby-image-wrapper picture:hover,
+  & .gatsby-image-wrapper img:hover {
+    transform: scale(1.05);
   }
 `
