@@ -4,7 +4,7 @@ import { Link, graphql } from 'gatsby'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 import { Layout, Seo, Container, Connect, NavSpacer } from 'components/common'
 
-export default ({ location, data }) => {
+const NoMatch = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
   return (
     <Layout location={location} footer={data.footer}>
@@ -21,7 +21,7 @@ export default ({ location, data }) => {
   )
 }
 
-// export default NoMatch
+export default NoMatch
 
 export const query = graphql`
   query NotFoundQuery {
