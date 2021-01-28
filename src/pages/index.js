@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 import { useInstaLatest } from 'hooks/useInstaLatest'
 
-import { Layout, Seo, Navigation, NavSpacer } from 'components/common'
+import { Layout, Seo, Navigation, NavSpacer, Footer } from 'components/common'
 import { HomeBlock } from 'components/blocks/home'
 import { CreditsBlock } from 'components/blocks/credits'
 import { Hero, ContactSection } from 'components/landing'
@@ -13,7 +13,7 @@ const Home = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
   const instaLatest = useInstaLatest()
   return (
-    <Layout location={location} footer={data.footer}>
+    <Layout location={location}>
       <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.home.seoMetaTags} />
       <NavSpacer>
@@ -25,6 +25,9 @@ const Home = ({ location, data }) => {
           contrast
           formName="contact-home"
         />
+        {data.footer && (
+          <Footer links={data.footer.links} serving={data.footer.serving} copyright={data.footer.copyright} />
+        )}
         <CreditsBlock heading="PHOTO CREDITS" creditsBlock={data.home.creditsBlock} />
       </NavSpacer>
     </Layout>
