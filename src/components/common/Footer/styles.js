@@ -171,6 +171,12 @@ export const BottomNavLink = styled(Link)`
       right: 40%;
     }
   }
+  &.bottom-nav-menu:hover,
+  &.bottom-nav-submenu:hover {
+    &:after {
+      right: 80%;
+    }
+  }
   &.selected {
     color: var(--primaryInverse-color);
     font-weight: 400;
@@ -198,6 +204,12 @@ export const BottomNavLink = styled(Link)`
       &:after {
         right: 40%;
         left: 40%;
+      }
+    }
+    &.bottom-nav-menu:hover,
+    &.bottom-nav-submenu:hover {
+      &:after {
+        right: 40%;
       }
     }
   }

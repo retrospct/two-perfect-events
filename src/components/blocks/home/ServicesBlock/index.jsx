@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import { Container, ButtonOutline } from 'components/common'
+import { Container, Button } from 'components/common'
 
 export const ServicesBlock = ({ block }) => (
   <Wrapper as={Container}>
@@ -26,9 +26,9 @@ export const ServicesBlock = ({ block }) => (
         ))}
       </Services>
       <MoreLink>
-        <ButtonOutline as={Link} to={block.moreLink.path}>
+        <Button as={Link} to={block.moreLink.path}>
           {block.moreLinkText || '> MORE'}
-        </ButtonOutline>
+        </Button>
       </MoreLink>
     </Content>
   </Wrapper>

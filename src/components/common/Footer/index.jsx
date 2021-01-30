@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Container, TPELogomark, TPELogoFooter, LinkExternalBase } from 'components/common'
+import { Container, TPELogomark, TPELogoFooter, LinkExternalBase, LinkBase } from 'components/common'
 import { Wrapper, Flex, Links, Serving, Company, Fluid, BottomNavigation, BottomNavLink } from './styles'
 import { useTheme } from 'context/themeContext'
 
@@ -11,10 +11,14 @@ export const Footer = ({ links, serving, copyright }) => {
       <Fluid as={Container}>
         <Company>
           {screens.md && (
-            <TPELogomark color={currentTheme === 'dark' || currentTheme === 'superDark' ? '#fff' : null} />
+            <LinkBase to="/">
+              <TPELogomark color={currentTheme === 'dark' || currentTheme === 'superDark' ? '#fff' : null} />
+            </LinkBase>
           )}
           {!screens.md && (
-            <TPELogoFooter color={currentTheme === 'dark' || currentTheme === 'superDark' ? '#fff' : null} />
+            <LinkBase to="/">
+              <TPELogoFooter color={currentTheme === 'dark' || currentTheme === 'superDark' ? '#fff' : null} />
+            </LinkBase>
           )}
           <span>
             {copyright && `© ${new Date().getFullYear()} ${copyright}`}
@@ -23,32 +27,25 @@ export const Footer = ({ links, serving, copyright }) => {
         </Company>
         <BottomNavigation>
           <div className="bottom-nav-first">
-            <BottomNavLink to="/home">HOME</BottomNavLink>
+            <BottomNavLink to="/">HOME</BottomNavLink>
             <BottomNavLink to="/portfolio">PORTFOLIO</BottomNavLink>
             <BottomNavLink to="/about">ABOUT</BottomNavLink>
             <BottomNavLink to="/contact">CONTACT</BottomNavLink>
           </div>
           <div className="bottom-nav-second">
-            <BottomNavLink to="/services">SERVICES</BottomNavLink>
+            <BottomNavLink to="/services" className="bottom-nav-menu">
+              SERVICES
+            </BottomNavLink>
             <BottomNavLink to="/weddings" className="bottom-nav-submenu">
               WEDDINGS
             </BottomNavLink>
-            <BottomNavLink
-              // to="/design"
-              className="bottom-nav-submenu navlink-disabled"
-            >
+            <BottomNavLink to="/design" className="bottom-nav-submenu">
               DESIGN
             </BottomNavLink>
-            <BottomNavLink
-              // to="/corporate"
-              className="bottom-nav-submenu navlink-disabled"
-            >
+            <BottomNavLink to="/corporate" className="bottom-nav-submenu">
               CORPORATE
             </BottomNavLink>
-            <BottomNavLink
-              // to="/private-parties"
-              className="bottom-nav-submenu navlink-disabled"
-            >
+            <BottomNavLink to="/private-parties" className="bottom-nav-submenu">
               PRIVATE PARTIES
             </BottomNavLink>
           </div>

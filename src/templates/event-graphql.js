@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Navigation, Container, Footer, Connect, NavSpacer } from 'components/common'
+import { Layout, Seo, Container, Footer, Connect, NavSpacer } from 'components/common'
 
 const Event = ({ location, data }) => {
   const { event, footer } = data
@@ -37,7 +37,6 @@ const Event = ({ location, data }) => {
   return (
     <Layout location={location}>
       <Seo siteSeo={siteSeo} pageSeo={event.seoMetaTags} />
-      <Navigation />
       <NavSpacer>
         <Wrapper>
           <LinkBack to="/portfolio">

@@ -3,14 +3,13 @@ import { graphql } from 'gatsby'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 
-import { Layout, Seo, Navigation, NavSpacer } from 'components/common'
+import { Layout, Seo, NavSpacer } from 'components/common'
 import partyItems from 'assets/illustrations/partyItems.svg'
 
 const Success = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
   return (
     <Layout location={location} footer={data.footer}>
-      <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.success.seoMetaTags} />
       {/* <div aria-hidden style={{ height: 100, width: '100%', background: 'transparent' }} /> */}
       <NavSpacer>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import Img from 'gatsby-image'
-import { Container, ButtonOutline, Link } from 'components/common'
+import { Container, Button, Link } from 'components/common'
 import { Wrapper, TextBlock, ImgBlock, MoreLinks } from './styles'
 
 export const ImageText = ({ block }) => (
@@ -12,9 +12,9 @@ export const ImageText = ({ block }) => (
     <TextBlock>
       <div dangerouslySetInnerHTML={{ __html: block.text }} />
       {block.ctaButton && block.ctaButtonText && (
-        <ButtonOutline as={GatsbyLink} to={block.ctaButton.path}>
+        <Button as={GatsbyLink} to={block.ctaButton.path}>
           {block.ctaButtonText}
-        </ButtonOutline>
+        </Button>
       )}
       {block.links && (
         <MoreLinks>

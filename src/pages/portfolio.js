@@ -8,7 +8,6 @@ import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 import {
   Layout,
   Seo,
-  Navigation,
   Heading,
   Container,
   Connect,
@@ -39,7 +38,6 @@ const Portfolio = ({ location, data }) => {
 
   return (
     <Layout location={location} footer={footer}>
-      <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={portfolio.seoMetaTags} />
       <NavSpacer>
         <Fluid>

@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 // import styled from 'styled-components'
 
 import { useTheme } from 'context/themeContext'
-import { Footer } from 'components/common'
+import { Footer, Navigation } from 'components/common'
 
-export const Layout = ({ location, footer, children }) => {
+export const Layout = ({ location, footer, children, nonavigation }) => {
   const { prevTheme, currentTheme, toggleTheme } = useTheme()
   useEffect(() => {
     const isPortfolio = location?.pathname?.includes('/portfolio')
@@ -12,8 +12,8 @@ export const Layout = ({ location, footer, children }) => {
     else if (currentTheme === 'superDark' && !isPortfolio) toggleTheme(prevTheme)
   }, [])
   return (
-    <div style={{ overflow: 'hidden' }}>
-      {/* <Navigation /> */}
+    <div style={{ overflow: 'hidden auto' }}>
+      {!nonavigation && <Navigation />}
       {children}
       {footer && <Footer links={footer.links} serving={footer.serving} copyright={footer.copyright} />}
     </div>

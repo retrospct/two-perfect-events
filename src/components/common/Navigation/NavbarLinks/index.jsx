@@ -6,7 +6,12 @@ import { Wrapper, NavLink, NavLinkFirst } from './styles'
 export const NavbarLinks = ({ desktop, location }) => {
   const [isService, setIsService] = useState(false)
   useEffect(() => {
-    if (location?.pathname === '/weddings') {
+    if (
+      location?.pathname === '/weddings' ||
+      location?.pathname === '/design' ||
+      location?.pathname === '/corporate' ||
+      location?.pathname === '/private-parties'
+    ) {
       setIsService(true)
     } else {
       setIsService(false)
@@ -58,17 +63,17 @@ export const NavbarLinks = ({ desktop, location }) => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/design" activeClassName="selected" className="navlink-disabled">
+                <NavLink as={Link} to="/design" activeClassName="selected">
                   DESIGN
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/corporate" activeClassName="selected" className="navlink-disabled">
+                <NavLink as={Link} to="/corporate" activeClassName="selected">
                   CORPORATE
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/private-parties" activeClassName="selected" className="navlink-disabled">
+                <NavLink as={Link} to="/private-parties" activeClassName="selected">
                   PRIVATE PARTIES
                 </NavLink>
               </li>

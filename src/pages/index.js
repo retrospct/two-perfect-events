@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
 import { useInstaLatest } from 'hooks/useInstaLatest'
 
-import { Layout, Seo, Navigation, NavSpacer, Footer } from 'components/common'
+import { Layout, Seo, NavSpacer, Footer } from 'components/common'
 import { HomeBlock } from 'components/blocks/home'
 import { CreditsBlock } from 'components/blocks/credits'
 import { Hero, ContactSection } from 'components/landing'
@@ -14,7 +14,6 @@ const Home = ({ location, data }) => {
   const instaLatest = useInstaLatest()
   return (
     <Layout location={location}>
-      <Navigation />
       <Seo siteSeo={siteSeo} pageSeo={data.home.seoMetaTags} />
       <NavSpacer>
         <Hero heading={data.home.heading} subheading={data.home.subtitle} />

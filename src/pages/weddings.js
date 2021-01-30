@@ -9,12 +9,9 @@ import { WeddingsBlock } from 'components/blocks/services'
 const Weddings = ({ location, data }) => {
   const siteSeo = useSiteDatoMeta()
   return (
-    <Layout location={location} footer={data.footer}>
+    <Layout location={location} footer={data.footer} nonavigation>
       <Helmet>
         <script async src="../../scripts/yelp.js" type="application/javascript" />
-        {/* <script async type="application/javascript">{`
-          (function(d, t) {var g = d.createElement(t);var s = d.getElementsByTagName(t)[0];g.id = "yelp-biz-badge-script-rrc-8Gr_UV2UmQvWo8iCXcmF7Q";g.src = "//yelp.com/biz_badge_js/en_US/rrc/8Gr_UV2UmQvWo8iCXcmF7Q.js";s.parentNode.insertBefore(g, s);}(document, 'script'));
-        `}</script> */}
       </Helmet>
       <Navigation location={location} />
       <Seo siteSeo={siteSeo} pageSeo={data.weddings.seoMetaTags} />
