@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import styled from 'styled-components'
 import { Container, Gallery } from 'components/common'
 
@@ -12,15 +12,18 @@ export const Highlight = ({ block }) => {
         {block.features.map((feature) =>
           feature?.linkTo ? (
             <Linked key={feature.id} href={feature.linkTo} target="_blank" rel="noopener noreferrer">
-              <Img fixed={feature.badge.fixed} alt={feature.badge.alt} />
+              <GatsbyImage image={feature.childImageSharp.gatsbyImageData} alt={feature.badge.alt} />
             </Linked>
           ) : (
-            <Img key={feature.id} fixed={feature.badge.fixed} alt={feature.badge.alt} />
+            <GatsbyImage
+              image={feature.childImageSharp.gatsbyImageData}
+              key={feature.id}
+              alt={feature.badge.alt} />
           )
         )}
       </Gallery>
     </Content>
-  )
+  );
 }
 
 const Content = styled(Container)`

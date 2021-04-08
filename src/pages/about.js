@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
@@ -23,7 +23,7 @@ const About = ({ location, data }) => {
           <Wrapper>
             <HeroContent>
               <ImgBlock>
-                <Img fluid={data.about.backgroundImage.fluid} alt={data.about.backgroundImage.alt} />
+                <GatsbyImage image={data.about.backgroundImage.gatsbyImageData} alt={data.about.backgroundImage.alt} />
               </ImgBlock>
               <TextBlock>
                 <div
@@ -42,7 +42,7 @@ const About = ({ location, data }) => {
           <TeamGallery>
             {data.about.tpeTeam.map((member) => (
               <Team key={member.id}>
-                <Img fixed={member.image.fixed} alt={member.image.alt} />
+                <GatsbyImage image={member.image.gatsbyImageData} alt={member.image.alt} />
                 <div className="about-team-member">
                   <h3>{member.name}</h3>
                   <h4>{member.title}</h4>
@@ -59,10 +59,10 @@ const About = ({ location, data }) => {
             {data.about.features.map((feature) =>
               feature?.linkTo ? (
                 <Linked key={feature.id} href={feature.linkTo} target="_blank" rel="noopener noreferrer">
-                  <Img fixed={feature.badge.fixed} alt={feature.badge.alt} />
+                  <GatsbyImage image={feature.badge.gatsbyImageData} alt={feature.badge.alt} />
                 </Linked>
               ) : (
-                <Img key={feature.id} fixed={feature.badge.fixed} alt={feature.badge.alt} />
+                <GatsbyImage image={feature.badge.gatsbyImageData} key={feature.id} alt={feature.badge.alt} />
               )
             )}
           </Gallery>
@@ -73,10 +73,10 @@ const About = ({ location, data }) => {
             {data.about.awards.map((award) =>
               award?.linkTo ? (
                 <Linked key={award.id} href={award.linkTo} target="_blank" rel="noopener noreferrer">
-                  <Img fixed={award.badge.fixed} alt={award.badge.alt} />
+                  <GatsbyImage image={award.badge.gatsbyImageData} alt={award.badge.alt} />
                 </Linked>
               ) : (
-                <Img key={award.id} fixed={award.badge.fixed} alt={award.badge.alt} />
+                <GatsbyImage image={award.badge.gatsbyImageData} key={award.id} alt={award.badge.alt} />
               )
             )}
           </Gallery>
@@ -92,7 +92,7 @@ const About = ({ location, data }) => {
             <Gallery size="260px" columns={3} gap={30}>
               {data.about.preferredVenues.map((venue) => (
                 <div key={venue.id}>
-                  <Img fixed={venue.badge.fixed} alt={venue.badge.alt} />
+                  <GatsbyImage image={venue.badge.gatsbyImageData} alt={venue.badge.alt} />
                   <Label>
                     <p>{venue.name}</p>
                   </Label>
@@ -312,10 +312,11 @@ export const query = graphql`
       title
       subtitle
       backgroundImage {
-        fluid(maxHeight: 1064, imgixParams: { fm: "jpg", auto: "compress" }) {
-          ...GatsbyDatoCmsSizes
-        }
         alt
+        gatsbyImageData(height: 1064, placeholder: BLURRED, imgixParams: { auto: "compress" })
+        # fluid(maxHeight: 1064, imgixParams: { fm: "jpg", auto: "compress" }) {
+        #   ...GatsbyDatoCmsSizes
+        # }
       }
       intro
       tpeTeam {
@@ -324,13 +325,19 @@ export const query = graphql`
         id
         image {
           alt
-          fixed(
-            width: 320
+          gatsbyImageData(
             height: 320
-            imgixParams: { fm: "png", auto: "compress", fit: "crop", crop: "faces,edges", w: "320", h: "320" }
-          ) {
-            ...GatsbyDatoCmsFixed
-          }
+            width: 320
+            placeholder: BLURRED
+            imgixParams: { auto: "compress", fit: "crop", crop: "faces,edges", w: "320", h: "320" }
+          )
+          # fixed(
+          #   width: 320
+          #   height: 320
+          #   imgixParams: { fm: "png", auto: "compress", fit: "crop", crop: "faces,edges", w: "320", h: "320" }
+          # ) {
+          #   ...GatsbyDatoCmsFixed
+          # }
         }
       }
       connectEnabled
@@ -341,13 +348,19 @@ export const query = graphql`
         accoladeType
         badge {
           alt
-          fixed(
-            width: 200
+          gatsbyImageData(
             height: 200
-            imgixParams: { fm: "png", auto: "compress", fit: "crop", crop: "faces,edges", w: "200", h: "200" }
-          ) {
-            ...GatsbyDatoCmsFixed
-          }
+            width: 200
+            placeholder: BLURRED
+            imgixParams: { auto: "compress", fit: "crop", crop: "faces,edges", w: "200", h: "200" }
+          )
+          # fixed(
+          #   width: 200
+          #   height: 200
+          #   imgixParams: { fm: "png", auto: "compress", fit: "crop", crop: "faces,edges", w: "200", h: "200" }
+          # ) {
+          #   ...GatsbyDatoCmsFixed
+          # }
         }
       }
       featuresTitle
@@ -357,13 +370,19 @@ export const query = graphql`
         accoladeType
         badge {
           alt
-          fixed(
-            width: 200
+          gatsbyImageData(
             height: 200
-            imgixParams: { fm: "png", auto: "compress", fit: "crop", crop: "faces,edges", w: "200", h: "200" }
-          ) {
-            ...GatsbyDatoCmsFixed
-          }
+            width: 200
+            placeholder: BLURRED
+            imgixParams: { auto: "compress", fit: "crop", crop: "faces,edges", w: "200", h: "200" }
+          )
+          # fixed(
+          #   width: 200
+          #   height: 200
+          #   imgixParams: { fm: "png", auto: "compress", fit: "crop", crop: "faces,edges", w: "200", h: "200" }
+          # ) {
+          #   ...GatsbyDatoCmsFixed
+          # }
         }
       }
       preferredTitle
@@ -379,12 +398,10 @@ export const query = graphql`
         name
         badge {
           alt
-          # fluid(maxWidth: 260, maxHeight: 260, imgixParams: { fm: "png", auto: "compress" }) {
-          #   ...GatsbyDatoCmsSizes
+          gatsbyImageData(height: 260, width: 260, placeholder: BLURRED, imgixParams: { auto: "compress" })
+          # fixed(width: 260, height: 260, imgixParams: { fm: "png", auto: "compress" }) {
+          #   ...GatsbyDatoCmsFixed
           # }
-          fixed(width: 260, height: 260, imgixParams: { fm: "png", auto: "compress" }) {
-            ...GatsbyDatoCmsFixed
-          }
         }
       }
     }

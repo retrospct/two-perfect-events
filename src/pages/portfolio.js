@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
@@ -43,7 +43,7 @@ const Portfolio = ({ location, data }) => {
         <Fluid>
           <ImgFluid
             style={{ maxWidth: 1920, margin: '0 auto' }}
-            fluid={portfolio.heroImage.fluid}
+            image={portfolio.heroImage.gatsbyImageData}
             alt={portfolio.heroImage.alt}
           />
         </Fluid>
@@ -79,7 +79,7 @@ const Portfolio = ({ location, data }) => {
                     {event.location && <h5>{event.location}</h5>}
                   </div>
                 </ImgOverlay>
-                <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
+                <GatsbyImage image={event.coverImage.gatsbyImageData} alt={event.coverImage.alt} />
               </ImgLink>
             ))}
             {/* {events.edges.map(({ event }) => (
@@ -173,10 +173,11 @@ export const query = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
       heroImage {
-        fluid(maxWidth: 1920, imgixParams: { fm: "png", auto: "compress" }) {
-          ...GatsbyDatoCmsFluid
-        }
         alt
+        gatsbyImageData(width: 1920, placeholder: BLURRED, imgixParams: { auto: "compress" })
+        # fluid(maxWidth: 1920, imgixParams: { fm: "png", auto: "compress" }) {
+        #   ...GatsbyDatoCmsFluid
+        # }
       }
       heading
       filters
@@ -191,15 +192,21 @@ export const query = graphql`
           location
           eventType
           coverImage {
-            originalId
-            fluid(
-              maxWidth: 800
-              maxHeight: 800
-              imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "800", h: "800" }
-            ) {
-              ...GatsbyDatoCmsFluid
-            }
             alt
+            originalId
+            gatsbyImageData(
+              width: 800
+              height: 800
+              placeholder: BLURRED
+              imgixParams: { auto: "compress", fit: "crop", crop: "faces,edges", w: "800", h: "800" }
+            )
+            # fluid(
+            #   maxWidth: 800
+            #   maxHeight: 800
+            #   imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "800", h: "800" }
+            # ) {
+            #   ...GatsbyDatoCmsFluid
+            # }
           }
         }
       }

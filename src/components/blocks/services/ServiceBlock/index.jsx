@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import styled from 'styled-components'
 
 import { Container } from 'components/common'
@@ -14,7 +14,7 @@ export const ServiceBlock = ({ block }) => (
         {block.cards.map((card) => (
           <CardLink key={card.id} to={card.linkTo || '/services'}>
             <Card>
-              <Img fixed={card.image.fixed} alt={card.image.alt} />
+              <GatsbyImage image={card.childImageSharp.gatsbyImageData} alt={card.image.alt} />
               <h4>{card.title}</h4>
               <div dangerouslySetInnerHTML={{ __html: card.body }} />
             </Card>

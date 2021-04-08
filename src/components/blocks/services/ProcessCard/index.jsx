@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import styled from 'styled-components'
 import { Container, Icon, IconTriangleDown } from 'components/common'
 
@@ -12,7 +12,7 @@ export const ProcessCard = ({ block }) => {
           <CardContent dangerouslySetInnerHTML={{ __html: block.content }} />
         </CardContainer>
         <div className="process-card-image">
-          <Img fluid={block.image.fluid} alt={block.image.alt} />
+          <GatsbyImage image={block.childImageSharp.gatsbyImageData} alt={block.image.alt} />
         </div>
       </Card>
       {!block.lastCard && (
@@ -21,7 +21,7 @@ export const ProcessCard = ({ block }) => {
         </Icon>
       )}
     </Content>
-  )
+  );
 }
 
 const Content = styled(Container)`

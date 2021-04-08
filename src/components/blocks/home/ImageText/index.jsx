@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Container, Button, Link } from 'components/common'
 import { Wrapper, TextBlock, ImgBlock, MoreLinks } from './styles'
 
 export const ImageText = ({ block }) => (
   <Wrapper as={Container}>
     <ImgBlock>
-      <Img fluid={block.image.fluid} alt={block.image.alt} />
+      <GatsbyImage image={block.childImageSharp.gatsbyImageData} alt={block.image.alt} />
     </ImgBlock>
     <TextBlock>
       <div dangerouslySetInnerHTML={{ __html: block.text }} />

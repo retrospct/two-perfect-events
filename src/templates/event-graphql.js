@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { LinkBase, Icon, IconArrow } from 'components/common'
 import styled from 'styled-components'
 
@@ -68,29 +68,27 @@ const Event = ({ location, data }) => {
         <GalleryWrapper>
           {/* <Container> */}
           <OneColImage>
-            <Img fluid={event.coverImage.fluid} alt={event.coverImage.alt} />
+            <GatsbyImage image={event.childImageSharp.gatsbyImageData} alt={event.coverImage.alt} />
           </OneColImage>
           {/* </Container> */}
           <GalleryGrid>
             {event.gallery.map((img) => {
               if (img.fluid.aspectRatio <= 1) {
                 return (
-                  <Img
+                  <GatsbyImage
+                    image={img.gatsbyImageData}
                     key={img.originalId}
-                    fluid={img.fluid}
                     alt={img.alt}
-                    style={{ gridColumn: 'span 1', height: '100%', width: '100%' }}
-                  />
-                )
+                    style={{ gridColumn: 'span 1', height: '100%', width: '100%' }} />
+                );
               } else {
                 return (
-                  <Img
+                  <GatsbyImage
+                    image={img.gatsbyImageData}
                     key={img.originalId}
-                    fluid={img.fluid}
                     alt={img.alt}
-                    style={{ gridColumn: 'span 2', height: '100%', width: '100%' }}
-                  />
-                )
+                    style={{ gridColumn: 'span 2', height: '100%', width: '100%' }} />
+                );
               }
             })}
           </GalleryGrid>
@@ -99,7 +97,7 @@ const Event = ({ location, data }) => {
       </NavSpacer>
       <Footer links={footer.links} serving={footer.serving} copyright={footer.copyright} />
     </Layout>
-  )
+  );
 }
 
 export default Event

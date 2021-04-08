@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { ButtonAccent } from 'components/common'
 import { Wrapper, Overlay } from './styles'
 
@@ -15,7 +15,7 @@ export const HeroImage = ({ block }) => {
           </div>
         </Overlay>
       )}
-      <Img fluid={block.image.fluid} alt={block.image.alt} />
+      <GatsbyImage image={block.childImageSharp.gatsbyImageData} alt={block.image.alt} />
     </Wrapper>
-  )
+  );
 }

@@ -1,6 +1,5 @@
 import React from 'react'
-// import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Container } from 'components/common'
 import { Wrapper, Content, Header, Username, InstaGallery, InstaLink, UsernameLink } from './styles'
 import logoInstagram from 'assets/logo-instagram.png'
@@ -30,7 +29,9 @@ export const Instagram = ({ block, instaLatest }) => (
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Img fluid={insta.node.localFile.childImageSharp.fluid} alt={insta.node.caption.substring(0, 100)} />
+              <GatsbyImage
+                image={insta.node.localFile.childImageSharp.gatsbyImageData}
+                alt={insta.node.caption.substring(0, 100)} />
             </InstaLink>
           ))}
       </InstaGallery>

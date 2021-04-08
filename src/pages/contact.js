@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { useTheme } from 'context/themeContext'
 import { useSiteDatoMeta } from 'hooks/useSiteDatoMeta'
@@ -63,7 +63,7 @@ const Contact = ({ location, data }) => {
           ))}
         </FaqContent>
         <ImgFluid>
-          <Img fluid={data.contact.accentImage.fluid} alt={data.contact.accentImage.alt} />
+          <GatsbyImage image={data.contact.accentImage.gatsbyImageData} alt={data.contact.accentImage.alt} />
         </ImgFluid>
       </NavSpacer>
     </Layout>
@@ -282,9 +282,10 @@ export const query = graphql`
       }
       accentImage {
         alt
-        fluid(maxWidth: 1920, imgixParams: { fm: "jpg", auto: "compress" }) {
-          ...GatsbyDatoCmsFluid
-        }
+        gatsbyImageData(width: 1920, placeholder: BLURRED, imgixParams: { auto: "compress" })
+        # fluid(maxWidth: 1920, imgixParams: { fm: "jpg", auto: "compress" }) {
+        #   ...GatsbyDatoCmsFluid
+        # }
       }
     }
     contactForm: datoCmsContactField {

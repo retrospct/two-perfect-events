@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import styled from 'styled-components'
 
 import { Container } from 'components/common'
@@ -15,9 +15,9 @@ export const HeroImage = ({ title, subtitle, image }) => {
           </Container>
         </Overlay>
       )}
-      {image && <Img fluid={image.fluid} alt={image.alt} />}
+      {image && <GatsbyImage image={image.gatsbyImageData} alt={image.alt} />}
     </Wrapper>
-  )
+  );
 }
 
 const Wrapper = styled.div`

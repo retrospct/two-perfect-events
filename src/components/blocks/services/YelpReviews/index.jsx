@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 import { Container, Icon, IconFiveStar } from 'components/common'
 
@@ -19,7 +19,7 @@ export const YelpReviews = ({ block }) => {
       )}
       <Review>
         <Reviewer>
-          <Avatar fluid={block.avatar.fluid} alt={block.avatar.alt} />
+          <Avatar image={block.avatar.gatsbyImageData} alt={block.avatar.alt} />
           <Name>{block.reviewerName}</Name>
         </Reviewer>
         <Body>
@@ -34,7 +34,7 @@ export const YelpReviews = ({ block }) => {
           </div>
         </Body>
         <Badge>
-          <Img fixed={block.yelpBadge.fixed} alt={block.yelpBadge.alt} />
+          <GatsbyImage image={block.yelpBadge.gatsbyImageData} alt={block.yelpBadge.alt} />
         </Badge>
       </Review>
     </Content>
@@ -101,7 +101,7 @@ const Name = styled.div`
   flex-direction: column;
   justify-content: center;
 `
-const Avatar = styled(Img)`
+const Avatar = styled(GatsbyImage)`
   margin: 1rem 0.5rem 0;
   display: flex;
   flex-direction: column;

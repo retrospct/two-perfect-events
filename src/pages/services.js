@@ -36,16 +36,18 @@ export const query = graphql`
       title
       subtitle
       heroImage {
-        fluid(maxWidth: 1920, imgixParams: { fm: "png", auto: "compress" }) {
-          ...GatsbyDatoCmsFluid
-        }
         alt
+        gatsbyImageData(width: 1920, placeholder: BLURRED, imgixParams: { auto: "compress" })
+        # fluid(maxWidth: 1920, imgixParams: { fm: "png", auto: "compress" }) {
+        #   ...GatsbyDatoCmsFluid
+        # }
       }
       heroBottom {
-        fluid(maxWidth: 1920, imgixParams: { fm: "png", auto: "compress" }) {
-          ...GatsbyDatoCmsFluid
-        }
         alt
+        gatsbyImageData(width: 1920, placeholder: BLURRED, imgixParams: { auto: "compress" })
+        # fluid(maxWidth: 1920, imgixParams: { fm: "png", auto: "compress" }) {
+        #   ...GatsbyDatoCmsFluid
+        # }
       }
       connectEnabled
       blocks: servicesBlock {
@@ -88,13 +90,19 @@ export const query = graphql`
             id
             badge {
               alt
-              fixed(
+              gatsbyImageData(
                 width: 200
                 height: 200
-                imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "200", h: "200" }
-              ) {
-                ...GatsbyDatoCmsFixed
-              }
+                placeholder: BLURRED
+                imgixParams: { auto: "compress", fit: "crop", crop: "faces,edges", w: "200", h: "200" }
+              )
+              # fixed(
+              #   width: 200
+              #   height: 200
+              #   imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "200", h: "200" }
+              # ) {
+              #   ...GatsbyDatoCmsFixed
+              # }
             }
             linkTo
             accoladeType
@@ -124,9 +132,10 @@ export const query = graphql`
           content
           image {
             alt
-            fluid(maxWidth: 300, maxHeight: 500, imgixParams: { fm: "jpg", auto: "compress" }) {
-              ...GatsbyDatoCmsFluid
-            }
+            gatsbyImageData(width: 300, height: 500, placeholder: BLURRED, imgixParams: { auto: "compress" })
+            # fluid(maxWidth: 300, maxHeight: 500, imgixParams: { fm: "jpg", auto: "compress" }) {
+            #   ...GatsbyDatoCmsFluid
+            # }
           }
           lastCard
         }
@@ -141,13 +150,19 @@ export const query = graphql`
             id
             image {
               alt
-              fixed(
+              gatsbyImageData(
                 width: 320
                 height: 320
-                imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "320", h: "320" }
-              ) {
-                ...GatsbyDatoCmsFixed
-              }
+                placeholder: BLURRED
+                imgixParams: { auto: "compress", fit: "crop", crop: "faces,edges", w: "320", h: "320" }
+              )
+              # fixed(
+              #   width: 320
+              #   height: 320
+              #   imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "320", h: "320" }
+              # ) {
+              #   ...GatsbyDatoCmsFixed
+              # }
             }
             title
             body
@@ -162,9 +177,10 @@ export const query = graphql`
           slides {
             originalId
             alt
-            fluid(maxHeight: 1080, imgixParams: { fm: "png", auto: "compress" }) {
-              ...GatsbyDatoCmsFluid
-            }
+            gatsbyImageData(height: 1080, placeholder: BLURRED, imgixParams: { auto: "compress" })
+            # fluid(maxHeight: 1080, imgixParams: { fm: "png", auto: "compress" }) {
+            #   ...GatsbyDatoCmsFluid
+            # }
           }
         }
         ... on DatoCmsSpacer {
@@ -182,13 +198,14 @@ export const query = graphql`
           embedEnabled
           avatar {
             alt
-            fluid(
-              maxWidth: 220
-              # height: 320
-              imgixParams: { fm: "jpg", auto: "compress" }
-            ) {
-              ...GatsbyDatoCmsSizes
-            }
+            gatsbyImageData(width: 220, placeholder: BLURRED, imgixParams: { auto: "compress" })
+            # gatsbyImageData(width: 220, placeholder: BLURRED, imgixParams: { auto: "compress" })
+            # fluid(
+            #   maxWidth: 220
+            #   imgixParams: { fm: "jpg", auto: "compress" }
+            # ) {
+            #   ...GatsbyDatoCmsSizes
+            # }
           }
           reviewerName
           rating
@@ -197,13 +214,19 @@ export const query = graphql`
           yelpLink
           yelpBadge {
             alt
-            fixed(
+            gatsbyImageData(
               width: 200
               height: 200
-              imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "200", h: "200" }
-            ) {
-              ...GatsbyDatoCmsFixed
-            }
+              placeholder: BLURRED
+              imgixParams: { auto: "compress", fit: "crop", crop: "faces,edges", w: "200", h: "200" }
+            )
+            # fixed(
+            #   width: 200
+            #   height: 200
+            #   imgixParams: { fm: "jpg", auto: "compress", fit: "crop", crop: "faces,edges", w: "200", h: "200" }
+            # ) {
+            #   ...GatsbyDatoCmsFixed
+            # }
           }
         }
       }

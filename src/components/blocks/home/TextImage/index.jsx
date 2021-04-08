@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Container, ButtonOutline, Link } from 'components/common'
 import { Wrapper, TextBlock, ImgBlock, MoreLinks } from './styles'
 
@@ -24,7 +24,7 @@ export const TextImage = ({ block }) => (
       )}
     </TextBlock>
     <ImgBlock>
-      <Img fluid={block.image.fluid} alt={block.image.alt} />
+      <GatsbyImage image={block.childImageSharp.gatsbyImageData} alt={block.image.alt} />
     </ImgBlock>
   </Wrapper>
 )

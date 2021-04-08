@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import styled from 'styled-components'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
@@ -34,11 +34,11 @@ export const SliderBlock = ({ block }) => {
     <Content>
       <StyledSlider {...settings} className="overflow-hidden">
         {block.slides.map((slide) => (
-          <Img key={slide.originalId} fluid={slide.fluid} alt={slide.alt} />
+          <GatsbyImage image={slide.gatsbyImageData} key={slide.originalId} alt={slide.alt} />
         ))}
       </StyledSlider>
     </Content>
-  )
+  );
 }
 
 const Content = styled(Container)`
