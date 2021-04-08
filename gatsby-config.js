@@ -25,6 +25,7 @@ module.exports = {
       },
     },
     'gatsby-alias-imports',
+    'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     'gatsby-transformer-remark',
