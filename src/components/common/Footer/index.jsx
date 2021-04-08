@@ -22,7 +22,7 @@ export const Footer = ({ links, serving, copyright }) => {
           )}
           <span>
             {copyright && `© ${new Date().getFullYear()} ${copyright}`}
-            {!copyright && `© ${new Date().getFullYear()} Two Perfect Events™`}
+            {!copyright && `© ${new Date().getFullYear()} Two Perfect Events, LLC`}
           </span>
         </Company>
         <BottomNavigation>
