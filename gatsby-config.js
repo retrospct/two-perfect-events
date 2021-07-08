@@ -64,10 +64,9 @@ module.exports = {
     {
       resolve: 'gatsby-source-instagram',
       options: {
-        username: '2183081444',
-        access_token:
-          'EAAVh278ZAIooBAI9ZCpaSsqXcMCInZCdiZAvZBDrCZBK0iKDaFl2ac5BlopnD3Bh7OVQu6eZAw2ZBQqaEgI2ZCNlm93ZBkygNDMH6Qpdrqw6cOU43ZCJhvPdfksUCp5UCQvfvHLpdCysuROgDsjxM9nCjoGtZAPxpGUZAFXwx0rtG6KbktfZAGZAKRBTVuhy1fy3doowR8ZD',
-        instagram_id: '17841402203322885',
+        username: `${process.env.INSTAGRAM_USERNAME}`,
+        access_token: process.env.INSTAGRAM_ACCESS_TOKEN,
+        instagram_id: `${process.env.INSTAGRAM_ID}`,
         // paginate: 9,
         maxPosts: 9,
         // hashtags: true
